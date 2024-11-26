@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8a366a1-1254-445c-ba05-a8a59d4cd6b1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="7261af5f-b4d6-4c1a-9780-62c955ad7056" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vfworks.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/__main__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/commands/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/commands/version.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/logger/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/package/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +19,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
+  "associatedIndex": 8
 }]]></component>
-  <component name="ProjectId" id="2pOMkdCvuuukvadcpuEZtHXmJ5r" />
+  <component name="ProjectId" id="2pOX4eff8cFSn6W037cfcnklVTE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,12 +45,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a8a366a1-1254-445c-ba05-a8a59d4cd6b1" name="Changes" comment="" />
-      <created>1732632813863</created>
+      <changelist id="7261af5f-b4d6-4c1a-9780-62c955ad7056" name="Changes" comment="" />
+      <created>1732637905451</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732632813863</updated>
-      <workItem from="1732632815585" duration="5000" />
+      <updated>1732637905451</updated>
+      <workItem from="1732637908720" duration="36000" />
     </task>
     <servers />
   </component>
