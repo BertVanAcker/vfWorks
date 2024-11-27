@@ -78,3 +78,23 @@ class ValidityFrame(baseElement):
 
     def addMonitor(self, monitor):
         self._monitors.append(monitor)
+
+    #------------------------------------------------------------------------------------------------------------------
+    #                                           TRACE FUNCTIONS
+    # -----------------------------------------------------------------------------------------------------------------
+
+    def check_specifications(self):
+
+        # 0. CHECK ALL MONITORS AND PROPAGATE
+        for monitor in self.monitors:
+            pois = monitor.observes
+            _status = monitor.status
+            for poi in pois:
+                specList = poi.satisfies
+                for spec in specList:
+                    spec.status = _status
+
+        # 1. PRINT STATUS OF SPECIFICATIONS
+        if self._verbose:
+            for spec in self._specifications:
+                print("Specification " + spec.name + " - STATUS: " + str(spec.status))

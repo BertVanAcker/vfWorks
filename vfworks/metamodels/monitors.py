@@ -22,3 +22,19 @@ class Monitor(baseElement):
             self.observes = []
         else:
             self.observes = observes
+
+    @property
+    def type(self):
+        return self._type
+
+    @type.setter
+    def type(self,t):
+        self._type = t
+
+    @property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self,t):
+        self._status = t

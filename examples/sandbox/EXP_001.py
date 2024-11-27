@@ -11,18 +11,18 @@ def dummyVF():
     #-------------------------------------------------------------------------------------
     spec1 = Specification(name="SPECIFICATION1",description="THIS IS A DUMMY SPECIFICATION",standard="ISO26262-part3",paragraph="3.1.2 - processes",DOI=None,isMandatory=True)
     spec2 = Specification(name="SPECIFICATION2",description="THIS IS A DUMMY SPECIFICATION",standard="ISO26262-part2",paragraph="2.5 - V&V",DOI=None,isMandatory=True)
-
+    spec3 = Specification(name="SPECIFICATION3", description="THIS IS A DUMMY SPECIFICATION", standard="ISO26262-part2",paragraph="2.5 - V&V", DOI=None, isMandatory=True)
     #-------------------------------------------------------------------------------------
     #                           SPECIFY VALIDITY FRAME
     #-------------------------------------------------------------------------------------
-    vf = ValidityFrame(name="VF_example",description="This is a dummy validity frame",specifications=[spec1,spec2],verbose=True)
+    vf = ValidityFrame(name="VF_example",description="This is a dummy validity frame",specifications=[spec1,spec2,spec3],verbose=True)
 
     # -------------------------------------------------------------------------------------
     #                           SPECIFY POI and IF
     # -------------------------------------------------------------------------------------
-    poi1 = PropertyofInterest(name="propellerLenght",description="The lenght of the propeller",domain=DomainType.MECHANICAL,unit=UnitType.DISTANCE_mm,datatype=Datatype.FLOAT_32,min=0,max=100)
-    poi2 = PropertyofInterest(name="propellerPitch", description="The pitch of the propeller",domain=DomainType.MECHANICAL, unit=UnitType.ANGLE_RADIANS, datatype=Datatype.FLOAT_32,min=0, max=2)
-    poi3 = PropertyofInterest(name="motorThrust", description="The pitch of the propeller",domain=DomainType.ELECTRICAL, unit=UnitType.FORCE_N, datatype=Datatype.FLOAT_64,min=0, max=10000)
+    poi1 = PropertyofInterest(name="propellerLenght",description="The lenght of the propeller",domain=DomainType.MECHANICAL,unit=UnitType.DISTANCE_mm,datatype=Datatype.FLOAT_32,min=0,max=100,satisfies=[spec1])
+    poi2 = PropertyofInterest(name="propellerPitch", description="The pitch of the propeller",domain=DomainType.MECHANICAL, unit=UnitType.ANGLE_RADIANS, datatype=Datatype.FLOAT_32,min=0, max=2,satisfies=[spec2])
+    poi3 = PropertyofInterest(name="motorThrust", description="The pitch of the propeller",domain=DomainType.ELECTRICAL, unit=UnitType.FORCE_N, datatype=Datatype.FLOAT_64,min=0, max=10000, satisfies=[spec3])
     vf.properties = [poi1, poi2, poi3]
     #-------------------------------------------------------------------------------------
     #                           SPECIFY MODEL STRUCTURE
@@ -41,10 +41,31 @@ def dummyVF():
     monitor3 = Monitor(name="poi3_monitor", description="Monitor for the poi3", type=MonitorType.PROPERTY_RANGE,status=StatusType.UNKNOWN, observes=[poi3])
     vf.monitors = [monitor1,monitor2,monitor3]
 
+    # -------------------------------------------------------------------------------------
+    #                           SPECIFY MODEL
+    # -------------------------------------------------------------------------------------
+    vf.modelReference = "input/model1.py"
+
     return vf
 
 
 
 if __name__ == "__main__":
     vf = dummyVF()
+    # before monitor status update
+    print("----------MONITORS NOT RUNNING----------------")
+    vf.check_specifications()
+    # monitors all valid
+    print("----------MONITORS REPORTED VALID----------------")
+    vf.monitors[0].status = StatusType.VALID
+    vf.monitors[1].status = StatusType.VALID
+    vf.monitors[2].status = StatusType.VALID
+    vf.check_specifications()
+    # one monitor reports invalid
+    print("----------MONITORS REPORTED VALID OR INVALID----------------")
+    vf.monitors[0].status = StatusType.VALID
+    vf.monitors[1].status = StatusType.VALID
+    vf.monitors[2].status = StatusType.INVALID
+    vf.check_specifications()
+
     x=1

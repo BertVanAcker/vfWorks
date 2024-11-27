@@ -11,16 +11,16 @@ import datetime
 class baseElement(object):
 
     def __init__(self, name='tbd', description='tbd', verbose=False):
-        self.name = name
-        self.description = description
-        self.verbose = verbose
-        self.GUID = uuid.uuid4()
-        self.timestamp = datetime.datetime.now()
+        self._name = name
+        self._description = description
+        self._verbose = verbose
+        self._GUID = uuid.uuid4()
+        self._timestamp = datetime.datetime.now()
 
     @property
     def name(self):
         """The name property (read-only)."""
-        return self.name
+        return self._name
 
     @name.setter
     def name(self, value):
@@ -29,7 +29,7 @@ class baseElement(object):
     @property
     def description(self):
         """The description property (read-only)."""
-        return self.description
+        return self._description
 
     @description.setter
     def description(self, value):
@@ -37,7 +37,7 @@ class baseElement(object):
 
     @property
     def GUID(self):
-        return self.GUID
+        return self._GUID
 
     @GUID.setter
     def GUID(self, value):
@@ -45,7 +45,7 @@ class baseElement(object):
 
     @property
     def timestamp(self):
-        return self.timestamp
+        return self._timestamp
 
     @timestamp.setter
     def timestamp(self, value):
