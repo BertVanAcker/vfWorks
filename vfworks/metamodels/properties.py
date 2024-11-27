@@ -13,22 +13,22 @@ class Property(baseElement):
     def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
-        self.domain = domain
-        self.unit=unit
-        self.datatype=datatype
-        self.min=min
-        self.max=max
+        self._domain = domain
+        self._unit=unit
+        self._datatype=datatype
+        self._min=min
+        self._max=max
 
         # TRACEABILITY TO SPECIFICATION
         if satisfies is None:
-            self.satisfies = []
+            self._satisfies = []
         else:
-            self.satisfies = satisfies
+            self._satisfies = satisfies
 
 
     @property
     def domain(self):
-        return self.domain
+        return self._domain
 
     @domain.setter
     def domain(self, value):
@@ -36,7 +36,7 @@ class Property(baseElement):
 
     @property
     def unit(self):
-        return self.unit
+        return self._unit
 
     @unit.setter
     def unit(self, value):
@@ -44,7 +44,7 @@ class Property(baseElement):
 
     @property
     def datatype(self):
-        return self.datatype
+        return self._datatype
 
     @datatype.setter
     def datatype(self, value):
@@ -52,7 +52,7 @@ class Property(baseElement):
 
     @property
     def min(self):
-        return self.min
+        return self._min
 
     @min.setter
     def min(self, value):
@@ -60,7 +60,7 @@ class Property(baseElement):
 
     @property
     def max(self):
-        return self.max
+        return self._max
 
     @max.setter
     def max(self, value):
@@ -68,14 +68,14 @@ class Property(baseElement):
 
     @property
     def satisfies(self):
-        return self.satisfies
+        return self._satisfies
 
     @satisfies.setter
     def satisfies(self, value):
         self._satisfies = value
 
     def add_satisfies_relation(self, value):
-        self.satisfies.append(value)
+        self._satisfies.append(value)
 
 class PropertyofInterest(Property):
     def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):

@@ -7,26 +7,29 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 from vfworks.metamodels.common import *
+from vfworks.utils.constants import *
 
 class Specification(baseElement):
 
     def __init__(self, name='tbd', description='tbd',ID="tbd",standard="ISO26262-part 3",paragraph="3.1.1 DUMMY",DOI=None,specifications=None,isMandatory=True, verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
-        self.ID=ID
-        self.standard = standard
-        self.paragraph = paragraph
-        self.DOI=DOI
+        self._ID=ID
+        self._standard = standard
+        self._paragraph = paragraph
+        self._DOI=DOI
+        self._status = StatusType.UNKNOWN
+
         if specifications is None:
-            self.specifications=[]
+            self._specifications=[]
         else:
-            self.specifications=specifications
-        self.isMandatory = isMandatory
+            self._specifications=specifications
+        self._isMandatory = isMandatory
 
 
     @property
     def ID(self):
-        return self
+        return self._ID
 
     @ID.setter
     def ID(self, value):
@@ -34,7 +37,7 @@ class Specification(baseElement):
 
     @property
     def standard(self):
-        return self.standard
+        return self._standard
 
     @standard.setter
     def standard(self, value):
@@ -42,7 +45,7 @@ class Specification(baseElement):
 
     @property
     def paragraph(self):
-        return self.paragraph
+        return self._paragraph
 
     @paragraph.setter
     def paragraph(self, value):
@@ -50,7 +53,7 @@ class Specification(baseElement):
 
     @property
     def DOI(self):
-        return self.DOI
+        return self._DOI
 
     @DOI.setter
     def DOI(self, value):
@@ -58,10 +61,10 @@ class Specification(baseElement):
 
     @property
     def specifications(self):
-        return self.specifications
+        return self._specifications
 
     def addSpecification(self,specification):
-        self.specifications.append(specification)
+        self._specifications.append(specification)
 
     @specifications.setter
     def specifications(self, value):
@@ -69,8 +72,17 @@ class Specification(baseElement):
 
     @property
     def isMandatory(self):
-        return self.isMandatory
+        return self._isMandatory
 
     @isMandatory.setter
     def isMandatory(self, value):
         self._isMandatory = value
+
+    @property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self,value):
+        self._status = value
+

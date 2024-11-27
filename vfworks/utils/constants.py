@@ -18,7 +18,9 @@ class UnitType:
     DISTANCE_cm= "cm"
     DISTANCE_m = "m"
     DISTANCE_km = "km"
-
+    ANGLE_DEGREES = "degrees"
+    ANGLE_RADIANS = "radians"
+    FORCE_N= "Newton"
     UNIT_none = "-"
 
 class Datatype:
@@ -41,3 +43,8 @@ class MonitorType:
 class StatusType:
     PROPERTY_RANGE= "property_range"
     PROPERTY_MEAN = "property_mean"
+
+class StatusType:
+    UNKNOWN = "unknown"
+    VALID = "valid"
+    INVALID = "invalid"

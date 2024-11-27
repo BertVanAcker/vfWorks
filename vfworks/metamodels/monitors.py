@@ -11,11 +11,11 @@ from vfworks.utils.constants import *
 
 class Monitor(baseElement):
 
-    def __init__(self, name='tbd', description='tbd',type=MonitorType.PROPERTY_RANGE,status=StatusType.,observes=None, verbose=False):
+    def __init__(self, name='tbd', description='tbd',type=MonitorType.PROPERTY_RANGE,status=StatusType.UNKNOWN,observes=None, verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
-        self.type = type
-        self.status = status
+        self._type = type
+        self._status = status
 
         # OBSERVED PROPERTIES (POI/INFLUENCE)
         if observes is None:

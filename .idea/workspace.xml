@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="--init">
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/model_structure.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/monitors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/properties.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/specification.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/utils/constants.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="--partial MM">
+      <change afterPath="$PROJECT_DIR$/examples/sandbox/EXP_001.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/model_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/model_structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/monitors.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/monitors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/properties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/utils/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.__main__.executor": "Run",
+    "Python.EXP_001.executor": "Debug",
+    "Python.__main__.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -55,7 +56,30 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.EXP_001">
+    <configuration name="EXP_001" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vfWorks" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/sandbox" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/sandbox/EXP_001.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfWorks" />
       <option name="ENV_FILES" value="" />
@@ -81,6 +105,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.EXP_001" />
         <item itemvalue="Python.__main__" />
       </list>
     </recent_temporary>
@@ -101,7 +126,8 @@
       <option name="presentableId" value="Default" />
       <updated>1732638010906</updated>
       <workItem from="1732638164682" duration="268000" />
-      <workItem from="1732681755385" duration="4194000" />
+      <workItem from="1732681755385" duration="4231000" />
+      <workItem from="1732693121491" duration="2802000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -111,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732638221853</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="--partial MM">
+      <option name="closed" value="true" />
+      <created>1732685981080</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732685981080</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,9 +153,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="--init" />
-    <option name="LAST_COMMIT_MESSAGE" value="--init" />
+    <MESSAGE value="--partial MM" />
+    <option name="LAST_COMMIT_MESSAGE" value="--partial MM" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/sandbox/EXP_001.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732638190727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
+    <SUITE FILE_PATH="coverage/vfWorks$EXP_001.coverage" NAME="EXP_001 Coverage Results" MODIFIED="1732695507186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox" />
+    <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
   </component>
 </project>

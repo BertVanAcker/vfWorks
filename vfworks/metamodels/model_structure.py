@@ -13,54 +13,54 @@ class ModelStructure(baseElement):
     def __init__(self, name='tbd',description='tbd',inports=None,outports=None,mapping=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
-        if self.inports is None:
-            self.inports = []
+        if inports is None:
+            self._inports = []
         else:
-            self.inports = inports
+            self._inports = inports
 
-        if self.outports is None:
-            self.outports = []
+        if outports is None:
+            self._outports = []
         else:
-            self.outports = outports
+            self._outports = outports
 
         # TRACEABILITY TO PROPERTIES (POI/INFLUENCE)
         if mapping is None:
-            self.mapping = []
+            self._mapping = []
         else:
-            self.mapping = mapping
+            self._mapping = mapping
 
     @property
     def inports(self):
-        return self.inports
+        return self._inports
 
     @inports.setter
     def inports(self, value):
-        self.inports = value
+        self._inports = value
 
     def add_inport(self,inport):
-        self.inports.append(inport)
+        self._inports.append(inport)
 
     @property
     def outports(self):
-        return self.inports
+        return self._inports
 
     @outports.setter
     def outports(self, value):
-        self.outports = value
+        self._outports = value
 
     def add_outport(self, outport):
-        self.outports.append(outport)
+        self._outports.append(outport)
 
     @property
     def mapping(self):
-        return self.mapping
+        return self._mapping
 
     @mapping.setter
     def mapping(self, value):
-        self.mapping = value
+        self._mapping = value
 
     def add_mapping_relation(self, value):
-        self.mapping.append(value)
+        self._mapping.append(value)
 
 
 class Port(baseElement):
@@ -68,22 +68,22 @@ class Port(baseElement):
         super().__init__(name=name, description=description, verbose=verbose)
 
 
-        self.domain = domain
-        self.unit=unit
-        self.datatype=datatype
-        self.min=min
-        self.max=max
+        self._domain = domain
+        self._unit=unit
+        self._datatype=datatype
+        self._min=min
+        self._max=max
 
         # TRACEABILITY TO PROPERTIES (POI/INFLUENCE)
         if mapping is None:
-            self.mapping = []
+            self._mapping = []
         else:
-            self.mapping = mapping
+            self._mapping = mapping
 
 
     @property
     def domain(self):
-        return self.domain
+        return self._domain
 
     @domain.setter
     def domain(self, value):
@@ -91,7 +91,7 @@ class Port(baseElement):
 
     @property
     def unit(self):
-        return self.unit
+        return self._unit
 
     @unit.setter
     def unit(self, value):
@@ -99,7 +99,7 @@ class Port(baseElement):
 
     @property
     def datatype(self):
-        return self.datatype
+        return self._datatype
 
     @datatype.setter
     def datatype(self, value):
@@ -107,7 +107,7 @@ class Port(baseElement):
 
     @property
     def min(self):
-        return self.min
+        return self._min
 
     @min.setter
     def min(self, value):
@@ -115,7 +115,7 @@ class Port(baseElement):
 
     @property
     def max(self):
-        return self.max
+        return self._max
 
     @max.setter
     def max(self, value):
@@ -123,14 +123,14 @@ class Port(baseElement):
 
     @property
     def mapping(self):
-        return self.mapping
+        return self._mapping
 
     @mapping.setter
     def mapping(self, value):
-        self.mapping = value
+        self._mapping = value
 
     def add_mapping_relation(self, value):
-        self.mapping.append(value)
+        self._mapping.append(value)
 
 class Inport(Port):
 
