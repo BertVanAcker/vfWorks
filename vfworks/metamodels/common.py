@@ -1,0 +1,53 @@
+#***************************************************************************************
+# * Copyright (C) 2024-present Bert Van Acker (UAntwerpen) <Bert.VanAcker@uantwerpen.be>
+# *
+# * This file is part of the vfWorks project.
+# *
+# * vfWorks can not be copied and/or distributed without the express
+# * permission of Bert Van Acker
+# **************************************************************************************
+import uuid
+import datetime
+class baseElement(object):
+
+    def __init__(self, name='tbd', description='tbd', verbose=False):
+        self.name = name
+        self.description = description
+        self.verbose = verbose
+        self.GUID = uuid.uuid4()
+        self.timestamp = datetime.datetime.now()
+
+    @property
+    def name(self):
+        """The name property (read-only)."""
+        return self.name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+    @property
+    def description(self):
+        """The description property (read-only)."""
+        return self.description
+
+    @description.setter
+    def description(self, value):
+        self._description = value
+
+    @property
+    def GUID(self):
+        return self.GUID
+
+    @GUID.setter
+    def GUID(self, value):
+        self._GUID = value
+
+    @property
+    def timestamp(self):
+        return self.timestamp
+
+    @timestamp.setter
+    def timestamp(self, value):
+        self._timestamp = value
+

@@ -1,0 +1,86 @@
+#***************************************************************************************
+# * Copyright (C) 2024-present Bert Van Acker (UAntwerpen) <Bert.VanAcker@uantwerpen.be>
+# *
+# * This file is part of the vfWorks project.
+# *
+# * vfWorks can not be copied and/or distributed without the express
+# * permission of Bert Van Acker
+# **************************************************************************************
+from vfworks.metamodels.common import *
+from vfworks.utils.constants import *
+
+class Property(baseElement):
+    def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+
+        self.domain = domain
+        self.unit=unit
+        self.datatype=datatype
+        self.min=min
+        self.max=max
+
+        # TRACEABILITY TO SPECIFICATION
+        if satisfies is None:
+            self.satisfies = []
+        else:
+            self.satisfies = satisfies
+
+
+    @property
+    def domain(self):
+        return self.domain
+
+    @domain.setter
+    def domain(self, value):
+        self._domain = value
+
+    @property
+    def unit(self):
+        return self.unit
+
+    @unit.setter
+    def unit(self, value):
+        self._unit = value
+
+    @property
+    def datatype(self):
+        return self.datatype
+
+    @datatype.setter
+    def datatype(self, value):
+        self._datatype = value
+
+    @property
+    def min(self):
+        return self.min
+
+    @min.setter
+    def min(self, value):
+        self._min = value
+
+    @property
+    def max(self):
+        return self.max
+
+    @max.setter
+    def max(self, value):
+        self._max = value
+
+    @property
+    def satisfies(self):
+        return self.satisfies
+
+    @satisfies.setter
+    def satisfies(self, value):
+        self._satisfies = value
+
+    def add_satisfies_relation(self, value):
+        self.satisfies.append(value)
+
+class PropertyofInterest(Property):
+    def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
+        super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=Datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
+
+class InfluenceFactor(Property):
+    def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
+        super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=Datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
