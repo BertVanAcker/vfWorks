@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- workspace.xml">
-      <change afterPath="$PROJECT_DIR$/examples/sandbox/specification_dsl/spec_def_dsl.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/grammar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/grammar/specificationModel.tx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/parser/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/parser/parser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/templates/__init__.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- simple specification model DSL added + parser">
+      <change afterPath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/input/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_platform.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/probe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/sandbox/EXP_001.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/vf_definition/EXP_001.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/sandbox/input/model1.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/vf_definition/input/model1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/vfworks/DSLs/specificationModel/parser",
+    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/vfworks/clientLibraries/vfclpy",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,6 +60,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\vfworks\clientLibraries\vfclpy" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\vfworks\DSLs\specificationModel\parser" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -216,7 +212,7 @@
       <workItem from="1732681755385" duration="4231000" />
       <workItem from="1732693121491" duration="6035000" />
       <workItem from="1732701425048" duration="1000" />
-      <workItem from="1732769189765" duration="2620000" />
+      <workItem from="1732769189765" duration="3976000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -258,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732701400161</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="-- simple specification model DSL added + parser">
+      <option name="closed" value="true" />
+      <created>1732771870827</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732771870827</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +274,8 @@
     <MESSAGE value="--basic vf example added" />
     <MESSAGE value="--simple monitor - poi - spec tracing example added" />
     <MESSAGE value="-- workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- workspace.xml" />
+    <MESSAGE value="-- simple specification model DSL added + parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- simple specification model DSL added + parser" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -280,11 +285,6 @@
           <line>88</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/examples/sandbox/specification_dsl/spec_def_dsl.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -292,7 +292,7 @@
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001.coverage" NAME="EXP_001 Coverage Results" MODIFIED="1732697547718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox" />
     <SUITE FILE_PATH="coverage/vfWorks$model1.coverage" NAME="model1 Coverage Results" MODIFIED="1732696684696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/input" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001__1_.coverage" NAME="EXP_001 (1) Coverage Results" MODIFIED="1732769922283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
-    <SUITE FILE_PATH="coverage/vfWorks$spec_def_dsl.coverage" NAME="spec_def_dsl Coverage Results" MODIFIED="1732771810912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/specification_dsl" />
+    <SUITE FILE_PATH="coverage/vfWorks$spec_def_dsl.coverage" NAME="spec_def_dsl Coverage Results" MODIFIED="1732771820594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/specification_dsl" />
     <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
   </component>
 </project>
