@@ -1,0 +1,37 @@
+PackageModel:
+    package=Package
+;
+
+Package:
+    'Package' '{'
+        'PackageID:' packageID=ID
+        'PackageName:' packageName=STRING
+        'Specifications:' '{' specifications+=Specification[','] '}'
+    '}'
+;
+
+SpecificationModel:
+    specifications+=Specification
+;
+
+Specification:
+    'Specification' '{'
+        'ID:' id=ID
+        'Name:' name=STRING
+        'Description:' description=STRING
+        'Standard:' standard=STRING
+        'Paragraph:' paragraph=STRING
+        'DOI:' doi=STRING
+        'IsMandatory:' isMandatory=BOOL
+    '}'
+;
+
+ID:
+    /[A-Z0-9_]+/
+;
+
+BOOL:
+    'True' | 'False'
+;
+
+
