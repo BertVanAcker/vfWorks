@@ -10,10 +10,14 @@ import yaml
 import logging
 from vfworks.clientLibraries.vfclpy.data_platform import *
 class Probe(object):
-    def __init__(self, config, verbose=False):
+    def __init__(self, config, storage=False, verbose=False):
         self.config = self.load_config(config)
         self.logger = self.initialize_logger()
         self.data_platform = self.initialize_data_platform()  # Initialize knowledge within the component
+
+        probe_config = self.config.get("validityframe", {})
+        self.probe_key = f"{probe_config.get("name", "base")}:properties"
+        self._storage = storage
 
 
     def load_config(self, config_file):
@@ -52,7 +56,11 @@ class Probe(object):
     def write(self, key, message = True):
         """Write data on the data platform."""
         if self.data_platform:
+            _probe_key = self.probe_key+":"+key
             self.logger.info("Probing property (ID:"+key+") with value "+ str(message))
-            (self.data_platform.write(key, message))
+            if not self._storage:
+                self.data_platform.write(_probe_key, message)
+            else:
+                self.data_platform.write_storage(_probe_key, message)
         else:
             self.logger.warning("Probe is not set for writing")

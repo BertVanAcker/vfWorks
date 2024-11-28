@@ -17,7 +17,7 @@ class model(object):
         self._verbose = verbose
 
         # INITIALIZE PROBE(S)
-        self.probe = Probe(config="input/config.yaml")
+        self.probe = Probe(config="input/config.yaml",storage=False)
 
         # --- MODEL INPUTS
         self.IN1 = 0
@@ -53,8 +53,8 @@ class model(object):
 
 
 if __name__ == "__main__":
-    model = model()
-
+    model = model(name="model1")
+    print(model._name+" is running. Press Ctrl+C to stop.")
     for i in range(0,4,1):
         for j in range(0,120,1):
             model.predict(IN1=i,IN2=j)

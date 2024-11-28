@@ -1,4 +1,7 @@
 
+validityframe:
+  name: "VF_M1"
+
 logging:
   level: "DEBUG"
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

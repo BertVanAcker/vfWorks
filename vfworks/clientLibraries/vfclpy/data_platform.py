@@ -27,11 +27,29 @@ class DataPlatform(object):
         """
         if isinstance(value, dict):
             value = json.dumps(value)  # Serialize the dictionary to a JSON string
+        else:
+            value = str(value)
         if self.storage_type == 'global':
             self.redis_client.set(key, value)
+            # signal new data
+            self.redis_client.publish('MONITOR_NEW_DATA', key)
         else:
             self.local_store[key] = value
 
+    def write_storage(self, key, value):
+        """
+        Store a key-value pair in the data platform. If the value is a dictionary, it will be serialized.
+        :param key: The key for storing the data
+        :param value: The value to store (can be a dict, str, int, etc.)
+        """
+        if isinstance(value, dict):
+            value = json.dumps(value)  # Serialize the dictionary to a JSON string
+        if self.storage_type == 'global':
+            self.redis_client.sadd(key,value)
+            #signal new data
+            self.redis_client.publish('MONITOR_NEW_DATA',key)
+        else:
+            self.local_store[key] = value
     def read(self, key, queueSize = 1):
         """
         Retrieve a value from the data platform. If the value is JSON, it will be deserialized to a Python object.
