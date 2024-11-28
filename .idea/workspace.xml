@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- DUMMY remote validity monitoring added">
-      <change beforePath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/model1.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/model1.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- updated dummy remote monitoring with specifications in redis">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/sandbox/specification_dsl/spec_def_dsl.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/specification_dsl/spec_def_dsl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/grammar/specificationModel.tx" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/DSLs/specificationModel/grammar/specificationModel.tx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,7 @@
     "Python.__main__.executor": "Debug",
     "Python.model1 (1).executor": "Run",
     "Python.model1.executor": "Run",
-    "Python.spec_def_dsl.executor": "Run",
+    "Python.spec_def_dsl.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -65,7 +67,7 @@
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\vf_definition" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.VF_DUMMY">
+  <component name="RunManager" selected="Python.spec_def_dsl">
     <configuration name="EXP_001 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfWorks" />
       <option name="ENV_FILES" value="" />
@@ -183,9 +185,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.spec_def_dsl" />
         <item itemvalue="Python.VF_DUMMY" />
         <item itemvalue="Python.model1 (1)" />
-        <item itemvalue="Python.spec_def_dsl" />
         <item itemvalue="Python.EXP_001 (1)" />
         <item itemvalue="Python.EXP_001" />
       </list>
@@ -211,7 +213,7 @@
       <workItem from="1732693121491" duration="6035000" />
       <workItem from="1732701425048" duration="1000" />
       <workItem from="1732769189765" duration="4012000" />
-      <workItem from="1732781692762" duration="5580000" />
+      <workItem from="1732781692762" duration="8525000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -285,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732787296616</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-- updated dummy remote monitoring with specifications in redis">
+      <option name="closed" value="true" />
+      <created>1732787703629</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732787703629</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +311,8 @@
     <MESSAGE value="-- start of vf client library for remote monitoring added" />
     <MESSAGE value="-- basic probe added to vfclpy (ad-hoc, needs propper configuration)" />
     <MESSAGE value="-- DUMMY remote validity monitoring added" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- DUMMY remote validity monitoring added" />
+    <MESSAGE value="-- updated dummy remote monitoring with specifications in redis" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- updated dummy remote monitoring with specifications in redis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -311,16 +322,26 @@
           <line>88</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/sandbox/specification_dsl/spec_def_dsl.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="specifications.package.specifications[2].expression.expression.value" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001.coverage" NAME="EXP_001 Coverage Results" MODIFIED="1732697547718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox" />
-    <SUITE FILE_PATH="coverage/vfWorks$model1__1_.coverage" NAME="model1 (1) Coverage Results" MODIFIED="1732786906483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
+    <SUITE FILE_PATH="coverage/vfWorks$model1__1_.coverage" NAME="model1 (1) Coverage Results" MODIFIED="1732787566177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
     <SUITE FILE_PATH="coverage/vfWorks$model1.coverage" NAME="model1 Coverage Results" MODIFIED="1732696684696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/input" />
-    <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732787211296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
+    <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732787568016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001__1_.coverage" NAME="EXP_001 (1) Coverage Results" MODIFIED="1732769922283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
-    <SUITE FILE_PATH="coverage/vfWorks$spec_def_dsl.coverage" NAME="spec_def_dsl Coverage Results" MODIFIED="1732771820594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/specification_dsl" />
+    <SUITE FILE_PATH="coverage/vfWorks$spec_def_dsl.coverage" NAME="spec_def_dsl Coverage Results" MODIFIED="1732790781537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/specification_dsl" />
     <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
   </component>
 </project>
