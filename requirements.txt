@@ -1,0 +1,6 @@
+Arpeggio==2.0.2
+click==8.1.7
+colorama==0.4.6
+PyYAML==6.0.2
+redis==5.2.0
+textX==4.1.0
