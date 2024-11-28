@@ -14,10 +14,12 @@ def VF_M1(verbose=False):
     for message in pubsub.listen():
         if message['type'] == 'message':
             if verbose:print(message['data'])
-            data = r.get('VF_M1:properties:poi2').decode('utf-8')
+
 
             if "poi1" in message['data'].decode('utf-8'):
                 if verbose:print("Monitoring POI1...")
+                data = r.get('VF_M1:properties:poi1').decode('utf-8')
+                if verbose: print(data)
                 # RANGE CHECK
                 if 0 <= float(data) <= 100:
                     if verbose:print("POI1 is VALID")
@@ -27,6 +29,8 @@ def VF_M1(verbose=False):
                     if verbose:r.set('VF_M1:specifications:SPECIFICATION1', "INVALID")
             elif 'poi2' in message['data'].decode('utf-8'):
                 if verbose:print("Monitoring POI2...")
+                data = r.get('VF_M1:properties:poi2').decode('utf-8')
+                if verbose: print(data)
                 # RANGE CHECK
                 if 0 <= float(data) <= 2:
                     if verbose:print("POI2 is VALID")
@@ -36,6 +40,8 @@ def VF_M1(verbose=False):
                     r.set('VF_M1:specifications:SPECIFICATION2', "INVALID")
             elif "poi3" in message['data'].decode('utf-8'):
                 if verbose:print("Monitoring POI3...")
+                data = r.get('VF_M1:properties:poi3').decode('utf-8')
+                if verbose: print(data)
                 # RANGE CHECK
                 if 0 <= float(data) <= 10000:
                     if verbose:print("POI3 is VALID")
@@ -46,4 +52,4 @@ def VF_M1(verbose=False):
 
 
 if __name__ == "__main__":
-    VF_M1(verbose=False)
+    VF_M1(verbose=True)

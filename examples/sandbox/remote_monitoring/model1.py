@@ -57,7 +57,7 @@ if __name__ == "__main__":
     print(model._name+" is running. Press Ctrl+C to stop.")
     for i in range(0,4,1):
         for j in range(0,120,1):
-            model.predict(IN1=i,IN2=j)
-            time.sleep(2)
+            model.predict(IN1=j,IN2=i)
+            time.sleep(0.5)
 
 
