@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- simple specification model DSL added + parser">
-      <change afterPath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/input/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_platform.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/probe.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- start of vf client library for remote monitoring added">
+      <change afterPath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/model1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/input/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/remote_monitoring/input/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/probe.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/probe.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/vfworks/clientLibraries/vfclpy",
+    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/sandbox/remote_monitoring",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,6 +58,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\remote_monitoring" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\vfworks\clientLibraries\vfclpy" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\vfworks\DSLs\specificationModel\parser" />
     </key>
@@ -212,7 +211,8 @@
       <workItem from="1732681755385" duration="4231000" />
       <workItem from="1732693121491" duration="6035000" />
       <workItem from="1732701425048" duration="1000" />
-      <workItem from="1732769189765" duration="3976000" />
+      <workItem from="1732769189765" duration="4012000" />
+      <workItem from="1732781692762" duration="939000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -262,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732771870827</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-- start of vf client library for remote monitoring added">
+      <option name="closed" value="true" />
+      <created>1732773210519</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732773210519</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +283,8 @@
     <MESSAGE value="--simple monitor - poi - spec tracing example added" />
     <MESSAGE value="-- workspace.xml" />
     <MESSAGE value="-- simple specification model DSL added + parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- simple specification model DSL added + parser" />
+    <MESSAGE value="-- start of vf client library for remote monitoring added" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- start of vf client library for remote monitoring added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
