@@ -17,6 +17,13 @@ class Standard:
     def create_neo4j_node(self):
         return Node("Standard", name=self.name, purpose=self.purpose, domain=self.domain,DOI=self.DOI)
 
+class Paragraph:
+    def __init__(self, name):
+        self.name = name
+
+    def create_neo4j_node(self):
+        return Node("Paragraph", name=self.name)
+
 class Lifecycle:
     def __init__(self, name):
         self.name = name

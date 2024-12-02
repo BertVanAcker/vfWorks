@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- example DSL added">
-      <change afterPath="$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/knowledge_graph.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/standard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/properties.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- metamodel of standard added (partial) + neo4j generation experiment">
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/standard.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/standard.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +219,7 @@
       <workItem from="1732809425950" duration="72000" />
       <workItem from="1732819303729" duration="322000" />
       <workItem from="1733119433007" duration="35000" />
-      <workItem from="1733169064967" duration="2942000" />
+      <workItem from="1733169064967" duration="3088000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -330,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732809452180</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="-- metamodel of standard added (partial) + neo4j generation experiment">
+      <option name="closed" value="true" />
+      <created>1733172069173</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733172069173</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +364,8 @@
     <MESSAGE value="-- STL included in specification DSL" />
     <MESSAGE value="-- requirements.txt updated" />
     <MESSAGE value="-- example DSL added" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- example DSL added" />
+    <MESSAGE value="-- metamodel of standard added (partial) + neo4j generation experiment" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- metamodel of standard added (partial) + neo4j generation experiment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
