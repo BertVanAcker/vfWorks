@@ -8,6 +8,7 @@
 # **************************************************************************************
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
+from py2neo import Node
 
 class Property(baseElement):
     def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
@@ -77,10 +78,18 @@ class Property(baseElement):
     def add_satisfies_relation(self, value):
         self._satisfies.append(value)
 
+
 class PropertyofInterest(Property):
     def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=Datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
 
+    def create_neo4j_node(self):
+        return Node("Property-of-interest", name=self.name, domain=self.domain,unit=self.unit,datatype=self.datatype,minimum=self.min,maximum=self.max)
+
+
 class InfluenceFactor(Property):
     def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=Datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
+
+    def create_neo4j_node(self):
+        return Node("InfluenceFactor", name=self.name, domain=self.domain,unit=self.unit,datatype=self.datatype,minimum=self.min,maximum=self.max)

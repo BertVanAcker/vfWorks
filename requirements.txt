@@ -4,3 +4,4 @@ colorama==0.4.6
 PyYAML==6.0.2
 redis==5.2.0
 textX==4.1.0
+py2neo

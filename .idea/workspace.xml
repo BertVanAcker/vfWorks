@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- requirements.txt updated">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- example DSL added">
+      <change afterPath="$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/knowledge_graph.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/standard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/properties.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,28 +38,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.EXP_001 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.EXP_001.executor&quot;: &quot;Run&quot;,
-    &quot;Python.VF_DUMMY.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__main__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.model1 (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.spec_def_dsl.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/sandbox/remote_monitoring&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.EXP_001 (1).executor": "Run",
+    "Python.EXP_001.executor": "Run",
+    "Python.VF_DUMMY.executor": "Run",
+    "Python.__main__.executor": "Debug",
+    "Python.exp001.executor": "Run",
+    "Python.model1 (1).executor": "Run",
+    "Python.model1.executor": "Run",
+    "Python.spec_def_dsl.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/sandbox/remote_monitoring",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\remote_monitoring" />
@@ -66,7 +71,7 @@
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\vf_definition" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.spec_def_dsl">
+  <component name="RunManager" selected="Python.exp001">
     <configuration name="EXP_001 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfWorks" />
       <option name="ENV_FILES" value="" />
@@ -90,29 +95,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="EXP_001" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="vfWorks" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/sandbox" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\vf_definition\EXP_001.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="VF_DUMMY" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfWorks" />
       <option name="ENV_FILES" value="" />
@@ -128,6 +110,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/sandbox/remote_monitoring/VF_DUMMY.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exp001" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vfWorks" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/sandbox/KG_standard/setup" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.exp001" />
         <item itemvalue="Python.spec_def_dsl" />
         <item itemvalue="Python.model1 (1)" />
         <item itemvalue="Python.VF_DUMMY" />
         <item itemvalue="Python.EXP_001 (1)" />
-        <item itemvalue="Python.EXP_001" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +221,10 @@
       <workItem from="1732792105034" duration="202000" />
       <workItem from="1732804145557" duration="11000" />
       <workItem from="1732805998261" duration="16000" />
-      <workItem from="1732809425950" duration="9000" />
+      <workItem from="1732809425950" duration="72000" />
+      <workItem from="1732819303729" duration="322000" />
+      <workItem from="1733119433007" duration="35000" />
+      <workItem from="1733169064967" duration="2942000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -314,11 +322,30 @@
       <option name="project" value="LOCAL" />
       <updated>1732791855305</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="-- example DSL added">
+      <option name="closed" value="true" />
+      <created>1732809452180</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732809452180</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="--init" />
@@ -333,7 +360,8 @@
     <MESSAGE value="-- updated dummy remote monitoring with specifications in redis" />
     <MESSAGE value="-- STL included in specification DSL" />
     <MESSAGE value="-- requirements.txt updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- requirements.txt updated" />
+    <MESSAGE value="-- example DSL added" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- example DSL added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -342,6 +370,11 @@
           <url>file://$PROJECT_DIR$/vfworks/metamodels/validity_frame.py</url>
           <line>88</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -358,6 +391,7 @@
     <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732791486359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001__1_.coverage" NAME="EXP_001 (1) Coverage Results" MODIFIED="1732790950616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
     <SUITE FILE_PATH="coverage/vfWorks$spec_def_dsl.coverage" NAME="spec_def_dsl Coverage Results" MODIFIED="1732791775903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/specification_dsl" />
+    <SUITE FILE_PATH="coverage/vfWorks$exp001.coverage" NAME="exp001 Coverage Results" MODIFIED="1733171727338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/KG_standard/setup" />
     <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
   </component>
 </project>
