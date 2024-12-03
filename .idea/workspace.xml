@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- Paragraph added">
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- excel template for standards KG added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/sandbox/KG_standard/input/Standard_KG_template.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/KG_standard/input/Standard_KG_template.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,29 +34,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.EXP_001 (1).executor": "Run",
-    "Python.EXP_001.executor": "Run",
-    "Python.VF_DUMMY.executor": "Run",
-    "Python.__main__.executor": "Debug",
-    "Python.exp001.executor": "Run",
-    "Python.model1 (1).executor": "Run",
-    "Python.model1.executor": "Run",
-    "Python.spec_def_dsl.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/sandbox/remote_monitoring",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.EXP_001 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.EXP_001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VF_DUMMY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__main__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.exp001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.spec_def_dsl.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/sandbox/remote_monitoring&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\remote_monitoring" />
@@ -219,7 +220,8 @@
       <workItem from="1732809425950" duration="72000" />
       <workItem from="1732819303729" duration="322000" />
       <workItem from="1733119433007" duration="35000" />
-      <workItem from="1733169064967" duration="4190000" />
+      <workItem from="1733169064967" duration="4252000" />
+      <workItem from="1733210318384" duration="1311000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -341,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733172186172</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="-- excel template for standards KG added">
+      <option name="closed" value="true" />
+      <created>1733173319354</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1733173319354</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +384,8 @@
     <MESSAGE value="-- example DSL added" />
     <MESSAGE value="-- metamodel of standard added (partial) + neo4j generation experiment" />
     <MESSAGE value="-- Paragraph added" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- Paragraph added" />
+    <MESSAGE value="-- excel template for standards KG added" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- excel template for standards KG added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
