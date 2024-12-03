@@ -23,16 +23,14 @@ class UnitType:
     FORCE_N= "Newton"
     UNIT_none = "-"
 
-class Datatype:
+class DataType:
     FLOAT_64 = "flaot_64"
     FLOAT_32 = "flaot_32"
     FLOAT_16 = "flaot_16"
     FLOAT_8 = "flaot_8"
-
     INTEGER_32 = "int_32"
     INTEGER_16 = "int_16"
     INTEGER_8 = "int_8"
-
     STRING = "string"
     BOOLEAN = "boolean"
 

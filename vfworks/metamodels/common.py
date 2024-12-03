@@ -8,14 +8,15 @@
 # **************************************************************************************
 import uuid
 import datetime
+import json
 class baseElement(object):
 
     def __init__(self, name='tbd', description='tbd', verbose=False):
         self._name = name
         self._description = description
         self._verbose = verbose
-        self._GUID = uuid.uuid4()
-        self._timestamp = datetime.datetime.now()
+        self._GUID = str(uuid.uuid4())
+        self._timestamp = str(datetime.datetime.now())
 
     @property
     def name(self):
@@ -50,4 +51,5 @@ class baseElement(object):
     @timestamp.setter
     def timestamp(self, value):
         self._timestamp = value
+
 

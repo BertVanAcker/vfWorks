@@ -15,10 +15,17 @@ class ValidityFrame(baseElement):
         self._modelReference = modelRef  #CAN EITHER BE A SINGLE FILE OF A FOLDER WITH MULTIPLE FILES
         self._modelStructure = modelStructure
 
+        # VF HIGH-LEVEL STRUCTURE
+        self._metadata = MetaData(name="metadata", description="tbd")
+
+
+
         if specifications is None:
-            self._specifications = []
+            #self._specifications = []
+            x=1
         else:
-            self._specifications = specifications
+            #self._specifications = specifications
+            self._metadata.specifications = specifications
 
         if properties is None:
             self._properties = []
@@ -96,5 +103,43 @@ class ValidityFrame(baseElement):
 
         # 1. PRINT STATUS OF SPECIFICATIONS
         if self._verbose:
-            for spec in self._specifications:
+            for spec in self._metadata.specifications:
                 print("Specification " + spec.name + " - STATUS: " + str(spec.status))
+
+    def object2json(self,fileName):
+        """
+               Function to generate a json file
+        """
+        #data = json.dumps(self, default=lambda o: o.__dict__, indent=4)
+        #with open(fileName, 'w', encoding='utf-8') as f:
+        #    f.write(data)
+        self._metadata.object2json("meta_data/meta_data.json")
+
+
+class MetaData(baseElement):
+    def __init__(self, name='tbd',description='tbd',specifications=None,verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+
+        if specifications is None:
+            self._specifications = []
+        else:
+            self._specifications = specifications
+
+    @property
+    def specifications(self):
+        return self._specifications
+
+    @specifications.setter
+    def specifications(self, value):
+        self._specifications = value
+
+    def addSpecification(self, spec):
+        self._specifications.append(spec)
+
+    def object2json(self,fileName):
+        """
+               Function to generate a json file
+        """
+        data = json.dumps(self, default=lambda o: o.__dict__, indent=4)
+        with open(fileName, 'w', encoding='utf-8') as f:
+            f.write(data)

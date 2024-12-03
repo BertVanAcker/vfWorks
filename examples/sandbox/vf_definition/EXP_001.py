@@ -20,16 +20,16 @@ def dummyVF():
     # -------------------------------------------------------------------------------------
     #                           SPECIFY POI and IF
     # -------------------------------------------------------------------------------------
-    poi1 = PropertyofInterest(name="propellerLenght",description="The lenght of the propeller",domain=DomainType.MECHANICAL,unit=UnitType.DISTANCE_mm,datatype=Datatype.FLOAT_32,min=0,max=100,satisfies=[spec1])
-    poi2 = PropertyofInterest(name="propellerPitch", description="The pitch of the propeller",domain=DomainType.MECHANICAL, unit=UnitType.ANGLE_RADIANS, datatype=Datatype.FLOAT_32,min=0, max=2,satisfies=[spec2])
-    poi3 = PropertyofInterest(name="motorThrust", description="The pitch of the propeller",domain=DomainType.ELECTRICAL, unit=UnitType.FORCE_N, datatype=Datatype.FLOAT_64,min=0, max=10000, satisfies=[spec3])
+    poi1 = PropertyofInterest(name="propellerLenght",description="The lenght of the propeller",domain=DomainType.MECHANICAL,unit=UnitType.DISTANCE_mm,datatype=DataType.FLOAT_64,min=0,max=100,satisfies=[spec1])
+    poi2 = PropertyofInterest(name="propellerPitch", description="The pitch of the propeller",domain=DomainType.MECHANICAL, unit=UnitType.ANGLE_RADIANS, datatype=DataType.FLOAT_32,min=0, max=2,satisfies=[spec2])
+    poi3 = PropertyofInterest(name="motorThrust", description="The pitch of the propeller",domain=DomainType.ELECTRICAL, unit=UnitType.FORCE_N, datatype=DataType.FLOAT_64,min=0, max=10000, satisfies=[spec3])
     vf.properties = [poi1, poi2, poi3]
     #-------------------------------------------------------------------------------------
     #                           SPECIFY MODEL STRUCTURE
     #-------------------------------------------------------------------------------------
-    in1 = Inport(name="in1",description="input1",domain=DomainType.MECHANICAL,unit=UnitType.DISTANCE_mm,datatype=Datatype.FLOAT_32,min=0,max=100,mapping=[poi1])
-    in2 = Inport(name="in2",description="input2",domain=DomainType.MECHANICAL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_32,min=0,max=2,mapping=[poi2])
-    out1 = Outport(name="out1",description="output1",domain=DomainType.ELECTRICAL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=10000,mapping=[poi3])
+    in1 = Inport(name="in1",description="input1",domain=DomainType.MECHANICAL,unit=UnitType.DISTANCE_mm,datatype=DataType.FLOAT_32,min=0,max=100,mapping=[poi1])
+    in2 = Inport(name="in2",description="input2",domain=DomainType.MECHANICAL,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_32,min=0,max=2,mapping=[poi2])
+    out1 = Outport(name="out1",description="output1",domain=DomainType.ELECTRICAL,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=10000,mapping=[poi3])
     ms = ModelStructure(name="MS_example",description="This is a dummy model structure",inports=[in1,in2],outports=[out1])
     vf.modelStructure = ms
 

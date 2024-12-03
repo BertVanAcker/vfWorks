@@ -64,7 +64,7 @@ class ModelStructure(baseElement):
 
 
 class Port(baseElement):
-    def __init__(self, name='tbd', description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,mapping=None, verbose=False):
+    def __init__(self, name='tbd', description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=0,mapping=None, verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
 
@@ -134,14 +134,14 @@ class Port(baseElement):
 
 class Inport(Port):
 
-    def __init__(self, name='tbd', description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=Datatype.FLOAT_64,min=0,max=0,mapping=None, verbose=False):
+    def __init__(self, name='tbd', description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=0,mapping=None, verbose=False):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=datatype,min=min,max=max,mapping=mapping, verbose=verbose)
 
 
 class Outport(Port):
 
     def __init__(self, name='tbd', description='tbd', domain=DomainType.CONTROL, unit=UnitType.UNIT_none,
-                 datatype=Datatype.FLOAT_64, min=0, max=0, mapping=None, verbose=False):
+                 datatype=DataType.FLOAT_64, min=0, max=0, mapping=None, verbose=False):
         super().__init__(name=name, description=description, domain=domain, unit=unit, datatype=datatype, min=min,
                          max=max, mapping=mapping, verbose=verbose)
 

@@ -2,14 +2,14 @@ Package {
     PackageID: PKG_001
     PackageName: "Sample Package"
     Specifications: {
-    Specification {
-             ID: SPEC_001
-             Name: "SPECIFICATION1"
-             Description: "THIS IS A DUMMY SPECIFICATION"
-             Standard: "ISO26262-part3"
-             Paragraph: "3.1.2 - processes"
-             DOI: "10.1234/example.doi"
-             IsMandatory: True
+        Specification {
+                 ID: SPEC_001
+                 Name: "SPECIFICATION1"
+                 Description: "THIS IS A DUMMY SPECIFICATION"
+                 Standard: "ISO26262-part3"
+                 Paragraph: "3.1.2 - processes"
+                 DOI: "10.1234/example.doi"
+                 IsMandatory: True
          },
          Specification {
              ID: SPEC_002
@@ -33,3 +33,4 @@ Package {
          }
      }
 }
+

@@ -1,6 +1,14 @@
 from vfworks.metamodels.knowledge_graph import *
 from vfworks.metamodels.standard import *
 
+#----------------------------------------------------------------------------
+#
+#   THIS KNOWLEDGE GRAPH WILL BE GENERATED FROM THE PROVIDED EXCEL (WIP)
+#
+#----------------------------------------------------------------------------
+
+
+
 
 kg = KnowledgeGraph(uri="bolt://localhost:7687", user="neo4j", password="hallo123")
 
