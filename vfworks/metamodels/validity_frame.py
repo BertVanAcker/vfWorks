@@ -9,10 +9,11 @@
 from vfworks.metamodels.common import *
 
 class ValidityFrame(baseElement):
-    def __init__(self, name='tbd',description='tbd',modelStructure=None,modelRef=None,specifications=None,properties=None,monitors=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',modelStructure=None,modelRef=None,trainingDataReference=None,specifications=None,properties=None,monitors=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._modelReference = modelRef  #CAN EITHER BE A SINGLE FILE OF A FOLDER WITH MULTIPLE FILES
+        self._trainingDataReference = trainingDataReference
         self._modelStructure = modelStructure
 
         # VF HIGH-LEVEL STRUCTURE

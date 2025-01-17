@@ -10,7 +10,7 @@ from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 
 class ModelStructure(baseElement):
-    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,mapping=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None,mapping=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         if inports is None:
@@ -28,6 +28,12 @@ class ModelStructure(baseElement):
             self._mapping = []
         else:
             self._mapping = mapping
+
+        # ADD POTENTIAL SCALARS FOR NORMALIZED MODELS
+        if scalars is None:
+            self._scalars = None
+        else:
+            self._scalars = scalars
 
     @property
     def inports(self):
