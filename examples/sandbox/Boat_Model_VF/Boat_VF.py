@@ -28,8 +28,11 @@ def make_VF():
 
     structure = ModelStructure(name="BoatModel", inports=inports, outports=outports, scalars=scalars)
 
-    VF = ValidityFrame(name="Boat model VF", description="Example VF for boat model",modelStructure=structure, modelRef="examples/sandbox/Boat_Model_VF/input/model.pt", traininDataReference="examples/sandbox/Boat_Model_VF/input/TrainingData")
+    VF = ValidityFrame(name="Boat model VF", description="Example VF for boat model",modelStructure=structure, modelRef="examples/sandbox/Boat_Model_VF/input/model.pt", trainingDataReference="examples/sandbox/Boat_Model_VF/input/TrainingData")
+
+    return VF
 
 if __name__ == '__main__':
+    vf = make_VF()      #TODO: gives an version error of pickle (1.5.2 pickled file but unpickle 1.6.0 -> not working)
     pass
 

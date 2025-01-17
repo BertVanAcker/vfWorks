@@ -1,0 +1,137 @@
+{
+    "_name": "metadata",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "960601a7-30ed-49aa-8573-286235cf2b24",
+    "_timestamp": "2025-01-17 21:42:38.596700",
+    "_specifications": [
+        {
+            "_name": "SPECIFICATION1",
+            "_description": "THIS IS A DUMMY SPECIFICATION",
+            "_verbose": false,
+            "_GUID": "ed6934de-03ca-4fb0-9cfe-ad489f5d8f43",
+            "_timestamp": "2025-01-17 21:42:38.596700",
+            "_ID": "tbd",
+            "_standard": "ISO26262-part3",
+            "_paragraph": "3.1.2 - processes",
+            "_DOI": null,
+            "_status": "unknown",
+            "_specifications": [],
+            "_isMandatory": true
+        },
+        {
+            "_name": "SPECIFICATION2",
+            "_description": "THIS IS A DUMMY SPECIFICATION",
+            "_verbose": false,
+            "_GUID": "1e5335a0-5d94-4852-8327-352747fba3f3",
+            "_timestamp": "2025-01-17 21:42:38.596700",
+            "_ID": "tbd",
+            "_standard": "ISO26262-part2",
+            "_paragraph": "2.5 - V&V",
+            "_DOI": null,
+            "_status": "unknown",
+            "_specifications": [],
+            "_isMandatory": true
+        },
+        {
+            "_name": "SPECIFICATION3",
+            "_description": "THIS IS A DUMMY SPECIFICATION",
+            "_verbose": false,
+            "_GUID": "da586379-a7a3-40a6-8117-ff9eab666b79",
+            "_timestamp": "2025-01-17 21:42:38.596700",
+            "_ID": "tbd",
+            "_standard": "ISO26262-part2",
+            "_paragraph": "2.5 - V&V",
+            "_DOI": null,
+            "_status": "unknown",
+            "_specifications": [],
+            "_isMandatory": true
+        }
+    ],
+    "_properties": [
+        {
+            "_name": "propellerLenght",
+            "_description": "The lenght of the propeller",
+            "_verbose": false,
+            "_GUID": "ea2bcf90-8707-48a9-a6fa-4e2b10402ad2",
+            "_timestamp": "2025-01-17 21:42:38.596700",
+            "_domain": "MECHANICAL",
+            "_unit": "mm",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 100,
+            "_satisfies": [
+                {
+                    "_name": "SPECIFICATION1",
+                    "_description": "THIS IS A DUMMY SPECIFICATION",
+                    "_verbose": false,
+                    "_GUID": "ed6934de-03ca-4fb0-9cfe-ad489f5d8f43",
+                    "_timestamp": "2025-01-17 21:42:38.596700",
+                    "_ID": "tbd",
+                    "_standard": "ISO26262-part3",
+                    "_paragraph": "3.1.2 - processes",
+                    "_DOI": null,
+                    "_status": "unknown",
+                    "_specifications": [],
+                    "_isMandatory": true
+                }
+            ]
+        },
+        {
+            "_name": "propellerPitch",
+            "_description": "The pitch of the propeller",
+            "_verbose": false,
+            "_GUID": "6a3226c2-778f-4082-a5b2-8d92d91977d7",
+            "_timestamp": "2025-01-17 21:42:38.596700",
+            "_domain": "MECHANICAL",
+            "_unit": "radians",
+            "_datatype": "float_32",
+            "_min": 0,
+            "_max": 2,
+            "_satisfies": [
+                {
+                    "_name": "SPECIFICATION2",
+                    "_description": "THIS IS A DUMMY SPECIFICATION",
+                    "_verbose": false,
+                    "_GUID": "1e5335a0-5d94-4852-8327-352747fba3f3",
+                    "_timestamp": "2025-01-17 21:42:38.596700",
+                    "_ID": "tbd",
+                    "_standard": "ISO26262-part2",
+                    "_paragraph": "2.5 - V&V",
+                    "_DOI": null,
+                    "_status": "unknown",
+                    "_specifications": [],
+                    "_isMandatory": true
+                }
+            ]
+        },
+        {
+            "_name": "motorThrust",
+            "_description": "The pitch of the propeller",
+            "_verbose": false,
+            "_GUID": "8d6e7c23-223c-40bd-99f2-566d22ebf52e",
+            "_timestamp": "2025-01-17 21:42:38.596700",
+            "_domain": "ELECTRICAL",
+            "_unit": "Newton",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 10000,
+            "_satisfies": [
+                {
+                    "_name": "SPECIFICATION3",
+                    "_description": "THIS IS A DUMMY SPECIFICATION",
+                    "_verbose": false,
+                    "_GUID": "da586379-a7a3-40a6-8117-ff9eab666b79",
+                    "_timestamp": "2025-01-17 21:42:38.596700",
+                    "_ID": "tbd",
+                    "_standard": "ISO26262-part2",
+                    "_paragraph": "2.5 - V&V",
+                    "_DOI": null,
+                    "_status": "unknown",
+                    "_specifications": [],
+                    "_isMandatory": true
+                }
+            ]
+        }
+    ]
+}

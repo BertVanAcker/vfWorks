@@ -1,0 +1,51 @@
+{
+    "_name": "metadata",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "97ffa712-3fd9-447e-8516-77e6d6e1e13d",
+    "_timestamp": "2024-12-03 17:30:19.899903",
+    "_specifications": [
+        {
+            "_name": "SPECIFICATION1",
+            "_description": "THIS IS A DUMMY SPECIFICATION",
+            "_verbose": false,
+            "_GUID": "ff7bcab9-b563-4a33-9d5a-2fc0a3493a48",
+            "_timestamp": "2024-12-03 17:30:19.899903",
+            "_ID": "tbd",
+            "_standard": "ISO26262-part3",
+            "_paragraph": "3.1.2 - processes",
+            "_DOI": null,
+            "_status": "unknown",
+            "_specifications": [],
+            "_isMandatory": true
+        },
+        {
+            "_name": "SPECIFICATION2",
+            "_description": "THIS IS A DUMMY SPECIFICATION",
+            "_verbose": false,
+            "_GUID": "f6a12cec-f223-461b-aafa-7f8e5b2907ae",
+            "_timestamp": "2024-12-03 17:30:19.899903",
+            "_ID": "tbd",
+            "_standard": "ISO26262-part2",
+            "_paragraph": "2.5 - V&V",
+            "_DOI": null,
+            "_status": "unknown",
+            "_specifications": [],
+            "_isMandatory": true
+        },
+        {
+            "_name": "SPECIFICATION3",
+            "_description": "THIS IS A DUMMY SPECIFICATION",
+            "_verbose": false,
+            "_GUID": "b17fef89-406f-4ad6-bb60-dea21fc287ef",
+            "_timestamp": "2024-12-03 17:30:19.899903",
+            "_ID": "tbd",
+            "_standard": "ISO26262-part2",
+            "_paragraph": "2.5 - V&V",
+            "_DOI": null,
+            "_status": "unknown",
+            "_specifications": [],
+            "_isMandatory": true
+        }
+    ]
+}

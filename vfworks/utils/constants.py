@@ -49,3 +49,9 @@ class StatusType:
     UNKNOWN = "unknown"
     VALID = "valid"
     INVALID = "invalid"
+
+class StepStatus:
+    PENDING = "Pending"
+    RUNNING = "Running"
+    PASSED = "Passed"
+    FAILED = "Failed"
