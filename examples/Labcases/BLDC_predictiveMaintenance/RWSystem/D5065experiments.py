@@ -1,0 +1,167 @@
+from __future__ import print_function
+from vfworks.utils.auxiliary import *
+import odrive
+from odrive.enums import *
+import time
+import math
+import csv
+
+
+class RWSystem_BLDC_D5065():
+
+    def __init__(self,name,VERBOSE=True,INITIALIZED=False,CALIBRATED=False,monitorPeriod=0.5):
+        self.name = name
+        self.VERBOSE = VERBOSE
+        self.vel_request = 0
+        self.maximumVelocity = 12       #turns/s
+        self.timestamp=0.0
+
+        #------------Measurements-------------------
+        self.timeStamps = []
+        self.powerMeasurements=[]
+        self.rpmMeasurements = []
+        self.busVoltageMeasurements = []
+
+        #----------Odrive initialization-----------------
+        if not INITIALIZED:
+            self.mydrive = self.initBLDC()
+        else:
+            self.mydrive = odrive.find_any()
+
+        #----------System monitoring-----------------
+        self.monitorPeriod = monitorPeriod
+        self.t_monitor = perpetualTimer(self.monitorPeriod,self.monitor)
+
+        # ----------Odrive calibration-----------------
+        if not CALIBRATED:
+            self.calibrateBLDC()
+
+
+        # AUTO-START MONITORING
+        #self.t_monitor.start()
+
+
+
+    def initBLDC(self):
+        # Find a connected ODrive (this will block until you connect one)
+        print("finding an odriveExperiment...")
+        my_drive = odrive.find_any()
+
+        #drive settings for BLDC D5065 270KV
+        my_drive.config.dc_bus_overvoltage_trip_level = 25
+        my_drive.config.dc_bus_undervoltage_trip_level = 10.5
+        my_drive.config.dc_max_positive_current = math.inf
+        my_drive.config.dc_max_negative_current = -0.1
+        my_drive.config.brake_resistor0.enable = False
+        my_drive.axis0.config.motor.motor_type = MotorType.HIGH_CURRENT
+        my_drive.axis0.config.motor.pole_pairs = 7
+        my_drive.axis0.config.motor.torque_constant = 0.030629629629629628
+        my_drive.axis0.config.motor.current_soft_max = 65
+        my_drive.axis0.config.motor.current_hard_max = 85
+        my_drive.axis0.config.motor.calibration_current = 10
+        my_drive.axis0.config.motor.resistance_calib_max_voltage = 2
+        my_drive.axis0.config.calibration_lockin.current = 10
+        my_drive.axis0.motor.motor_thermistor.config.enabled = False
+        my_drive.axis0.motor.motor_thermistor.config.r_ref = 10000
+        my_drive.axis0.motor.motor_thermistor.config.beta = 3435
+        my_drive.axis0.motor.motor_thermistor.config.temp_limit_lower = 110
+        my_drive.axis0.motor.motor_thermistor.config.temp_limit_upper = 130
+        my_drive.axis0.controller.config.control_mode = ControlMode.VELOCITY_CONTROL
+        my_drive.axis0.controller.config.input_mode = InputMode.VEL_RAMP
+        my_drive.axis0.controller.config.vel_limit = 6
+        my_drive.axis0.controller.config.vel_limit_tolerance = 2
+        my_drive.axis0.config.torque_soft_min = -math.inf
+        my_drive.axis0.config.torque_soft_max = math.inf
+        my_drive.can.config.protocol = Protocol.NONE
+        my_drive.axis0.config.enable_watchdog = False
+        my_drive.inc_encoder0.config.enabled = True
+        my_drive.axis0.config.load_encoder = EncoderId.INC_ENCODER0
+        my_drive.axis0.config.commutation_encoder = EncoderId.INC_ENCODER0
+        my_drive.inc_encoder0.config.cpr = 20480
+        my_drive.axis0.commutation_mapper.config.use_index_gpio = True
+        my_drive.axis0.pos_vel_mapper.config.use_index_gpio = True
+        my_drive.config.gpio10_mode = GpioMode.DIGITAL
+        my_drive.axis0.pos_vel_mapper.config.index_gpio = 10
+        my_drive.axis0.pos_vel_mapper.config.index_offset = 0
+        my_drive.axis0.pos_vel_mapper.config.index_offset_valid = True
+        my_drive.axis0.commutation_mapper.config.index_gpio = 10
+        my_drive.config.enable_uart_a = False
+
+        return my_drive
+
+    def calibrateBLDC(self):
+        # Calibrate motor and wait for it to finish
+        if self.VERBOSE:print("starting calibration...")
+        self.mydrive.axis0.requested_state = AxisState.FULL_CALIBRATION_SEQUENCE           #AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+        while self.mydrive.axis0.current_state != AxisState.IDLE:                    #AXIS_STATE_IDLE:
+            time.sleep(0.1)
+        time.sleep(15)
+
+
+    def setVelocity(self,percentage):
+        if self.VERBOSE:print("Change velocity to "+ percentage.__str__()+"%")
+        self.vel_request = float(percentage/100)*self.maximumVelocity
+        self.mydrive.axis0.requested_state = AxisState.CLOSED_LOOP_CONTROL
+        self.mydrive.axis0.controller.config.input_mode = InputMode.VEL_RAMP
+        self.mydrive.axis0.controller.input_vel = self.vel_request
+
+
+    def start(self):
+        # enable closed-loop control + ramped velocity
+        self.mydrive.axis0.requested_state = AxisState.CLOSED_LOOP_CONTROL
+        self.mydrive.axis0.controller.config.input_mode = InputMode.VEL_RAMP
+        # start monitoring
+        self.t_monitor.start()
+    def stop(self):
+        self.mydrive.axis0.requested_state = AxisState.IDLE
+        #stop monitoring
+        self.t_monitor.cancel()
+
+
+    #---------------------------EXPERIMENTS--------------------------
+    def experiment_constant_velocity(self,experimentTime=10,percentage=100):
+
+        self.start()
+        #set constant velocity
+        self.vel_request = float(percentage / 100) * self.maximumVelocity
+        self.mydrive.axis0.controller.input_vel = self.vel_request
+        #sleep experiment time
+        time.sleep(experimentTime)
+        #disable closed-loop control to finish experiment
+        self.stop()
+
+    #---------------------------MONITORING--------------------------
+    def monitor(self):
+        # timestamps
+        self.timestamp = self.timestamp + self.monitorPeriod
+
+        #measurements
+        power = self.mydrive.axis0.motor.alpha_beta_controller.power
+        rpm = self.mydrive.encoder_estimator0.vel_estimate*60
+        busVoltage = self.mydrive.vbus_voltage
+
+        #local storage
+        self.timeStamps.append(self.timestamp)
+        self.powerMeasurements.append(power)
+        self.rpmMeasurements.append(rpm)
+        self.busVoltageMeasurements.append(busVoltage)
+
+    def exportMeasurements(self,output='output/data.csv'):
+        # Ensure all lists are the same length by padding with None
+        max_length = max(len(self.timeStamps), len(self.powerMeasurements))
+        self.timeStamps.extend([None] * (max_length - len(self.timeStamps)))
+        self.powerMeasurements.extend([None] * (max_length - len(self.powerMeasurements)))
+
+        # Combine lists into rows
+        rows = zip(self.timeStamps, self.powerMeasurements)
+
+        # Write to CSV file
+        with open(output, 'w', newline='', encoding='utf-8') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow(['timestamp', 'power'])  # Optional header row
+            csv_writer.writerows(rows)
+
+    # Example usage:
+
+
+

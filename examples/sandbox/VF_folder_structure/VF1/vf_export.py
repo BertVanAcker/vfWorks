@@ -52,4 +52,5 @@ def dummyVF():
 
 if __name__ == "__main__":
     vf = dummyVF()
-    vf.object2json(fileName="VF1/metadata/vf.json")
+    vf.export(packageName="VF1")
+    #vf.object2json(fileName="VF1/metadata/vf.json")
