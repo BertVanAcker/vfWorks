@@ -88,4 +88,14 @@ class Experiment(object):
         else:
             self.data_platform.write_storage(_measurement_key, value)
 
+    def getMeasurement(self,key):
+        _measurement_key = self.measurements_key + ":" + key
+        try:
+            values = self.data_platform.read_list(key=_measurement_key,all=True)
+            self.logger.info("Reading values for measurement <" + key + "> from vfWorks backend!")
+            return values
+        except:
+            self.logger.warning("Failed to read values for measurement <" + key + "> from vfWorks backend!")
+
+
 

@@ -60,3 +60,10 @@ else:
     EXP2.addMeasurement(key="rpm", value=[360.0,360.0,340.0,335.0,342.0,368.0],clean=True)
     EXP2.addMeasurement(key="busVoltage", value=[12.0,12.5,12.5,12.5,12.0,12.0],clean=True)
 
+
+#-----------------------------------------------------------------------------------------------------------------------
+#                                   Retrieving the data manually
+#-----------------------------------------------------------------------------------------------------------------------
+power = EXP1.getMeasurement(key="power")
+for point in power:
+    print(float(point))

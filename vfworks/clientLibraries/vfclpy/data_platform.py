@@ -68,6 +68,17 @@ class DataPlatform(object):
         else:
             return self.local_store.get(key, None)
 
+    def read_list(self, key, queueSize = 1, all=False):
+        if self.storage_type == 'global':
+            if all:
+                list = self.redis_client.lrange(key, 0, -1)
+            else:
+                list = self.redis_client.lrange(key, 0, queueSize)
+
+            return list
+        else:
+            return self.local_store.get(key, None)
+
     def delete(self, key):
         """
         Delete a key-value pair from the data platform.
