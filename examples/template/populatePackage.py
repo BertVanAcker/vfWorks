@@ -13,11 +13,11 @@ from vfworks.metamodels.specification import *
 from vfworks.metamodels.properties import *
 
 #---------------------------------------------------------------------------------------
-#                     PLACEHOLDER FUNCTION TO POPULATE VF PACKAGE                      #
+#                     PLACEHOLDER FUNCTION TO POPULATE VF_BLDC PACKAGE                      #
 #---------------------------------------------------------------------------------------
 
 #-------------------------VALIDITY FRAME------------------------------------------------
-VF = ValidityFrame(name="VF_PACKAGE_TEMPLATE", description="Populate VF package")
+VF = ValidityFrame(name="VF_PACKAGE_TEMPLATE", description="Populate VF_BLDC package")
 
 #-------------------------SPECIFICATIONS------------------------------------------------
 spec1 = Specification(name="SPECIFICATION1", description="THIS IS A DUMMY SPECIFICATION", standard="ISO26262-part3", paragraph="3.1.2 - processes", DOI=None, isMandatory=True)
@@ -61,7 +61,7 @@ p_train = Process(name="TrainingProcess",description="Training process",referenc
 VF.addProcess(p_train)
 
 
-#-------------------------------EXPORT VF TO TEMPLATE PACKAGE-------------------------------------------
+#-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
 packageName="vf_package"
 VF.export(packageName=packageName)
 

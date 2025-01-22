@@ -45,7 +45,7 @@ class DataPlatform(object):
         if isinstance(value, dict):
             value = json.dumps(value)  # Serialize the dictionary to a JSON string
         if self.storage_type == 'global':
-            self.redis_client.sadd(key,value)
+            self.redis_client.lpush(key,value)
             #signal new data
             self.redis_client.publish('MONITOR_NEW_DATA',key)
         else:
@@ -89,3 +89,5 @@ class DataPlatform(object):
             return self.redis_client.exists(key)
         else:
             return key in self.local_store
+
+

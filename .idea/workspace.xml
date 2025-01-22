@@ -4,24 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- VF process example added (train.py) + starting point of VF export + VF package structure">
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/runner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Binaries/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Documentation/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Experiments/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Metadata/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Operational/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/Actions/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/Actions/userActions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Resources/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/template/vf_package/Experiments/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/utils/auxiliary.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- BLDC case added, no logging/exporting">
+      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/sandbox/VF_folder_structure/VF1/vf_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/VF_folder_structure/VF1/vf_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/runner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Binaries/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Binaries/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Documentation/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Documentation/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Experiments/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Metadata/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Metadata/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Operational/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Operational/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/Actions/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/Actions/userActions.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions/userActions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Processes/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/Resources/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Resources/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF/readme.rst" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/readme.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/sandbox/Boat_Model_VF/Boat_VF.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/Boat_Model_VF/Boat_VF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/template/populatePackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/template/populatePackage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_platform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/workflows/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/workflows/tasks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +65,7 @@
     "Python.model1 (1).executor": "Run",
     "Python.model1.executor": "Run",
     "Python.populatePackage.executor": "Run",
+    "Python.runner.executor": "Run",
     "Python.spec_def_dsl.executor": "Run",
     "Python.train.executor": "Run",
     "Python.vf_export (1).executor": "Run",
@@ -67,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/Labcases/BLDC_predictiveMaintenance/VF",
+    "last_opened_file_path": "C:/Users/Bert/UAntwerpen/Documenten/00_UA/02_Projects/03_SAIfety/99_RemoteRepositories/vfWorks/examples/Labcases/BLDC_predictiveMaintenance/RWSystem",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,8 +85,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\RWSystem" />
+      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\vfworks\utils" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\template\vf_package" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\vfworks" />
@@ -91,7 +97,7 @@
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\sandbox\vf_definition" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.runner">
     <configuration name="Boat_VF" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfWorks" />
       <option name="ENV_FILES" value="" />
@@ -115,29 +121,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="EXP_001" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="vfWorks" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/sandbox/vf_definition" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/sandbox/vf_definition/EXP_001.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="populatePackage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfWorks" />
       <option name="ENV_FILES" value="" />
@@ -153,6 +136,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/template/populatePackage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="runner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vfWorks" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/runner.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -209,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.runner" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.populatePackage" />
         <item itemvalue="Python.Boat_VF" />
         <item itemvalue="Python.vf_export (1)" />
-        <item itemvalue="Python.EXP_001" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +264,7 @@
       <workItem from="1737460154385" duration="188000" />
       <workItem from="1737472788978" duration="5107000" />
       <workItem from="1737521368685" duration="18000" />
-      <workItem from="1737532301643" duration="1608000" />
+      <workItem from="1737532301643" duration="4999000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -404,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737147649552</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="-- BLDC case added, no logging/exporting">
+      <option name="closed" value="true" />
+      <created>1737533962423</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1737533962423</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,9 +454,19 @@
     <MESSAGE value="-- excel template for standards KG added" />
     <MESSAGE value="-- updated excel based on metamodel Eclipse (see Onedrive WP1)" />
     <MESSAGE value="-- VF process example added (train.py) + starting point of VF export + VF package structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- VF process example added (train.py) + starting point of VF export + VF package structure" />
+    <MESSAGE value="-- BLDC case added, no logging/exporting" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- BLDC case added, no logging/exporting" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/experiment.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="specifications.package.specifications[2].expression.expression.value" />
@@ -455,6 +479,7 @@
     <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732791486359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
     <SUITE FILE_PATH="coverage/vfWorks$vf_export.coverage" NAME="vf_export Coverage Results" MODIFIED="1733243145592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001__1_.coverage" NAME="EXP_001 (1) Coverage Results" MODIFIED="1732790950616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
+    <SUITE FILE_PATH="coverage/vfWorks$runner.coverage" NAME="runner Coverage Results" MODIFIED="1737537087891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
     <SUITE FILE_PATH="coverage/vfWorks$vf_export__1_.coverage" NAME="vf_export (1) Coverage Results" MODIFIED="1733243419475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure/VF1" />
     <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
     <SUITE FILE_PATH="coverage/vfWorks$train.coverage" NAME="train Coverage Results" MODIFIED="1737449080330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/template/vf_package/Processes" />

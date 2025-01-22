@@ -28,7 +28,7 @@ def make_VF():
 
     structure = ModelStructure(name="BoatModel", inports=inports, outports=outports, scalars=scalars)
 
-    VF = ValidityFrame(name="Boat model VF", description="Example VF for boat model",modelStructure=structure, modelRef="examples/sandbox/Boat_Model_VF/input/model.pt", trainingDataReference="examples/sandbox/Boat_Model_VF/input/TrainingData")
+    VF = ValidityFrame(name="Boat model VF_BLDC", description="Example VF_BLDC for boat model",modelStructure=structure, modelRef="examples/sandbox/Boat_Model_VF/input/model.pt", trainingDataReference="examples/sandbox/Boat_Model_VF/input/TrainingData")
 
     return VF
 

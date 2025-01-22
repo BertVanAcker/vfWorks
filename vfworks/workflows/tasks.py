@@ -8,7 +8,7 @@
 # **************************************************************************************
 
 
-#-----------------Generic functions to be used within VF workflows----------------
+#-----------------Generic functions to be used within VF_BLDC workflows----------------
 def t_collect_data():
     try:
         print("WARNING: Data collect task not implemented yet!")

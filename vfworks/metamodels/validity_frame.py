@@ -16,7 +16,7 @@ class ValidityFrame(baseElement):
         self._trainingDataReference = trainingDataReference
         self._modelStructure = modelStructure
 
-        # VF HIGH-LEVEL STRUCTURE
+        # VF_BLDC HIGH-LEVEL STRUCTURE
         self._metadata = MetaData(name="metadata", description="tbd")
         self._processes = Processes(name="processes", description="tbd")
 
@@ -133,7 +133,7 @@ class ValidityFrame(baseElement):
     # -----------------------------------------------------------------------------------------------------------------
     def export(self,packageName=None):
         if packageName is None:
-            #export called in VF package, no prefix needed
+            #export called in VF_BLDC package, no prefix needed
             self._metadata.object2json("Metadata/Metadata.json")
             self._processes.object2json("Processes/processes.json")
             x=1

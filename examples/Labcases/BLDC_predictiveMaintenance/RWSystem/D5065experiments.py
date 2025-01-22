@@ -9,7 +9,7 @@ import csv
 
 class RWSystem_BLDC_D5065():
 
-    def __init__(self,name,VERBOSE=True,INITIALIZED=False,CALIBRATED=False,monitorPeriod=0.5):
+    def __init__(self,name,VERBOSE=True,INITIALIZED=False,CALIBRATED=False,monitorPeriod=0.5,DEPLOYED=True):
         self.name = name
         self.VERBOSE = VERBOSE
         self.vel_request = 0
@@ -22,19 +22,20 @@ class RWSystem_BLDC_D5065():
         self.rpmMeasurements = []
         self.busVoltageMeasurements = []
 
-        #----------Odrive initialization-----------------
-        if not INITIALIZED:
-            self.mydrive = self.initBLDC()
-        else:
-            self.mydrive = odrive.find_any()
+        if DEPLOYED:
+            #----------Odrive initialization-----------------
+            if not INITIALIZED:
+                self.mydrive = self.initBLDC()
+            else:
+                self.mydrive = odrive.find_any()
 
-        #----------System monitoring-----------------
-        self.monitorPeriod = monitorPeriod
-        self.t_monitor = perpetualTimer(self.monitorPeriod,self.monitor)
+            #----------System monitoring-----------------
+            self.monitorPeriod = monitorPeriod
+            self.t_monitor = perpetualTimer(self.monitorPeriod,self.monitor)
 
-        # ----------Odrive calibration-----------------
-        if not CALIBRATED:
-            self.calibrateBLDC()
+            # ----------Odrive calibration-----------------
+            if not CALIBRATED:
+                self.calibrateBLDC()
 
 
         # AUTO-START MONITORING
@@ -129,6 +130,9 @@ class RWSystem_BLDC_D5065():
         time.sleep(experimentTime)
         #disable closed-loop control to finish experiment
         self.stop()
+        # format the measurements and return
+        measurements = [self.timeStamps,self.powerMeasurements,self.rpmMeasurements,self.busVoltageMeasurements]
+        return measurements
 
     #---------------------------MONITORING--------------------------
     def monitor(self):
