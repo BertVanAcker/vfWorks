@@ -7,7 +7,9 @@ system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, C
 #-----------------------------------------------------------------------------------------------------------------------
 #                                   VF_BLDC reference
 #-----------------------------------------------------------------------------------------------------------------------
+
 # VF_BLDC reference can be found in config.yaml
+
 #-----------------------------------------------------------------------------------------------------------------------
 #                                   EXPERIMENT 1
 #-----------------------------------------------------------------------------------------------------------------------
@@ -29,6 +31,32 @@ if DEPLOYED:
 else:
     #ADD DUMMY DATA!
     EXP1.addMeasurement(key="timestamp", value=[0.1,0.2,0.3,0.4,0.5,0.6],clean=True)
-    EXP1.addMeasurement(key="power", value=[0.8,0.8,1.5,1.6,0.6,0.8],clean=True)
-    EXP1.addMeasurement(key="rpm", value=[360.0,360.0,345.0,340.0,375.0,360.0],clean=True)
+    EXP1.addMeasurement(key="power", value=[0.8,0.8,0.9,0.9,0.9,0.8],clean=True)
+    EXP1.addMeasurement(key="rpm", value=[360.0,360.0,360.0,360.0,360.0,360.0],clean=True)
     EXP1.addMeasurement(key="busVoltage", value=[12.0,12.5,12.5,12.5,12.0,12.0],clean=True)
+
+#-----------------------------------------------------------------------------------------------------------------------
+#                                   EXPERIMENT 2
+#-----------------------------------------------------------------------------------------------------------------------
+experimentTime = 100    #100 sec
+cmd = 100               #100% velocity
+
+#STORE EXPERIMENTAL SETUP
+EXP2 = Experiment(ID="EXP2",config="config.yaml",label="anomaly")
+EXP2.addCondition(condition="experimentTime",value=experimentTime)
+EXP2.addCondition(condition="velocityCommand",value=cmd)
+EXP2.addCondition(condition="temperature",value=20.0)
+
+if DEPLOYED:
+    measurements = system.experiment_constant_velocity(experimentTime=experimentTime,percentage=cmd)        #measurements [timestamp,power,rpm,busVoltage]
+    EXP2.addMeasurement(key="timestamp",value=measurements[0],clean=True)
+    EXP2.addMeasurement(key="power", value=measurements[1],clean=True)
+    EXP2.addMeasurement(key="rpm", value=measurements[2],clean=True)
+    EXP2.addMeasurement(key="busVoltage", value=measurements[3],clean=True)
+else:
+    #ADD DUMMY DATA!
+    EXP2.addMeasurement(key="timestamp", value=[0.1,0.2,0.3,0.4,0.5,0.6],clean=True)
+    EXP2.addMeasurement(key="power", value=[0.8,0.8,2.5,3.3,2,0.6],clean=True)
+    EXP2.addMeasurement(key="rpm", value=[360.0,360.0,340.0,335.0,342.0,368.0],clean=True)
+    EXP2.addMeasurement(key="busVoltage", value=[12.0,12.5,12.5,12.5,12.0,12.0],clean=True)
+
