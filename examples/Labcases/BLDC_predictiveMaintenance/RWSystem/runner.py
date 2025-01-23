@@ -16,7 +16,7 @@ system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, C
 #-----------------------------------------------------------------------------------------------------------------------
 #                                   EXPERIMENT 1
 #-----------------------------------------------------------------------------------------------------------------------
-experimentTime = 10    #100 sec
+experimentTime = 50    #100 sec
 cmd = 100               #100% velocity
 
 #STORE EXPERIMENTAL SETUP
@@ -38,7 +38,7 @@ time.sleep(2)
 #-----------------------------------------------------------------------------------------------------------------------
 #                                   EXPERIMENT 2
 #-----------------------------------------------------------------------------------------------------------------------
-experimentTime = 10    #100 sec
+experimentTime = 50    #100 sec
 cmd = 100               #100% velocity
 
 #STORE EXPERIMENTAL SETUP
@@ -63,6 +63,3 @@ if DEPLOYED:
 save_lists_to_csv('output/nominal.csv', EXP1.getMeasurement(key="timestamp"),EXP1.getMeasurement(key="power"),headers=['timestamp','power'])
 save_lists_to_csv('output/anomaly.csv', EXP2.getMeasurement(key="timestamp"),EXP2.getMeasurement(key="power"),headers=['timestamp','power'])
 
-#-----------------------------------------------------------------------------------------------------------------------
-#                                   STORE EXPERIMENTS TO VALIDITY FRAME
-#-----------------------------------------------------------------------------------------------------------------------
