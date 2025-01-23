@@ -13,7 +13,9 @@ class DataPlatform(object):
         if self.storage_type == 'global':
             self.redis_client = redis.StrictRedis(
                 host=config['redis_host'], 
-                port=config['redis_port'], 
+                port=config['redis_port'],
+                charset="utf-8",
+                decode_responses = True,
                 db=config.get('redis_db', 0)
             )
         else:
@@ -59,7 +61,7 @@ class DataPlatform(object):
         if self.storage_type == 'global':
             value = self.redis_client.get(key)
             if value is not None:
-                value = value.decode('utf-8')  # Convert bytes to string
+                #value = value.decode('utf-8')  # Convert bytes to string       #TODO: CHECK IF WE CAN ALWAYS USE AUTO-DECODE OR WE NEED TO MANUALLY DECODE
                 try:
                     value = json.loads(value)  # Try to deserialize the value if it's a JSON string
                 except json.JSONDecodeError:
@@ -102,3 +104,5 @@ class DataPlatform(object):
             return key in self.local_store
 
 
+    def getKeys(self,pattern):
+        return self.redis_client.keys(pattern)

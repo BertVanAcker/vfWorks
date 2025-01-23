@@ -19,6 +19,7 @@ class ValidityFrame(baseElement):
         # VF_BLDC HIGH-LEVEL STRUCTURE
         self._metadata = MetaData(name="metadata", description="tbd")
         self._processes = Processes(name="processes", description="tbd")
+        self._experiments = Experiments(name="experiments", description="tbd")
 
 
         if specifications is None:
@@ -62,6 +63,20 @@ class ValidityFrame(baseElement):
 
     def addProperty(self, prop):
         self._metadata.addProperty(prop)
+
+    # -----------------------------------------
+    #           EXPERIMENTS
+    # -----------------------------------------
+    @property
+    def experiments(self):
+        return self._experiments.experiments
+
+    @experiments.setter
+    def experiments(self, value):
+        self._experiments.experiments = value
+
+    def addExperiment(self, experiment):
+        self._experiments.experiments.append(experiment)
 
     #-----------------------------------------
     #           PROCESSES
@@ -136,10 +151,12 @@ class ValidityFrame(baseElement):
             #export called in VF_BLDC package, no prefix needed
             self._metadata.object2json("Metadata/Metadata.json")
             self._processes.object2json("Processes/processes.json")
+            self._experiments.object2json("Experiments/experiments.json")
             x=1
         else:
             self._metadata.object2json(packageName + "/Metadata/Metadata.json")
             self._processes.object2json(packageName+"/Processes/processes.json")
+            self._experiments.object2json(packageName +"/Experiments/experiments.json")
 
 
 class MetaData(baseElement):
@@ -200,6 +217,34 @@ class Processes(baseElement):
 
     def addProcess(self, process):
         self._processes.append(process)
+
+    def object2json(self,fileName):
+        """
+               Function to generate a json file
+        """
+        data = json.dumps(self, default=lambda o: o.__dict__, indent=4)
+        with open(fileName, 'w', encoding='utf-8') as f:
+            f.write(data)
+
+class Experiments(baseElement):
+    def __init__(self, name='tbd',description='tbd',experiments=None,verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+
+        if experiments is None:
+            self._experiments = []
+        else:
+            self._experiments = experiments
+
+    @property
+    def experiments(self):
+        return self._experiments
+
+    @experiments.setter
+    def experiments(self, value):
+        self._experiments = value
+
+    def addExperiment(self, experiment):
+        self._experiments.append(experiment)
 
     def object2json(self,fileName):
         """

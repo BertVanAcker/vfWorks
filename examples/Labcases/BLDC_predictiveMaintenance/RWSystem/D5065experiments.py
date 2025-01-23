@@ -4,7 +4,7 @@ import odrive
 from odrive.enums import *
 import time
 import math
-import csv
+
 
 
 class RWSystem_BLDC_D5065():
@@ -16,7 +16,8 @@ class RWSystem_BLDC_D5065():
         self.maximumVelocity = 12       #turns/s
         self.timestamp=0.0
 
-        #------------Measurements-------------------
+        # ------------Monitoring-------------------
+        self.monitorActive = False
         self.timeStamps = []
         self.powerMeasurements=[]
         self.rpmMeasurements = []
@@ -112,16 +113,21 @@ class RWSystem_BLDC_D5065():
         self.mydrive.axis0.requested_state = AxisState.CLOSED_LOOP_CONTROL
         self.mydrive.axis0.controller.config.input_mode = InputMode.VEL_RAMP
         # start monitoring
-        self.t_monitor.start()
+        self.monitorActive = True
+        if not self.t_monitor.isAlive():
+            self.t_monitor.start()
     def stop(self):
         self.mydrive.axis0.requested_state = AxisState.IDLE
         #stop monitoring
-        self.t_monitor.cancel()
+        self.monitorActive = False
 
 
     #---------------------------EXPERIMENTS--------------------------
     def experiment_constant_velocity(self,experimentTime=10,percentage=100):
 
+        # Flush measurements
+        self.flushMeasurements()
+        # Start monitoring and activate close-loop speed control
         self.start()
         #set constant velocity
         self.vel_request = float(percentage / 100) * self.maximumVelocity
@@ -136,36 +142,30 @@ class RWSystem_BLDC_D5065():
 
     #---------------------------MONITORING--------------------------
     def monitor(self):
-        # timestamps
-        self.timestamp = self.timestamp + self.monitorPeriod
+        if self.monitorActive:
+            # timestamps
+            self.timestamp = self.timestamp + self.monitorPeriod
 
-        #measurements
-        power = self.mydrive.axis0.motor.alpha_beta_controller.power
-        rpm = self.mydrive.encoder_estimator0.vel_estimate*60
-        busVoltage = self.mydrive.vbus_voltage
+            #measurements
+            power = self.mydrive.axis0.motor.alpha_beta_controller.power
+            rpm = self.mydrive.encoder_estimator0.vel_estimate*60
+            busVoltage = self.mydrive.vbus_voltage
 
-        #local storage
-        self.timeStamps.append(self.timestamp)
-        self.powerMeasurements.append(power)
-        self.rpmMeasurements.append(rpm)
-        self.busVoltageMeasurements.append(busVoltage)
+            #local storage
+            self.timeStamps.append(self.timestamp)
+            self.powerMeasurements.append(power)
+            self.rpmMeasurements.append(rpm)
+            self.busVoltageMeasurements.append(busVoltage)
 
-    def exportMeasurements(self,output='output/data.csv'):
-        # Ensure all lists are the same length by padding with None
-        max_length = max(len(self.timeStamps), len(self.powerMeasurements))
-        self.timeStamps.extend([None] * (max_length - len(self.timeStamps)))
-        self.powerMeasurements.extend([None] * (max_length - len(self.powerMeasurements)))
+    def flushMeasurements(self):
+        """Flush measurement to start new experiment"""
+        self.timestamp = 0.0
+        self.timeStamps = []
+        self.powerMeasurements = []
+        self.rpmMeasurements = []
+        self.busVoltageMeasurements = []
 
-        # Combine lists into rows
-        rows = zip(self.timeStamps, self.powerMeasurements)
 
-        # Write to CSV file
-        with open(output, 'w', newline='', encoding='utf-8') as csvfile:
-            csv_writer = csv.writer(csvfile)
-            csv_writer.writerow(['timestamp', 'power'])  # Optional header row
-            csv_writer.writerows(rows)
-
-    # Example usage:
 
 
 

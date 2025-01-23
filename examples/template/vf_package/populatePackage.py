@@ -63,6 +63,6 @@ VF.addProcess(p_train)
 
 #-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
 packageName="vf_package"
-VF.export(packageName=packageName)
+VF.export(packageName=None)
 
 

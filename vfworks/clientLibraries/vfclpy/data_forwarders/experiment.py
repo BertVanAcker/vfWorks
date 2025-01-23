@@ -7,11 +7,13 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 import yaml
+import struct
 import logging
 from vfworks.clientLibraries.vfclpy.data_platform import *
 
 class Experiment(object):
     def __init__(self, config, ID="EXP_001", label="nominal", verbose=False):
+        self.ID = ID
         self.config = self.load_config(config)
         self.logger = self.initialize_logger()
         self.data_platform = self._initialize_data_platform()  # Initialize knowledge within the component
@@ -92,6 +94,10 @@ class Experiment(object):
         _measurement_key = self.measurements_key + ":" + key
         try:
             values = self.data_platform.read_list(key=_measurement_key,all=True)
+            # TODO: HACKED byte to float - THIS NEEDS TO BE MORE GENERIC!
+            for i in range(0,len(values),1):
+                values[i] = float(values[i])
+
             self.logger.info("Reading values for measurement <" + key + "> from vfWorks backend!")
             return values
         except:
