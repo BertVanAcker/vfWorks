@@ -5,7 +5,7 @@ from vfworks.clientLibraries.vfclpy.data_forwarders.experiment import *
 from vfworks.utils.auxiliary import *
 
 DEPLOYED=True
-system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, CALIBRATED=True,monitorPeriod=0.1,DEPLOYED=DEPLOYED)
+system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, CALIBRATED=False,monitorPeriod=0.1,DEPLOYED=DEPLOYED)
 
 #-----------------------------------------------------------------------------------------------------------------------
 #                                   VF_BLDC reference

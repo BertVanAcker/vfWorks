@@ -13,7 +13,7 @@ class RWSystem_BLDC_D5065():
         self.name = name
         self.VERBOSE = VERBOSE
         self.vel_request = 0
-        self.maximumVelocity = 12       #turns/s
+        self.maximumVelocity = 30       #turns/s
         self.timestamp=0.0
 
         # ------------Monitoring-------------------
@@ -50,44 +50,47 @@ class RWSystem_BLDC_D5065():
         my_drive = odrive.find_any()
 
         #drive settings for BLDC D5065 270KV
-        my_drive.config.dc_bus_overvoltage_trip_level = 25
-        my_drive.config.dc_bus_undervoltage_trip_level = 10.5
-        my_drive.config.dc_max_positive_current = math.inf
-        my_drive.config.dc_max_negative_current = -0.1
-        my_drive.config.brake_resistor0.enable = False
-        my_drive.axis0.config.motor.motor_type = MotorType.HIGH_CURRENT
-        my_drive.axis0.config.motor.pole_pairs = 7
-        my_drive.axis0.config.motor.torque_constant = 0.030629629629629628
-        my_drive.axis0.config.motor.current_soft_max = 65
-        my_drive.axis0.config.motor.current_hard_max = 85
-        my_drive.axis0.config.motor.calibration_current = 10
-        my_drive.axis0.config.motor.resistance_calib_max_voltage = 2
-        my_drive.axis0.config.calibration_lockin.current = 10
-        my_drive.axis0.motor.motor_thermistor.config.enabled = False
-        my_drive.axis0.motor.motor_thermistor.config.r_ref = 10000
-        my_drive.axis0.motor.motor_thermistor.config.beta = 3435
-        my_drive.axis0.motor.motor_thermistor.config.temp_limit_lower = 110
-        my_drive.axis0.motor.motor_thermistor.config.temp_limit_upper = 130
-        my_drive.axis0.controller.config.control_mode = ControlMode.VELOCITY_CONTROL
-        my_drive.axis0.controller.config.input_mode = InputMode.VEL_RAMP
-        my_drive.axis0.controller.config.vel_limit = 6
-        my_drive.axis0.controller.config.vel_limit_tolerance = 2
-        my_drive.axis0.config.torque_soft_min = -math.inf
-        my_drive.axis0.config.torque_soft_max = math.inf
-        my_drive.can.config.protocol = Protocol.NONE
-        my_drive.axis0.config.enable_watchdog = False
-        my_drive.inc_encoder0.config.enabled = True
-        my_drive.axis0.config.load_encoder = EncoderId.INC_ENCODER0
-        my_drive.axis0.config.commutation_encoder = EncoderId.INC_ENCODER0
-        my_drive.inc_encoder0.config.cpr = 20480
-        my_drive.axis0.commutation_mapper.config.use_index_gpio = True
-        my_drive.axis0.pos_vel_mapper.config.use_index_gpio = True
-        my_drive.config.gpio10_mode = GpioMode.DIGITAL
-        my_drive.axis0.pos_vel_mapper.config.index_gpio = 10
-        my_drive.axis0.pos_vel_mapper.config.index_offset = 0
-        my_drive.axis0.pos_vel_mapper.config.index_offset_valid = True
-        my_drive.axis0.commutation_mapper.config.index_gpio = 10
-        my_drive.config.enable_uart_a = False
+        odrv = my_drive
+        odrv.config.dc_bus_overvoltage_trip_level = 25
+        odrv.config.dc_bus_undervoltage_trip_level = 10.5
+        odrv.config.dc_max_positive_current = math.inf
+        odrv.config.dc_max_negative_current = -math.inf
+        odrv.config.brake_resistor0.enable = True
+        odrv.config.brake_resistor0.resistance = 2
+        odrv.axis0.config.motor.motor_type = MotorType.HIGH_CURRENT
+        odrv.axis0.config.motor.pole_pairs = 7
+        odrv.axis0.config.motor.torque_constant = 0.030629629629629628
+        odrv.axis0.config.motor.current_soft_max = 65
+        odrv.axis0.config.motor.current_hard_max = 85
+        odrv.axis0.config.motor.calibration_current = 10
+        odrv.axis0.config.motor.resistance_calib_max_voltage = 2
+        odrv.axis0.config.calibration_lockin.current = 10
+        odrv.axis0.motor.motor_thermistor.config.enabled = True
+        odrv.axis0.motor.motor_thermistor.config.r_ref = 10000
+        odrv.axis0.motor.motor_thermistor.config.beta = 3435
+        odrv.axis0.motor.motor_thermistor.config.temp_limit_lower = 110
+        odrv.axis0.motor.motor_thermistor.config.temp_limit_upper = 130
+        odrv.axis0.controller.config.control_mode = ControlMode.VELOCITY_CONTROL
+        odrv.axis0.controller.config.input_mode = InputMode.PASSTHROUGH
+        odrv.axis0.controller.config.vel_limit = 30
+        odrv.axis0.controller.config.vel_limit_tolerance = 2
+        odrv.axis0.config.torque_soft_min = -math.inf
+        odrv.axis0.config.torque_soft_max = math.inf
+        odrv.can.config.protocol = Protocol.NONE
+        odrv.axis0.config.enable_watchdog = False
+        odrv.inc_encoder0.config.enabled = True
+        odrv.axis0.config.load_encoder = EncoderId.INC_ENCODER0
+        odrv.axis0.config.commutation_encoder = EncoderId.INC_ENCODER0
+        odrv.inc_encoder0.config.cpr = 20480
+        odrv.axis0.commutation_mapper.config.use_index_gpio = True
+        odrv.axis0.pos_vel_mapper.config.use_index_gpio = True
+        odrv.config.gpio10_mode = GpioMode.DIGITAL
+        odrv.axis0.pos_vel_mapper.config.index_gpio = 10
+        odrv.axis0.pos_vel_mapper.config.index_offset = 0
+        odrv.axis0.pos_vel_mapper.config.index_offset_valid = True
+        odrv.axis0.commutation_mapper.config.index_gpio = 10
+        odrv.config.enable_uart_a = False
+        odrv.axis0.motor.motor_thermistor.config = False
 
         return my_drive
 
