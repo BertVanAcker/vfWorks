@@ -4,22 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- read measurements from vfWorks backend added">
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/populatePackage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_digest/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_digest/digest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vfworks/metamodels/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/runner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/template/populatePackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/template/vf_package/populatePackage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/template/vf_package/Metadata/Metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/template/vf_package/Metadata/Metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/template/vf_package/Processes/processes.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_platform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/utils/auxiliary.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/utils/auxiliary.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- remote digest for VF in vfWorks backend added + example on BLDC case">
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/populatePackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/populatePackage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,7 +296,7 @@
       <workItem from="1737532301643" duration="6745000" />
       <workItem from="1737539665772" duration="523000" />
       <workItem from="1737574584644" duration="23000" />
-      <workItem from="1737614087253" duration="17046000" />
+      <workItem from="1737614087253" duration="17714000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -488,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737540163976</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="-- remote digest for VF in vfWorks backend added + example on BLDC case">
+      <option name="closed" value="true" />
+      <created>1737631915052</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1737631915052</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -528,7 +522,8 @@
     <MESSAGE value="-- Basic experiment tracing with vfWorks backend added" />
     <MESSAGE value="-- second experiment added for anomaly" />
     <MESSAGE value="-- read measurements from vfWorks backend added" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- read measurements from vfWorks backend added" />
+    <MESSAGE value="-- remote digest for VF in vfWorks backend added + example on BLDC case" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- remote digest for VF in vfWorks backend added + example on BLDC case" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

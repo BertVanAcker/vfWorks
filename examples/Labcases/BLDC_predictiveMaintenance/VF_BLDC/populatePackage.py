@@ -27,7 +27,6 @@ VF = ValidityFrame(name="VF_BLDC", description="Populate VF_BLDC package")
 exp_remote = remoteExperiments(config='config.yaml',VFName=VF.name)
 VF.experiments = exp_remote.loadExperiments(measerementStorage="csv")      #full= store both in class as csv | csv= store only in csv for limiting the metadata size
 
-
 #-------------------------SPECIFICATIONS------------------------------------------------
 
 #------------------------------POI------------------------------------------------------
