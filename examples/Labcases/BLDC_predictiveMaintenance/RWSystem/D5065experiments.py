@@ -4,6 +4,7 @@ import odrive
 from odrive.enums import *
 import time
 import math
+from pycaret.anomaly import *
 
 
 
@@ -14,7 +15,6 @@ class RWSystem_BLDC_D5065():
         self.VERBOSE = VERBOSE
         self.vel_request = 0
         self.maximumVelocity = 30       #turns/s
-        self.timestamp=0.0
 
         # ------------Monitoring-------------------
         self.monitorActive = False
@@ -22,6 +22,11 @@ class RWSystem_BLDC_D5065():
         self.powerMeasurements=[]
         self.rpmMeasurements = []
         self.busVoltageMeasurements = []
+        # current measurements
+        self.timestamp = 0.0
+        self.power = 0.0
+        self.rpm = 0.0
+        self.busVoltage = 0.0
 
         if DEPLOYED:
             #----------Odrive initialization-----------------
@@ -38,9 +43,9 @@ class RWSystem_BLDC_D5065():
             if not CALIBRATED:
                 self.calibrateBLDC()
 
+        #-------anomaly detection components---------------
+        self.ANOMALYDETECTORLOADED = False
 
-        # AUTO-START MONITORING
-        #self.t_monitor.start()
 
 
 
@@ -160,6 +165,10 @@ class RWSystem_BLDC_D5065():
             self.rpmMeasurements.append(rpm)
             self.busVoltageMeasurements.append(busVoltage)
 
+            #-------- PERFORM ANOMALY DETECTION-------------
+            if self.ANOMALYDETECTORLOADED:
+                self.anomalyDetection(self)     #TODO:METHOD OVERLOADING NEEDED!!
+
     def flushMeasurements(self):
         """Flush measurement to start new experiment"""
         self.timestamp = 0.0
@@ -168,6 +177,13 @@ class RWSystem_BLDC_D5065():
         self.rpmMeasurements = []
         self.busVoltageMeasurements = []
 
+    # ----------------------ANOMALY DETECTION----------------------
+    def anomalyDetection(self):
+        print("Warning: anomaly detection function not implemented")
+
+    def loadAnomalyDetectionModel(self, model):
+        self.model = load_model(model)
+        self.ANOMALYDETECTORLOADED = True
 
 
 
