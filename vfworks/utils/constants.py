@@ -12,6 +12,7 @@ class DomainType:
     CONTROL = "CONTROL"
     MECHANICAL = "MECHANICAL"
     ELECTRICAL = "ELECTRICAL"
+    NONE = "None"
 
 class UnitType:
     DISTANCE_mm= "mm"
@@ -24,7 +25,9 @@ class UnitType:
     ANG_SPEED_RADIANS = "radians/s"
     ANG_SPEED_DEGREES = "degrees/s"
     FORCE_N= "Newton"
+    Power_Watt = "Watt"
     UNIT_none = "-"
+
 
 class DataType:
     FLOAT_64 = "float_64"

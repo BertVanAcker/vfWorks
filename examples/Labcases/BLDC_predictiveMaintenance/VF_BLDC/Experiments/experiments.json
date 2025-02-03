@@ -2,103 +2,40 @@
     "_name": "experiments",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "d4882fb9-f2ad-4f12-9fe7-fd5414901fa4",
-    "_timestamp": "2025-01-23 16:55:05.709582",
+    "_GUID": "3aa152b0-d6b7-446f-ab4a-167309a2c654",
+    "_timestamp": "2025-02-03 21:14:34.211023",
     "_experiments": [
-        {
-            "_name": "EXP2",
-            "_description": "tbd",
-            "_verbose": false,
-            "_GUID": "a94868c0-3938-46d1-a39e-b9412bf62300",
-            "_timestamp": "2025-01-23 16:55:05.720093",
-            "_label": "anomaly",
-            "_conditions": [
-                {
-                    "_name": "velocityCommand",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "9bde2d7c-861e-4d88-a32b-ec5badd5f0d9",
-                    "_timestamp": "2025-01-23 16:55:05.721093",
-                    "_value": 100
-                },
-                {
-                    "_name": "experimentTime",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "611868f1-8e61-43b9-95ed-f98608cd76a0",
-                    "_timestamp": "2025-01-23 16:55:05.721093",
-                    "_value": 50
-                },
-                {
-                    "_name": "temperature",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "288ff244-3bbb-4869-810c-119568954b3f",
-                    "_timestamp": "2025-01-23 16:55:05.722093",
-                    "_value": 20.0
-                }
-            ],
-            "_measurements": [
-                {
-                    "_name": "power",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "dac2379a-87c7-43e5-813f-ac1d8c2ed27d",
-                    "_timestamp": "2025-01-23 16:55:05.725091",
-                    "_dataPoints": [],
-                    "_reference": "Experiments/EXP2/power.csv"
-                },
-                {
-                    "_name": "rpm",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "bfaca700-7561-4e72-8c6e-07a58bc79971",
-                    "_timestamp": "2025-01-23 16:55:05.725091",
-                    "_dataPoints": [],
-                    "_reference": "Experiments/EXP2/rpm.csv"
-                },
-                {
-                    "_name": "busVoltage",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "1b887431-3c49-4a71-9bbf-a3460316802a",
-                    "_timestamp": "2025-01-23 16:55:05.726091",
-                    "_dataPoints": [],
-                    "_reference": "Experiments/EXP2/busVoltage.csv"
-                }
-            ]
-        },
         {
             "_name": "EXP1",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "2c476e9c-82e8-4f6f-af4b-675e96c8a9f8",
-            "_timestamp": "2025-01-23 16:55:05.733600",
+            "_GUID": "187b1746-b4c6-42e4-9bde-8a395b5924fd",
+            "_timestamp": "2025-02-03 21:14:34.222974",
             "_label": "nominal",
             "_conditions": [
-                {
-                    "_name": "velocityCommand",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "8f87155e-8642-4c0b-bb15-c73d2e4d11d3",
-                    "_timestamp": "2025-01-23 16:55:05.734605",
-                    "_value": 100
-                },
                 {
                     "_name": "experimentTime",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "c3f37460-33cc-463b-b366-d073eb8fba14",
-                    "_timestamp": "2025-01-23 16:55:05.734605",
+                    "_GUID": "7973dcd6-5dba-4552-b9a0-1db1fc7edad6",
+                    "_timestamp": "2025-02-03 21:14:34.223972",
                     "_value": 50
                 },
                 {
                     "_name": "temperature",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "084fab49-4b68-41d7-a934-4b0bd0a0b46e",
-                    "_timestamp": "2025-01-23 16:55:05.734605",
+                    "_GUID": "d5f02a4d-a8b0-4433-ae71-2252c66bf5c6",
+                    "_timestamp": "2025-02-03 21:14:34.225205",
                     "_value": 20.0
+                },
+                {
+                    "_name": "velocityCommand",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "663b76ab-833d-47eb-9234-8890eb96a7d2",
+                    "_timestamp": "2025-02-03 21:14:34.226221",
+                    "_value": 100
                 }
             ],
             "_measurements": [
@@ -106,28 +43,97 @@
                     "_name": "busVoltage",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "621397fe-8b25-488e-aebc-38dba2708f34",
-                    "_timestamp": "2025-01-23 16:55:05.737604",
+                    "_GUID": "f8024d76-8271-44b4-8d39-85c498835b1a",
+                    "_timestamp": "2025-02-03 21:14:34.228364",
                     "_dataPoints": [],
-                    "_reference": "Experiments/EXP1/busVoltage.csv"
-                },
-                {
-                    "_name": "rpm",
-                    "_description": "tbd",
-                    "_verbose": false,
-                    "_GUID": "c6ccc56f-4a84-41f3-983a-c7c392a0ace9",
-                    "_timestamp": "2025-01-23 16:55:05.738607",
-                    "_dataPoints": [],
-                    "_reference": "Experiments/EXP1/rpm.csv"
+                    "_reference": "Experiments/EXP1/busVoltage.csv",
+                    "_poi": null
                 },
                 {
                     "_name": "power",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "9e88a4f1-4192-45df-90c8-a828ae5ebffd",
-                    "_timestamp": "2025-01-23 16:55:05.739607",
+                    "_GUID": "30a79397-02fe-411e-a235-b5a4149b9035",
+                    "_timestamp": "2025-02-03 21:14:34.232364",
                     "_dataPoints": [],
-                    "_reference": "Experiments/EXP1/power.csv"
+                    "_reference": "Experiments/EXP1/power.csv",
+                    "_poi": "d636a713-78e0-474b-afa5-f48d4ac9c49b"
+                },
+                {
+                    "_name": "rpm",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "355c78b2-5b94-4f09-910e-9d36ced0c111",
+                    "_timestamp": "2025-02-03 21:14:34.233364",
+                    "_dataPoints": [],
+                    "_reference": "Experiments/EXP1/rpm.csv",
+                    "_poi": null
+                }
+            ]
+        },
+        {
+            "_name": "EXP2",
+            "_description": "tbd",
+            "_verbose": false,
+            "_GUID": "ec216f3e-3e74-49bb-b7c8-87bca344e5b5",
+            "_timestamp": "2025-02-03 21:14:34.241676",
+            "_label": "anomaly",
+            "_conditions": [
+                {
+                    "_name": "experimentTime",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "4fe39dd8-d268-4082-aed3-308825bd0af6",
+                    "_timestamp": "2025-02-03 21:14:34.243674",
+                    "_value": 50
+                },
+                {
+                    "_name": "temperature",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "b5f1d476-f195-4b89-b065-d2200c6eb2b7",
+                    "_timestamp": "2025-02-03 21:14:34.243674",
+                    "_value": 20.0
+                },
+                {
+                    "_name": "velocityCommand",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "38e4f54d-42b7-4c4e-b92c-8aa167db1832",
+                    "_timestamp": "2025-02-03 21:14:34.244677",
+                    "_value": 100
+                }
+            ],
+            "_measurements": [
+                {
+                    "_name": "busVoltage",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "28d5c4f6-ef20-4a7c-b87d-7aa18a15dbf8",
+                    "_timestamp": "2025-02-03 21:14:34.246674",
+                    "_dataPoints": [],
+                    "_reference": "Experiments/EXP2/busVoltage.csv",
+                    "_poi": null
+                },
+                {
+                    "_name": "power",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "4a82da73-e3b4-4130-b608-cf29559f0fa6",
+                    "_timestamp": "2025-02-03 21:14:34.249673",
+                    "_dataPoints": [],
+                    "_reference": "Experiments/EXP2/power.csv",
+                    "_poi": "d636a713-78e0-474b-afa5-f48d4ac9c49b"
+                },
+                {
+                    "_name": "rpm",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "f8ec539a-8b68-4ffa-be82-2ad710320c70",
+                    "_timestamp": "2025-02-03 21:14:34.251674",
+                    "_dataPoints": [],
+                    "_reference": "Experiments/EXP2/rpm.csv",
+                    "_poi": null
                 }
             ]
         }

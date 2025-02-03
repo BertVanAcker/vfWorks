@@ -8,9 +8,9 @@
 # **************************************************************************************
 import os
 
-import vfworks.clientLibraries.vfclpy.data_digest.digest
-from vfworks.metamodels.model_structure import *
 from vfworks.metamodels.validity_frame import *
+from vfworks.metamodels.model_structure import *
+from vfworks.metamodels.properties import *
 from vfworks.clientLibraries.vfclpy.data_digest.digest import remoteExperiments
 from vfworks.metamodels.experiment import *
 import yaml
@@ -30,10 +30,23 @@ VF.experiments = exp_remote.loadExperiments(measerementStorage="csv")      #full
 #-------------------------SPECIFICATIONS------------------------------------------------
 
 #------------------------------POI------------------------------------------------------
+poi1 = PropertyofInterest(name="Power",description="Electrical power of the BLDC motor",domain=DomainType.ELECTRICAL,unit=UnitType.Power_Watt,datatype=DataType.FLOAT_64,min=-50,max=100,satisfies=None)
+poi2 = PropertyofInterest(name="Anomaly",description="Classification of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.INTEGER_8,min=0,max=1,satisfies=None)
+poi3 = PropertyofInterest(name="AnomalyScore",description="Classification score of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=-50,max=50,satisfies=None)
+
+VF.addProperty(poi1)
+VF.addProperty(poi2)
+VF.addProperty(poi3)
+
+#-----------------POI LINKING TO EXPERIMENT MEASUREMENTS--------------------------------
+VF.assign_poi2measurement(poi=poi1,measurementName="power")
 
 #-------------------------MODEL STRUCTURE-----------------------------------------------
+inports = [Inport(name="power", unit=UnitType.Power_Watt)]
+outports = [Outport(name="anomaly", unit=UnitType.UNIT_none),Outport(name="anomalyScore", unit=UnitType.UNIT_none)]
 
-
+structure = ModelStructure(name="anomalyDetector", inports=inports, outports=outports)
+VF.modelStructure = structure
 #-----------------------------PROCESSES-----------------------------------------------
 
 

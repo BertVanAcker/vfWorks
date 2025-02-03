@@ -72,6 +72,7 @@ class Measurement(baseElement):
 
         self._dataPoints = dataPoints
         self._reference = reference                 #relative reference in VF!
+        self._poi = None
 
     @property
     def dataPoints(self):
@@ -88,3 +89,12 @@ class Measurement(baseElement):
     @reference.setter
     def reference(self, ref):
         self._reference = ref
+
+    #----------LINK TO POI----------
+    @property
+    def poi(self):
+        return self._poi
+
+    @poi.setter
+    def poi(self,poi):
+        self._poi = poi

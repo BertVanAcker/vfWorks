@@ -64,6 +64,13 @@ class ValidityFrame(baseElement):
     def addProperty(self, prop):
         self._metadata.addProperty(prop)
 
+    def getPropertyByGUID(self,guid):
+        _prop = None
+        for prop in self.properties:
+            if prop.guid == guid:
+                _prop = prop
+        return _prop
+
     # -----------------------------------------
     #           EXPERIMENTS
     # -----------------------------------------
@@ -77,6 +84,12 @@ class ValidityFrame(baseElement):
 
     def addExperiment(self, experiment):
         self._experiments.experiments.append(experiment)
+
+    def assign_poi2measurement(self,poi,measurementName):
+        for exp in self.experiments:
+            for measurement in exp.measurements:
+                if measurementName == measurement.name:
+                    measurement.poi = poi.GUID
 
     #-----------------------------------------
     #           PROCESSES
@@ -160,13 +173,17 @@ class ValidityFrame(baseElement):
 
 
 class MetaData(baseElement):
-    def __init__(self, name='tbd',description='tbd',specifications=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',specifications=None,properties=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         if specifications is None:
             self._specifications = []
         else:
             self._specifications = specifications
+        if properties is None:
+            self._properties = []
+        else:
+            self._properties = properties
 
     @property
     def specifications(self):
