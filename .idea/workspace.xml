@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- experiment with better configured drive" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- poi linked to experiment measurements">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/populatePackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/populatePackage.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,38 +45,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.BLDC_DEPLOYED.executor": "Debug",
-    "Python.Boat_VF.executor": "Debug",
-    "Python.EXP_001 (1).executor": "Run",
-    "Python.EXP_001.executor": "Run",
-    "Python.VF_DUMMY.executor": "Run",
-    "Python.__main__.executor": "Debug",
-    "Python.exp001.executor": "Run",
-    "Python.model1 (1).executor": "Run",
-    "Python.model1.executor": "Run",
-    "Python.populatePackage (1).executor": "Run",
-    "Python.populatePackage (2).executor": "Run",
-    "Python.populatePackage.executor": "Run",
-    "Python.runner.executor": "Run",
-    "Python.spec_def_dsl.executor": "Run",
-    "Python.train.executor": "Run",
-    "Python.vf_export (1).executor": "Run",
-    "Python.vf_export.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/01_UA/01_Development/vfWorks/.venv/Scripts/python.exe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.BLDC_DEPLOYED.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.Boat_VF.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.EXP_001 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.EXP_001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VF_DUMMY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__main__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.exp001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.populatePackage (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.populatePackage (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.populatePackage.executor&quot;: &quot;Run&quot;,
+    &quot;Python.runner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.spec_def_dsl.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vf_export (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.vf_export.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/01_UA/01_Development/vfWorks/.venv/Scripts/python.exe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\RWSystem\output" />
@@ -314,6 +317,7 @@
       <workItem from="1738065152554" duration="1147000" />
       <workItem from="1738067925202" duration="985000" />
       <workItem from="1738610336896" duration="3429000" />
+      <workItem from="1738613806696" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -531,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737647859895</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="-- poi linked to experiment measurements">
+      <option name="closed" value="true" />
+      <created>1738613831295</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1738613831295</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +561,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="--partial MM" />
     <MESSAGE value="--basic vf example added" />
     <MESSAGE value="--simple monitor - poi - spec tracing example added" />
     <MESSAGE value="-- workspace.xml" />
@@ -574,7 +585,8 @@
     <MESSAGE value="-- function to populate VF with experiments added" />
     <MESSAGE value="-- 50s experiments executed" />
     <MESSAGE value="-- experiment with better configured drive" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- experiment with better configured drive" />
+    <MESSAGE value="-- poi linked to experiment measurements" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- poi linked to experiment measurements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -42,10 +42,17 @@ VF.addProperty(poi3)
 VF.assign_poi2measurement(poi=poi1,measurementName="power")
 
 #-------------------------MODEL STRUCTURE-----------------------------------------------
-inports = [Inport(name="power", unit=UnitType.Power_Watt)]
-outports = [Outport(name="anomaly", unit=UnitType.UNIT_none),Outport(name="anomalyScore", unit=UnitType.UNIT_none)]
+IN1 = Inport(name="power", unit=UnitType.Power_Watt)
+IN1.add_mapping_relation(poi1)
 
-structure = ModelStructure(name="anomalyDetector", inports=inports, outports=outports)
+OUT1 = Outport(name="anomaly", unit=UnitType.UNIT_none)
+OUT1.add_mapping_relation(poi2)
+OUT2= Outport(name="anomalyScore", unit=UnitType.UNIT_none)
+OUT2.add_mapping_relation(poi2)
+
+
+
+structure = ModelStructure(name="anomalyDetector", inports=[IN1], outports=[OUT1,OUT2])
 VF.modelStructure = structure
 #-----------------------------PROCESSES-----------------------------------------------
 
