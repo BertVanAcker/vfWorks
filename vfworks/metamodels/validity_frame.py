@@ -105,12 +105,12 @@ class ValidityFrame(baseElement):
     # -----------------------------------------
     @property
     def modelReference(self):
-        return self._operational.modelRef   #CAN EITHER BE A SINGLE FILE OF A FOLDER WITH MULTIPLE FILES
+        return self._operational.activeModelStructure.modelRef   #CAN EITHER BE A SINGLE FILE OF A FOLDER WITH MULTIPLE FILES
 
     @modelReference.setter
     def modelReference(self, value):
-        self.logger.info(msg="Adding a model structure with GUID {"+value.GUID+"} to the validity frame")
-        self._operational.modelRef = value
+        self.logger.info(msg="Adding a model reference ("+value+") to the active model structure of the validity frame")
+        self._operational.activeModelStructure.modelRef = value
 
     @property
     def modelStructures(self):
@@ -122,6 +122,13 @@ class ValidityFrame(baseElement):
             if structure.GUID == GUID:
                 _structure = structure
         return _structure
+
+    def setActiveModelStructure(self, GUID=None):
+        self._operational.setActiveModelStructure(GUID=GUID)
+
+    @property
+    def activeModelStructure(self):
+        return self._operational.activeModelStructure
 
     @modelStructures.setter
     def modelStructures(self, value):
@@ -182,7 +189,10 @@ class ValidityFrame(baseElement):
         formatter = logging.Formatter(log_format)
 
         if log_file:
-            file_handler = logging.FileHandler(log_file)
+            try:
+                file_handler = logging.FileHandler(log_file)    #LOAD FROM PACKAGE LEVEL
+            except:
+                file_handler = logging.FileHandler("../"+log_file)  #LOAD FROM FOLDER LEVEL (e.g. in processes)
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
         else:
@@ -226,9 +236,10 @@ class ValidityFrame(baseElement):
             x=1
         else:
             self._metadata.object2json(packageName + "/Metadata/Metadata.json")
-            self._processes.object2json(packageName+"/Processes/processes.json")
-            self._experiments.object2json(packageName +"/Experiments/experiments.json")
-            self._operational.object2json(packageName +"Operational/Operational.json")
+            self._processes.object2json(packageName+"/Processes/Processes.json")
+            self._experiments.object2json(packageName +"/Experiments/Experiments.json")
+            self._operational.object2json(packageName + "/Operational/Operational.json")
+
 
 
 class MetaData(baseElement):
@@ -303,6 +314,8 @@ class Operational(baseElement):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._modelStructures = modelStructures
+        self._activeModelStructure = None
+        self._modelReference = None
 
     @property
     def modelStructures(self):
@@ -314,6 +327,18 @@ class Operational(baseElement):
 
     def addModelStructure(self,s):
         self._modelStructures.append(s)
+
+    @property
+    def activeModelStructure(self):
+        return self._activeModelStructure
+
+    def setActiveModelStructure(self,GUID=None):
+        if GUID is None:
+            self._activeModelStructure = self.modelStructures[0]
+        else:
+            for ms in self._modelStructures:
+                if ms.GUID == GUID:
+                    self._activeModelStructure = ms
 
 
     def object2json(self, fileName):

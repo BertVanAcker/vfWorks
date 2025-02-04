@@ -6,11 +6,16 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
-import pandas as pd
+from vfworks.utils.data.dataLoader import *
 from pycaret.anomaly import *
 class trainingActions(object):
-    def __init__(self, name="userActions class"):
+    def __init__(self, name="userActions class", validityFrame=None):
         self._name = name
+        self._validityFrame = validityFrame
+        self._prefix = "../"
+
+        # define dataloader
+        self._data_loader = DataLoader(name="VF_data_loader")
 
         self.data_RAW = None
         self.data_train = None
@@ -18,9 +23,10 @@ class trainingActions(object):
 
     def t_collect_data(self):
         try:
-            print("WARNING: Data collection action not implemented yet!")
-            #data = pd.read_csv("input/nominal.csv") #TODO: resolve via model structure, and fill self.data_RAW
-
+            #load train data from model structure
+            self.data_train = self._data_loader.loadData(validityFrame=self._validityFrame,experimentLabel="nominal",prefix=self._prefix)
+            #load test data from model structure
+            self.data_test = self._data_loader.loadData(validityFrame=self._validityFrame, experimentLabel="anomaly",prefix=self._prefix)
             return True
         except:
             return False
@@ -35,8 +41,7 @@ class trainingActions(object):
 
     def t_load_model(self):
         try:
-            self.trainerSetup = setup(self.data, session_id=123)
-            # 3. Define KNN model
+            self.trainerSetup = setup(self.data_train, session_id=123)
             self.model = create_model('knn', fraction=0.1)
             return True
         except:
@@ -58,7 +63,15 @@ class trainingActions(object):
 
     def t_store_model_snapshot(self):
         try:
-            save_model(self.model, 'Sources/model')     #TODO: store model with GUID!!
+            save_model(self.model, self._prefix+'Sources/model')     #TODO: store model with GUID!!
+            self._validityFrame.modelReference = "Sources/model"
+            return True
+        except:
+            return False
+
+    def t_store_vf(self):
+        try:
+            self._validityFrame.export(packageName="..")  # VF package is top level structure
             return True
         except:
             return False

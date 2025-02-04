@@ -94,10 +94,7 @@ class Port(baseElement):
         self._max=max
 
         # TRACEABILITY TO PROPERTIES (POI/INFLUENCE)
-        if mapping is None:
-            self._mapping = []
-        else:
-            self._mapping = mapping
+        self._mapping = mapping
 
 
     @property
@@ -149,7 +146,7 @@ class Port(baseElement):
         self._mapping = value
 
     def add_mapping_relation(self,type="poi", poi=None):
-        self._mapping.append(type+":"+poi.GUID)
+        self._mapping = poi.GUID
 
 class Inport(Port):
 

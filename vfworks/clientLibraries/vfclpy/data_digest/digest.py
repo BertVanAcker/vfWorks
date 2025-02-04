@@ -60,7 +60,7 @@ class remoteExperiments(object):
         #self.logger.info(f"Initializing the data platform.")
         return DataPlatform(config=self.config['dp_config'])
 
-    def loadExperiments(self, measerementStorage = "full"):             # full => both in the datapoints and csv | csv => store only csv file
+    def loadExperiments(self, measerementStorage = "full",timestamped=False):             # full => both in the datapoints and csv | csv => store only csv file
         timestamp = None
         experimentIDs = self._getExperimentIDs()
 
@@ -97,7 +97,7 @@ class remoteExperiments(object):
                     mkdir(path)
 
                 reference = path + "/" + measurement + ".csv"
-                if timestamp is not None:
+                if timestamped:
                     save_lists_to_csv(reference, timestamp, dataPoints,headers=['timestamp', measurement])
                 else:
                     save_lists_to_csv(reference, dataPoints, headers=[measurement])
