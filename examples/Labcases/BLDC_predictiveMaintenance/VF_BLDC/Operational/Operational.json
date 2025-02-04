@@ -2,8 +2,8 @@
     "_name": "operational",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "bb0298e1-533c-437f-96e2-af4e0414e77f",
-    "_timestamp": "2025-02-04 12:22:33.802067",
+    "_GUID": "5a8acefd-11da-4de6-99bf-2584184e2964",
+    "_timestamp": "2025-02-04 14:21:47.400675",
     "_modelStructures": [
         {
             "_name": "anomalyDetector",

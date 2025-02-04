@@ -7,8 +7,11 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 import pandas as pd
+from vfworks.utils.constants import *
+
+
 class DataLoader(object):
-    def __init__(self,name="customLoader",verbose=False):
+    def __init__(self,name="customLoader",validityframe = None,verbose=False):
         """Initialize a dataLoader component.
 
                 Parameters
@@ -32,21 +35,23 @@ class DataLoader(object):
         # --- dataLoader configuration ---
         self._name = name
         self._verbose = verbose
+        self._validityframe = validityframe
 
 
-    def loadData(self,validityFrame=None,experimentLabel=None,prefix=""):
+    def loadData(self,experimentLabel=None,prefix=""):
         """Load the data as pandas DataFrame"""
         _data = None
-        activeMS = validityFrame.activeModelStructure
+        activeMS = self._validityframe.activeModelStructure
         _inputs_reference = []
         for inport in activeMS.inports:
             #fetch measurements related to the input
             _input_data_ref = None
             _input_poi = inport.mapping
-            for experiment in validityFrame.experiments:
+            for experiment in self._validityframe.experiments:
                 if experimentLabel == experiment.label:                            #TODO: if multiple experiments have the same label, we need to concat the datapoints?
                     for measurement in experiment.measurements:
                         if measurement.poi ==_input_poi:
+                            self._validityframe.logger.info(msg="Loaded data from experiment {"+experiment.name+","+experiment.GUID+"} measurement {"+measurement.name+","+measurement.GUID+"}, for PoI {"+_input_poi+"}")
                             _input_data_ref = prefix+measurement.reference
 
             if _input_data_ref is not None:

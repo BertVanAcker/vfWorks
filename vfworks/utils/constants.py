@@ -58,3 +58,8 @@ class StepStatus:
     RUNNING = "Running"
     PASSED = "Passed"
     FAILED = "Failed"
+
+class LOGLEVEL:
+    INFO = "INFO"
+    DEBUG = "DEBUG"
+    ERROR = "ERROR"

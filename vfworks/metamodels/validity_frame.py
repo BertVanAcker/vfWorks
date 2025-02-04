@@ -97,7 +97,7 @@ class ValidityFrame(baseElement):
         for exp in self.experiments:
             for measurement in exp.measurements:
                 if measurementName == measurement.name:
-                    self.logger.info(msg="Assign PoI with GUID {"+poi.GUID+"to measurement with GUID {"+measurement.GUID+"")
+                    self.logger.info(msg="Assign PoI with GUID {"+poi.GUID+"} to measurement with GUID {"+measurement.GUID+"")
                     measurement.poi = poi.GUID
 
     # -----------------------------------------

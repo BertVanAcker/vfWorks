@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- basic VF loader added">
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- basic train process with VF links added">
+      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/LessonsLearned" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/utils/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vfworks/utils/model/modelLoader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/busVoltage.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/busVoltage.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/power.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/power.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/rpm.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/rpm.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/timestamp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP1/timestamp.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/busVoltage.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/busVoltage.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/power.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/power.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/rpm.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/rpm.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/timestamp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/EXP2/timestamp.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/Experiments.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Experiments/Experiments.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Metadata/Metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Metadata/Metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Operational/Operational.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Operational/Operational.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions/trainer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Processes.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Processes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_digest/digest.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_digest/digest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/model_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/model_structure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/utils/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/utils/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vfworks/utils/data/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/utils/data/dataLoader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +74,7 @@
     "Python.spec_def_dsl.executor": "Run",
     "Python.train (1).executor": "Run",
     "Python.train.executor": "Run",
+    "Python.trainer.executor": "Run",
     "Python.vf_export (1).executor": "Run",
     "Python.vf_export.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -113,29 +107,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.train (1)">
-    <configuration name="BLDC_DEPLOYED" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="vfworks" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/BLDC_DEPLOYED.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="loadVF" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfworks" />
       <option name="ENV_FILES" value="" />
@@ -251,13 +222,36 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="trainer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="vfworks" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions/trainer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.train (1)" />
+        <item itemvalue="Python.trainer" />
         <item itemvalue="Python.loadVF" />
         <item itemvalue="Python.populatePackage (2)" />
         <item itemvalue="Python.train (1)" />
-        <item itemvalue="Python.BLDC_DEPLOYED" />
       </list>
     </recent_temporary>
   </component>
@@ -315,7 +309,7 @@
       <workItem from="1738610336896" duration="3429000" />
       <workItem from="1738613806696" duration="470000" />
       <workItem from="1738643976378" duration="4314000" />
-      <workItem from="1738656064992" duration="11923000" />
+      <workItem from="1738656064992" duration="16490000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -557,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738661757719</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="-- basic train process with VF links added">
+      <option name="closed" value="true" />
+      <created>1738668223016</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1738668223016</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +577,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-- workspace.xml" />
     <MESSAGE value="-- simple specification model DSL added + parser" />
     <MESSAGE value="-- start of vf client library for remote monitoring added" />
     <MESSAGE value="-- basic probe added to vfclpy (ad-hoc, needs propper configuration)" />
@@ -600,7 +601,8 @@
     <MESSAGE value="-- poi linked to experiment measurements" />
     <MESSAGE value="-- poi linked to model structure" />
     <MESSAGE value="-- basic VF loader added" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- basic VF loader added" />
+    <MESSAGE value="-- basic train process with VF links added" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- basic train process with VF links added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -624,13 +626,14 @@
     <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732791486359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
     <SUITE FILE_PATH="coverage/vfWorks$vf_export.coverage" NAME="vf_export Coverage Results" MODIFIED="1733243145592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001__1_.coverage" NAME="EXP_001 (1) Coverage Results" MODIFIED="1732790950616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
+    <SUITE FILE_PATH="coverage/vfWorks$trainer.coverage" NAME="trainer Coverage Results" MODIFIED="1738671019670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes/Actions" />
     <SUITE FILE_PATH="coverage/vfWorks$runner.coverage" NAME="runner Coverage Results" MODIFIED="1737651475624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
     <SUITE FILE_PATH="coverage/vfWorks$vf_export__1_.coverage" NAME="vf_export (1) Coverage Results" MODIFIED="1733243419475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure/VF1" />
-    <SUITE FILE_PATH="coverage/vfWorks$loadVF.coverage" NAME="loadVF Coverage Results" MODIFIED="1738661674589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC" />
+    <SUITE FILE_PATH="coverage/vfWorks$loadVF.coverage" NAME="loadVF Coverage Results" MODIFIED="1738668083173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC" />
     <SUITE FILE_PATH="coverage/vfWorks$populatePackage__1_.coverage" NAME="populatePackage (1) Coverage Results" MODIFIED="1737631497478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/template/vf_package" />
     <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
     <SUITE FILE_PATH="coverage/vfWorks$train.coverage" NAME="train Coverage Results" MODIFIED="1737449080330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/template/vf_package/Processes" />
-    <SUITE FILE_PATH="coverage/vfWorks$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1738668022902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes" />
+    <SUITE FILE_PATH="coverage/vfWorks$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1738674978930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/Processes" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001.coverage" NAME="EXP_001 Coverage Results" MODIFIED="1733243300484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
     <SUITE FILE_PATH="coverage/vfWorks$populatePackage__2_.coverage" NAME="populatePackage (2) Coverage Results" MODIFIED="1738664440794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC" />
     <SUITE FILE_PATH="coverage/vfWorks$model1__1_.coverage" NAME="model1 (1) Coverage Results" MODIFIED="1732791501253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />

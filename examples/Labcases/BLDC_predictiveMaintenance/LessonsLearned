@@ -1,0 +1,6 @@
+# Lessons learned
+
+1. in processes => relative path needs to be given (prefix = ../), this needs to be updated so that it automatically resolves
+2. dataloader => data loaded based on experiment label, but what if there are more that one experiments with the same label and/or we want to combine measurements from different experiments
+3. dataloader => now tailered to pycaret which uses pandas dataframes
+4.
