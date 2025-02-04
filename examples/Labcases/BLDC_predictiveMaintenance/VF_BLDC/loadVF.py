@@ -6,11 +6,8 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+from vfworks.metamodels.validity_frame import *
 
-
-def t_user_preprocessing():
-    try:
-        print("WARNING: User-specified preprocessing action not implemented yet!")
-        return True
-    except:
-        return False
+#-------------------------LOAD EXISTING VF------------------------------------------------
+VF = ValidityFrame(name="VF_BLDC", description="Populate VF_BLDC package",config="config.yaml",loadExistingVF=True,VFPackage="")
+x=1

@@ -1,0 +1,68 @@
+{
+    "_name": "operational",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "2e933d32-75b6-4c13-9f32-ce210c4d7331",
+    "_timestamp": "2025-02-04 10:04:57.928510",
+    "_modelStructures": [
+        {
+            "_name": "anomalyDetector",
+            "_description": "tbd",
+            "_verbose": false,
+            "_GUID": "ed9b0b78-6613-4eef-96f9-01b722d48c56",
+            "_timestamp": "2025-02-04 10:04:57.967225",
+            "_inports": [
+                {
+                    "_name": "power",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "f8533994-2724-4a3d-b7d7-e6ce1012045e",
+                    "_timestamp": "2025-02-04 10:04:57.967225",
+                    "_domain": "CONTROL",
+                    "_unit": "Watt",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": [
+                        "poi:daf48822-b6bc-4c90-b64f-8ec22788b006"
+                    ]
+                }
+            ],
+            "_outports": [
+                {
+                    "_name": "anomaly",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "1666315c-d0e4-4bd2-aab6-eed6df62bb1f",
+                    "_timestamp": "2025-02-04 10:04:57.967225",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": [
+                        "poi:4307334c-f2c2-41f3-949a-5766552f485c"
+                    ]
+                },
+                {
+                    "_name": "anomalyScore",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "7461a01f-8886-430b-b715-b5d11a59e771",
+                    "_timestamp": "2025-02-04 10:04:57.967225",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": [
+                        "poi:17aa69f7-8eda-4b62-a433-fb28cfed0a95"
+                    ]
+                }
+            ],
+            "_mapping": [],
+            "_scalars": null,
+            "_modelRef": null
+        }
+    ]
+}

@@ -20,7 +20,8 @@ import yaml
 #---------------------------------------------------------------------------------------
 
 #-------------------------VALIDITY FRAME------------------------------------------------
-VF = ValidityFrame(name="VF_BLDC", description="Populate VF_BLDC package")
+VF = ValidityFrame(name="VF_BLDC", description="Populate VF_BLDC package",config="config.yaml")
+
 #-------------------------Real-World EXPERIMENTS----------------------------------------
 #ASSUMPTIONS: measurements are available in the vfWorks back-end!
 
@@ -43,22 +44,19 @@ VF.assign_poi2measurement(poi=poi1,measurementName="power")
 
 #-------------------------MODEL STRUCTURE-----------------------------------------------
 IN1 = Inport(name="power", unit=UnitType.Power_Watt)
-IN1.add_mapping_relation(poi1)
+IN1.add_mapping_relation(type="poi",poi=poi1)
 
 OUT1 = Outport(name="anomaly", unit=UnitType.UNIT_none)
-OUT1.add_mapping_relation(poi2)
+OUT1.add_mapping_relation(type="poi",poi=poi2)
 OUT2= Outport(name="anomalyScore", unit=UnitType.UNIT_none)
-OUT2.add_mapping_relation(poi2)
+OUT2.add_mapping_relation(type="poi",poi=poi3)
 
-
-
-structure = ModelStructure(name="anomalyDetector", inports=[IN1], outports=[OUT1,OUT2])
-VF.modelStructure = structure
+SM = ModelStructure(name="anomalyDetector", inports=[IN1], outports=[OUT1,OUT2])
+VF.addModelStructure(SM)
 #-----------------------------PROCESSES-----------------------------------------------
 
 
 #-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
-print(os.getcwd())
 packageName="VF_BLDC"
 VF.export(packageName=None)     #VF package is current working directory
 

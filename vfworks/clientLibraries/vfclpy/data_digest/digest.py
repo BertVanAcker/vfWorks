@@ -57,7 +57,7 @@ class remoteExperiments(object):
 
     def _initialize_data_platform(self):
         """Initialize the data plaform object based on the config."""
-        self.logger.info(f"Initializing the data platform.")
+        #self.logger.info(f"Initializing the data platform.")
         return DataPlatform(config=self.config['dp_config'])
 
     def loadExperiments(self, measerementStorage = "full"):             # full => both in the datapoints and csv | csv => store only csv file
@@ -101,13 +101,9 @@ class remoteExperiments(object):
                     save_lists_to_csv(reference, timestamp, dataPoints,headers=['timestamp', measurement])
                 else:
                     save_lists_to_csv(reference, dataPoints, headers=[measurement])
-
             #TODO: STORE THE MEASUREMENTS AS FILES AND REFERENCE!
-
-
             self.experiments.append(exp)
-
-
+            self.logger.info(msg="experiment added to the VF frame, GUID {"+exp.GUID+"}")
         return self.experiments
 
 

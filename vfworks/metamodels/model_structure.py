@@ -10,7 +10,7 @@ from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 
 class ModelStructure(baseElement):
-    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None,mapping=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None,mapping=None,modelRef=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         if inports is None:
@@ -35,6 +35,11 @@ class ModelStructure(baseElement):
         else:
             self._scalars = scalars
 
+        #reference to the actual model which is connected in the model structure
+        self._modelRef = modelRef
+
+
+
     @property
     def inports(self):
         return self._inports
@@ -48,7 +53,7 @@ class ModelStructure(baseElement):
 
     @property
     def outports(self):
-        return self._inports
+        return self._outports
 
     @outports.setter
     def outports(self, value):
@@ -67,6 +72,14 @@ class ModelStructure(baseElement):
 
     def add_mapping_relation(self, value):
         self._mapping.append(value)
+
+    @property
+    def modelRef(self):
+        return self._modelRef
+
+    @modelRef.setter
+    def modelRef(self, ref):
+        self._modelRef = ref
 
 
 class Port(baseElement):
@@ -135,8 +148,8 @@ class Port(baseElement):
     def mapping(self, value):
         self._mapping = value
 
-    def add_mapping_relation(self, value):
-        self._mapping.append(value)
+    def add_mapping_relation(self,type="poi", poi=None):
+        self._mapping.append(type+":"+poi.GUID)
 
 class Inport(Port):
 

@@ -1,11 +1,11 @@
-#**************************************************************************
-# * Copyright (C) 2023-present Bert Van Acker (B.MKR) <bva.bmkr@gmail.com>
+#***************************************************************************************
+# * Copyright (C) 2024-present Bert Van Acker (UAntwerpen) <Bert.VanAcker@uantwerpen.be>
 # *
-# * This file is part of the hybridIO project.
+# * This file is part of the vfWorks project.
 # *
-# * HybridIO can not be copied and/or distributed without the express
+# * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
-# *************************************************************************
+# **************************************************************************************
 import os
 import logging
 
