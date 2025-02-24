@@ -46,7 +46,7 @@ class trainingActions(object):
 
     def t_load_model(self):
         try:
-            self.model = IsolationForest(contamination=0.05, random_state=42,max_features=1)
+            self.model = IsolationForest(contamination="auto", random_state=0,max_features=1)
             return True
         except:
             return False
