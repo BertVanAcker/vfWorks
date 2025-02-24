@@ -29,7 +29,7 @@ class trainingActions(object):
     def t_collect_data(self):
         try:
             #load train data from model structure
-            self.data_train = self._data_loader.loadData(experimentLabel="nominal",prefix=self._prefix,type="numpy",shuffle=True)
+            self.data_train = self._data_loader.loadData(experimentLabel="all",prefix=self._prefix,type="numpy",shuffle=True)
             #load test data from model structure
             self.data_test = self._data_loader.loadData(experimentLabel="anomaly",prefix=self._prefix,type="numpy")
             return True

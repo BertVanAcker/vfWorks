@@ -49,14 +49,16 @@ class DataLoader(object):
             _input_data_ref = None
             _input_poi = inport.mapping
             for experiment in self._validityframe.experiments:
-                if experimentLabel == experiment.label:                            #TODO: if multiple experiments have the same label, we need to concat the datapoints?
+                if experimentLabel == experiment.label or experimentLabel=="all" :                            #TODO: if multiple experiments have the same label, we need to concat the datapoints?
                     for measurement in experiment.measurements:
                         if measurement.poi ==_input_poi:
                             self._validityframe.logger.info(msg="Loaded data from experiment {"+experiment.name+","+experiment.GUID+"} measurement {"+measurement.name+","+measurement.GUID+"}, for PoI {"+_input_poi+"}")
                             _input_data_ref = prefix+measurement.reference
+                            if _input_data_ref is not None:
+                                _inputs_reference.append(_input_data_ref)
 
-            if _input_data_ref is not None:
-                _inputs_reference.append(_input_data_ref)
+            #if _input_data_ref is not None:
+            #    _inputs_reference.append(_input_data_ref)
 
         if type == "pandas":
             _data = merge_csv_files_to_dataframe(_inputs_reference)
@@ -112,11 +114,13 @@ def merge_csv_files_to_numpy_vstack(csv_files=[],shuffle=True):
 
     dataset = []
     for file in csv_files:
-        data = np.genfromtxt(file, delimiter=",", usemask=True)
-        data = np.delete(data, 0)
-        dataset.append(data)
+        _data = np.genfromtxt(file, delimiter=",", dtype="float64", filling_values=None)
+        _data = np.delete(_data, 0)
+        _data = np.array([np.array([row], dtype=object) for row in _data], dtype=object)
 
-    _data = np.vstack(dataset)
-    if shuffle: np.random.shuffle(_data)  # Shuffle the dataset
+        dataset.append(_data.data)
+
+    _data_stacked = np.vstack(dataset)
+    if shuffle: np.random.shuffle(_data_stacked)  # Shuffle the dataset
 
     return _data.astype(np.float32)

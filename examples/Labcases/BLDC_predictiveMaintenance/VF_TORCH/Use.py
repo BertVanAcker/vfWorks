@@ -27,11 +27,11 @@ model = _model_loader.model
 
 #4. use the model for single datapoint predictions
 model.n_features_in_ = 1
-for datapoint in data_test.compressed():
-    _input = [[datapoint]]
+for datapoint in data_test:
+    _input = [datapoint]
     prediction = model.predict(_input)
     anomaly_scores = model.decision_function(_input)  # Higher = normal, Lower = anomaly
-    label = "Anomaly" if prediction == -1 else "Normal"
+    label = "Anomaly" if prediction[0] == -1 else "Normal"
     print("Power usage:"+datapoint.__str__()+" prediction:"+label+" score: "+anomaly_scores.__str__())  # (1 = anomaly, 0 = normal)
 
 
