@@ -1,0 +1,49 @@
+{
+    "_name": "metadata",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "25828cda-aacc-4860-b2fd-7614c16b1bb5",
+    "_timestamp": "2025-02-24 11:34:38.402231",
+    "_specifications": [],
+    "_properties": [
+        {
+            "_name": "Power",
+            "_description": "Electrical power of the BLDC motor",
+            "_verbose": false,
+            "_GUID": "3df792ce-f2dc-458a-89f9-341b02fd6dd5",
+            "_timestamp": "2025-02-24 09:36:05.367207",
+            "_domain": "ELECTRICAL",
+            "_unit": "Watt",
+            "_datatype": "float_64",
+            "_min": -50,
+            "_max": 100,
+            "_satisfies": []
+        },
+        {
+            "_name": "Anomaly",
+            "_description": "Classification of anomaly",
+            "_verbose": false,
+            "_GUID": "0fbacaba-440f-4da2-842a-d6e733293a6b",
+            "_timestamp": "2025-02-24 09:36:05.367207",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "int_8",
+            "_min": 0,
+            "_max": 1,
+            "_satisfies": []
+        },
+        {
+            "_name": "AnomalyScore",
+            "_description": "Classification score of anomaly",
+            "_verbose": false,
+            "_GUID": "4760889e-0faa-451f-bb16-b49be0614c6e",
+            "_timestamp": "2025-02-24 09:36:05.367207",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": -50,
+            "_max": 50,
+            "_satisfies": []
+        }
+    ]
+}

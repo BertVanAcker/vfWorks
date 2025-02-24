@@ -7,6 +7,9 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 from pycaret.anomaly import *
+from vfworks.utils.auxiliary import load_model_from_pickle
+
+
 class ModelLoader(object):
     def __init__(self,name="customLoader",validityFrame = None,verbose=False):
         """Initialize a dataLoader component.
@@ -36,6 +39,15 @@ class ModelLoader(object):
 
         self._model = None
 
+
+    @property
+    def model(self):
+        return self._model
+
+    @model.setter
+    def model(self,m):
+        self._model = m
+
     #------------------------------------------------------------------------------------------------
     #                               PYCARET specific functions
     #------------------------------------------------------------------------------------------------
@@ -52,5 +64,13 @@ class ModelLoader(object):
         self._model_results = assign_model(self._model)
         return self._model_results, self._model
 
-    def loadModel(self,model=""):
-        self._model = load_model(model)
+    def loadModel(self,model=None,type="pycaret"):
+        if model is None:
+            model = self._validityframe.activeModelStructure.modelRef
+        if type == "pycaret":
+            self._model = load_model(model)
+        elif type == "torch":
+            self._model = load_model_from_pickle(file_name=model,modelType="torch")
+        else:
+            self._validityframe.logger.info(msg="Unable to load the model")
+

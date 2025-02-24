@@ -1,0 +1,116 @@
+{
+    "_name": "operational",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "d236f074-1ac5-4bf2-8e54-7f2270add4e9",
+    "_timestamp": "2025-02-24 11:34:38.402231",
+    "_modelStructures": [
+        {
+            "_name": "anomalyDetector",
+            "_description": "tbd",
+            "_verbose": false,
+            "_GUID": "efb0eabb-185c-4bcf-8e15-2255ae34506c",
+            "_timestamp": "2025-02-24 09:36:05.367207",
+            "_inports": [
+                {
+                    "_name": "power",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "63c07f1a-6d90-4b87-a6ea-ac81e35a85e7",
+                    "_timestamp": "2025-02-24 09:36:05.367207",
+                    "_domain": "CONTROL",
+                    "_unit": "Watt",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": "3df792ce-f2dc-458a-89f9-341b02fd6dd5"
+                }
+            ],
+            "_outports": [
+                {
+                    "_name": "anomaly",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "76a6fb44-f66e-4d30-a269-a12e428dc2ec",
+                    "_timestamp": "2025-02-24 09:36:05.367207",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": "0fbacaba-440f-4da2-842a-d6e733293a6b"
+                },
+                {
+                    "_name": "anomalyScore",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "c1d92b42-f7fd-4353-9ec0-db9668068e55",
+                    "_timestamp": "2025-02-24 09:36:05.367207",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": "4760889e-0faa-451f-bb16-b49be0614c6e"
+                }
+            ],
+            "_mapping": [],
+            "_scalars": null,
+            "_modelRef": "Sources/model.pkl"
+        }
+    ],
+    "_activeModelStructure": {
+        "_name": "anomalyDetector",
+        "_description": "tbd",
+        "_verbose": false,
+        "_GUID": "efb0eabb-185c-4bcf-8e15-2255ae34506c",
+        "_timestamp": "2025-02-24 09:36:05.367207",
+        "_inports": [
+            {
+                "_name": "power",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "63c07f1a-6d90-4b87-a6ea-ac81e35a85e7",
+                "_timestamp": "2025-02-24 09:36:05.367207",
+                "_domain": "CONTROL",
+                "_unit": "Watt",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "3df792ce-f2dc-458a-89f9-341b02fd6dd5"
+            }
+        ],
+        "_outports": [
+            {
+                "_name": "anomaly",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "76a6fb44-f66e-4d30-a269-a12e428dc2ec",
+                "_timestamp": "2025-02-24 09:36:05.367207",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "0fbacaba-440f-4da2-842a-d6e733293a6b"
+            },
+            {
+                "_name": "anomalyScore",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "c1d92b42-f7fd-4353-9ec0-db9668068e55",
+                "_timestamp": "2025-02-24 09:36:05.367207",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "4760889e-0faa-451f-bb16-b49be0614c6e"
+            }
+        ],
+        "_mapping": [],
+        "_scalars": null,
+        "_modelRef": "Sources/model.pkl"
+    },
+    "_modelReference": null
+}

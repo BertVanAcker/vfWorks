@@ -12,7 +12,7 @@ system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, C
 #-----------------------------------------------------------------------------------------------------------------------------------
 #   PREPARE ANOMALY DETECTOR TODO: LOAD FROM VF!
 #-----------------------------------------------------------------------------------------------------------------------------------
-system.loadAnomalyDetectionModel(model="output/model_knn")
+system.loadAnomalyDetectionModel(model="output/model_knn")  #TODO: LOAD FROM VF HERE
 
 def anomalyDetection(self):
     data = [[self.timestamp, self.power]]

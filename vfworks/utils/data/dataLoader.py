@@ -7,6 +7,7 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 import pandas as pd
+import numpy as np
 from vfworks.utils.constants import *
 
 
@@ -38,7 +39,7 @@ class DataLoader(object):
         self._validityframe = validityframe
 
 
-    def loadData(self,experimentLabel=None,prefix=""):
+    def loadData(self,experimentLabel=None,prefix="",type="pandas",shuffle=True):            #pandas dataframe | numpy | ...
         """Load the data as pandas DataFrame"""
         _data = None
         activeMS = self._validityframe.activeModelStructure
@@ -57,7 +58,10 @@ class DataLoader(object):
             if _input_data_ref is not None:
                 _inputs_reference.append(_input_data_ref)
 
-        _data = merge_csv_files_to_dataframe(_inputs_reference)
+        if type == "pandas":
+            _data = merge_csv_files_to_dataframe(_inputs_reference)
+        if type == "numpy":
+            _data = merge_csv_files_to_numpy_vstack(csv_files = _inputs_reference,shuffle=shuffle)
         return _data
 
 
@@ -92,6 +96,27 @@ def merge_csv_files_to_dataframe(csv_files=[]):
 
     return merged_df
 
-# Example usage:
-# df = merge_csv_files_to_dataframe("/path/to/csv_directory")
-# print(df)
+def merge_csv_files_to_numpy_vstack(csv_files=[],shuffle=True):
+    """
+    Reads multiple CSV files and merges them into a numpy vstack.
+
+    :param csv_files: List of paths to the CSV files.
+    :return: A Pandas DataFrame with each file as a separate column.
+    """
+
+    if not csv_files:
+        raise ValueError("No CSV files found in the specified directory.")
+
+    dataframes = []
+    column_names = []
+
+    dataset = []
+    for file in csv_files:
+        data = np.genfromtxt(file, delimiter=",", usemask=True)
+        data = np.delete(data, 0)
+        dataset.append(data)
+
+    _data = np.vstack(dataset)
+    if shuffle: np.random.shuffle(_data)  # Shuffle the dataset
+
+    return _data.astype(np.float32)

@@ -1,7 +1,9 @@
+import pickle
 from threading import Timer, Condition
 import threading
 import csv
-import struct
+from skl2onnx import to_onnx,convert_sklearn
+from skl2onnx.common.data_types import FloatTensorType
 
 class perpetualTimer():
 
@@ -59,5 +61,40 @@ def save_lists_to_csv(file_name, *lists, headers=None):
       # Write the rows
       writer.writerows(rows)
 
+def store_as_onnx(model, file_name,modelType="torch"):
+    """Storing the model as a ONNX file"""
+
+    if modelType == "torch":
+        initial_type = [("input", FloatTensorType([None, 1]))]
+        onnx_model = convert_sklearn(model=model,
+                                    initial_types=initial_type,
+                                    target_opset={"": 15,"ai.onnx.ml": 3})
+        with open(file_name, "wb") as f:
+            f.write(onnx_model.SerializeToString())
+    else:
+        print("Unsupported modelType {}".format(modelType))
 
 
+def store_as_pickled(model, file_name,modelType="torch"):
+    """Storing the model as a pickled object"""
+
+    if modelType == "torch":
+        with open(file_name, "wb") as f:
+            pickle.dump(model, f)
+    else:
+        print("Unsupported modelType {}".format(modelType))
+
+def load_model_from_pickle(file_name,modelType="torch"):
+
+    """Loading the pickled model from file location"""
+    if modelType == "torch":
+        try:
+            with open(file_name, "rb") as f:
+                _loaded_model = pickle.load(f)
+            return _loaded_model
+        except:
+            print("Failed to load model")
+            return -1
+    else:
+        print("Unsupported modelType {}".format(modelType))
+        return -1
