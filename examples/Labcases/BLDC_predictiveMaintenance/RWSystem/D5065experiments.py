@@ -161,15 +161,15 @@ class RWSystem_BLDC_D5065():
             self.timestamp = self.timestamp + self.monitorPeriod
 
             #measurements
-            power = self.mydrive.axis0.motor.alpha_beta_controller.power
-            rpm = self.mydrive.encoder_estimator0.vel_estimate*60
-            busVoltage = self.mydrive.vbus_voltage
+            self.power = self.mydrive.axis0.motor.alpha_beta_controller.power
+            self.rpm = self.mydrive.encoder_estimator0.vel_estimate*60
+            self.busVoltage = self.mydrive.vbus_voltage
 
             #local storage
             self.timeStamps.append(self.timestamp)
-            self.powerMeasurements.append(power)
-            self.rpmMeasurements.append(rpm)
-            self.busVoltageMeasurements.append(busVoltage)
+            self.powerMeasurements.append(self.power)
+            self.rpmMeasurements.append(self.rpm)
+            self.busVoltageMeasurements.append(self.busVoltage)
 
             #-------- PERFORM ANOMALY DETECTION-------------
             if self.ANOMALYDETECTORLOADED:

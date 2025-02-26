@@ -19,7 +19,7 @@ system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, C
 #   LOAD ANOMALY DETECTOR FROM VF
 #-----------------------------------------------------------------------------------------------------------------------------------
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_BLDC package",config="config.yaml",loadExistingVF=True,VFPackage="")
-VF.setActiveModelStructure(GUID="efb0eabb-185c-4bcf-8e15-2255ae34506c") #TODO: specify depending on experiments
+VF.setActiveModelStructure(GUID="efb0eabb-185c-4bcf-8e15-2255ae34506c")
 
 _model_loader = ModelLoader(name="VF_model_loader",validityFrame=VF)
 _model_loader.loadModel(type="torch")
