@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- better configuration of the IsolationForest model">
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH/deployed_use.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH/experimenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem/D5065experiments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH/Use.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH/Use.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH/populatePackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH/populatePackage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" afterDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="--RW experiment prepared">
+      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/deployed_use.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC/experimenter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +71,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/01_UA/01_Development/vfWorks/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH",
+    "last_opened_file_path": "D:/01_UA/01_Development/vfWorks/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,9 +83,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_BLDC" />
       <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_TORCH" />
       <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_TORCH\Experiments" />
-      <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_BLDC" />
       <recent name="D:\01_UA\01_Development\vfWorks\examples\template\vf_package\Sources" />
       <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\RWSystem\output" />
     </key>
@@ -289,7 +284,7 @@
       <workItem from="1740468100933" duration="43000" />
       <workItem from="1740478281003" duration="287000" />
       <workItem from="1740478987070" duration="1309000" />
-      <workItem from="1740544660268" duration="1890000" />
+      <workItem from="1740544660268" duration="2071000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -563,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740402944347</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="--RW experiment prepared">
+      <option name="closed" value="true" />
+      <created>1740546626583</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1740546626583</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +584,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-- DUMMY remote validity monitoring added" />
     <MESSAGE value="-- updated dummy remote monitoring with specifications in redis" />
     <MESSAGE value="-- STL included in specification DSL" />
     <MESSAGE value="-- requirements.txt updated" />
@@ -606,7 +608,8 @@
     <MESSAGE value="-- pytorch anomaly detection added" />
     <MESSAGE value="-- updated data handling for sklearn" />
     <MESSAGE value="-- better configuration of the IsolationForest model" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- better configuration of the IsolationForest model" />
+    <MESSAGE value="--RW experiment prepared" />
+    <option name="LAST_COMMIT_MESSAGE" value="--RW experiment prepared" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

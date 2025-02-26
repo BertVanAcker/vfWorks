@@ -1,4 +1,4 @@
-from D5065experiments import RWSystem_BLDC_D5065
+from examples.Labcases.BLDC_predictiveMaintenance.RWSystem.D5065experiments import RWSystem_BLDC_D5065
 from pycaret.anomaly import *
 import pandas as pd
 import tkinter as tk

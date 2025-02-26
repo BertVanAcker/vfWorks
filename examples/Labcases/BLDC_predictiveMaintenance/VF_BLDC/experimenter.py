@@ -1,6 +1,6 @@
 import time
 import struct
-from D5065experiments import RWSystem_BLDC_D5065
+from examples.Labcases.BLDC_predictiveMaintenance.RWSystem.D5065experiments import RWSystem_BLDC_D5065
 from vfworks.clientLibraries.vfclpy.data_forwarders.experiment import *
 from vfworks.utils.auxiliary import *
 
