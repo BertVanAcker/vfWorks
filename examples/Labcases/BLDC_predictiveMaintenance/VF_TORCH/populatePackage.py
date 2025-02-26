@@ -15,6 +15,9 @@ from vfworks.clientLibraries.vfclpy.data_digest.digest import remoteExperiments
 from vfworks.metamodels.experiment import *
 import yaml
 
+#-------------------------REMOTE OR LOCAL DATA------------------------------------------
+REMOTE_DATA = True
+
 #---------------------------------------------------------------------------------------
 #                     PLACEHOLDER FUNCTION TO POPULATE VF_BLDC PACKAGE                      #
 #---------------------------------------------------------------------------------------
@@ -23,30 +26,41 @@ import yaml
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",config="config.yaml")
 
 #-------------------------EXPERIMENTS----------------------------------------
+if not REMOTE_DATA:
+    # ------ MANUALLY ADD MEASUREMENTS AND ALLOCATE TO EXPERIMENTS ------
+    print("Manually adding experiment to "+VF.name)
 
-# manually added measurements and allocated to experiments
-# ---- EXPERIMENT1 ----
-EXP1 = Experiment(name="EXP1",description="First experiment",label="nominal")
-EXP1.addCondition(ExperimentCondition(name="experimentTime",value=50))
-EXP1.addCondition(ExperimentCondition(name="velocityCommand",value=100))
-EXP1.addCondition(ExperimentCondition(name="temperature",value=20.0))
-m1 = Measurement(name="timestamp",dataPoints=[],reference="Experiments/EXP1/timestamp.csv")
-m2 = Measurement(name="power",dataPoints=[],reference="Experiments/EXP1/power.csv")
-EXP1.addMeasurement(measurement=m1)
-EXP1.addMeasurement(measurement=m2)
+    # ---- EXPERIMENT1 ----
+    EXP1 = Experiment(name="EXP1",description="First experiment",label="nominal")
+    EXP1.addCondition(ExperimentCondition(name="experimentTime",value=50))
+    EXP1.addCondition(ExperimentCondition(name="velocityCommand",value=100))
+    EXP1.addCondition(ExperimentCondition(name="temperature",value=20.0))
+    m1 = Measurement(name="timestamp",dataPoints=[],reference="Experiments/EXP1/timestamp.csv")
+    m2 = Measurement(name="power",dataPoints=[],reference="Experiments/EXP1/power.csv")
+    EXP1.addMeasurement(measurement=m1)
+    EXP1.addMeasurement(measurement=m2)
 
-# ---- EXPERIMENT2 ----
-EXP2 = Experiment(name="EXP2",description="Second experiment",label="anomaly")
-EXP2.addCondition(ExperimentCondition(name="experimentTime",value=50))
-EXP2.addCondition(ExperimentCondition(name="velocityCommand",value=100))
-EXP2.addCondition(ExperimentCondition(name="temperature",value=20.0))
-m3 = Measurement(name="timestamp",dataPoints=[],reference="Experiments/EXP2/timestamp.csv")
-m4 = Measurement(name="power",dataPoints=[],reference="Experiments/EXP2/power.csv")
-EXP2.addMeasurement(measurement=m3)
-EXP2.addMeasurement(measurement=m4)
+    # ---- EXPERIMENT2 ----
+    EXP2 = Experiment(name="EXP2",description="Second experiment",label="anomaly")
+    EXP2.addCondition(ExperimentCondition(name="experimentTime",value=50))
+    EXP2.addCondition(ExperimentCondition(name="velocityCommand",value=100))
+    EXP2.addCondition(ExperimentCondition(name="temperature",value=20.0))
+    m3 = Measurement(name="timestamp",dataPoints=[],reference="Experiments/EXP2/timestamp.csv")
+    m4 = Measurement(name="power",dataPoints=[],reference="Experiments/EXP2/power.csv")
+    EXP2.addMeasurement(measurement=m3)
+    EXP2.addMeasurement(measurement=m4)
 
-VF.addExperiment(EXP1)
-VF.addExperiment(EXP2)
+    VF.addExperiment(EXP1)
+    VF.addExperiment(EXP2)
+
+else:
+    # ------ FETCH REMOTE EXPERIMENTS IN vfWorks BACKEND ------
+
+    print("Fetching remote experiment and add to "+VF.name)
+
+    exp_remote = remoteExperiments(config='config.yaml', VFName=VF.name)
+    VF.experiments = exp_remote.loadExperiments(measerementStorage="csv")
+
 
 #-------------------------SPECIFICATIONS------------------------------------------------
 

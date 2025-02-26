@@ -5,12 +5,13 @@ from odrive.enums import *
 import time
 import math
 from pycaret.anomaly import *
+import serial
 
 
 
 class RWSystem_BLDC_D5065():
 
-    def __init__(self,name,VERBOSE=True,INITIALIZED=False,CALIBRATED=False,monitorPeriod=0.5,DEPLOYED=True):
+    def __init__(self,name,VERBOSE=True,INITIALIZED=False,CALIBRATED=False,monitorPeriod=0.5,DEPLOYED=True,SERIAL=False):
         self.name = name
         self.VERBOSE = VERBOSE
         self.vel_request = 0
@@ -43,7 +44,12 @@ class RWSystem_BLDC_D5065():
             if not CALIBRATED:
                 self.calibrateBLDC()
 
+        if SERIAL:
+            #---------serial connections for forwarding data to serial ------------
+            self.serialPort = serial.Serial('COM8', 115200)
+
         #-------anomaly detection components---------------
+        self.model = None
         self.ANOMALYDETECTORLOADED = False
 
 
@@ -181,9 +187,16 @@ class RWSystem_BLDC_D5065():
     def anomalyDetection(self):
         print("Warning: anomaly detection function not implemented")
 
-    def loadAnomalyDetectionModel(self, model):
-        self.model = load_model(model)
-        self.ANOMALYDETECTORLOADED = True
+    def loadAnomalyDetectionModel(self, model,type="pycaret"):
+        if type == "pycaret":
+            self.model = load_model(model)
+            self.ANOMALYDETECTORLOADED = True
+        elif type == "torch":
+            self.model = model
+            self.ANOMALYDETECTORLOADED = True
+        else:
+            self.model = None
+            self.ANOMALYDETECTORLOADED = False
 
 
 

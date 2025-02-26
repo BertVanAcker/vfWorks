@@ -31,6 +31,9 @@ metric_node = kg.add_node(metric.create_neo4j_node())
 property = Property("SafetyGoals", "Define safety goals for risk mitigation", "Complete and traceable safety goals")
 property_node = kg.add_node(property.create_neo4j_node())
 
+property2 = Property("SafetyGoals2", "New safety goals", "Complete and traceable safety goals")
+property2_node = kg.add_node(property2.create_neo4j_node())
+
 vv = VerificationAndValidation("Traceability and validation of safety goals", "Testing, Simulation, Review")
 vv_node = kg.add_node(vv.create_neo4j_node())
 
@@ -49,6 +52,7 @@ kg.add_relationship(lifecycle_node, "HAS_PHASE", phase_node)
 kg.add_relationship(phase_node, "HAS_PROCESS", process_node)
 kg.add_relationship(process_node, "HAS_METRIC", metric_node)
 kg.add_relationship(process_node, "HAS_PROPERTY", property_node)
+kg.add_relationship(process_node, "HAS_PROPERTY", property2_node)
 kg.add_relationship(standard_node, "HAS_VERIFICATION_AND_VALIDATION", vv_node)
 kg.add_relationship(standard_node, "HAS_ROLE", role_node)
 kg.add_relationship(standard_node, "HAS_ARTIFACT", artifact_node)

@@ -6,6 +6,9 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+import time
+
+import serial
 from vfworks.metamodels.validity_frame import *
 from vfworks.utils.data.dataLoader import *
 from vfworks.utils.model.modelLoader import *
@@ -25,14 +28,21 @@ _model_loader = ModelLoader(name="VF_model_loader",validityFrame=VF)
 _model_loader.loadModel(type="torch")
 model = _model_loader.model
 
-#4. use the model for single datapoint predictions
+#4. use the model for single datapoint predictions + send to wio terminal for visualization
+ser = serial.Serial('COM8', 115200)
 model.n_features_in_ = 1
 for datapoint in data_test:
     _input = [datapoint]
     prediction = model.predict(_input)
-    anomaly_scores = model.decision_function(_input)  # Higher = normal, Lower = anomaly
+    anomaly_score = model.decision_function(_input)  # Higher = normal, Lower = anomaly
     label = "Anomaly" if prediction[0] == -1 else "Normal"
-    print("Power usage:"+datapoint.__str__()+" prediction:"+label+" score: "+anomaly_scores.__str__())  # (1 = anomaly, 0 = normal)
+    print("Power usage:"+datapoint.__str__()+" prediction:"+label+" score: "+anomaly_score.__str__())  # (1 = anomaly, 0 = normal)
 
+    anomaly = 1 if prediction[0] == -1 else 0
+    certainty = 1
+    data = f"{anomaly},{certainty}\n"
+    ser.write(data.encode())
+
+    time.sleep(1)
 
 
