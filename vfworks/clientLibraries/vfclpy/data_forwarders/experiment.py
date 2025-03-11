@@ -19,7 +19,7 @@ class Experiment(object):
         self.data_platform = self._initialize_data_platform()  # Initialize knowledge within the component
 
         probe_config = self.config.get("validityframe", {})
-        self.base_key = f"{probe_config.get("name", "base")}:Experiments"
+        self.base_key = f"{probe_config.get('name', 'base')}:Experiments"
         self.experiment_key = self.base_key+":"+ID
         self.conditions_key = self.experiment_key+":"+"Conditions"
         self.measurements_key = self.experiment_key + ":" + "Measurements"

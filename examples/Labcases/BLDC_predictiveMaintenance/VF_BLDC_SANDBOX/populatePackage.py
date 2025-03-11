@@ -23,7 +23,7 @@ REMOTE_DATA = True
 #---------------------------------------------------------------------------------------
 
 #-------------------------VALIDITY FRAME------------------------------------------------
-VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",config="config.yaml")
+VF = ValidityFrame(name="VF_BLDC_SANDBOX", description="Populate VF_BLDC_SANDBOX package",config="config.yaml")
 
 #-------------------------EXPERIMENTS----------------------------------------
 if not REMOTE_DATA:
@@ -66,27 +66,34 @@ else:
 
 #------------------------------POI------------------------------------------------------
 poi1 = PropertyofInterest(name="Power",description="Electrical power of the BLDC motor",domain=DomainType.ELECTRICAL,unit=UnitType.Power_Watt,datatype=DataType.FLOAT_64,min=-50,max=100,satisfies=None)
-poi2 = PropertyofInterest(name="Anomaly",description="Classification of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.INTEGER_8,min=0,max=1,satisfies=None)
-poi3 = PropertyofInterest(name="AnomalyScore",description="Classification score of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=-50,max=50,satisfies=None)
+poi2 = PropertyofInterest(name="rpm",description="Rotational speed of the BLDC motor",domain=DomainType.MECHANICAL,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=3000,satisfies=None)
+poi3 = PropertyofInterest(name="Anomaly",description="Classification of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.INTEGER_8,min=0,max=1,satisfies=None)
+poi4 = PropertyofInterest(name="AnomalyScore",description="Classification score of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=-50,max=50,satisfies=None)
 
 VF.addProperty(poi1)
 VF.addProperty(poi2)
 VF.addProperty(poi3)
+VF.addProperty(poi4)
 
 #-----------------POI LINKING TO EXPERIMENT MEASUREMENTS--------------------------------
 VF.assign_poi2measurement(poi=poi1,measurementName="power")
+VF.assign_poi2measurement(poi=poi2,measurementName="rpm")
 
 #-------------------------MODEL STRUCTURE-----------------------------------------------
 IN1 = Inport(name="power", unit=UnitType.Power_Watt)
 IN1.add_mapping_relation(type="poi",poi=poi1)
+IN2 = Inport(name="rpm", unit=UnitType.UNIT_none)
+IN2.add_mapping_relation(type="poi",poi=poi2)
 
 OUT1 = Outport(name="anomaly", unit=UnitType.UNIT_none)
-OUT1.add_mapping_relation(type="poi",poi=poi2)
+OUT1.add_mapping_relation(type="poi",poi=poi3)
 OUT2= Outport(name="anomalyScore", unit=UnitType.UNIT_none)
-OUT2.add_mapping_relation(type="poi",poi=poi3)
+OUT2.add_mapping_relation(type="poi",poi=poi4)
 
-SM = ModelStructure(name="anomalyDetector", inports=[IN1], outports=[OUT1,OUT2])
+SM = ModelStructure(name="anomalyDetector_1D", inports=[IN1], outports=[OUT1,OUT2])
+SM2 = ModelStructure(name="anomalyDetector_2D", inports=[IN1, IN2], outports=[OUT1,OUT2])
 VF.addModelStructure(SM)
+VF.addModelStructure(SM2)
 #-----------------------------PROCESSES-----------------------------------------------
 
 

@@ -19,12 +19,12 @@ system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, C
 #   LOAD ANOMALY DETECTOR FROM VF
 #-----------------------------------------------------------------------------------------------------------------------------------
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_BLDC package",config="config.yaml",loadExistingVF=True,VFPackage="")
-VF.setActiveModelStructure(GUID="efb0eabb-185c-4bcf-8e15-2255ae34506c")
+VF.setActiveModelStructure(GUID="a428499b-9d47-4457-a37b-2efc40600977")
 
 _model_loader = ModelLoader(name="VF_model_loader",validityFrame=VF)
 _model_loader.loadModel(type="torch")
 model = _model_loader.model
-model.n_features_in_ = 1
+model.n_features_in_ = 2
 
 #-----------------------------------------------------------------------------------------------------------------------------------
 #   ASSIGN ANOMALY DETECTOR TO RW SYSTEM
@@ -36,13 +36,14 @@ system.loadAnomalyDetectionModel(model=model,type="torch")
 #-----------------------------------------------------------------------------------------------------------------------------------
 def anomalyDetection(self):
     # input formatting
-    _in1 = [[self.power]]
+    _in1 = self.power
+    _in2 = self.rpm
     # model use
-    _prediction = model.predict(_in1)
+    _prediction = model.predict([[_in1, _in2]])
     # output formatting
     anomaly = 1 if _prediction[0] == -1 else 0
     label = "Anomaly" if _prediction[0] == -1 else "Normal"
-    anomaly_score = model.decision_function(_in1)  # Higher = normal, Lower = anomaly
+    anomaly_score = model.decision_function([[_in1, _in2]])  # Higher = normal, Lower = anomaly
     certainty = 1
 
     print("Power usage:" + self.power.__str__() + " prediction:" + label + " score: " + anomaly_score.__str__())
@@ -58,4 +59,4 @@ system.anomalyDetection= anomalyDetection
 #   Execute an experiment to demonstrate the anomaly detector case
 #----------------------------------------------------------------------------------------------------------------------------------
 
-measurements = system.experiment_constant_velocity(experimentTime=60,percentage=100)
+measurements = system.experiment_square_wave_velocity(experimentTime=60,percentage=100, period=10)

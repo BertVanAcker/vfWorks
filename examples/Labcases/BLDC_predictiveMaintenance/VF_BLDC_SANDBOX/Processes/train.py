@@ -15,7 +15,7 @@ from vfworks.workflows.executer import Executer_GUI,Executer_headless
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",config="../config.yaml",loadExistingVF=True,VFPackage="../")
 
 # 1 . Select model structure used for training
-VF.setActiveModelStructure(GUID="efb0eabb-185c-4bcf-8e15-2255ae34506c")
+VF.setActiveModelStructure(GUID="a428499b-9d47-4457-a37b-2efc40600977")
 print(VF.activeModelStructure.name)
 
 # 2 . Instantiate the training class
@@ -24,6 +24,7 @@ trainer = trainingActions(name="custom_trainer_class",validityFrame = VF)
 # 3 . define the tasks
 tasks = {
     "Collect data": trainer.t_collect_data,
+    "Process data": trainer.t_prepare_data,
     "Load model": trainer.t_load_model,
     "Model fitting": trainer.t_fit_model,
     "Evaluate model": trainer.t_evaluate_model,

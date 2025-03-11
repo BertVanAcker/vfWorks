@@ -154,6 +154,30 @@ class RWSystem_BLDC_D5065():
         measurements = [self.timeStamps,self.powerMeasurements,self.rpmMeasurements,self.busVoltageMeasurements]
         return measurements
 
+    def experiment_square_wave_velocity(self,experimentTime=10,percentage=100, period=1):
+        # Flush measurements
+        self.flushMeasurements()
+        # Start monitoring and activate close-loop speed control
+        self.start()
+        # set constant velocity
+        curr_time = 0
+        self.vel_request = 0
+        while curr_time < experimentTime:
+            if self.vel_request == 0:
+                self.vel_request = float(percentage / 100) * self.maximumVelocity
+            else:
+                self.vel_request = 0
+            self.mydrive.axis0.controller.input_vel = self.vel_request
+            time.sleep(period)
+            curr_time += period
+        # disable closed-loop control to finish experiment
+        self.stop()
+        # format the measurements and return
+        measurements = [self.timeStamps, self.powerMeasurements, self.rpmMeasurements, self.busVoltageMeasurements]
+        return measurements
+
+
+
     #---------------------------MONITORING--------------------------
     def monitor(self):
         if self.monitorActive:

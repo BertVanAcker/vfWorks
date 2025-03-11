@@ -48,6 +48,7 @@ class DataLoader(object):
             #fetch measurements related to the input
             _input_data_ref = None
             _input_poi = inport.mapping
+            _poi_reference = []
             for experiment in self._validityframe.experiments:
                 if experimentLabel == experiment.label or experimentLabel=="all" :                            #TODO: if multiple experiments have the same label, we need to concat the datapoints?
                     for measurement in experiment.measurements:
@@ -55,7 +56,8 @@ class DataLoader(object):
                             self._validityframe.logger.info(msg="Loaded data from experiment {"+experiment.name+","+experiment.GUID+"} measurement {"+measurement.name+","+measurement.GUID+"}, for PoI {"+_input_poi+"}")
                             _input_data_ref = prefix+measurement.reference
                             if _input_data_ref is not None:
-                                _inputs_reference.append(_input_data_ref)
+                                _poi_reference.append(_input_data_ref)
+            _inputs_reference.append(_poi_reference)
 
             #if _input_data_ref is not None:
             #    _inputs_reference.append(_input_data_ref)
@@ -114,13 +116,16 @@ def merge_csv_files_to_numpy_vstack(csv_files=[],shuffle=True):
 
     dataset = []
     for file in csv_files:
-        _data = np.genfromtxt(file, delimiter=",", dtype="float64", filling_values=None)
-        _data = np.delete(_data, 0)
-        _data = np.array([np.array([row], dtype=object) for row in _data], dtype=object)
+        poi_dataset = []
+        for data in file:
+            _data = np.genfromtxt(data, delimiter=",", dtype="float64", filling_values=None)
+            _data = np.delete(_data, 0)
+            _data = np.array([np.array([row], dtype=object) for row in _data], dtype=object)
+            poi_dataset.append(_data.data)
+        poi_dataset = np.vstack(poi_dataset)
+        dataset.append(poi_dataset.data)
 
-        dataset.append(_data.data)
-
-    _data_stacked = np.vstack(dataset)
+    _data_stacked = np.hstack(dataset)
     if shuffle: np.random.shuffle(_data_stacked)  # Shuffle the dataset
 
-    return _data.astype(np.float32)
+    return _data_stacked.astype(np.float32)

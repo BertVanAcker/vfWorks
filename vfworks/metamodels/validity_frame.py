@@ -387,7 +387,7 @@ class Operational(baseElement):
                 #extract paramaters
                 #TODO: check if we need parameters? if yes, implement
 
-                _ms = ModelStructure(name="anomalyDetector", inports=_inputs, outports=_outputs)
+                _ms = ModelStructure(name=ms["_name"], inports=_inputs, outports=_outputs)
                 _ms.GUID = ms["_GUID"]
                 _ms.timestamp = ms["_timestamp"]
                 _ms.modelRef = ms["_modelRef"]

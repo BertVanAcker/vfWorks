@@ -22,6 +22,7 @@ class trainingActions(object):
         # define modelloader
         self._model_loader = ModelLoader(name="VF_model_loader",validityFrame=self._validityFrame)
 
+        self.data_full = None
         self.data_RAW = None
         self.data_train = None
         self.data_test = None
@@ -29,24 +30,23 @@ class trainingActions(object):
     def t_collect_data(self):
         try:
             #load train data from model structure
-            self.data_train = self._data_loader.loadData(experimentLabel="all",prefix=self._prefix,type="numpy",shuffle=True)
-            #load test data from model structure
-            self.data_test = self._data_loader.loadData(experimentLabel="anomaly",prefix=self._prefix,type="numpy")
+            self.data_full = self._data_loader.loadData(experimentLabel="all",prefix=self._prefix,type="numpy",shuffle=True)
             return True
         except:
             return False
 
     def t_prepare_data(self):
         try:
-            print("WARNING: Prepare data action not implemented yet!")
-            #TODO: process self.data_RAW and fill self.data
+            train_size = int(len(self.data_full)*0.8)
+            self.data_train = self.data_full[:train_size]
+            self.data_test = self.data_full[train_size:]
             return True
         except:
             return False
 
     def t_load_model(self):
         try:
-            self.model = IsolationForest(contamination="auto", random_state=0,max_features=1)
+            self.model = IsolationForest(contamination="auto", random_state=0, max_features=2)
             return True
         except:
             return False
