@@ -10,7 +10,7 @@ from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 
 class ModelStructure(baseElement):
-    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None,mapping=None,modelRef=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None, modelType=None,mapping=None,modelRef=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         if inports is None:
@@ -22,6 +22,11 @@ class ModelStructure(baseElement):
             self._outports = []
         else:
             self._outports = outports
+
+        if modelType is None:
+            self._modelType = None
+        else:
+            self._modelType = modelType
 
         # TRACEABILITY TO PROPERTIES (POI/INFLUENCE)
         if mapping is None:

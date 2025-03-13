@@ -15,7 +15,7 @@ from vfworks.workflows.executer import Executer_GUI,Executer_headless
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",config="../config.yaml",loadExistingVF=True,VFPackage="../")
 
 # 1 . Select model structure used for training
-VF.setActiveModelStructure(GUID="a428499b-9d47-4457-a37b-2efc40600977")
+VF.setActiveModelStructure(GUID="c5591bae-1e66-4e01-bdba-aa1358f3e893")
 print(VF.activeModelStructure.name)
 
 # 2 . Instantiate the training class

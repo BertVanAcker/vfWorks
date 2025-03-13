@@ -64,27 +64,3 @@ if DEPLOYED:
     EXP2.addMeasurement(key="busVoltage", value=measurements[3],clean=True)
     EXP1.logger.info("Experiment <" + EXP2.ID + "> finished.")
 
-time.sleep(2)
-#-----------------------------------------------------------------------------------------------------------------------
-#                                   EXPERIMENT 3
-#-----------------------------------------------------------------------------------------------------------------------
-experimentTime = 100    #100 sec
-cmd = 100               #100% velocity
-period = 15
-
-#STORE EXPERIMENTAL SETUP
-EXP3 = Experiment(ID="EXP3",config="config.yaml",label="nominal")
-EXP3.addCondition(condition="experimentTime",value=experimentTime)
-EXP3.addCondition(condition="velocityCommand",value=cmd)
-EXP3.addCondition(condition="temperature",value=20.0)
-
-if DEPLOYED:
-    EXP3.logger.info("Starting experiment <"+EXP3.ID+">...")
-    measurements = system.experiment_square_wave_velocity(experimentTime=experimentTime,percentage=cmd, period= 5)        #measurements [timestamp,power,rpm,busVoltage]
-    EXP3.addMeasurement(key="timestamp",value=measurements[0],clean=True)
-    EXP3.addMeasurement(key="power", value=measurements[1],clean=True)
-    EXP3.addMeasurement(key="rpm", value=measurements[2],clean=True)
-    EXP3.addMeasurement(key="busVoltage", value=measurements[3],clean=True)
-    EXP3.logger.info("Experiment <" + EXP1.ID + "> finished.")
-
-time.sleep(2)

@@ -40,6 +40,12 @@ class DataType:
     STRING = "string"
     BOOLEAN = "boolean"
 
+class ModelType:
+    ISOLATIONFOREST = "IsolationForest"
+    LINEAR_REGRESSION = "LinearRegression"
+    NEURAL_NETWORK = "NeuralNetwork"
+    RECURRENT_NEURAL_NETWORK = "RecurrentNeuralNetwork"
+
 class MonitorType:
     PROPERTY_RANGE= "property_range"
     PROPERTY_MEAN = "property_mean"

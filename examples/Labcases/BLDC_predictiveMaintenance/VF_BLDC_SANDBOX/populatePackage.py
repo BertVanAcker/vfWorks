@@ -90,8 +90,8 @@ OUT1.add_mapping_relation(type="poi",poi=poi3)
 OUT2= Outport(name="anomalyScore", unit=UnitType.UNIT_none)
 OUT2.add_mapping_relation(type="poi",poi=poi4)
 
-SM = ModelStructure(name="anomalyDetector_1D", inports=[IN1], outports=[OUT1,OUT2])
-SM2 = ModelStructure(name="anomalyDetector_2D", inports=[IN1, IN2], outports=[OUT1,OUT2])
+SM = ModelStructure(name="anomalyDetector_1D", inports=[IN1], outports=[OUT1,OUT2], modelType=ModelType.ISOLATIONFOREST)
+SM2 = ModelStructure(name="anomalyDetector_2D", inports=[IN1, IN2], outports=[OUT1,OUT2], modelType=ModelType.ISOLATIONFOREST)
 VF.addModelStructure(SM)
 VF.addModelStructure(SM2)
 #-----------------------------PROCESSES-----------------------------------------------
