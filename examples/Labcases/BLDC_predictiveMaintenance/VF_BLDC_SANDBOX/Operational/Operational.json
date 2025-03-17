@@ -2,28 +2,28 @@
     "_name": "operational",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "bf5f24e4-ac9d-48fd-a2e0-98e03baf292a",
-    "_timestamp": "2025-03-13 17:40:09.221039",
+    "_GUID": "e39cd8aa-eb1d-4d8f-af65-007a3234e871",
+    "_timestamp": "2025-03-17 16:53:48.331363",
     "_modelStructures": [
         {
             "_name": "anomalyDetector_1D",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "076b231b-920d-41bf-9b47-249115f5ffc3",
-            "_timestamp": "2025-03-13 17:40:09.295541",
+            "_GUID": "19c1e988-16f8-4303-86c9-e5c7ee2c45df",
+            "_timestamp": "2025-03-17 16:30:24.103763",
             "_inports": [
                 {
                     "_name": "power",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "0eccc0e8-456f-495c-b7a1-3daf64be68eb",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "1dce2502-25a3-4987-a563-18e4f84ab4a4",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "Watt",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "bff1ec46-0bc6-495f-8aeb-775b987d19cd"
+                    "_mapping": "8d493355-5ecb-4608-94d6-57d9333415ed"
                 }
             ],
             "_outports": [
@@ -31,66 +31,66 @@
                     "_name": "anomaly",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "9238b86d-82e2-406a-bc98-59e2c421d786",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "6bad249e-0201-41f4-ad12-d45edca0768b",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "66f7f81d-8bfd-44e2-b9e2-e8b9372ca05e"
+                    "_mapping": "5b2079e9-8981-4a31-a33d-99145547fd99"
                 },
                 {
                     "_name": "anomalyScore",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "9cb7b467-6028-41f8-a639-a4522dbdaa74",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "225562b2-c206-407c-9583-95ec8a570f09",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "9b98bd7c-ef75-47a4-adf9-aa30abb933ed"
+                    "_mapping": "b1f4e06a-bdfc-47ed-a724-8a10d303e3df"
                 }
             ],
-            "_modelType": "IsolationForest",
+            "_modelType": null,
             "_mapping": [],
             "_scalars": null,
-            "_modelRef": null
+            "_modelRef": "Sources/anomalyDetector_1D_model.pkl"
         },
         {
             "_name": "anomalyDetector_2D",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "65a1622a-8b89-44ec-b3ae-3b0ab75b2e99",
-            "_timestamp": "2025-03-13 17:40:09.295541",
+            "_GUID": "a4227eb5-01f7-45c8-b69d-035a9aef1987",
+            "_timestamp": "2025-03-17 16:30:24.103763",
             "_inports": [
                 {
                     "_name": "power",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "0eccc0e8-456f-495c-b7a1-3daf64be68eb",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "1dce2502-25a3-4987-a563-18e4f84ab4a4",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "Watt",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "bff1ec46-0bc6-495f-8aeb-775b987d19cd"
+                    "_mapping": "8d493355-5ecb-4608-94d6-57d9333415ed"
                 },
                 {
                     "_name": "rpm",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "368fd941-7194-4622-983b-620a6d3b1c8c",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "d2e1db19-5460-4ea6-8798-b4bb413ed1a3",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "520d0b53-62ef-497a-942a-cede1a2aecea"
+                    "_mapping": "a19e4f9e-8424-4ea7-8cc7-174a4544d6b5"
                 }
             ],
             "_outports": [
@@ -98,35 +98,88 @@
                     "_name": "anomaly",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "9238b86d-82e2-406a-bc98-59e2c421d786",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "6bad249e-0201-41f4-ad12-d45edca0768b",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "66f7f81d-8bfd-44e2-b9e2-e8b9372ca05e"
+                    "_mapping": "5b2079e9-8981-4a31-a33d-99145547fd99"
                 },
                 {
                     "_name": "anomalyScore",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "9cb7b467-6028-41f8-a639-a4522dbdaa74",
-                    "_timestamp": "2025-03-13 17:40:09.295541",
+                    "_GUID": "225562b2-c206-407c-9583-95ec8a570f09",
+                    "_timestamp": "2025-03-17 16:30:24.103763",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "9b98bd7c-ef75-47a4-adf9-aa30abb933ed"
+                    "_mapping": "b1f4e06a-bdfc-47ed-a724-8a10d303e3df"
                 }
             ],
-            "_modelType": "IsolationForest",
+            "_modelType": null,
             "_mapping": [],
             "_scalars": null,
-            "_modelRef": null
+            "_modelRef": "Sources/model.pkl"
         }
     ],
-    "_activeModelStructure": null,
+    "_activeModelStructure": {
+        "_name": "anomalyDetector_1D",
+        "_description": "tbd",
+        "_verbose": false,
+        "_GUID": "19c1e988-16f8-4303-86c9-e5c7ee2c45df",
+        "_timestamp": "2025-03-17 16:30:24.103763",
+        "_inports": [
+            {
+                "_name": "power",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "1dce2502-25a3-4987-a563-18e4f84ab4a4",
+                "_timestamp": "2025-03-17 16:30:24.103763",
+                "_domain": "CONTROL",
+                "_unit": "Watt",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "8d493355-5ecb-4608-94d6-57d9333415ed"
+            }
+        ],
+        "_outports": [
+            {
+                "_name": "anomaly",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "6bad249e-0201-41f4-ad12-d45edca0768b",
+                "_timestamp": "2025-03-17 16:30:24.103763",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "5b2079e9-8981-4a31-a33d-99145547fd99"
+            },
+            {
+                "_name": "anomalyScore",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "225562b2-c206-407c-9583-95ec8a570f09",
+                "_timestamp": "2025-03-17 16:30:24.103763",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "b1f4e06a-bdfc-47ed-a724-8a10d303e3df"
+            }
+        ],
+        "_modelType": null,
+        "_mapping": [],
+        "_scalars": null,
+        "_modelRef": "Sources/anomalyDetector_1D_model.pkl"
+    },
     "_modelReference": null
 }

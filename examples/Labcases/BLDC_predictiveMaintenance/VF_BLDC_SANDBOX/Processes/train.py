@@ -15,8 +15,8 @@ from vfworks.workflows.executer import Executer_GUI,Executer_headless
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",config="../config.yaml",loadExistingVF=True,VFPackage="../")
 
 # 1 . Select model structure used for training
-VF.setActiveModelStructure(GUID="c5591bae-1e66-4e01-bdba-aa1358f3e893")
-print(VF.activeModelStructure.name)
+VF.setActiveModelStructure(name="anomalyDetector_1D")
+print(VF.activeModelStructure.GUID)
 
 # 2 . Instantiate the training class
 trainer = trainingActions(name="custom_trainer_class",validityFrame = VF)

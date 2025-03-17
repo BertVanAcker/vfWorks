@@ -123,8 +123,12 @@ class ValidityFrame(baseElement):
                 _structure = structure
         return _structure
 
-    def setActiveModelStructure(self, GUID=None):
-        self._operational.setActiveModelStructure(GUID=GUID)
+    def setActiveModelStructure(self, GUID=None, name=None):
+        if name is not None:
+            self._operational.setActiveModelStructureByName(name=name)
+        else:
+            self._operational.setActiveModelStructure(GUID=GUID)
+
 
     @property
     def activeModelStructure(self):
@@ -331,6 +335,14 @@ class Operational(baseElement):
     @property
     def activeModelStructure(self):
         return self._activeModelStructure
+
+    def setActiveModelStructureByName(self,name=None):
+        if name is None:
+            self._activeModelStructure = self._modelStructures[0]
+        else:
+            for ms in self._modelStructures:
+                if ms.name == name:
+                    self._activeModelStructure = ms
 
     def setActiveModelStructure(self,GUID=None):
         if GUID is None:

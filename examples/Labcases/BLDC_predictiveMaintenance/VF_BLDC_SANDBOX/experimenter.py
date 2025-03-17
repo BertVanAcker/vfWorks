@@ -62,5 +62,6 @@ if DEPLOYED:
     EXP2.addMeasurement(key="power", value=measurements[1],clean=True)
     EXP2.addMeasurement(key="rpm", value=measurements[2],clean=True)
     EXP2.addMeasurement(key="busVoltage", value=measurements[3],clean=True)
-    EXP1.logger.info("Experiment <" + EXP2.ID + "> finished.")
+    EXP2.logger.info("Experiment <" + EXP2.ID + "> finished.")
 
+time.sleep(2)

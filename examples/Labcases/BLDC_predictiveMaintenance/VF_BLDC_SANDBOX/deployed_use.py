@@ -19,7 +19,7 @@ system = RWSystem_BLDC_D5065(name="D5065 system under study",INITIALIZED=True, C
 #   LOAD ANOMALY DETECTOR FROM VF
 #-----------------------------------------------------------------------------------------------------------------------------------
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_BLDC package",config="config.yaml",loadExistingVF=True,VFPackage="")
-VF.setActiveModelStructure(GUID="c5591bae-1e66-4e01-bdba-aa1358f3e893")
+VF.setActiveModelStructure(name="anomalyDetector_2D")
 
 _model_loader = ModelLoader(name="VF_model_loader",validityFrame=VF)
 _model_loader.loadModel(type="torch")
@@ -59,4 +59,4 @@ system.anomalyDetection= anomalyDetection
 #   Execute an experiment to demonstrate the anomaly detector case
 #----------------------------------------------------------------------------------------------------------------------------------
 
-measurements = system.experiment_constant_velocity(experimentTime=60,percentage=100)
+measurements = system.experiment_square_wave_velocity(experimentTime=60,percentage=100,period=1)

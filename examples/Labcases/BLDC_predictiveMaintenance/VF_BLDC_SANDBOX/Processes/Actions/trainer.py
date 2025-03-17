@@ -46,7 +46,8 @@ class trainingActions(object):
 
     def t_load_model(self):
         try:
-            self.model = IsolationForest(contamination="auto", random_state=0, max_features=2)
+            num_inputs = len(self._validityFrame.activeModelStructure.inports)
+            self.model = IsolationForest(contamination="auto", random_state=0, max_features=num_inputs)
             return True
         except:
             return False
@@ -76,8 +77,9 @@ class trainingActions(object):
 
     def t_store_model_snapshot_pickled(self):
         try:
-            store_as_pickled(model=self.model,file_name=self._prefix+'Sources/'+"model.pkl",modelType="torch")
-            self._validityFrame.modelReference = "Sources/model.pkl"
+            model_name = self._validityFrame.activeModelStructure.name
+            store_as_pickled(model=self.model,file_name=self._prefix+'Sources/'+ model_name + "_model.pkl",modelType="torch")
+            self._validityFrame.modelReference = "Sources/" + model_name + "_model.pkl"
             return True
         except Exception as e:
             print(e)
