@@ -25,12 +25,17 @@ _model_loader = ModelLoader(name="VF_model_loader",validityFrame=VF)
 _model_loader.loadModel(type="torch")
 model = _model_loader.model
 model.n_features_in_ = 2
-
 #-----------------------------------------------------------------------------------------------------------------------------------
 #   ASSIGN ANOMALY DETECTOR TO RW SYSTEM
 #-----------------------------------------------------------------------------------------------------------------------------------
 system.loadAnomalyDetectionModel(model=model,type="torch")
 
+# load runtime specifications for monitoring
+for spec in VF.specifications:
+    system.addRuntimeSpecification(spec)
+
+
+#TODO: link VF POI to real time measurements and add monitoring functionality
 #-----------------------------------------------------------------------------------------------------------------------------------
 #   SPECIFY ANOMALY DETECTOR FUNCTIONALITY, THREADED EXECUTION
 #-----------------------------------------------------------------------------------------------------------------------------------
@@ -44,14 +49,21 @@ def anomalyDetection(self):
     anomaly = 1 if _prediction[0] == -1 else 0
     label = "Anomaly" if _prediction[0] == -1 else "Normal"
     anomaly_score = model.decision_function([[_in1, _in2]])  # Higher = normal, Lower = anomaly
-    certainty = 1
+    if abs(anomaly_score) > self.max_anomaly_score:
+        self.max_anomaly_score = abs(anomaly_score[0])
+        certainty = 1
+    else:
+        certainty = abs(anomaly_score[0]/self.max_anomaly_score)
 
     print("Power usage:" + self.power.__str__() + " prediction:" + label + " score: " + anomaly_score.__str__())
+    certainty_rounded = float(round(certainty,2))
 
     #remote monitoring
-    data = f"{anomaly},{certainty}\n"
+    data = f"{anomaly},{certainty_rounded}\n"
     self.serialPort.write(data.encode())
 
+    #local monitoring
+    self.runtimeMonitor()
 
 system.anomalyDetection= anomalyDetection
 
@@ -59,4 +71,4 @@ system.anomalyDetection= anomalyDetection
 #   Execute an experiment to demonstrate the anomaly detector case
 #----------------------------------------------------------------------------------------------------------------------------------
 
-measurements = system.experiment_square_wave_velocity(experimentTime=60,percentage=100,period=1)
+measurements = system.experiment_constant_velocity(experimentTime=60,percentage=60)

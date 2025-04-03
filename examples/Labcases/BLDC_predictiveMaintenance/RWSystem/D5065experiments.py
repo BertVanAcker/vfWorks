@@ -23,12 +23,16 @@ class RWSystem_BLDC_D5065():
         self.powerMeasurements=[]
         self.rpmMeasurements = []
         self.busVoltageMeasurements = []
+        self.runtimeMeasurements = {"power": 0.0, "rpm": 0.0, "busVoltage": 0.0, "velocityCommand": 0.0, "temperature": 0.0}
         # current measurements
         self.timestamp = 0.0
         self.power = 0.0
         self.rpm = 0.0
         self.busVoltage = 0.0
-
+        self.velocityCommand = 0.0
+        self.max_anomaly_score = 0.0
+        self.value = 1
+        self.runtimeSpecifications = []
         if DEPLOYED:
             #----------Odrive initialization-----------------
             if not INITIALIZED:
@@ -206,6 +210,15 @@ class RWSystem_BLDC_D5065():
         self.powerMeasurements = []
         self.rpmMeasurements = []
         self.busVoltageMeasurements = []
+    # ----------------------MONITORS-------------------------
+    def runtimeMonitor(self):
+        for spec in self.runtimeSpecifications:
+            if spec.feature in self.runtimeMeasurements:
+                if self.runtimeMeasurements[spec.feature] < spec.minValue or self.runtimeMeasurements[spec.feature] > spec.maxValue:
+                    print("WARNING: " + spec.feature + " is out of range")
+
+    def addRuntimeSpecification(self,spec):
+        self.runtimeSpecifications.append(spec)
 
     # ----------------------ANOMALY DETECTION----------------------
     def anomalyDetection(self):

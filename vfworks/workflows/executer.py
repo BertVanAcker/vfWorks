@@ -34,7 +34,7 @@ class Executer_GUI:
         self.tasks = tasks
         self.root = tk.Tk()
         self.root.title("Workflow "+name+" Status")
-        self.root.geometry("500x400")
+        self.root.geometry("500x500")
         self.root.configure(bg="#1e1e1e")  # Dark background for a polished look
         self.task_widgets = {}
         self.create_gui()

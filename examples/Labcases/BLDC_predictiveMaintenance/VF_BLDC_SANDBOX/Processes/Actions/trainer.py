@@ -6,7 +6,10 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+import numpy as np
+
 from vfworks.utils.auxiliary import store_as_onnx, store_as_pickled
+from scipy.stats import chisquare
 from vfworks.utils.data.dataLoader import *
 from vfworks.utils.model.modelLoader import *
 from sklearn.ensemble import IsolationForest
@@ -31,6 +34,30 @@ class trainingActions(object):
         try:
             #load train data from model structure
             self.data_full = self._data_loader.loadData(experimentLabel="all",prefix=self._prefix,type="numpy",shuffle=True)
+            return True
+        except:
+            return False
+
+    def t_validate_data(self):
+        try:
+            f_conditions = {}
+            for experiment in self._validityFrame.experiments:
+                for specification in self._validityFrame.specifications:
+                    for condition in experiment.conditions:
+                        if specification.feature == condition.name:
+                            if condition.name not in f_conditions:
+                                f_conditions[condition.name] = [condition.value]
+                            else:
+                                f_conditions[condition.name].append(condition.value)
+            for specification in self._validityFrame.specifications:
+                valueMin = specification.minValue
+                valueMax = specification.maxValue
+                f_measure = np.histogram(f_conditions[specification.feature], range=(valueMin,valueMax))[0]
+
+                if 0 in f_measure:
+                    print("WARNING: design property not satisfied: {} dataset not complete".format(specification.feature))
+                    return False
+
             return True
         except:
             return False

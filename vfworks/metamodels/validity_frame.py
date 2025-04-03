@@ -7,6 +7,7 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 from vfworks.metamodels.model_structure import *
+from vfworks.metamodels.specification import *
 from vfworks.metamodels.experiment import *
 from vfworks.metamodels.properties import *
 from vfworks.metamodels.common import *
@@ -304,7 +305,11 @@ class MetaData(baseElement):
 
         if available:
             #add specifications
-            #TODO: implement specification read
+            for spec in data['_specifications']:
+                s = Specification(name=spec['_name'], description=spec['_description'], feature=spec['_feature'], minValue=spec['_minValue'], maxValue=spec['_maxValue'])
+                s.GUID = spec['_GUID']
+                s.timestamp = spec['_timestamp']
+                self.addSpecification(s)
             #add properties
             for prop in data["_properties"]:
                 p = PropertyofInterest(name=prop["_name"], description=prop["_description"],domain=prop["_domain"], unit=prop["_unit"], datatype=prop["_datatype"],min=prop["_min"], max=prop["_max"])

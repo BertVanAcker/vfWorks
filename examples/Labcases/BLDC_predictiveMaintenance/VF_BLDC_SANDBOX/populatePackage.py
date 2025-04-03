@@ -8,8 +8,10 @@
 # **************************************************************************************
 import os
 
+from vfworks.metamodels.specification import *
 from vfworks.metamodels.validity_frame import *
 from vfworks.metamodels.model_structure import *
+from vfworks.metamodels.monitors import *
 from vfworks.metamodels.properties import *
 from vfworks.clientLibraries.vfclpy.data_digest.digest import remoteExperiments
 from vfworks.metamodels.experiment import *
@@ -63,6 +65,10 @@ else:
 
 
 #-------------------------SPECIFICATIONS------------------------------------------------
+spec1 = Specification(name="Environment temperature", description="Required operation temperature", feature="temperature", minValue=-10, maxValue=30, runtimeSpecification=False)
+spec2 = Specification(name="operation speed", description="", feature="velocityCommand", minValue=100, maxValue=100)
+VF.addSpecification(spec1)
+VF.addSpecification(spec2)
 
 #------------------------------POI------------------------------------------------------
 poi1 = PropertyofInterest(name="Power",description="Electrical power of the BLDC motor",domain=DomainType.ELECTRICAL,unit=UnitType.Power_Watt,datatype=DataType.FLOAT_64,min=-50,max=100,satisfies=None)
@@ -96,6 +102,7 @@ VF.addModelStructure(SM)
 VF.addModelStructure(SM2)
 #-----------------------------PROCESSES-----------------------------------------------
 
+#-----------------------------MONITORS------------------------------------------------
 
 #-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
 packageName="VF_TORCH"
