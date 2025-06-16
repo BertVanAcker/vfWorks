@@ -17,7 +17,7 @@ from vfworks.utils.model.modelLoader import *
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_BLDC package",config="config.yaml",loadExistingVF=True,VFPackage="")
 
 # 1 . Select model structure used for training
-VF.setActiveModelStructure(GUID="efb0eabb-185c-4bcf-8e15-2255ae34506c")
+VF.setActiveModelStructure(name="anomalyDetector_2D")
 
 #2. load the data to perform anomaly detection
 _data_loader = DataLoader(name="VF_data_loader",validityframe=VF)
@@ -29,8 +29,8 @@ _model_loader.loadModel(type="torch")
 model = _model_loader.model
 
 #4. use the model for single datapoint predictions + send to wio terminal for visualization
-ser = serial.Serial('COM8', 115200)
-model.n_features_in_ = 1
+ser = serial.Serial('COM6', 115200)
+model.n_features_in_ = 2
 for datapoint in data_test:
     _input = [datapoint]
     prediction = model.predict(_input)

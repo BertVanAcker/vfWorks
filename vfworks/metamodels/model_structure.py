@@ -10,7 +10,7 @@ from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 
 class ModelStructure(baseElement):
-    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None, modelType=None,mapping=None,modelRef=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',inports=None,outports=None,scalars=None, modelType=None,mapping=None,modelRef=None, redundancy=1,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         if inports is None:
@@ -42,6 +42,8 @@ class ModelStructure(baseElement):
 
         #reference to the actual model which is connected in the model structure
         self._modelRef = modelRef
+
+        self._redundancy = redundancy
 
 
 
@@ -85,6 +87,14 @@ class ModelStructure(baseElement):
     @modelRef.setter
     def modelRef(self, ref):
         self._modelRef = ref
+
+    @property
+    def redundancy(self):
+        return self._redundancy
+
+    @redundancy.setter
+    def redundancy(self, value):
+        self._redundancy = value
 
 
 class Port(baseElement):

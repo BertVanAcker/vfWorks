@@ -8,6 +8,7 @@
 # **************************************************************************************
 from pycaret.anomaly import *
 from vfworks.utils.auxiliary import load_model_from_pickle
+import os
 
 
 class ModelLoader(object):
@@ -38,6 +39,7 @@ class ModelLoader(object):
         self._validityframe = validityFrame
 
         self._model = None
+        self._models = []
 
 
     @property
@@ -47,6 +49,14 @@ class ModelLoader(object):
     @model.setter
     def model(self,m):
         self._model = m
+
+    @property
+    def models(self):
+        return self._models
+
+    @models.setter
+    def models(self,ms):
+        self._models = ms
 
     #------------------------------------------------------------------------------------------------
     #                               PYCARET specific functions
@@ -64,13 +74,17 @@ class ModelLoader(object):
         self._model_results = assign_model(self._model)
         return self._model_results, self._model
 
-    def loadModel(self,model=None,type="pycaret"):
-        if model is None:
-            model = self._validityframe.activeModelStructure.modelRef
+    def loadModel(self,model_location=None,type="pycaret"):
+        if model_location is None:
+            model_location = self._validityframe.activeModelStructure.modelRef
         if type == "pycaret":
-            self._model = load_model(model)
+            self._model = load_model(model_location)
         elif type == "torch":
-            self._model = load_model_from_pickle(file_name=model,modelType="torch")
+            if self._validityframe.activeModelStructure.redundancy == 1:
+                self._models.append(load_model_from_pickle(file_name=model_location, modelType="torch"))
+            else:
+                for model in os.listdir(model_location):
+                    self._models.append(load_model_from_pickle(file_name=os.path.join(model_location,model), modelType="torch"))
         else:
             self._validityframe.logger.info(msg="Unable to load the model")
 

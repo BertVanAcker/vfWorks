@@ -7,6 +7,7 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 from vfworks.metamodels.model_structure import *
+from vfworks.metamodels.monitors import Monitor
 from vfworks.metamodels.specification import *
 from vfworks.metamodels.experiment import *
 from vfworks.metamodels.properties import *
@@ -39,7 +40,7 @@ class ValidityFrame(baseElement):
 
             #load different elements
             self._metadata.json2object(fileName=VFPackage+"Metadata/Metadata.json")
-            self._operational.json2object(fileName=VFPackage+"Operational/Operational.json")
+            self._operational.json2object(fileName=VFPackage+"Operational/Operational.json", metadata=self._metadata)
             #self._processes.json2object(fileName=VFPackage+"Metadata/Metadata.json")
             self._experiments.json2object(fileName=VFPackage+"Experiments/Experiments.json")
 
@@ -159,20 +160,28 @@ class ValidityFrame(baseElement):
         self._processes.addProcess(process)
 
     # -----------------------------------------
-    #        TODO: TO BE DEFINED WHERE TO PUT!
+    #        MONITORS
+    #        Currently stored in Operational
     # -----------------------------------------
 
+    @property
+    def runtime_monitors(self):
+        return self._operational.runtime_monitors
+
+    @runtime_monitors.setter
+    def runtime_monitors(self, value):
+        self._operational.runtime_monitors = value
 
     @property
-    def monitors(self):
-        return self._monitors
+    def design_time_monitors(self):
+        return self._operational.design_time_monitors
 
-    @monitors.setter
-    def monitors(self, value):
-        self._monitors = value
+    @design_time_monitors.setter
+    def design_time_monitors(self, value):
+        self._operational.design_time_monitors = value
 
     def addMonitor(self, monitor):
-        self._monitors.append(monitor)
+        self._operational.addMonitor(monitor)
 
     # ------------------------------------------------------------------------------------------------------------------
     #                                           LOGGING FUNCTIONS
@@ -215,13 +224,11 @@ class ValidityFrame(baseElement):
     def check_specifications(self):
 
         # 0. CHECK ALL MONITORS AND PROPAGATE
-        for monitor in self.monitors:
-            pois = monitor.observes
+        for monitor in self.runtime_monitors + self.design_time_monitors:
+            specs = monitor.observes
             _status = monitor.status
-            for poi in pois:
-                specList = poi.satisfies
-                for spec in specList:
-                    spec.status = _status
+            for spec in specs:
+                spec.status = _status
 
         # 1. PRINT STATUS OF SPECIFICATIONS
         if self._verbose:
@@ -306,7 +313,13 @@ class MetaData(baseElement):
         if available:
             #add specifications
             for spec in data['_specifications']:
-                s = Specification(name=spec['_name'], description=spec['_description'], feature=spec['_feature'], minValue=spec['_minValue'], maxValue=spec['_maxValue'])
+                s = Specification(name=spec['_name'], description=spec['_description'], feature=spec['_feature'])
+                value = spec['_value']
+                s.type = spec['_type']
+                if spec["_type"] == PropertyType.PROPERTY_RANGE:
+                    s.value = ValueRange(valueMin=value["_valueMin"], valueMax=value["_valueMax"], granularity=value["_granularity"])
+                if spec["_type"] == PropertyType.PROPERTY_MEAN:
+                    s.value = AverageValue(average=value["_average"], deviation=value["_deviation"])
                 s.GUID = spec['_GUID']
                 s.timestamp = spec['_timestamp']
                 self.addSpecification(s)
@@ -319,12 +332,14 @@ class MetaData(baseElement):
                 self.addProperty(p)
 
 class Operational(baseElement):
-    def __init__(self, name='tbd',description='tbd',modelStructures=[],verbose=False):
+    def __init__(self, name='tbd',description='tbd',modelStructures=[],runtime_monitors=[], design_time_monitors=[],verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._modelStructures = modelStructures
         self._activeModelStructure = None
         self._modelReference = None
+        self._runtime_monitors = runtime_monitors
+        self._design_time_monitors = design_time_monitors
 
     @property
     def modelStructures(self):
@@ -334,8 +349,30 @@ class Operational(baseElement):
     def modelStructures(self, ref):
         self._modelStructures = ref
 
+    @property
+    def runtime_monitors(self):
+        return self._runtime_monitors
+
+    @runtime_monitors.setter
+    def runtime_monitors(self, value):
+        self._runtime_monitors = value
+
+    @property
+    def design_time_monitors(self):
+        return self._design_time_monitors
+
+    @design_time_monitors.setter
+    def design_time_monitors(self, value):
+        self._design_time_monitors = value
+
     def addModelStructure(self,s):
         self._modelStructures.append(s)
+
+    def addMonitor(self, monitor):
+        if monitor.type == MonitorType.DESIGN_TIME:
+            self.design_time_monitors.append(monitor)
+        if monitor.type == MonitorType.RUN_TIME:
+            self.runtime_monitors.append(monitor)
 
     @property
     def activeModelStructure(self):
@@ -366,7 +403,7 @@ class Operational(baseElement):
         with open(fileName, 'w', encoding='utf-8') as f:
             f.write(data)
 
-    def json2object(self, fileName):
+    def json2object(self, fileName, metadata):
         """
            Function to generate object from a json file
         """
@@ -408,7 +445,19 @@ class Operational(baseElement):
                 _ms.GUID = ms["_GUID"]
                 _ms.timestamp = ms["_timestamp"]
                 _ms.modelRef = ms["_modelRef"]
+                _ms.redundancy = ms["_redundancy"]
                 self.addModelStructure(_ms)
+
+            for monitor in data["_design_time_monitors"] + data["_runtime_monitors"]:
+                specs = []
+                for spec in monitor["observes"]:
+                    for specification in metadata.specifications:
+                        if specification.GUID == spec["_GUID"]:
+                            specs.append(specification)
+                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_type=monitor["_type"], status=monitor["_status"])
+                _monitor.GUID = monitor["_GUID"]
+                _monitor.timestamp = monitor["_timestamp"]
+                self.addMonitor(_monitor)
 
 class Processes(baseElement):
     def __init__(self, name='tbd',description='tbd',processes=None,verbose=False):

@@ -30,6 +30,8 @@ class trainingActions(object):
         self.data_train = None
         self.data_test = None
 
+        self.models = []
+
     def t_collect_data(self):
         try:
             #load train data from model structure
@@ -40,6 +42,7 @@ class trainingActions(object):
 
     def t_validate_data(self):
         try:
+            validation_pass = True
             f_conditions = {}
             for experiment in self._validityFrame.experiments:
                 for specification in self._validityFrame.specifications:
@@ -49,16 +52,14 @@ class trainingActions(object):
                                 f_conditions[condition.name] = [condition.value]
                             else:
                                 f_conditions[condition.name].append(condition.value)
-            for specification in self._validityFrame.specifications:
-                valueMin = specification.minValue
-                valueMax = specification.maxValue
-                f_measure = np.histogram(f_conditions[specification.feature], range=(valueMin,valueMax))[0]
+            for monitor in self._validityFrame.design_time_monitors:
+                for feature in f_conditions:
+                    is_valid = monitor.validate_data(data=f_conditions[feature], feature=feature)
+                    if not is_valid:
+                        validation_pass = False
+                        print("WARNING: design property not satisfied: {} dataset not complete".format(feature))
 
-                if 0 in f_measure:
-                    print("WARNING: design property not satisfied: {} dataset not complete".format(specification.feature))
-                    return False
-
-            return True
+            return validation_pass
         except:
             return False
 
@@ -74,14 +75,16 @@ class trainingActions(object):
     def t_load_model(self):
         try:
             num_inputs = len(self._validityFrame.activeModelStructure.inports)
-            self.model = IsolationForest(contamination="auto", random_state=0, max_features=num_inputs)
+            for model_number in range(self._validityFrame.activeModelStructure.redundancy):
+                self.models.append(IsolationForest(contamination="auto", random_state=model_number, max_features=num_inputs))
             return True
         except:
             return False
 
     def t_fit_model(self):
         try:
-            self.model.fit(self.data_train)
+            for model in self.models:
+                model.fit(self.data_train)
             return True
         except:
             return False
@@ -104,9 +107,16 @@ class trainingActions(object):
 
     def t_store_model_snapshot_pickled(self):
         try:
-            model_name = self._validityFrame.activeModelStructure.name
-            store_as_pickled(model=self.model,file_name=self._prefix+'Sources/'+ model_name + "_model.pkl",modelType="torch")
-            self._validityFrame.modelReference = "Sources/" + model_name + "_model.pkl"
+            if len(self.models) > 1:
+                folder_name = self._validityFrame.activeModelStructure.name
+                for model_number in range(len(self.models)):
+                    store_as_pickled(model=self.models[model_number], file_name=self._prefix + 'Sources/' + folder_name + "/model" + str(model_number) + ".pkl",
+                                     modelType="torch")
+                    self._validityFrame.modelReference = "Sources/" + folder_name
+            else:
+                model_name = self._validityFrame.activeModelStructure.name
+                store_as_pickled(model=self.models[0],file_name=self._prefix+'Sources/'+ model_name + "_model.pkl",modelType="torch")
+                self._validityFrame.modelReference = "Sources/" + model_name + "_model.pkl"
             return True
         except Exception as e:
             print(e)

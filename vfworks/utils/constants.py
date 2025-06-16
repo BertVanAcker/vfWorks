@@ -46,11 +46,7 @@ class ModelType:
     NEURAL_NETWORK = "NeuralNetwork"
     RECURRENT_NEURAL_NETWORK = "RecurrentNeuralNetwork"
 
-class MonitorType:
-    PROPERTY_RANGE= "property_range"
-    PROPERTY_MEAN = "property_mean"
-
-class StatusType:
+class PropertyType:
     PROPERTY_RANGE= "property_range"
     PROPERTY_MEAN = "property_mean"
 
@@ -69,3 +65,7 @@ class LOGLEVEL:
     INFO = "INFO"
     DEBUG = "DEBUG"
     ERROR = "ERROR"
+
+class MonitorType:
+    DESIGN_TIME = "DesignTime"
+    RUN_TIME = "RunTime"

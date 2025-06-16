@@ -16,7 +16,7 @@ class Probe(object):
         self.data_platform = self.initialize_data_platform()  # Initialize knowledge within the component
 
         probe_config = self.config.get("validityframe", {})
-        self.probe_key = f"{probe_config.get("name", "base")}:properties"
+        self.probe_key = f"{probe_config.get('name', 'base')}:properties"
         self._storage = storage
 
 

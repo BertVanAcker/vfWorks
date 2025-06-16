@@ -54,6 +54,7 @@ class RWSystem_BLDC_D5065():
 
         #-------anomaly detection components---------------
         self.model = None
+        self.models = [] # list of models for redundancy
         self.ANOMALYDETECTORLOADED = False
 
 
@@ -150,11 +151,26 @@ class RWSystem_BLDC_D5065():
         #set constant velocity
         self.vel_request = float(percentage / 100) * self.maximumVelocity
         self.mydrive.axis0.controller.input_vel = self.vel_request
+        self.runtimeMeasurements["velocityCommand"] = percentage
         #sleep experiment time
         time.sleep(experimentTime)
         #disable closed-loop control to finish experiment
         self.stop()
         # format the measurements and return
+        measurements = [self.timeStamps,self.powerMeasurements,self.rpmMeasurements,self.busVoltageMeasurements]
+        return measurements
+
+    def experiment_velocity_sweep(self,experimentTime=10, percentage=100):
+        self.flushMeasurements()
+        self.start()
+
+        for i in range(percentage+1):
+            self.vel_request = float(i / 100) * self.maximumVelocity
+            self.mydrive.axis0.controller.input_vel = self.vel_request
+            self.runtimeMeasurements["velocityCommand"] = i
+
+            time.sleep(experimentTime/percentage)
+        self.stop()
         measurements = [self.timeStamps,self.powerMeasurements,self.rpmMeasurements,self.busVoltageMeasurements]
         return measurements
 
@@ -169,8 +185,10 @@ class RWSystem_BLDC_D5065():
         while curr_time < experimentTime:
             if self.vel_request == 0:
                 self.vel_request = float(percentage / 100) * self.maximumVelocity
+                self.runtimeMeasurements["velocityCommand"] = percentage
             else:
                 self.vel_request = 0
+                self.runtimeMeasurements["velocityCommand"] = self.vel_request
             self.mydrive.axis0.controller.input_vel = self.vel_request
             time.sleep(period)
             curr_time += period
@@ -210,11 +228,13 @@ class RWSystem_BLDC_D5065():
         self.powerMeasurements = []
         self.rpmMeasurements = []
         self.busVoltageMeasurements = []
+        self.runtimeMeasurements = {"power": 0.0, "rpm": 0.0, "busVoltage": 0.0, "velocityCommand": 0.0,
+                                    "temperature": 0.0}
     # ----------------------MONITORS-------------------------
     def runtimeMonitor(self):
         for spec in self.runtimeSpecifications:
             if spec.feature in self.runtimeMeasurements:
-                if self.runtimeMeasurements[spec.feature] < spec.minValue or self.runtimeMeasurements[spec.feature] > spec.maxValue:
+                if not spec.value.validate_point(self.runtimeMeasurements[spec.feature]):
                     print("WARNING: " + spec.feature + " is out of range")
 
     def addRuntimeSpecification(self,spec):
@@ -230,6 +250,7 @@ class RWSystem_BLDC_D5065():
             self.ANOMALYDETECTORLOADED = True
         elif type == "torch":
             self.model = model
+            self.models.append(model)
             self.ANOMALYDETECTORLOADED = True
         else:
             self.model = None

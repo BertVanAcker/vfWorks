@@ -65,8 +65,8 @@ else:
 
 
 #-------------------------SPECIFICATIONS------------------------------------------------
-spec1 = Specification(name="Environment temperature", description="Required operation temperature", feature="temperature", minValue=-10, maxValue=30, runtimeSpecification=False)
-spec2 = Specification(name="operation speed", description="", feature="velocityCommand", minValue=100, maxValue=100)
+spec1 = Specification(name="Environment temperature", description="Required operation temperature", feature="temperature", type=PropertyType.PROPERTY_RANGE, valueMin=-10, valueMax=30, granularity=5, runtimeSpecification=False)
+spec2 = Specification(name="operation speed", description="", feature="velocityCommand", type=PropertyType.PROPERTY_MEAN, average=100, deviation=0.5)
 VF.addSpecification(spec1)
 VF.addSpecification(spec2)
 
@@ -97,13 +97,16 @@ OUT2= Outport(name="anomalyScore", unit=UnitType.UNIT_none)
 OUT2.add_mapping_relation(type="poi",poi=poi4)
 
 SM = ModelStructure(name="anomalyDetector_1D", inports=[IN1], outports=[OUT1,OUT2], modelType=ModelType.ISOLATIONFOREST)
-SM2 = ModelStructure(name="anomalyDetector_2D", inports=[IN1, IN2], outports=[OUT1,OUT2], modelType=ModelType.ISOLATIONFOREST)
+SM2 = ModelStructure(name="anomalyDetector_2D", inports=[IN1, IN2], outports=[OUT1,OUT2], modelType=ModelType.ISOLATIONFOREST, redundancy=6)
 VF.addModelStructure(SM)
 VF.addModelStructure(SM2)
 #-----------------------------PROCESSES-----------------------------------------------
 
 #-----------------------------MONITORS------------------------------------------------
-
+monitor1 = Monitor(name="Runtime monitor", description="Online monitoring of the model", observes=[spec2], monitor_type=MonitorType.RUN_TIME)
+monitor2 = Monitor(name="design monitor", description="design time monitoring of the model", observes=[spec1], monitor_type=MonitorType.DESIGN_TIME)
+VF.addMonitor(monitor1)
+VF.addMonitor(monitor2)
 #-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
 packageName="VF_TORCH"
 VF.export(packageName=None)     #VF package is current working directory

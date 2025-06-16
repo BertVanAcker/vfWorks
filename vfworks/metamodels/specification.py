@@ -12,13 +12,17 @@ from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 
 class Specification(baseElement):
-    def __init__(self, name='tbd', description='tbd', feature='tbd', minValue=0, maxValue=0, runtimeSpecification=True, verbose=False):
+    def __init__(self, name='tbd', description='tbd', feature='tbd', type=None, verbose=False, **kwargs):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._feature = feature
-        self._minValue = minValue
-        self._maxValue = maxValue
-        self._runtimeSpecification = runtimeSpecification
+        self._status = StatusType.UNKNOWN
+        self._type = type
+
+        if type == PropertyType.PROPERTY_RANGE:
+            self._value = ValueRange(valueMin=kwargs['valueMin'], valueMax=kwargs['valueMax'], granularity=kwargs['granularity'])
+        if type == PropertyType.PROPERTY_MEAN:
+            self._value = AverageValue(average=kwargs['average'], deviation=kwargs['deviation'])
 
 
     @property
@@ -30,20 +34,20 @@ class Specification(baseElement):
         self._feature = feature
 
     @property
-    def minValue(self):
-        return self._minValue
+    def value(self):
+        return self._value
 
-    @minValue.setter
-    def minValue(self, value):
-        self._minValue = value
+    @value.setter
+    def value(self, value):
+        self._value = value
 
     @property
-    def maxValue(self):
-        return self._maxValue
+    def type(self):
+        return self._type
 
-    @maxValue.setter
-    def maxValue(self, value):
-        self._maxValue = value
+    @type.setter
+    def type(self, value):
+        self._type = value
 
     @property
     def runtimeSpecification(self):
@@ -52,6 +56,45 @@ class Specification(baseElement):
     @runtimeSpecification.setter
     def runtimeSpecification(self, value):
         self._runtimeSpecification = value
+
+    @property
+    def status(self):
+        return self._status
+
+class AverageValue(baseElement):
+    def __init__(self, name='tbd',description='tbd', average=0.0, deviation=0.0, verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+        self._average = average
+        self._deviation = deviation
+
+    def validate_data(self, data):
+        data_average = np.average(data)
+        if data_average < self._average-self._deviation or data_average > self._average+self._deviation:
+            return False
+        return True
+
+    def validate_point(self, point):
+        if point < self._average-self._deviation or point > self._average+self._deviation:
+            return False
+        return True
+
+class ValueRange(baseElement):
+    def __init__(self, name='tbd',description='tbd', valueMin=0.0, valueMax=0.0, granularity=10, verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+        self._valueMin = valueMin
+        self._valueMax = valueMax
+        self._granularity = granularity
+
+    def validate_data(self, data):
+        f_measure = np.histogram(data, range=(self._valueMin, self._valueMax), bins=self._granularity)[0]
+        if 0 in f_measure:
+            return False
+        return True
+
+    def validate_point(self, point):
+        if point < self._valueMin or point > self._valueMax:
+            return False
+        return True
 
 class Requirement(baseElement):
 

@@ -36,9 +36,9 @@ def dummyVF():
     # -------------------------------------------------------------------------------------
     #                           SPECIFY MONITORS
     # -------------------------------------------------------------------------------------
-    monitor1= Monitor(name="poi1_monitor",description="Monitor for the poi1",type=MonitorType.PROPERTY_RANGE,status=StatusType.UNKNOWN,observes=[poi1])
-    monitor2 = Monitor(name="poi2_monitor", description="Monitor for the poi2", type=MonitorType.PROPERTY_RANGE,status=StatusType.UNKNOWN, observes=[poi2])
-    monitor3 = Monitor(name="poi3_monitor", description="Monitor for the poi3", type=MonitorType.PROPERTY_RANGE,status=StatusType.UNKNOWN, observes=[poi3])
+    monitor1= Monitor(name="poi1_monitor", description="Monitor for the poi1", type=PropertyType.PROPERTY_RANGE, status=StatusType.UNKNOWN, observes=[poi1])
+    monitor2 = Monitor(name="poi2_monitor", description="Monitor for the poi2", type=PropertyType.PROPERTY_RANGE, status=StatusType.UNKNOWN, observes=[poi2])
+    monitor3 = Monitor(name="poi3_monitor", description="Monitor for the poi3", type=PropertyType.PROPERTY_RANGE, status=StatusType.UNKNOWN, observes=[poi3])
     vf.monitors = [monitor1,monitor2,monitor3]
 
     # -------------------------------------------------------------------------------------

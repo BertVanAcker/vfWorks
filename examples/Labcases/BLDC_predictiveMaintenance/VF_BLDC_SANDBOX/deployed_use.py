@@ -23,12 +23,13 @@ VF.setActiveModelStructure(name="anomalyDetector_2D")
 
 _model_loader = ModelLoader(name="VF_model_loader",validityFrame=VF)
 _model_loader.loadModel(type="torch")
-model = _model_loader.model
-model.n_features_in_ = 2
+models = _model_loader.models
+for model in models:
+    model.n_features_in_ = 2
 #-----------------------------------------------------------------------------------------------------------------------------------
 #   ASSIGN ANOMALY DETECTOR TO RW SYSTEM
 #-----------------------------------------------------------------------------------------------------------------------------------
-system.loadAnomalyDetectionModel(model=model,type="torch")
+    system.loadAnomalyDetectionModel(model=model,type="torch")
 
 # load runtime specifications for monitoring
 for spec in VF.specifications:
@@ -44,18 +45,25 @@ def anomalyDetection(self):
     _in1 = self.power
     _in2 = self.rpm
     # model use
-    _prediction = model.predict([[_in1, _in2]])
-    # output formatting
-    anomaly = 1 if _prediction[0] == -1 else 0
-    label = "Anomaly" if _prediction[0] == -1 else "Normal"
-    anomaly_score = model.decision_function([[_in1, _in2]])  # Higher = normal, Lower = anomaly
-    if abs(anomaly_score) > self.max_anomaly_score:
-        self.max_anomaly_score = abs(anomaly_score[0])
-        certainty = 1
-    else:
-        certainty = abs(anomaly_score[0]/self.max_anomaly_score)
+    predictions = []
+    anomaly_scores = []
+    for model in self.models:
+        predictions.append(model.predict([[_in1, _in2]])[0])
+        anomaly_scores.append(model.decision_function([[_in1, _in2]])[0]) # Higher = normal, Lower = anomaly
 
-    print("Power usage:" + self.power.__str__() + " prediction:" + label + " score: " + anomaly_score.__str__())
+    # output formatting
+    anomaly = 1 if predictions.count(-1) >= len(predictions)/2 else 0
+    label = "Anomaly" if predictions.count(-1) >= len(predictions)/2 else "Normal"
+
+    score = sum(anomaly_scores)/len(anomaly_scores)
+
+    if label == "Normal":
+        certainty = predictions.count(1) / len(predictions)
+    else:
+        certainty = predictions.count(-1) / len(predictions)
+    print("Power usage:" + self.power.__str__()+ " RPM:" + self.rpm.__str__() + " prediction:" + label)
+    if certainty < 1.0:
+        print("individual scores:" + str(anomaly_scores))
     certainty_rounded = float(round(certainty,2))
 
     #remote monitoring
@@ -71,4 +79,4 @@ system.anomalyDetection= anomalyDetection
 #   Execute an experiment to demonstrate the anomaly detector case
 #----------------------------------------------------------------------------------------------------------------------------------
 
-measurements = system.experiment_constant_velocity(experimentTime=60,percentage=60)
+measurements = system.experiment_constant_velocity(experimentTime=60,percentage=100)
