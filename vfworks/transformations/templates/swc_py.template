@@ -1,0 +1,76 @@
+#***************************************************************************************
+# * Copyright (C) 2024-present Bert Van Acker (UAntwerpen) <Bert.VanAcker@uantwerpen.be>
+# *
+# * This file is part of the vfWorks project.
+# *
+# * vfWorks can not be copied and/or distributed without the express
+# * permission of Bert Van Acker
+# **************************************************************************************
+from flexCommunicator.clientLibraries.flcpy.flexNode import flexNode
+from flexCommunicator.clientLibraries.flcpy.validityFrame.runtimeMonitor import *
+from flexCommunicator.clientLibraries.flcpy.utils.constants import *
+import time
+
+#<!-- cc_include START--!>
+# user includes here
+#<!-- cc_include END--!>
+
+#<!-- cc_code START--!>
+# user code here
+#<!-- cc_code END--!>
+
+class {{vf.name}}_deploy(flexNode):
+
+    def __init__(self, config='config.yaml',loaded_config=False,communicationMatrix=None,verbose=True):
+        super().__init__(config=config,loaded_config=loaded_config,communicationMatrix=communicationMatrix,verbose=verbose)
+
+        self._name = "{{vf.name}}"
+        self.logger.info("{{vf.name}} instantiated")
+        #periodic function
+        self.timer = self.create_timer(timer_period=1, callback=self.execute,autostart=True)
+
+        # instantiate runtime monitors
+        {% for monitor in vf.runtime_monitors %}
+        {% for observerable in monitor.observes %}
+        self.{{observerable.feature}} = runtimeMonitor(name="{{observerable.feature}}",initial_value=1.0,type=VF_RUNTIME_MONITOR_TYPE.LOCAL,bound=[0.0,10.0])
+        self.register_runtime_monitor(self.{{observerable.feature}})
+        {% endfor %}
+        {% endfor %}
+
+        # SET STATUS TO INITIALIZED AND RUNNING
+        self.application_status.set(value=APPLICATION_STATUS.INITIALIZING)
+        time.sleep(1)
+        self.application_status.set(value=APPLICATION_STATUS.RUNNING)
+
+
+    def execute(self):
+        #<!-- cc_code START--!>
+        {% for monitor in vf.runtime_monitors %}
+        {% for observerable in monitor.observes %}
+        _{{observerable.feature}} = self.{{observerable.feature}}.get()
+        {% endfor %}
+        {% endfor %}
+
+        # user code here
+
+        {% for monitor in vf.runtime_monitors %}
+        {% for observerable in monitor.observes %}
+        self.{{observerable.feature}}.set(10.0)
+        {% endfor %}
+        {% endfor %}
+        #<!-- cc_code END--!>
+
+
+    def register_callbacks(self):
+        # NO CALLBACKS
+        return -1
+
+if __name__ == '__main__':
+    node = {{vf.name}}_deploy(config='config.yaml')
+    node.register_callbacks()
+    node.start()
+    try:
+       while True:
+           time.sleep(1)
+    except:
+       exit()

@@ -1,0 +1,102 @@
+{
+    "_name": "metadata",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "25f06c11-a90b-4781-80f3-50bbb4d5b4cf",
+    "_timestamp": "2025-06-11 18:08:16.530195",
+    "_specifications": [
+        {
+            "_name": "Environment temperature",
+            "_description": "Required operation temperature",
+            "_verbose": false,
+            "_GUID": "76656d4e-cb22-4ea3-817d-8e5c83cf50fe",
+            "_timestamp": "2025-06-11 16:33:41.610659",
+            "_feature": "temperature",
+            "_status": "unknown",
+            "_type": "property_range",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "495eb4b3-af40-4d10-acdb-aa8865313852",
+                "_timestamp": "2025-06-11 18:08:16.531195",
+                "_valueMin": -10,
+                "_valueMax": 30,
+                "_granularity": 5
+            }
+        },
+        {
+            "_name": "operation speed",
+            "_description": "",
+            "_verbose": false,
+            "_GUID": "cf90d7c1-0e04-46e1-b536-56f13960758c",
+            "_timestamp": "2025-06-11 16:33:41.610659",
+            "_feature": "velocityCommand",
+            "_status": "unknown",
+            "_type": "property_mean",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "c43b7fdd-f4d9-4253-9338-2611b1341695",
+                "_timestamp": "2025-06-11 18:08:16.531195",
+                "_average": 100,
+                "_deviation": 0.5
+            }
+        }
+    ],
+    "_properties": [
+        {
+            "_name": "Power",
+            "_description": "Electrical power of the BLDC motor",
+            "_verbose": false,
+            "_GUID": "822be2f0-01e3-46fd-a586-ae1c1010685b",
+            "_timestamp": "2025-06-11 16:33:41.610659",
+            "_domain": "ELECTRICAL",
+            "_unit": "Watt",
+            "_datatype": "float_64",
+            "_min": -50,
+            "_max": 100,
+            "_satisfies": []
+        },
+        {
+            "_name": "rpm",
+            "_description": "Rotational speed of the BLDC motor",
+            "_verbose": false,
+            "_GUID": "430fa3f7-e021-4cda-9846-e4963fe1cc7e",
+            "_timestamp": "2025-06-11 16:33:41.610659",
+            "_domain": "MECHANICAL",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 3000,
+            "_satisfies": []
+        },
+        {
+            "_name": "Anomaly",
+            "_description": "Classification of anomaly",
+            "_verbose": false,
+            "_GUID": "b9d253a1-a732-428e-976c-b389cee4e3a7",
+            "_timestamp": "2025-06-11 16:33:41.610659",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "int_8",
+            "_min": 0,
+            "_max": 1,
+            "_satisfies": []
+        },
+        {
+            "_name": "AnomalyScore",
+            "_description": "Classification score of anomaly",
+            "_verbose": false,
+            "_GUID": "be339a23-5bec-4f4a-9a7c-f94b28641283",
+            "_timestamp": "2025-06-11 16:33:41.610659",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": -50,
+            "_max": 50,
+            "_satisfies": []
+        }
+    ]
+}

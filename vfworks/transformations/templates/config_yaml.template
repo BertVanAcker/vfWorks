@@ -1,0 +1,42 @@
+dummyNode_Config:
+  Logger_Config:
+    log_level: DEBUG
+    logger_type: flexCloud
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    terminal: { }
+    file:
+      filename: {{vf.name}}.log
+    mqtt:
+      broker: localhost
+      port: 1883
+      topic: logs
+    redis:
+      host: localhost
+      port: 6379
+      channel: logs
+      db: 6
+  Knowledge_Config:
+    knowledge_type: redis
+    host: localhost
+    port: 6379
+    db: 0
+  flexCloud_Manager_Config:
+    knowledge_type: redis
+    host: localhost
+    port: 6379
+    db: 6
+  application_Descriptor:
+    connectorID_type: static
+    connectorID: VF_RUNNER@sandbox-3fg889
+    id: {{vf.name}}
+    flexCloud_secret_key: b'\xae\xc1?\x14\xb3X\xb1\xb9#\xbe\xe6\x9d\xab\x82])9\xb9\xa1*\xf5=~\x04p\xe0\x9a\x0c\x1b\x17\xd5\x9c'
+  Communication_managers:
+    - Data_Manager_Config:
+        protocol: mqtt
+        broker: localhost
+        port: 1883
+    - Data_Manager_Config:
+        protocol: redis
+        host: localhost
+        port: 6379
+        db: 6
