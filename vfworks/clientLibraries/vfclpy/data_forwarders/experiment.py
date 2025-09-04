@@ -27,8 +27,6 @@ class Experiment(object):
         # set experiment label
         self.addLabel(label=label)
 
-
-
     def load_config(self, config_file):
         with open(config_file, 'r') as file:
             return yaml.safe_load(file)
