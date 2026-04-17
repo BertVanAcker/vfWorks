@@ -2,28 +2,28 @@
     "_name": "operational",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "73ead9ae-c6dd-4d95-839b-115df7dd5623",
-    "_timestamp": "2025-06-11 18:08:16.530195",
+    "_GUID": "6bf089c1-05ea-4398-96ad-8c645954bf3e",
+    "_timestamp": "2026-01-19 14:12:42.094102",
     "_modelStructures": [
         {
             "_name": "anomalyDetector_1D",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "389b1bec-4380-4c6e-bb3c-847aafbcfd28",
-            "_timestamp": "2025-06-11 16:33:41.611657",
+            "_GUID": "8a31108b-6a72-488f-9ceb-efe44a346de3",
+            "_timestamp": "2026-01-16 13:58:50.188185",
             "_inports": [
                 {
                     "_name": "power",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "7b1b8c3a-53dc-4917-b723-24853bec51f3",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "d51d3089-43b4-49e1-956d-782f8ac6ef57",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "Watt",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "822be2f0-01e3-46fd-a586-ae1c1010685b"
+                    "_mapping": "8f818ecc-be5d-42cc-8342-ebee3f897052"
                 }
             ],
             "_outports": [
@@ -31,27 +31,27 @@
                     "_name": "anomaly",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "25744926-1df4-4fba-976e-49171c8514b5",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "ad51086a-2975-4771-a20f-6ae0ea1dbe41",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "b9d253a1-a732-428e-976c-b389cee4e3a7"
+                    "_mapping": "e6bc054b-1dde-4829-a75c-a3343e2ea566"
                 },
                 {
                     "_name": "anomalyScore",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "d4e96060-e81f-4623-9c53-589389211eee",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "905f6946-7a78-496b-b284-8a874fd842ab",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "be339a23-5bec-4f4a-9a7c-f94b28641283"
+                    "_mapping": "25bec355-a412-4db3-9639-7664529dc378"
                 }
             ],
             "_modelType": null,
@@ -64,34 +64,34 @@
             "_name": "anomalyDetector_2D",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "d695261c-f7c9-4b09-8a44-834b9e738cbe",
-            "_timestamp": "2025-06-11 16:33:41.611657",
+            "_GUID": "63adbd5c-4f38-499f-b7c1-28dd810d8ecd",
+            "_timestamp": "2026-01-16 13:58:50.188185",
             "_inports": [
                 {
                     "_name": "power",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "7b1b8c3a-53dc-4917-b723-24853bec51f3",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "d51d3089-43b4-49e1-956d-782f8ac6ef57",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "Watt",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "822be2f0-01e3-46fd-a586-ae1c1010685b"
+                    "_mapping": "8f818ecc-be5d-42cc-8342-ebee3f897052"
                 },
                 {
                     "_name": "rpm",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "85f4cbd7-f7c2-42b4-aee2-c6528eb2d6ca",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "fabf84ee-56d1-4418-9678-e113a831059e",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "430fa3f7-e021-4cda-9846-e4963fe1cc7e"
+                    "_mapping": "da8443d4-3c9c-4507-8946-1366d1ece636"
                 }
             ],
             "_outports": [
@@ -99,27 +99,27 @@
                     "_name": "anomaly",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "25744926-1df4-4fba-976e-49171c8514b5",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "ad51086a-2975-4771-a20f-6ae0ea1dbe41",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "b9d253a1-a732-428e-976c-b389cee4e3a7"
+                    "_mapping": "e6bc054b-1dde-4829-a75c-a3343e2ea566"
                 },
                 {
                     "_name": "anomalyScore",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "d4e96060-e81f-4623-9c53-589389211eee",
-                    "_timestamp": "2025-06-11 16:33:41.611657",
+                    "_GUID": "905f6946-7a78-496b-b284-8a874fd842ab",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "be339a23-5bec-4f4a-9a7c-f94b28641283"
+                    "_mapping": "25bec355-a412-4db3-9639-7664529dc378"
                 }
             ],
             "_modelType": null,
@@ -133,34 +133,34 @@
         "_name": "anomalyDetector_2D",
         "_description": "tbd",
         "_verbose": false,
-        "_GUID": "d695261c-f7c9-4b09-8a44-834b9e738cbe",
-        "_timestamp": "2025-06-11 16:33:41.611657",
+        "_GUID": "63adbd5c-4f38-499f-b7c1-28dd810d8ecd",
+        "_timestamp": "2026-01-16 13:58:50.188185",
         "_inports": [
             {
                 "_name": "power",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "7b1b8c3a-53dc-4917-b723-24853bec51f3",
-                "_timestamp": "2025-06-11 16:33:41.611657",
+                "_GUID": "d51d3089-43b4-49e1-956d-782f8ac6ef57",
+                "_timestamp": "2026-01-16 13:58:50.188185",
                 "_domain": "CONTROL",
                 "_unit": "Watt",
                 "_datatype": "float_64",
                 "_min": 0,
                 "_max": 0,
-                "_mapping": "822be2f0-01e3-46fd-a586-ae1c1010685b"
+                "_mapping": "8f818ecc-be5d-42cc-8342-ebee3f897052"
             },
             {
                 "_name": "rpm",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "85f4cbd7-f7c2-42b4-aee2-c6528eb2d6ca",
-                "_timestamp": "2025-06-11 16:33:41.611657",
+                "_GUID": "fabf84ee-56d1-4418-9678-e113a831059e",
+                "_timestamp": "2026-01-16 13:58:50.188185",
                 "_domain": "CONTROL",
                 "_unit": "-",
                 "_datatype": "float_64",
                 "_min": 0,
                 "_max": 0,
-                "_mapping": "430fa3f7-e021-4cda-9846-e4963fe1cc7e"
+                "_mapping": "da8443d4-3c9c-4507-8946-1366d1ece636"
             }
         ],
         "_outports": [
@@ -168,27 +168,27 @@
                 "_name": "anomaly",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "25744926-1df4-4fba-976e-49171c8514b5",
-                "_timestamp": "2025-06-11 16:33:41.611657",
+                "_GUID": "ad51086a-2975-4771-a20f-6ae0ea1dbe41",
+                "_timestamp": "2026-01-16 13:58:50.188185",
                 "_domain": "CONTROL",
                 "_unit": "-",
                 "_datatype": "float_64",
                 "_min": 0,
                 "_max": 0,
-                "_mapping": "b9d253a1-a732-428e-976c-b389cee4e3a7"
+                "_mapping": "e6bc054b-1dde-4829-a75c-a3343e2ea566"
             },
             {
                 "_name": "anomalyScore",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "d4e96060-e81f-4623-9c53-589389211eee",
-                "_timestamp": "2025-06-11 16:33:41.611657",
+                "_GUID": "905f6946-7a78-496b-b284-8a874fd842ab",
+                "_timestamp": "2026-01-16 13:58:50.188185",
                 "_domain": "CONTROL",
                 "_unit": "-",
                 "_datatype": "float_64",
                 "_min": 0,
                 "_max": 0,
-                "_mapping": "be339a23-5bec-4f4a-9a7c-f94b28641283"
+                "_mapping": "25bec355-a412-4db3-9639-7664529dc378"
             }
         ],
         "_modelType": null,
@@ -203,8 +203,8 @@
             "_name": "Runtime monitor",
             "_description": "Online monitoring of the model",
             "_verbose": false,
-            "_GUID": "072a74d3-416b-4a0d-8a68-dbeac74e26dc",
-            "_timestamp": "2025-06-11 16:33:41.611657",
+            "_GUID": "21373940-ddb4-4999-aeeb-531b0062a095",
+            "_timestamp": "2026-01-16 13:58:50.189186",
             "_status": "unknown",
             "_type": "RunTime",
             "observes": [
@@ -212,8 +212,8 @@
                     "_name": "operation speed",
                     "_description": "",
                     "_verbose": false,
-                    "_GUID": "cf90d7c1-0e04-46e1-b536-56f13960758c",
-                    "_timestamp": "2025-06-11 16:33:41.610659",
+                    "_GUID": "74b7a58c-7ae4-424e-94af-ad573e3aa186",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_feature": "velocityCommand",
                     "_status": "unknown",
                     "_type": "property_mean",
@@ -221,8 +221,8 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "c43b7fdd-f4d9-4253-9338-2611b1341695",
-                        "_timestamp": "2025-06-11 18:08:16.531195",
+                        "_GUID": "a48ac7a3-838a-4ed9-920f-2e7dd480c0ca",
+                        "_timestamp": "2026-01-19 14:12:42.116760",
                         "_average": 100,
                         "_deviation": 0.5
                     }
@@ -235,8 +235,8 @@
             "_name": "design monitor",
             "_description": "design time monitoring of the model",
             "_verbose": false,
-            "_GUID": "334bef12-873b-4180-996d-a3910acdaa7c",
-            "_timestamp": "2025-06-11 16:33:41.611657",
+            "_GUID": "373e7c70-ec29-42a8-9724-f58265de340f",
+            "_timestamp": "2026-01-16 13:58:50.189186",
             "_status": "invalid",
             "_type": "DesignTime",
             "observes": [
@@ -244,8 +244,8 @@
                     "_name": "Environment temperature",
                     "_description": "Required operation temperature",
                     "_verbose": false,
-                    "_GUID": "76656d4e-cb22-4ea3-817d-8e5c83cf50fe",
-                    "_timestamp": "2025-06-11 16:33:41.610659",
+                    "_GUID": "d0a67ecc-96e2-4112-a33f-0edf9f869d33",
+                    "_timestamp": "2026-01-16 13:58:50.188185",
                     "_feature": "temperature",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -253,8 +253,8 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "495eb4b3-af40-4d10-acdb-aa8865313852",
-                        "_timestamp": "2025-06-11 18:08:16.531195",
+                        "_GUID": "457af26a-af48-4580-80fd-e56a5f270820",
+                        "_timestamp": "2026-01-19 14:12:42.116760",
                         "_valueMin": -10,
                         "_valueMax": 30,
                         "_granularity": 5

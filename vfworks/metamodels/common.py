@@ -12,6 +12,7 @@ import json
 class baseElement(object):
 
     def __init__(self, name='tbd', description='tbd', verbose=False):
+        # TODO: add hash to baseElement
         self._name = name
         self._description = description
         self._verbose = verbose

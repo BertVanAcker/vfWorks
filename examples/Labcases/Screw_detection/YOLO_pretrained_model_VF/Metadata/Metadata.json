@@ -1,0 +1,359 @@
+{
+    "_name": "metadata",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "074f6dfb-2044-443d-96a4-09ed5d0a871c",
+    "_timestamp": "2026-04-17 11:38:12.584087",
+    "_specifications": [
+        {
+            "_name": "screw_count",
+            "_description": "number of screw instances in the dataset",
+            "_verbose": false,
+            "_GUID": "f0ba5dd6-ffbe-4ea6-a914-394cf5d95691",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "screws_samples",
+            "_status": "unknown",
+            "_type": "property_min",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "cff08781-d042-4a87-a8f9-798cf2047353",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_valueMin": 100
+            }
+        },
+        {
+            "_name": "no_screw_count",
+            "_description": "number of screw instances in the dataset",
+            "_verbose": false,
+            "_GUID": "bae8220a-cb54-472f-971f-3ee7555be402",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "noscrews_samples",
+            "_status": "unknown",
+            "_type": "property_min",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "5f45fd1b-d5fd-4330-819c-3a2165929b16",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_valueMin": 100
+            }
+        },
+        {
+            "_name": "lighting color red",
+            "_description": "color of the surrounding lighting",
+            "_verbose": false,
+            "_GUID": "3b4f4b40-ea3b-4a5e-903c-187ebcd2a608",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "colorRed",
+            "_status": "unknown",
+            "_type": "property_range",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "78e504f1-1fb3-405f-9984-8c0dbfcc82ec",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_valueMin": 0,
+                "_valueMax": 255,
+                "_granularity": 1
+            }
+        },
+        {
+            "_name": "lighting color green",
+            "_description": "color of the surrounding lighting",
+            "_verbose": false,
+            "_GUID": "f3e77bd3-7752-4d08-881b-2c25365ff5f4",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "colorGreen",
+            "_status": "unknown",
+            "_type": "property_range",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "fe05d702-f5ac-43b3-9f41-b71b2510824a",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_valueMin": 0,
+                "_valueMax": 255,
+                "_granularity": 5
+            }
+        },
+        {
+            "_name": "lighting color blue",
+            "_description": "color of the surrounding lighting",
+            "_verbose": false,
+            "_GUID": "145b06e6-8316-4290-944d-b6d25759a3e2",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "colorBlue",
+            "_status": "unknown",
+            "_type": "property_range",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "25f32a9c-d59f-4d4c-bdb6-61c2f83d9749",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_valueMin": 0,
+                "_valueMax": 255,
+                "_granularity": 1
+            }
+        },
+        {
+            "_name": "model confidence",
+            "_description": "",
+            "_verbose": false,
+            "_GUID": "db683ebb-4414-4a28-b8e0-8c3f0bfe07fb",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "Confidence",
+            "_status": "unknown",
+            "_type": "property_mean",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "5da65e1c-dd15-49d7-a6bc-f2435aee06a0",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_average": 0.7,
+                "_deviation": 10
+            }
+        },
+        {
+            "_name": "model accuracy",
+            "_description": "",
+            "_verbose": false,
+            "_GUID": "ca74902a-31e4-4587-8519-7652bc4f27ff",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_feature": "mAP50-95",
+            "_status": "unknown",
+            "_type": "property_min",
+            "_value": {
+                "_name": "tbd",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "cac169ef-7f68-41e0-810c-b22c1ee27ba1",
+                "_timestamp": "2026-04-17 11:38:12.587086",
+                "_valueMin": 0.4
+            }
+        }
+    ],
+    "_properties": [
+        {
+            "_name": "image",
+            "_description": "input image",
+            "_verbose": false,
+            "_GUID": "4844a7f6-8132-4497-90b1-418caeb7f061",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 0,
+            "_satisfies": []
+        },
+        {
+            "_name": "label",
+            "_description": "detections of the model",
+            "_verbose": false,
+            "_GUID": "6364a180-4399-4163-ba23-d6d26bd7d025",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_domain": "CONTROL",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 0,
+            "_satisfies": []
+        },
+        {
+            "_name": "Confidence",
+            "_description": "model output confidence",
+            "_verbose": false,
+            "_GUID": "35404300-bacd-4e01-b7a8-bda3095ba174",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 1,
+            "_satisfies": [
+                {
+                    "_name": "model confidence",
+                    "_description": "",
+                    "_verbose": false,
+                    "_GUID": "db683ebb-4414-4a28-b8e0-8c3f0bfe07fb",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "Confidence",
+                    "_status": "unknown",
+                    "_type": "property_mean",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "5da65e1c-dd15-49d7-a6bc-f2435aee06a0",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_average": 0.7,
+                        "_deviation": 10
+                    }
+                }
+            ]
+        },
+        {
+            "_name": "accuracy",
+            "_description": "model accuracy",
+            "_verbose": false,
+            "_GUID": "61062f2d-ccb5-463a-923d-810a9c3c642f",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 1,
+            "_satisfies": [
+                {
+                    "_name": "model accuracy",
+                    "_description": "",
+                    "_verbose": false,
+                    "_GUID": "ca74902a-31e4-4587-8519-7652bc4f27ff",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "mAP50-95",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "cac169ef-7f68-41e0-810c-b22c1ee27ba1",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_valueMin": 0.4
+                    }
+                }
+            ]
+        },
+        {
+            "_name": "Environment Color",
+            "_description": "Environment color",
+            "_verbose": false,
+            "_GUID": "0d22c8a8-6f50-404a-8688-ac42e7bc3535",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "float_64",
+            "_min": 0,
+            "_max": 1,
+            "_satisfies": [
+                {
+                    "_name": "lighting color red",
+                    "_description": "color of the surrounding lighting",
+                    "_verbose": false,
+                    "_GUID": "3b4f4b40-ea3b-4a5e-903c-187ebcd2a608",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "colorRed",
+                    "_status": "unknown",
+                    "_type": "property_range",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "78e504f1-1fb3-405f-9984-8c0dbfcc82ec",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_valueMin": 0,
+                        "_valueMax": 255,
+                        "_granularity": 1
+                    }
+                },
+                {
+                    "_name": "lighting color green",
+                    "_description": "color of the surrounding lighting",
+                    "_verbose": false,
+                    "_GUID": "f3e77bd3-7752-4d08-881b-2c25365ff5f4",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "colorGreen",
+                    "_status": "unknown",
+                    "_type": "property_range",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "fe05d702-f5ac-43b3-9f41-b71b2510824a",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_valueMin": 0,
+                        "_valueMax": 255,
+                        "_granularity": 5
+                    }
+                },
+                {
+                    "_name": "lighting color blue",
+                    "_description": "color of the surrounding lighting",
+                    "_verbose": false,
+                    "_GUID": "145b06e6-8316-4290-944d-b6d25759a3e2",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "colorBlue",
+                    "_status": "unknown",
+                    "_type": "property_range",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "25f32a9c-d59f-4d4c-bdb6-61c2f83d9749",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_valueMin": 0,
+                        "_valueMax": 255,
+                        "_granularity": 1
+                    }
+                }
+            ]
+        },
+        {
+            "_name": "Dataset Sample Count",
+            "_description": "Number of samples in the used dataset",
+            "_verbose": false,
+            "_GUID": "0f795895-b040-406c-8866-561b5eed314d",
+            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_domain": "None",
+            "_unit": "-",
+            "_datatype": "int_16",
+            "_min": 0,
+            "_max": 1,
+            "_satisfies": [
+                {
+                    "_name": "screw_count",
+                    "_description": "number of screw instances in the dataset",
+                    "_verbose": false,
+                    "_GUID": "f0ba5dd6-ffbe-4ea6-a914-394cf5d95691",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "screws_samples",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "cff08781-d042-4a87-a8f9-798cf2047353",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_valueMin": 100
+                    }
+                },
+                {
+                    "_name": "no_screw_count",
+                    "_description": "number of screw instances in the dataset",
+                    "_verbose": false,
+                    "_GUID": "bae8220a-cb54-472f-971f-3ee7555be402",
+                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_feature": "noscrews_samples",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "5f45fd1b-d5fd-4330-819c-3a2165929b16",
+                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_valueMin": 100
+                    }
+                }
+            ]
+        }
+    ]
+}

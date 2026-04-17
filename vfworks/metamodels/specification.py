@@ -7,9 +7,9 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 import numpy as np
-from scipy.stats import chisquare
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
+from py2neo import Node
 
 class Specification(baseElement):
     def __init__(self, name='tbd', description='tbd', feature='tbd', type=None, verbose=False, **kwargs):
@@ -23,7 +23,10 @@ class Specification(baseElement):
             self._value = ValueRange(valueMin=kwargs['valueMin'], valueMax=kwargs['valueMax'], granularity=kwargs['granularity'])
         if type == PropertyType.PROPERTY_MEAN:
             self._value = AverageValue(average=kwargs['average'], deviation=kwargs['deviation'])
-
+        if type == PropertyType.PROPERTY_MIN:
+            self._value = ValueMin(valueMin=kwargs['valueMin'])
+        if type == PropertyType.PROPERTY_MAX:
+            self._value = ValueMax(valueMax=kwargs['valueMax'])
 
     @property
     def feature(self):
@@ -50,16 +53,23 @@ class Specification(baseElement):
         self._type = value
 
     @property
-    def runtimeSpecification(self):
-        return self._runtimeSpecification
-
-    @runtimeSpecification.setter
-    def runtimeSpecification(self, value):
-        self._runtimeSpecification = value
-
-    @property
     def status(self):
         return self._status
+
+    def create_neo4j_node(self):
+        color_map = {
+            StatusType.INVALID: "#E76F51",
+            StatusType.VALID: "#8AB17D",
+            StatusType.UNKNOWN: "#B0B0B0",
+        }
+        return Node(
+            "specification",
+            name=self.name,
+            description=self.description,
+            value=self.feature + ": " + self.value.tostring(),
+            status=self.status,
+            viz_color=color_map.get(self.status, "#B0B0B0")
+        )
 
 class AverageValue(baseElement):
     def __init__(self, name='tbd',description='tbd', average=0.0, deviation=0.0, verbose=False):
@@ -77,6 +87,9 @@ class AverageValue(baseElement):
         if point < self._average-self._deviation or point > self._average+self._deviation:
             return False
         return True
+    
+    def tostring(self):
+        return f"{self._average} +/- {self._deviation}"
 
 class ValueRange(baseElement):
     def __init__(self, name='tbd',description='tbd', valueMin=0.0, valueMax=0.0, granularity=10, verbose=False):
@@ -95,6 +108,47 @@ class ValueRange(baseElement):
         if point < self._valueMin or point > self._valueMax:
             return False
         return True
+    
+    def tostring(self):
+        return f"[{self._valueMin} - {self._valueMax}]"
+
+class ValueMin(baseElement):
+    def __init__(self, name='tbd',description='tbd', valueMin=0.0, verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+        self._valueMin = valueMin
+
+    def validate_data(self, data):
+        data_min = np.min(data)
+        if data_min <= self._valueMin:
+            return False
+        return True
+
+    def validate_point(self, point):
+        if point <= self._valueMin:
+            return False
+        return True
+    
+    def tostring(self):
+        return f">={self._valueMin}"
+
+class ValueMax(baseElement):
+    def __init__(self, name='tbd',description='tbd', valueMax=0.0, verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+        self._valueMax = valueMax
+
+    def validate_data(self, data):
+        data_max = np.max(data)
+        if data_max >= self._valueMax:
+            return False
+        return True
+
+    def validate_point(self, point):
+        if point >= self._valueMax:
+            return False
+        return True
+    
+    def tostring(self):
+        return f"<={self._valueMax}"
 
 class Requirement(baseElement):
 

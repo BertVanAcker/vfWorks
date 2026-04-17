@@ -31,7 +31,7 @@ dash-table==5.0.0
 decorator==5.1.1
 Deprecated==1.2.14
 deprecation==2.1.0
-depthai-viewer==0.1.7
+depthai-viewer
 distlib==0.3.9
 dnspython==2.7.0
 docutils==0.21.2
@@ -187,3 +187,6 @@ yellowbrick==1.5
 zipp==3.21.0
 zope.event==5.0
 zope.interface==7.2
+vfWorks==0.0.1
+torch==2.8.0
+setuptools==68.2.0

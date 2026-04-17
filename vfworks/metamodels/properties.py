@@ -84,7 +84,16 @@ class PropertyofInterest(Property):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
 
     def create_neo4j_node(self):
-        return Node("Property-of-interest", name=self.name, domain=self.domain,unit=self.unit,datatype=self.datatype,minimum=self.min,maximum=self.max)
+        return Node(
+            "Property-of-interest",
+            name=self.name,
+            domain=self.domain,
+            unit=self.unit,
+            datatype=self.datatype,
+            minimum=self.min,
+            maximum=self.max,
+            viz_color="#E9C46A"
+        )
 
 
 class InfluenceFactor(Property):
@@ -92,4 +101,13 @@ class InfluenceFactor(Property):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
 
     def create_neo4j_node(self):
-        return Node("InfluenceFactor", name=self.name, domain=self.domain,unit=self.unit,datatype=self.datatype,minimum=self.min,maximum=self.max)
+        return Node(
+            "InfluenceFactor",
+            name=self.name,
+            domain=self.domain,
+            unit=self.unit,
+            datatype=self.datatype,
+            minimum=self.min,
+            maximum=self.max,
+            viz_color="#F4A261"
+        )

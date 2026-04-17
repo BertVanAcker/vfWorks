@@ -12,8 +12,11 @@ from vfworks.metamodels.specification import *
 from vfworks.metamodels.experiment import *
 from vfworks.metamodels.properties import *
 from vfworks.metamodels.common import *
+from vfworks.utils.constants import StatusType
 from vfworks.logging.logger import *
 import yaml
+import networkx as nx
+import matplotlib.pyplot as plt
 from termcolor import colored
 
 class ValidityFrame(baseElement):
@@ -235,6 +238,78 @@ class ValidityFrame(baseElement):
             for spec in self._metadata.specifications:
                 print("Specification " + spec.name + " - STATUS: " + str(spec.status))
 
+    def graphify(self, figsize=(14, 10), align='vertical'):
+        G = nx.DiGraph()
+
+        def add_typed_node(node_name, node_type, status=None, layer=0, **attributes):
+            G.add_node(node_name, type=node_type, status=status, layer=layer, **attributes)
+
+        specification_by_guid = {spec.GUID: spec for spec in self._metadata.specifications}
+
+        # Add specifications, properties, and monitors as nodes
+        for spec in self._metadata.specifications:
+            add_typed_node(spec.name, 'specification', status=spec.status, layer=1, guid=spec.GUID)
+        for prop in self._metadata.properties:
+            add_typed_node(prop.name, 'property', layer=2, satisfies=prop.satisfies, guid=prop.GUID)
+        for monitor in self.runtime_monitors + self.design_time_monitors:
+            add_typed_node(monitor.name, 'monitor', status=monitor.status, layer=0, guid=monitor.GUID)
+
+        # Add edges based on which monitors check which specifications
+        for monitor in self.runtime_monitors + self.design_time_monitors:
+            for spec in monitor.observes:
+                G.add_edge(monitor.name, spec.name)
+
+        # Link specifications to the properties that satisfy them so descendant coloring can propagate.
+        for prop in self._metadata.properties:
+            for spec_guid in prop.satisfies:
+                spec = specification_by_guid.get(spec_guid)
+                if spec is not None:
+                    G.add_edge(spec.name, prop.name)
+
+        invalid_monitors = {monitor.name for monitor in self.runtime_monitors + self.design_time_monitors if monitor.status == StatusType.INVALID}
+        invalid_descendants = set()
+        valid_monitors = {monitor.name for monitor in self.runtime_monitors + self.design_time_monitors if monitor.status == StatusType.VALID}
+        valid_descendants = set()
+        for monitor_name in invalid_monitors:
+            invalid_descendants.update(nx.descendants(G, monitor_name))
+        for monitor_name in valid_monitors:
+            valid_descendants.update(nx.descendants(G, monitor_name))
+
+        node_colors = []
+        for node_name in G.nodes:
+
+            if node_name in invalid_monitors:
+                node_colors.append('#d73027')
+            elif node_name in invalid_descendants:
+                node_colors.append('#fc8d59')
+            elif node_name in valid_monitors:
+                node_colors.append('#1a9850')
+            elif node_name in valid_descendants:
+                node_colors.append('#66bd63')
+            else:
+                node_colors.append('#cce5ff')
+
+        pos = nx.multipartite_layout(G, subset_key='layer', align=align)
+
+        plt.figure(figsize=figsize)
+        nx.draw(
+            G,
+            pos=pos,
+            with_labels=True,
+            node_color=node_colors,
+            node_size=2200,
+            font_size=9,
+            arrows=True,
+            arrowstyle='-|>',
+            arrowsize=16,
+            width=1.2,
+            alpha=0.9
+        )
+        plt.tight_layout()
+        plt.show()
+        
+        return G
+
     # ------------------------------------------------------------------------------------------------------------------
     #                                           IMPORT/EXPORT FUNCTIONS
     # -----------------------------------------------------------------------------------------------------------------
@@ -369,9 +444,9 @@ class Operational(baseElement):
         self._modelStructures.append(s)
 
     def addMonitor(self, monitor):
-        if monitor.type == MonitorType.DESIGN_TIME:
+        if monitor.type == MonitorTime.DATA_VALIDATION or monitor.type == MonitorTime.MODEL_VALIDATION:
             self.design_time_monitors.append(monitor)
-        if monitor.type == MonitorType.RUN_TIME:
+        if monitor.type == MonitorTime.RUN_TIME:
             self.runtime_monitors.append(monitor)
 
     @property

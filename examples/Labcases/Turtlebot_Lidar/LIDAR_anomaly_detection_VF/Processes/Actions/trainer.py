@@ -7,12 +7,14 @@
 # * permission of Bert Van Acker
 # **************************************************************************************
 import numpy as np
+import sklearn.metrics
 
 from vfworks.utils.auxiliary import store_as_onnx, store_as_pickled
 from scipy.stats import chisquare
 from vfworks.utils.data.dataLoader import *
 from vfworks.utils.model.modelLoader import *
 from sklearn.ensemble import IsolationForest
+from sklearn.metrics import accuracy_score, recall_score
 
 class trainingActions(object):
     def __init__(self, name="userActions class", validityFrame=None):
@@ -35,7 +37,7 @@ class trainingActions(object):
     def t_collect_data(self):
         try:
             #load train data from model structure
-            self.data_full = self._data_loader.loadData(experimentLabel="all",prefix=self._prefix,type="numpy",shuffle=True)
+            self.data_full = self._data_loader.loadData(experimentLabel="all",prefix=self._prefix,type="pandas",shuffle=True)
             return True
         except:
             return False
@@ -65,11 +67,16 @@ class trainingActions(object):
 
     def t_prepare_data(self):
         try:
-            # Preprocess data to change inf into very high finite number (IsolationForest crashes with inf values)
-            processed_data = np.where(np.isinf(self.data_full), 50, self.data_full)
-            train_size = int(len(processed_data)*0.8)
-            self.data_train = processed_data[:train_size]
-            self.data_test = processed_data[train_size:]
+            # Replace inf values with large finite number
+            processed_df = self.data_full.replace([np.inf, -np.inf], 15)
+
+            # Shuffle the dataset
+            processed_df = processed_df.sample(frac=1).reset_index(drop=True)
+
+            # Split into train and test sets (80/20)
+            train_size = int(len(processed_df) * 0.8)
+            self.data_train = processed_df.iloc[:train_size]
+            self.data_test = processed_df.iloc[train_size:]
 
             return True
         except:
@@ -79,24 +86,54 @@ class trainingActions(object):
         try:
             num_inputs = len(self._validityFrame.activeModelStructure.inports)
             for model_number in range(self._validityFrame.activeModelStructure.redundancy):
-                self.models.append(IsolationForest(contamination="auto", random_state=model_number, max_features=num_inputs))
+                self.models.append(IsolationForest(contamination=0.2, random_state=model_number, max_features=num_inputs))
             return True
         except:
             return False
 
     def t_fit_model(self):
         try:
+            # Split features (all except last col) and labels (last col)
+            X_train = self.data_train.iloc[:, :-1]
+
             for model in self.models:
-                model.fit(self.data_train)
+                    model.fit(X_train)
             return True
         except:
             return False
 
     def t_evaluate_model(self):
         try:
-            print("WARNING: Model evaluation action not implemented yet!")
-            return True
-        except:
+            evaluated_features = {"accuracy": [], "recall": [], "precision": []}
+            # Split features (all except last col) and labels (last col)
+            X_test = self.data_test.iloc[:, :-1]
+            Y_test = self.data_test.iloc[:, -1]
+
+            evaluation_pass = True
+
+            for i,model in enumerate(self.models):
+                predictions = model.predict(X_test)
+
+                predictions_mapped = ["anomaly" if p < 0 else "normal" for p in predictions]
+
+                evaluated_features["accuracy"].append(sklearn.metrics.accuracy_score(Y_test, predictions_mapped)*100)
+                evaluated_features["recall"].append(sklearn.metrics.recall_score(Y_test, predictions_mapped, pos_label="anomaly")*100)
+                evaluated_features["precision"].append(sklearn.metrics.precision_score(Y_test, predictions_mapped, pos_label="anomaly")*100)
+
+                print("----------------EVALUATION METRICS----------------------")
+                print("Accuracy: {}".format(evaluated_features["accuracy"][i]))
+                print("Recall: {}".format(evaluated_features["recall"][i]))
+                print("Precision: {}".format(evaluated_features["precision"][i]))
+
+                for monitor in self._validityFrame.design_time_monitors:
+                    for feature in evaluated_features:
+                        is_valid = monitor.validate_point(data=evaluated_features[feature][i], feature=feature)
+                        if not is_valid:
+                            evaluation_pass = False
+                            print("WARNING: model requirement not satisfied: {} not sufficient".format(feature))
+            return evaluation_pass
+        except Exception as e:
+            print(f"Error in t_evaluate_model: {e}")
             return False
 
     def t_store_model_snapshot(self):

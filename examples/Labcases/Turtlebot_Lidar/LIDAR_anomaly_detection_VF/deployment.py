@@ -26,7 +26,7 @@ def anomalyDetection(self):
     # model use
     predictions = []
     anomaly_scores = []
-    processed_measurement = np.where(np.isinf(self.measurement), 50, self.measurement)
+    processed_measurement = np.where(np.isinf(self.measurement), 15, self.measurement)
     for model in self.models:
         predictions.append(model.predict([processed_measurement])[0])
         anomaly_scores.append(model.decision_function([processed_measurement])[0]) # Higher = normal, Lower = anomaly
@@ -49,4 +49,4 @@ system.anomalyDetection= anomalyDetection
 #   Execute an experiment to demonstrate the anomaly detector case
 #----------------------------------------------------------------------------------------------------------------------------------
 
-measurements = system.perform_experiment(duration=20)
+measurements = system.perform_nominal_experiment(duration=20)

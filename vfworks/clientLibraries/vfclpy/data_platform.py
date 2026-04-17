@@ -44,6 +44,8 @@ class DataPlatform(object):
         :param key: The key for storing the data
         :param value: The value to store (can be a dict, str, int, etc.)
         """
+        if isinstance(value, list):
+            value = json.dumps(value)
         if isinstance(value, dict):
             value = json.dumps(value)  # Serialize the dictionary to a JSON string
         if self.storage_type == 'global':

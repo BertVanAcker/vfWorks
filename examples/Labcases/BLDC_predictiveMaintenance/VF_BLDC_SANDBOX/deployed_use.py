@@ -79,4 +79,4 @@ system.anomalyDetection= anomalyDetection
 #   Execute an experiment to demonstrate the anomaly detector case
 #----------------------------------------------------------------------------------------------------------------------------------
 
-measurements = system.experiment_constant_velocity(experimentTime=60,percentage=100)
+measurements = system.experiment_constant_velocity(experimentTime=60,percentage=60)

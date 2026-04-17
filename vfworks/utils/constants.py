@@ -45,10 +45,13 @@ class ModelType:
     LINEAR_REGRESSION = "LinearRegression"
     NEURAL_NETWORK = "NeuralNetwork"
     RECURRENT_NEURAL_NETWORK = "RecurrentNeuralNetwork"
+    CONVOLUTIONAL_NEURAL_NETWORK = "ConvolutionalNeuralNetwork"
 
 class PropertyType:
     PROPERTY_RANGE= "property_range"
     PROPERTY_MEAN = "property_mean"
+    PROPERTY_MIN= "property_min"
+    PROPERTY_MAX = "property_max"
 
 class StatusType:
     UNKNOWN = "unknown"
@@ -66,6 +69,7 @@ class LOGLEVEL:
     DEBUG = "DEBUG"
     ERROR = "ERROR"
 
-class MonitorType:
-    DESIGN_TIME = "DesignTime"
+class MonitorTime:
+    DATA_VALIDATION = "DataValidationTime"
+    MODEL_VALIDATION = "ModelValidationTime"
     RUN_TIME = "RunTime"

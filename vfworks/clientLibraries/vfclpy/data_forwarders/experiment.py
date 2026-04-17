@@ -77,14 +77,17 @@ class Experiment(object):
         except:
             self.logger.warning("Label <" + label + "> failed to write to vfWorks backend!")
 
-    def addMeasurement(self,key,value,batch=True,clean=True):
+    def addMeasurement(self,key,value,batch=True,clean=True, vector=False):
         _measurement_key = self.measurements_key + ":" + key
         if clean:
             self.data_platform.delete(_measurement_key)
         if batch:
-            value.reverse()
-            for point in value:
-                self.data_platform.write_storage(_measurement_key, point)       #TODO: add batch writer to data_platform!
+            if vector:
+                self.data_platform.write(_measurement_key, value)
+            else:
+                value.reverse()
+                for point in value:
+                    self.data_platform.write_storage(_measurement_key, point)       #TODO: add batch writer to data_platform!
         else:
             self.data_platform.write_storage(_measurement_key, value)
 

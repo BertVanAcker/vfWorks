@@ -66,8 +66,21 @@ class TurtlebotSystem:
 
         return collected_data
 
-    def perform_experiment(self, duration):
+    def perform_nominal_experiment(self, duration):
+        self.redis_client.publish("/run", '{"simulation_active":true}')
         measurements = self.collect_from_pubsub(duration)
+        self.redis_client.publish("/run", '{"simulation_active":false}')
+        return measurements
+
+    def perform_random_occluded_experiment(self, duration):
+        occlusion_data = {
+            'occlude_lidar': 'random'
+        }
+        self.redis_client.publish("/occlude_lidar", json.dumps(occlusion_data))
+        self.redis_client.publish("/run", '{"simulation_active":true}')
+        measurements = self.collect_from_pubsub(duration)
+        self.redis_client.publish("/occlude_lidar", json.dumps(occlusion_data))
+        self.redis_client.publish("/run", '{"simulation_active":false}')
         return measurements
 
     def monitor(self):

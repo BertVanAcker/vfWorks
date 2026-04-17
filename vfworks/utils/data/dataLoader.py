@@ -8,6 +8,8 @@
 # **************************************************************************************
 import pandas as pd
 import numpy as np
+
+from vfworks.metamodels.model_structure import Inport, Outport
 from vfworks.utils.constants import *
 
 
@@ -44,10 +46,10 @@ class DataLoader(object):
         _data = None
         activeMS = self._validityframe.activeModelStructure
         _inputs_reference = []
-        for inport in activeMS.inports:
+        for port in activeMS.inports + activeMS.outports:
             #fetch measurements related to the input
             _input_data_ref = None
-            _input_poi = inport.mapping
+            _input_poi = port.mapping
             _poi_reference = []
             for experiment in self._validityframe.experiments:
                 if experimentLabel == experiment.label or experimentLabel=="all" :                            #TODO: if multiple experiments have the same label, we need to concat the datapoints?
@@ -57,11 +59,14 @@ class DataLoader(object):
                             _input_data_ref = prefix+measurement.reference
                             if _input_data_ref is not None:
                                 _poi_reference.append(_input_data_ref)
-            _inputs_reference.append(_poi_reference)
+            if len(_poi_reference) > 0:
+                _inputs_reference.append(_poi_reference)
 
             #if _input_data_ref is not None:
             #    _inputs_reference.append(_input_data_ref)
 
+        if type == "prepared_data_yaml":
+            return _inputs_reference[0][0]
         if type == "pandas":
             _data = merge_csv_files_to_dataframe(_inputs_reference)
         if type == "numpy":
@@ -86,17 +91,17 @@ def merge_csv_files_to_dataframe(csv_files=[]):
     dataframes = []
     column_names = []
 
-    for file in csv_files:
-        df = pd.read_csv(file, header=None)  # Assumes no headers in CSV files
+    for file_list in csv_files:
+        df = pd.concat([pd.read_csv(path) for path in file_list], axis=0, ignore_index=True)  # Assumes header line in CSV files
 
         if df.shape[1] > 1:
-            raise ValueError(f"CSV file '{file}' has more than one column, expected only one.")
+            raise ValueError(f"CSV file '{file_list}' has more than one column, expected only one.")
 
         dataframes.append(df.squeeze())  # Convert single-column DataFrame to Series
-        column_names.append(file)
+        # column_names.append(file)
 
     merged_df = pd.concat(dataframes, axis=1)
-    merged_df.columns = column_names  # Use filenames as column names
+    #merged_df.columns = column_names  # Use filenames as column names
 
     return merged_df
 

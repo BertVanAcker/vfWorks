@@ -1,5 +1,7 @@
 import os
 
+from matplotlib.dviread import Vf
+
 from vfworks.metamodels.specification import *
 from vfworks.metamodels.validity_frame import *
 from vfworks.metamodels.model_structure import *
@@ -57,10 +59,16 @@ else:
     VF.experiments = exp_remote.loadExperiments(measerementStorage="csv")
 
 #-------------------------SPECIFICATIONS------------------------------------------------
-spec1 = Specification(name="Environment temperature", description="Required operation temperature", feature="temperature", type=PropertyType.PROPERTY_RANGE, valueMin=-10, valueMax=30, granularity=5, runtimeSpecification=False)
+spec1 = Specification(name="Environment temperature", description="Required operation temperature", feature="temperature", type=PropertyType.PROPERTY_RANGE, valueMin=30, valueMax=30, granularity=1, runtimeSpecification=False)
 spec2 = Specification(name="operation speed", description="", feature="velocityCommand", type=PropertyType.PROPERTY_MEAN, average=100, deviation=0.5)
+spec3 = Specification(name="model accuracy", description="", feature="accuracy", type=PropertyType.PROPERTY_MEAN, average=90, deviation=3)
+spec4 = Specification(name="model recall", description="", feature="recall", type=PropertyType.PROPERTY_MEAN, average=100, deviation=0)
+spec5 = Specification(name="model precision", description="", feature="precision", type=PropertyType.PROPERTY_MEAN, average=80, deviation=20)
 VF.addSpecification(spec1)
 VF.addSpecification(spec2)
+VF.addSpecification(spec3)
+VF.addSpecification(spec4)
+VF.addSpecification(spec5)
 
 #------------------------------POI------------------------------------------------------
 pois = []
@@ -69,7 +77,7 @@ for i in range(360):
     pois.append(poi)
     VF.addProperty(poi)
 
-poi3 = PropertyofInterest(name="Anomaly",description="Classification of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.INTEGER_8,min=0,max=1,satisfies=None)
+poi3 = PropertyofInterest(name="Label",description="Classification of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.INTEGER_8,min=0,max=1,satisfies=None)
 poi4 = PropertyofInterest(name="AnomalyScore",description="Classification score of anomaly",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=-50,max=50,satisfies=None)
 
 VF.addProperty(poi3)
@@ -78,6 +86,7 @@ VF.addProperty(poi4)
 #-----------------POI LINKING TO EXPERIMENT MEASUREMENTS--------------------------------
 for i in range(360):
     VF.assign_poi2measurement(poi=pois[i],measurementName="angle"+str(i))
+VF.assign_poi2measurement(poi=poi3,measurementName="labels")
 
 #-------------------------MODEL STRUCTURE-----------------------------------------------
 inports = []
@@ -87,7 +96,7 @@ for i in range(360):        #TODO: make number of inputs more generic
     IN.add_mapping_relation(type="poi", poi=pois[i])
     inports.append(IN)
 
-OUT1 = Outport(name="anomaly", unit=UnitType.UNIT_none)
+OUT1 = Outport(name="label", unit=UnitType.UNIT_none)
 OUT1.add_mapping_relation(type="poi",poi=poi3)
 OUT2= Outport(name="anomalyScore", unit=UnitType.UNIT_none)
 OUT2.add_mapping_relation(type="poi",poi=poi4)
@@ -99,8 +108,10 @@ VF.addModelStructure(SM)
 #-----------------------------MONITORS------------------------------------------------
 monitor1 = Monitor(name="Runtime monitor", description="Online monitoring of the model", observes=[spec2], monitor_type=MonitorType.RUN_TIME)
 monitor2 = Monitor(name="design monitor", description="design time monitoring of the model", observes=[spec1], monitor_type=MonitorType.DESIGN_TIME)
+monitor3 = Monitor(name="Accuracy monitor", description="monitor the accuracy and recall during the validation phase of design time", observes=[spec3, spec4, spec5], monitor_type=MonitorType.DESIGN_TIME)
 VF.addMonitor(monitor1)
 VF.addMonitor(monitor2)
+VF.addMonitor(monitor3)
 #-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
 packageName="VF_TORCH"
 VF.export(packageName=None)     #VF package is current working directory

@@ -8,6 +8,7 @@
 # **************************************************************************************
 from pycaret.anomaly import *
 from vfworks.utils.auxiliary import load_model_from_pickle
+from ultralytics import YOLO
 import os
 
 
@@ -79,6 +80,8 @@ class ModelLoader(object):
             model_location = self._validityframe.activeModelStructure.modelRef
         if type == "pycaret":
             self._model = load_model(model_location)
+        elif type == "YOLO":
+            self._model = YOLO("yolo11n.pt")
         elif type == "torch":
             if self._validityframe.activeModelStructure.redundancy == 1:
                 self._models.append(load_model_from_pickle(file_name=model_location, modelType="torch"))

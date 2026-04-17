@@ -50,7 +50,7 @@ class RWSystem_BLDC_D5065():
 
         if SERIAL:
             #---------serial connections for forwarding data to serial ------------
-            self.serialPort = serial.Serial('COM6', 115200)
+            self.serialPort = serial.Serial('COM8', 115200)
 
         #-------anomaly detection components---------------
         self.model = None
