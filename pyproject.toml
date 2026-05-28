@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vfWorks"
+version = "0.0.1"
+description = "vfWorks - your gateway to valid model (re-)use."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache License 2.0" }
+authors = [
+    { name = "Jan Gladiné & Bert Van Acker", email = "Jan.Gladine@uantwerpen.be" },
+]
+keywords = ["AI", "Safety", "Model-based"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+	"torch>=2.11.0",
+	"torchvision>=0.26.0",
+	"click",
+	"numpy",
+	"PyYAML",
+	"redis",
+	"neo4j",
+	"textX",
+	"networkx",
+	"matplotlib",
+	"termcolor",
+	"Jinja2",
+	"skl2onnx",
+	"pandas",
+	"pycaret",
+	"ultralytics>=8.4.56",
+]
+
+[project.scripts]
+vfworks = "vfworks.__main__:cli"
+
+[project.optional-dependencies]
+examples-bldc = [
+    "odrive>=0.6.11.post0",
+    "serial>=0.0.97",
+]
+examples-turtlebot-lidar = [
+    "scikit-learn>=1.4.2",
+    "scipy>=1.11.4",
+    "tqdm>=4.67.3",
+]
+examples-screw-detection = [
+    "opencv-python>=4.11.0.86",
+    "pyrealsense2>=2.58.1.10581",
+]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["vfworks*"]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "deptry>=0.25.1",
+]

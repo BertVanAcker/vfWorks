@@ -4,28 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="--Added monitors for design and runtime monitoring">
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Binaries/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Documentation/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Experiments/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Metadata/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Operational/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes/Actions/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes/Actions/trainer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Resources/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Sources/readme.rst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/deployment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/experimenter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/populatePackage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/TurtlebotSystem/TurtlebotExperiments.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/TurtlebotSystem/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2025_8_34_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_30_2025_8_34_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="68fe561f-7eec-4d60-8e0d-25d0edaf3e56" name="Changes" comment="-- big push to add screw detector use case for demo">
+      <change afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/mockup_runtime_graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vfWorks.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vfWorks.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/clientLibraries/vfclpy/data_forwarders/experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/ScrewDetectionSystem/deploy_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/ScrewDetectionSystem/deploy_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Experiments/Experiments.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Experiments/Experiments.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Metadata/Metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Metadata/Metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Operational/Operational.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Operational/Operational.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Actions/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Actions/trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Processes.json" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Processes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Sources/Screw_detections_model_YOLO_best.pt" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Sources/Screw_detections_model_YOLO_best.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/populatePackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/populatePackage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/knowledge_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/knowledge_graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/monitors.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/monitors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/properties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/specification.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/specification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/standard.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/standard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +64,21 @@
     &quot;accountId&quot;: &quot;74ae5030-bcc2-4403-aa43-36ecb8fe6af6&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/examples/Labcases/Screw_detection/ScrewDetectionSystem/camera_experimenter.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Operational/Operational.json" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Actions/trainer.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/logs.log" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/train.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/populatePackage.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vfworks/metamodels/monitors.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vfworks/metamodels/properties.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vfworks/metamodels/specification.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vfworks/metamodels/validity_frame.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vfworks/workflows/executer.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/vfworks/workflows/tasks.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -76,70 +90,74 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.BLDC_DEPLOYED.executor": "Debug",
-    "Python.Boat_VF.executor": "Debug",
-    "Python.D5065experiments.executor": "Run",
-    "Python.EXP_001 (1).executor": "Run",
-    "Python.EXP_001.executor": "Run",
-    "Python.Use.executor": "Run",
-    "Python.VF2SWC.executor": "Run",
-    "Python.VF_DUMMY.executor": "Run",
-    "Python.__main__.executor": "Debug",
-    "Python.deployed_use (1).executor": "Run",
-    "Python.deployed_use.executor": "Run",
-    "Python.deployment.executor": "Run",
-    "Python.exp001.executor": "Run",
-    "Python.experimenter (1).executor": "Run",
-    "Python.experimenter.executor": "Run",
-    "Python.loadVF.executor": "Debug",
-    "Python.model1 (1).executor": "Run",
-    "Python.model1.executor": "Run",
-    "Python.populatePackage (1).executor": "Run",
-    "Python.populatePackage (2).executor": "Run",
-    "Python.populatePackage.executor": "Run",
-    "Python.runner.executor": "Run",
-    "Python.spec_def_dsl.executor": "Run",
-    "Python.train (1).executor": "Debug",
-    "Python.train (2).executor": "Run",
-    "Python.train.executor": "Run",
-    "Python.trainer.executor": "Debug",
-    "Python.validity_frame.executor": "Debug",
-    "Python.vf_export (1).executor": "Run",
-    "Python.vf_export.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/jan_g/Downloads/ml-llm-252.26199.11.zip",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.BLDC_DEPLOYED.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.Boat_VF.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.D5065experiments.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EXP_001 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.EXP_001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Use.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VF2SWC.executor&quot;: &quot;Run&quot;,
+    &quot;Python.VF_DUMMY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__main__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.deployed_use (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.deployed_use.executor&quot;: &quot;Run&quot;,
+    &quot;Python.deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp001.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.experimenter (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.experimenter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.loadVF.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.mockup_runtime_graph.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.model1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.populatePackage (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.populatePackage (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.populatePackage.executor&quot;: &quot;Run&quot;,
+    &quot;Python.runner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.spec_def_dsl.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.train (2).executor&quot;: &quot;Debug&quot;,
+    &quot;Python.train.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.trainer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.trainer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.validity_frame.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.vf_export (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.vf_export.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jan_g/PycharmProjects/vfWorks/examples/Labcases/YOLO_pretrained_model&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\YOLO_pretrained_model" />
+      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\Turtlebot_Lidar\Torch_NN_VF\Sources" />
+      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\Turtlebot_Lidar\Torch_NN_VF" />
       <recent name="D:\01_UA\01_Development\vfWorks\vfworks\transformations\templates" />
       <recent name="D:\01_UA\01_Development\vfWorks\examples\sandbox\VF_SWV_GENERATION\input" />
-      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_BLDC_SANDBOX" />
-      <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_BLDC" />
-      <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_TORCH" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\Screw_detection\YOLO_pretrained_model_VF" />
+      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\YOLO_pretrained_model" />
+      <recent name="C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\Turtlebot_Lidar\Torch_NN_VF\Sources" />
       <recent name="D:\01_UA\01_Development\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_BLDC" />
       <recent name="D:\01_UA\01_Development\vfWorks\vfworks\utils\data" />
-      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\template\vf_package" />
-      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance\VF_BLDC" />
-      <recent name="C:\Users\Bert\UAntwerpen\Documenten\00_UA\02_Projects\03_SAIfety\99_RemoteRepositories\vfWorks\examples\Labcases\BLDC_predictiveMaintenance" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.deployment">
-    <configuration name="deployment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.populatePackage (1)">
+    <configuration name="exp001" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfworks" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,12 +166,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/sandbox/KG_standard/setup" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/deployment.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/sandbox/KG_standard/setup/exp001.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -162,7 +180,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="experimenter" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="mockup_runtime_graph" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfworks" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,12 +189,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/experimenter.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/mockup_runtime_graph.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,12 +212,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detector_VF" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detector_VF/populatePackage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/populatePackage.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -208,7 +226,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="populatePackage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="train (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfworks" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -217,12 +235,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/populatePackage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/train.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -231,7 +249,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="trainer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="vfworks" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -240,12 +258,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Actions" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes/train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Actions/trainer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -256,19 +274,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.deployment" />
-        <item itemvalue="Python.train (2)" />
-        <item itemvalue="Python.populatePackage" />
-        <item itemvalue="Python.experimenter" />
         <item itemvalue="Python.populatePackage (1)" />
+        <item itemvalue="Python.mockup_runtime_graph" />
+        <item itemvalue="Python.train (1)" />
+        <item itemvalue="Python.trainer" />
+        <item itemvalue="Python.exp001" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.26574.90" />
-        <option value="bundled-python-sdk-c1fac28bca04-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.26574.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178" />
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
       </set>
     </attachedChunks>
   </component>
@@ -347,7 +365,36 @@
       <workItem from="1754922173504" duration="13561000" />
       <workItem from="1756467513606" duration="2694000" />
       <workItem from="1756976438680" duration="889000" />
-      <workItem from="1756978564549" duration="15119000" />
+      <workItem from="1756978564549" duration="42195000" />
+      <workItem from="1757425375063" duration="71957000" />
+      <workItem from="1758544020106" duration="5657000" />
+      <workItem from="1759841553300" duration="1409000" />
+      <workItem from="1760024496338" duration="20349000" />
+      <workItem from="1761055060621" duration="208000" />
+      <workItem from="1763041131096" duration="1000" />
+      <workItem from="1763458334837" duration="46000" />
+      <workItem from="1764667003704" duration="2110000" />
+      <workItem from="1764682813719" duration="1128000" />
+      <workItem from="1764688502862" duration="7019000" />
+      <workItem from="1765889824976" duration="652000" />
+      <workItem from="1765892580544" duration="633000" />
+      <workItem from="1765893408409" duration="595000" />
+      <workItem from="1768220224004" duration="4844000" />
+      <workItem from="1769771443453" duration="10434000" />
+      <workItem from="1774948134099" duration="1419000" />
+      <workItem from="1776167658661" duration="819000" />
+      <workItem from="1776172845027" duration="15231000" />
+      <workItem from="1776415221422" duration="13538000" />
+      <workItem from="1776691897932" duration="13744000" />
+      <workItem from="1776862924995" duration="6869000" />
+      <workItem from="1776934209320" duration="98000" />
+      <workItem from="1777006906632" duration="1158000" />
+      <workItem from="1777377602537" duration="5031000" />
+      <workItem from="1777888459227" duration="12893000" />
+      <workItem from="1778056547482" duration="2666000" />
+      <workItem from="1779179500752" duration="2824000" />
+      <workItem from="1779353540233" duration="14144000" />
+      <workItem from="1779889822835" duration="1249000" />
     </task>
     <task id="LOCAL-00001" summary="--init">
       <option name="closed" value="true" />
@@ -669,7 +716,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743696145735</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="--Added Turtlebot4 LIDAR use case integrating the model lifecycle with LIDAR simulation">
+      <option name="closed" value="true" />
+      <created>1756995296265</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1756995296265</updated>
+    </task>
+    <task id="LOCAL-00042" summary="-- big push to add screw detector use case for demo">
+      <option name="closed" value="true" />
+      <created>1776420972099</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1776420972099</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -687,8 +750,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-- Paragraph added" />
-    <MESSAGE value="-- excel template for standards KG added" />
     <MESSAGE value="-- updated excel based on metamodel Eclipse (see Onedrive WP1)" />
     <MESSAGE value="-- VF process example added (train.py) + starting point of VF export + VF package structure" />
     <MESSAGE value="-- BLDC case added, no logging/exporting" />
@@ -712,7 +773,9 @@
     <MESSAGE value="--Added anomaly detection with 2 input features" />
     <MESSAGE value="--Added Modeltype to constants and model structure" />
     <MESSAGE value="--Added Added basic design time and runtime monitoring tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="--Added Added basic design time and runtime monitoring tools" />
+    <MESSAGE value="--Added Turtlebot4 LIDAR use case integrating the model lifecycle with LIDAR simulation" />
+    <MESSAGE value="-- big push to add screw detector use case for demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- big push to add screw detector use case for demo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -733,14 +796,14 @@
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/TurtlebotSystem/TurtlebotExperiments.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="141" />
+          <url>file://$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/Torch_NN_VF/populatePackage.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/deployment.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="148" />
+          <url>file://$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/mockup_runtime_graph.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="231" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -760,40 +823,46 @@
         <watch expression="_input_poi" />
         <watch expression="self" />
         <watch expression="specification" />
-        <watch expression="exp_remote.experiments[0].conditions" />
+        <watch expression="exp_remote.experiments[0].conditions" language="Python" />
+        <watch expression="predictions" />
+        <watch expression="spec" />
+        <watch expression="spec" />
+        <watch expression="json.dumps(self, default=lambda o: o.__dict__, indent=4)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/vfWorks$Use.coverage" NAME="Use Coverage Results" MODIFIED="1744030089403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC_SANDBOX" />
-    <SUITE FILE_PATH="coverage/vfWorks$D5065experiments.coverage" NAME="D5065experiments Coverage Results" MODIFIED="1741257318475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
-    <SUITE FILE_PATH="coverage/vfWorks$vf_export.coverage" NAME="vf_export Coverage Results" MODIFIED="1733243145592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure" />
-    <SUITE FILE_PATH="coverage/vfWorks$vf_export__1_.coverage" NAME="vf_export (1) Coverage Results" MODIFIED="1733243419475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure/VF1" />
-    <SUITE FILE_PATH="coverage/vfWorks$exp001.coverage" NAME="exp001 Coverage Results" MODIFIED="1740479620342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/KG_standard/setup" />
+    <SUITE FILE_PATH="coverage/vfWorks$populatePackage__2_.coverage" NAME="populatePackage (2) Coverage Results" MODIFIED="1774948228118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/Complex_2D_NN_VF" />
     <SUITE FILE_PATH="coverage/vfWorks$spec_def_dsl.coverage" NAME="spec_def_dsl Coverage Results" MODIFIED="1743517592981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/specification_dsl" />
-    <SUITE FILE_PATH="coverage/vfWorks$VF2SWC.coverage" NAME="VF2SWC Coverage Results" MODIFIED="1751313608757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_SWV_GENERATION" />
-    <SUITE FILE_PATH="coverage/vfWorks$runner.coverage" NAME="runner Coverage Results" MODIFIED="1737651475624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
-    <SUITE FILE_PATH="coverage/vfWorks$populatePackage.coverage" NAME="populatePackage Coverage Results" MODIFIED="1756994074570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
-    <SUITE FILE_PATH="coverage/vfWorks$trainer.coverage" NAME="trainer Coverage Results" MODIFIED="1744292570748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC_SANDBOX/Processes/Actions" />
-    <SUITE FILE_PATH="coverage/vfWorks$model1.coverage" NAME="model1 Coverage Results" MODIFIED="1732696684696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/input" />
-    <SUITE FILE_PATH="coverage/vfWorks$populatePackage__1_.coverage" NAME="populatePackage (1) Coverage Results" MODIFIED="1756981793757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detector_VF" />
-    <SUITE FILE_PATH="coverage/vfWorks$experimenter.coverage" NAME="experimenter Coverage Results" MODIFIED="1756993855385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
-    <SUITE FILE_PATH="coverage/vfWorks$EXP_001.coverage" NAME="EXP_001 Coverage Results" MODIFIED="1733243300484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
-    <SUITE FILE_PATH="coverage/vfWorks$deployed_use.coverage" NAME="deployed_use Coverage Results" MODIFIED="1741257343814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH" />
-    <SUITE FILE_PATH="coverage/vfWorks$validity_frame.coverage" NAME="validity_frame Coverage Results" MODIFIED="1741686775815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks/metamodels" />
-    <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
-    <SUITE FILE_PATH="coverage/vfWorks$deployed_use__1_.coverage" NAME="deployed_use (1) Coverage Results" MODIFIED="1744383772893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC_SANDBOX" />
-    <SUITE FILE_PATH="coverage/vfWorks$train__2_.coverage" NAME="train (2) Coverage Results" MODIFIED="1756994385363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes" />
-    <SUITE FILE_PATH="coverage/vfWorks$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1756980238338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detector_VF/Processes" />
-    <SUITE FILE_PATH="coverage/vfWorks$populatePackage__2_.coverage" NAME="populatePackage (2) Coverage Results" MODIFIED="1738664440794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC" />
-    <SUITE FILE_PATH="coverage/vfWorks$train.coverage" NAME="train Coverage Results" MODIFIED="1749658093953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC_SANDBOX/Processes" />
-    <SUITE FILE_PATH="coverage/vfWorks$experimenter__1_.coverage" NAME="experimenter (1) Coverage Results" MODIFIED="1756979527804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detector_VF" />
-    <SUITE FILE_PATH="coverage/vfWorks$Boat_VF.coverage" NAME="Boat_VF Coverage Results" MODIFIED="1737145872796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/Boat_Model_VF" />
     <SUITE FILE_PATH="coverage/vfWorks$model1__1_.coverage" NAME="model1 (1) Coverage Results" MODIFIED="1732791501253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
-    <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732791486359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
-    <SUITE FILE_PATH="coverage/vfWorks$deployment.coverage" NAME="deployment Coverage Results" MODIFIED="1756994557395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$train__2_.coverage" NAME="train (2) Coverage Results" MODIFIED="1760025194617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF/Processes" />
+    <SUITE FILE_PATH="coverage/vfWorks$Boat_VF.coverage" NAME="Boat_VF Coverage Results" MODIFIED="1737145872796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/Boat_Model_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$validity_frame.coverage" NAME="validity_frame Coverage Results" MODIFIED="1741686775815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks/metamodels" />
     <SUITE FILE_PATH="coverage/vfWorks$BLDC_DEPLOYED.coverage" NAME="BLDC_DEPLOYED Coverage Results" MODIFIED="1738612615545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
+    <SUITE FILE_PATH="coverage/vfWorks$train__1_.coverage" NAME="train (1) Coverage Results" MODIFIED="1776866803564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes" />
     <SUITE FILE_PATH="coverage/vfWorks$EXP_001__1_.coverage" NAME="EXP_001 (1) Coverage Results" MODIFIED="1732790950616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
+    <SUITE FILE_PATH="coverage/vfWorks$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1732695028205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vfworks" />
     <SUITE FILE_PATH="coverage/vfWorks$loadVF.coverage" NAME="loadVF Coverage Results" MODIFIED="1738668083173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC" />
+    <SUITE FILE_PATH="coverage/vfWorks$deployed_use.coverage" NAME="deployed_use Coverage Results" MODIFIED="1741257343814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_TORCH" />
+    <SUITE FILE_PATH="coverage/vfWorks$deployment.coverage" NAME="deployment Coverage Results" MODIFIED="1757515399069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$vf_export.coverage" NAME="vf_export Coverage Results" MODIFIED="1733243145592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure" />
+    <SUITE FILE_PATH="coverage/vfWorks$VF_DUMMY.coverage" NAME="VF_DUMMY Coverage Results" MODIFIED="1732791486359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/remote_monitoring" />
+    <SUITE FILE_PATH="coverage/vfWorks$exp001.coverage" NAME="exp001 Coverage Results" MODIFIED="1776416910515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/KG_standard/setup" />
+    <SUITE FILE_PATH="coverage/vfWorks$populatePackage__1_.coverage" NAME="populatePackage (1) Coverage Results" MODIFIED="1779374672523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$trainer.coverage" NAME="trainer Coverage Results" MODIFIED="1776866636539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/Actions" />
+    <SUITE FILE_PATH="coverage/vfWorks$vf_export__1_.coverage" NAME="vf_export (1) Coverage Results" MODIFIED="1733243419475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_folder_structure/VF1" />
+    <SUITE FILE_PATH="coverage/vfWorks$experimenter__1_.coverage" NAME="experimenter (1) Coverage Results" MODIFIED="1756979527804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detector_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$deployed_use__1_.coverage" NAME="deployed_use (1) Coverage Results" MODIFIED="1744383772893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC_SANDBOX" />
+    <SUITE FILE_PATH="coverage/vfWorks$VF2SWC.coverage" NAME="VF2SWC Coverage Results" MODIFIED="1751313608757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/VF_SWV_GENERATION" />
+    <SUITE FILE_PATH="coverage/vfWorks$Use.coverage" NAME="Use Coverage Results" MODIFIED="1744030089403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/VF_BLDC_SANDBOX" />
+    <SUITE FILE_PATH="coverage/vfWorks$train.coverage" NAME="train Coverage Results" MODIFIED="1758017287092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/Torch_NN_VF/Processes" />
+    <SUITE FILE_PATH="coverage/vfWorks$runner.coverage" NAME="runner Coverage Results" MODIFIED="1737651475624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
+    <SUITE FILE_PATH="coverage/vfWorks$D5065experiments.coverage" NAME="D5065experiments Coverage Results" MODIFIED="1741257318475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/BLDC_predictiveMaintenance/RWSystem" />
+    <SUITE FILE_PATH="coverage/vfWorks$populatePackage.coverage" NAME="populatePackage Coverage Results" MODIFIED="1757602890645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$experimenter.coverage" NAME="experimenter Coverage Results" MODIFIED="1757340798949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/LIDAR_anomaly_detection_VF" />
+    <SUITE FILE_PATH="coverage/vfWorks$trainer__1_.coverage" NAME="trainer (1) Coverage Results" MODIFIED="1757949135717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Turtlebot_Lidar/Torch_NN_VF/Processes/Actions" />
+    <SUITE FILE_PATH="coverage/vfWorks$EXP_001.coverage" NAME="EXP_001 Coverage Results" MODIFIED="1733243300484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/vf_definition" />
+    <SUITE FILE_PATH="coverage/vfWorks$model1.coverage" NAME="model1 Coverage Results" MODIFIED="1732696684696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/sandbox/input" />
+    <SUITE FILE_PATH="coverage/vfWorks$mockup_runtime_graph.coverage" NAME="mockup_runtime_graph Coverage Results" MODIFIED="1776870204728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/Labcases/Screw_detection/YOLO_pretrained_model_VF" />
   </component>
 </project>
