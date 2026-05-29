@@ -6,26 +6,30 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
-from py2neo import Node
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 
 class Monitor(baseElement):
 
-    def __init__(self, name='tbd', description='tbd', status=StatusType.UNKNOWN, monitor_time=MonitorTime.RUN_TIME, observes=None, verbose=False):
+    def __init__(self, name='tbd', description='tbd', status=StatusType.UNKNOWN, monitor_time=MonitorTime.RUN_TIME, observes=None, verbose=False, spec_status=None, last_observed_values=None):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._status = status
         self._type = monitor_time
 
-        # OBSERVED PROPERTIES (POI/INFLUENCE)
         self.observes = observes
         self.spec_status = {}
         self.last_observed_values = {}
+        # OBSERVED PROPERTIES (POI/INFLUENCE)
         if observes is not None:
             for observe in observes:
                 self.spec_status[observe.feature] = StatusType.UNKNOWN
                 self.last_observed_values[observe.feature] = None
+
+        if spec_status is not None:
+            self.spec_status = spec_status
+        if last_observed_values is not None:
+            self.last_observed_values = last_observed_values
 
     @property
     def status(self):
@@ -45,25 +49,22 @@ class Monitor(baseElement):
 
     def create_neo4j_node(self):
         evaluation = ", ".join(f"{key}: {value}" for key, value in self.last_observed_values.items())
-        color_map = {
-            StatusType.INVALID: "#E63946",
-            StatusType.VALID: "#2A9D8F",
-            StatusType.UNKNOWN: "#A8A8A8",
+        return {
+            'label': 'Monitor',
+            'properties': {
+                'name': self.name,
+                'description': self.description,
+                'status': str(self.status),  # Serialize enum if needed
+                'evaluation': evaluation
+            }
         }
-        return Node(
-            "Monitor",
-            name=self.name,
-            description=self.description,
-            status=self.status,
-            evaluation=evaluation,
-            viz_color=color_map.get(self.status, "#A8A8A8")
-        )
 
     def validate_data(self, data, feature):
         is_valid = True
         for spec in self.observes:
             if spec.feature == feature:
-                is_valid = spec.value.validate_data(data)
+                is_valid, observed_value = spec.value.validate_data(data)
+                self.last_observed_values[spec.feature] = observed_value
                 if is_valid:
                     self.spec_status[spec.feature] = StatusType.VALID
                 else:

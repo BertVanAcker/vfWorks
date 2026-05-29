@@ -9,7 +9,6 @@
 import numpy as np
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
-from py2neo import Node
 
 class Specification(baseElement):
     def __init__(self, name='tbd', description='tbd', feature='tbd', type=None, verbose=False, **kwargs):
@@ -57,19 +56,14 @@ class Specification(baseElement):
         return self._status
 
     def create_neo4j_node(self):
-        color_map = {
-            StatusType.INVALID: "#E76F51",
-            StatusType.VALID: "#8AB17D",
-            StatusType.UNKNOWN: "#B0B0B0",
+        return {
+            'label': 'Specification',
+            'properties': {
+                'name': self.name,
+                'description': self.description,
+                'value': self.feature + ": " + self.value.tostring()
+            }
         }
-        return Node(
-            "specification",
-            name=self.name,
-            description=self.description,
-            value=self.feature + ": " + self.value.tostring(),
-            status=self.status,
-            viz_color=color_map.get(self.status, "#B0B0B0")
-        )
 
 class AverageValue(baseElement):
     def __init__(self, name='tbd',description='tbd', average=0.0, deviation=0.0, verbose=False):
@@ -80,8 +74,8 @@ class AverageValue(baseElement):
     def validate_data(self, data):
         data_average = np.average(data)
         if data_average < self._average-self._deviation or data_average > self._average+self._deviation:
-            return False
-        return True
+            return False, data_average.item()
+        return True, data_average.item()
 
     def validate_point(self, point):
         if point < self._average-self._deviation or point > self._average+self._deviation:
@@ -101,8 +95,8 @@ class ValueRange(baseElement):
     def validate_data(self, data):
         f_measure = np.histogram(data, range=(self._valueMin, self._valueMax), bins=self._granularity)[0]
         if 0 in f_measure:
-            return False
-        return True
+            return False, f_measure.tolist()
+        return True, f_measure.tolist()
 
     def validate_point(self, point):
         if point < self._valueMin or point > self._valueMax:
@@ -120,8 +114,8 @@ class ValueMin(baseElement):
     def validate_data(self, data):
         data_min = np.min(data)
         if data_min <= self._valueMin:
-            return False
-        return True
+            return False, data_min.item()
+        return True, data_min.item()
 
     def validate_point(self, point):
         if point <= self._valueMin:
@@ -139,8 +133,8 @@ class ValueMax(baseElement):
     def validate_data(self, data):
         data_max = np.max(data)
         if data_max >= self._valueMax:
-            return False
-        return True
+            return False, data_max.item()
+        return True, data_max.item()
 
     def validate_point(self, point):
         if point >= self._valueMax:

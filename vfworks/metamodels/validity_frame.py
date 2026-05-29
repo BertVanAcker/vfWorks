@@ -6,6 +6,7 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+from vfworks.metamodels.knowledge_graph import KnowledgeGraph
 from vfworks.metamodels.model_structure import *
 from vfworks.metamodels.monitors import Monitor
 from vfworks.metamodels.specification import *
@@ -238,6 +239,22 @@ class ValidityFrame(baseElement):
             for spec in self._metadata.specifications:
                 print("Specification " + spec.name + " - STATUS: " + str(spec.status))
 
+    def neo4j_export(self):
+        kg = KnowledgeGraph(uri="bolt://localhost:7687", user="neo4j", password="hallo123")
+
+        for monitor in self.runtime_monitors + self.design_time_monitors:
+            monitor_node_data = monitor.create_neo4j_node()
+            curr_monitor_node = kg.add_node(monitor_node_data)
+            for spec in monitor.observes:
+                spec_node_data = spec.create_neo4j_node()
+                curr_spec_node = kg.add_node(spec_node_data)
+                kg.add_relationship(monitor_node_data, "OBSERVES", spec_node_data)
+                for property in self.properties:
+                    if spec.GUID in property.satisfies:
+                        property_node_data = property.create_neo4j_node()
+                        curr_property_node = kg.add_node(property_node_data)
+                        kg.add_relationship(spec_node_data, "SATISFIED_BY", property_node_data)
+
     def graphify(self, figsize=(14, 10), align='vertical'):
         G = nx.DiGraph()
 
@@ -247,40 +264,62 @@ class ValidityFrame(baseElement):
         specification_by_guid = {spec.GUID: spec for spec in self._metadata.specifications}
 
         # Add specifications, properties, and monitors as nodes
-        for spec in self._metadata.specifications:
-            add_typed_node(spec.name, 'specification', status=spec.status, layer=1, guid=spec.GUID)
         for prop in self._metadata.properties:
-            add_typed_node(prop.name, 'property', layer=2, satisfies=prop.satisfies, guid=prop.GUID)
+            add_typed_node(prop.name, 'property', layer=1, satisfies=prop.satisfies, guid=prop.GUID)
         for monitor in self.runtime_monitors + self.design_time_monitors:
-            add_typed_node(monitor.name, 'monitor', status=monitor.status, layer=0, guid=monitor.GUID)
+            add_typed_node(monitor.name, 'monitor', status=monitor.status, layer=2, guid=monitor.GUID)
+            for spec in monitor.observes:
+                add_typed_node(spec.name, 'specification', status=monitor.spec_status[spec.feature], layer=0, guid=spec.GUID)  # Ensure observed specs are added as nodes
+        for spec in self._metadata.specifications:
+            add_typed_node(spec.name, 'specification', status=spec.status, layer=0, guid=spec.GUID)
+            add_typed_node(spec.value.tostring(), 'value', layer=1, guid=spec.GUID)  # Add value as a separate node
 
         # Add edges based on which monitors check which specifications
-        for monitor in self.runtime_monitors + self.design_time_monitors:
-            for spec in monitor.observes:
-                G.add_edge(monitor.name, spec.name)
+
+        # Add edges based on wich spec is tied to which property
+
+        # Add edges based on which monitor is tied to which property
 
         # Link specifications to the properties that satisfy them so descendant coloring can propagate.
         for prop in self._metadata.properties:
             for spec_guid in prop.satisfies:
                 spec = specification_by_guid.get(spec_guid)
                 if spec is not None:
-                    G.add_edge(spec.name, prop.name)
-
-        invalid_monitors = {monitor.name for monitor in self.runtime_monitors + self.design_time_monitors if monitor.status == StatusType.INVALID}
+                    G.add_edge(prop.name, spec.name)
+                    G.add_edge(spec.value.tostring(), spec.name)
+                for monitor in self.runtime_monitors + self.design_time_monitors:
+                    if spec in monitor.observes:
+                        G.add_edge(prop.name, monitor.name)
+                        G.add_edge(spec.value.tostring(), monitor.name)
+        
+        invalid_monitors = set()
+        valid_monitors = set()
         invalid_descendants = set()
-        valid_monitors = {monitor.name for monitor in self.runtime_monitors + self.design_time_monitors if monitor.status == StatusType.VALID}
         valid_descendants = set()
-        for monitor_name in invalid_monitors:
-            invalid_descendants.update(nx.descendants(G, monitor_name))
-        for monitor_name in valid_monitors:
-            valid_descendants.update(nx.descendants(G, monitor_name))
+        for prop in self._metadata.properties:
+            for spec_guid in prop.satisfies:
+                for monitor in self.runtime_monitors + self.design_time_monitors:
+                    if spec_guid in [s.GUID for s in monitor.observes]:
+                        spec = specification_by_guid.get(spec_guid)
+                        if monitor.status == StatusType.INVALID:
+                            invalid_monitors.add(monitor.name)
+                            invalid_descendants.add(prop.name)
+                        elif monitor.status == StatusType.VALID:
+                            valid_monitors.add(monitor.name)
+                            valid_descendants.add(prop.name)
+                        if monitor.spec_status[spec.feature] == StatusType.INVALID:
+                            invalid_descendants.add(spec.name)
+                            invalid_descendants.add(spec.value.tostring())
+                        elif monitor.spec_status[spec.feature] == StatusType.VALID:
+                            valid_descendants.add(spec.name)
+                            valid_descendants.add(spec.value.tostring())
 
         node_colors = []
         for node_name in G.nodes:
 
             if node_name in invalid_monitors:
                 node_colors.append('#d73027')
-            elif node_name in invalid_descendants:
+            elif node_name in invalid_descendants: 
                 node_colors.append('#fc8d59')
             elif node_name in valid_monitors:
                 node_colors.append('#1a9850')
@@ -326,7 +365,7 @@ class ValidityFrame(baseElement):
             self._processes.object2json(packageName+"/Processes/Processes.json")
             self._experiments.object2json(packageName +"/Experiments/Experiments.json")
             self._operational.object2json(packageName + "/Operational/Operational.json")
-
+            x=1
 
 
 class MetaData(baseElement):
@@ -395,6 +434,10 @@ class MetaData(baseElement):
                     s.value = ValueRange(valueMin=value["_valueMin"], valueMax=value["_valueMax"], granularity=value["_granularity"])
                 if spec["_type"] == PropertyType.PROPERTY_MEAN:
                     s.value = AverageValue(average=value["_average"], deviation=value["_deviation"])
+                if spec["_type"] == PropertyType.PROPERTY_MIN:
+                    s.value = ValueMin(valueMin=value["_valueMin"])
+                if spec["_type"] == PropertyType.PROPERTY_MAX:
+                    s.value = ValueMax(valueMax=value["_valueMax"])
                 s.GUID = spec['_GUID']
                 s.timestamp = spec['_timestamp']
                 self.addSpecification(s)
@@ -529,7 +572,7 @@ class Operational(baseElement):
                     for specification in metadata.specifications:
                         if specification.GUID == spec["_GUID"]:
                             specs.append(specification)
-                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_type=monitor["_type"], status=monitor["_status"])
+                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_time=monitor["_type"], status=monitor["_status"], spec_status=monitor["spec_status"], last_observed_values=monitor["last_observed_values"])
                 _monitor.GUID = monitor["_GUID"]
                 _monitor.timestamp = monitor["_timestamp"]
                 self.addMonitor(_monitor)

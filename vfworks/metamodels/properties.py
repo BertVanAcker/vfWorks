@@ -8,7 +8,6 @@
 # **************************************************************************************
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
-from py2neo import Node
 
 class Property(baseElement):
     def __init__(self, name='tbd',description='tbd',domain=DomainType.CONTROL,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=0,satisfies=None,verbose=False):
@@ -24,7 +23,7 @@ class Property(baseElement):
         if satisfies is None:
             self._satisfies = []
         else:
-            self._satisfies = satisfies
+            self._satisfies = [spec.GUID for spec in satisfies]
 
 
     @property
@@ -84,16 +83,17 @@ class PropertyofInterest(Property):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
 
     def create_neo4j_node(self):
-        return Node(
-            "Property-of-interest",
-            name=self.name,
-            domain=self.domain,
-            unit=self.unit,
-            datatype=self.datatype,
-            minimum=self.min,
-            maximum=self.max,
-            viz_color="#E9C46A"
-        )
+        return {
+            'label': 'Property-of-interest',
+            'properties': {
+                'name': self.name,
+                'description': self.domain,
+                'unit': self.unit,
+                'datatype': self.datatype,
+                'minimum': self.min,
+                'maximum': self.max
+            }
+        }
 
 
 class InfluenceFactor(Property):
@@ -101,13 +101,14 @@ class InfluenceFactor(Property):
         super().__init__(name=name, description=description,domain=domain,unit=unit,datatype=datatype,min=min,max=max,satisfies=satisfies, verbose=verbose)
 
     def create_neo4j_node(self):
-        return Node(
-            "InfluenceFactor",
-            name=self.name,
-            domain=self.domain,
-            unit=self.unit,
-            datatype=self.datatype,
-            minimum=self.min,
-            maximum=self.max,
-            viz_color="#F4A261"
-        )
+        return {
+            'label': 'InfluenceFactor',
+            'properties': {
+                'name': self.name,
+                'description': self.domain,
+                'unit': self.unit,
+                'datatype': self.datatype,
+                'minimum': self.min,
+                'maximum': self.max
+            }
+        }

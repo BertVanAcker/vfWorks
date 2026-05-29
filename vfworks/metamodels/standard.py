@@ -6,7 +6,6 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
-from py2neo import Node
 class Standard:
     def __init__(self, name, purpose, domain,DOI=""):
         self.name = name
@@ -15,7 +14,15 @@ class Standard:
         self.DOI = DOI
 
     def create_neo4j_node(self):
-        return Node("Standard", name=self.name, purpose=self.purpose, domain=self.domain, DOI=self.DOI, viz_color="#3A86FF")
+        return {
+            'label': 'Standard',
+            'properties': {
+                'name': self.name,
+                'purpose': self.purpose,
+                'domain': self.domain,
+                'DOI': self.DOI
+            }
+        }
 
 
 
@@ -25,21 +32,36 @@ class Paragraph:
         self.name = name
 
     def create_neo4j_node(self):
-        return Node("Paragraph", name=self.name, viz_color="#4361EE")
+        return {
+            'label': 'Paragraph',
+            'properties': {
+                'name': self.name
+            }
+        }
 
 class Lifecycle:
     def __init__(self, name):
         self.name = name
 
     def create_neo4j_node(self):
-        return Node("Lifecycle", name=self.name, viz_color="#4CC9F0")
+        return {
+            'label': 'Lifecycle',
+            'properties': {
+                'name': self.name
+            }
+        }
 
 class Phase:
     def __init__(self, name):
         self.name = name
 
     def create_neo4j_node(self):
-        return Node("Phase", name=self.name, viz_color="#4895EF")
+        return {
+            'label': 'Phase',
+            'properties': {
+                'name': self.name
+            }
+        }
 
 class Process:
     def __init__(self, name, objective, method):
@@ -48,7 +70,14 @@ class Process:
         self.method = method
 
     def create_neo4j_node(self):
-        return Node("Process", name=self.name, objective=self.objective, method=self.method, viz_color="#560BAD")
+        return {
+            'label': 'Process',
+            'properties': {
+                'name': self.name,
+                'objective': self.objective,
+                'method': self.method
+            }
+        }
 
 class Metric:
     def __init__(self, name, description, target_value):
@@ -57,7 +86,14 @@ class Metric:
         self.target_value = target_value
 
     def create_neo4j_node(self):
-        return Node("Metric", name=self.name, description=self.description, target_value=self.target_value, viz_color="#B5179E")
+        return {
+            'label': 'Metric',
+            'properties': {
+                'name': self.name,
+                'description': self.description,
+                'target_value': self.target_value
+            }
+        }
 
 class Property:
     def __init__(self, name, description, expected_value):
@@ -66,7 +102,14 @@ class Property:
         self.expected_value = expected_value
 
     def create_neo4j_node(self):
-        return Node("Property", name=self.name, description=self.description, expected_value=self.expected_value, viz_color="#F4A261")
+        return {
+            'label': 'Property',
+            'properties': {
+                'name': self.name,
+                'description': self.description,
+                'expected_value': self.expected_value
+            }
+        }
 
 class VerificationAndValidation:
     def __init__(self, criteria, methods):
@@ -74,7 +117,13 @@ class VerificationAndValidation:
         self.methods = methods
 
     def create_neo4j_node(self):
-        return Node("VerificationAndValidation", criteria=self.criteria, methods=self.methods, viz_color="#2A9D8F")
+        return {
+            'label': 'VerificationAndValidation',
+            'properties': {
+                'criteria': self.criteria,
+                'methods': self.methods
+            }
+        }
 
 class Role:
     def __init__(self, name, description, responsibility):
@@ -83,7 +132,14 @@ class Role:
         self.responsibility = responsibility
 
     def create_neo4j_node(self):
-        return Node("Role", name=self.name, description=self.description, responsibility=self.responsibility, viz_color="#FF006E")
+        return {
+            'label': 'Role',
+            'properties': {
+                'name': self.name,
+                'description': self.description,
+                'responsibility': self.responsibility
+            }
+        }
 
 class Artifact:
     def __init__(self, name, description):
@@ -91,7 +147,13 @@ class Artifact:
         self.description = description
 
     def create_neo4j_node(self):
-        return Node("Artifact", name=self.name, description=self.description, viz_color="#FB8500")
+        return {
+            'label': 'Artifact',
+            'properties': {
+                'name': self.name,
+                'description': self.description
+            }
+        }
 
 class Tool:
     def __init__(self, name, purpose, qualification_required):
@@ -100,4 +162,11 @@ class Tool:
         self.qualification_required = qualification_required
 
     def create_neo4j_node(self):
-        return Node("Tool", name=self.name, purpose=self.purpose, qualification_required=self.qualification_required, viz_color="#8338EC")
+        return {
+            'label': 'Tool',
+            'properties': {
+                'name': self.name,
+                'purpose': self.purpose,
+                'qualification_required': self.qualification_required
+            }
+        }
