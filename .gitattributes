@@ -1,0 +1,19 @@
+# Large model and training artifacts
+examples/**/*.pt filter=lfs diff=lfs merge=lfs -text
+examples/**/*.onnx filter=lfs diff=lfs merge=lfs -text
+examples/**/*.pkl filter=lfs diff=lfs merge=lfs -text
+examples/**/*.joblib filter=lfs diff=lfs merge=lfs -text
+examples/**/*.bin filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/BLDC_predictiveMaintenance/**/output/*.csv filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/BLDC_predictiveMaintenance/**/Experiments/**/*.csv filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Turtlebot_Lidar/**/Sources/*.csv filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Turtlebot_Lidar/**/Experiments/**/*.csv filter=lfs diff=lfs merge=lfs -text
+
+# Example datasets and generated outputs that are not useful as plain text history
+examples/Labcases/Screw_detection/ScrewDetectionSystem/dataset/images/** filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/**/train_batch*.jpg filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/**/val_batch*.jpg filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/**/confusion_matrix*.png filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/**/Box*.png filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/**/results.png filter=lfs diff=lfs merge=lfs -text
+examples/Labcases/Screw_detection/YOLO_pretrained_model_VF/Processes/**/labels.jpg filter=lfs diff=lfs merge=lfs -text
