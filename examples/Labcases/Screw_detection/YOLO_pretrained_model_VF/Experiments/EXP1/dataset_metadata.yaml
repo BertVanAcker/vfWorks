@@ -1,6 +1,0 @@
-names:
-  0: screw
-  1: noscrew
-path: C:\Users\jan_g\PycharmProjects\vfWorks\examples\Labcases\Screw_detection\ScrewDetectionSystem\dataset
-train: images/train
-val: images/val

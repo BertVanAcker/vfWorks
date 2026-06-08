@@ -36,6 +36,7 @@ dependencies = [
 	"pandas",
 	"pycaret",
 	"ultralytics>=8.4.56",
+	"ml-dtypes>=0.5.4",
 ]
 
 [project.scripts]
