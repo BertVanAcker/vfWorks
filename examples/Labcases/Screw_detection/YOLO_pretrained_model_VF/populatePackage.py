@@ -60,13 +60,13 @@ else:
 #-------------------------SPECIFICATIONS------------------------------------------------
 #TODO: add integration with DSL tool to import generated specs by reading specs and generating the correct specification objects in VF. For now, we will manually add specifications to the VF package.
 #spec1 = Specification(name="Number of Screws", description="expected amount of screws to be detected", feature="temperature", type=PropertyType.PROPERTY_RANGE, valueMin=-10, valueMax=30, granularity=5)
-spec1 = Specification(name="screw_count",description="number of screw instances in the dataset", feature="screws_samples",type=PropertyType.PROPERTY_MIN, valueMin=100)
-spec2 = Specification(name="no_screw_count",description="number of screw instances in the dataset", feature="noscrews_samples",type=PropertyType.PROPERTY_MIN, valueMin=100)
-spec3 = Specification(name="lighting color red",description="color of the surrounding lighting", feature="colorRed",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=1)
-spec4 = Specification(name="lighting color green",description="color of the surrounding lighting", feature="colorGreen",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=5)
-spec5 = Specification(name="lighting color blue",description="color of the surrounding lighting", feature="colorBlue",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=1)
-spec6 = Specification(name="model confidence", description="", feature="Confidence", type=PropertyType.PROPERTY_MEAN, average=0.70, deviation=10)
-spec7 = Specification(name="model accuracy", description="", feature="mAP50-95", type=PropertyType.PROPERTY_MIN, valueMin=0.40)
+spec1 = Specification(name="ScrewCount",description="Screw sample count", feature="screws_samples",type=PropertyType.PROPERTY_MIN, valueMin=100)
+spec2 = Specification(name="NoScrewCount",description="No screw sample count", feature="noscrews_samples",type=PropertyType.PROPERTY_MIN, valueMin=100)
+spec3 = Specification(name="LightingColorRed",description="Red component of the surrounding lighting", feature="colorRed",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=1)
+spec4 = Specification(name="LightingColorGreen",description="Green component of the surrounding lighting", feature="colorGreen",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=5)
+spec5 = Specification(name="LightingColorBlue",description="Blue component of the surrounding lighting", feature="colorBlue",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=1)
+spec6 = Specification(name="ModelTrustworthiness", description="Model trustworthiness", feature="trust", type=PropertyType.PROPERTY_MEAN, average=0.70, deviation=0.1)
+spec7 = Specification(name="ModelAccuracy", description="Model accuracy", feature="mAP50-95", type=PropertyType.PROPERTY_MIN, valueMin=0.8)
 VF.addSpecification(spec1)
 VF.addSpecification(spec2)
 VF.addSpecification(spec3)
@@ -76,14 +76,14 @@ VF.addSpecification(spec6)
 VF.addSpecification(spec7)
 #------------------------------POI------------------------------------------------------
 #runtime POIs
-poi1 = PropertyofInterest(name="image", description="input image", domain=DomainType.NONE, unit=UnitType.UNIT_none)
-poi2 = PropertyofInterest(name="label", description="detections of the model")
-poi3 = PropertyofInterest(name="Confidence",description="model output confidence",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=1,satisfies=[spec6])
+poi1 = PropertyofInterest(name="Image", description="Input image", domain=DomainType.NONE, unit=UnitType.UNIT_none)
+poi2 = PropertyofInterest(name="Label", description="Model output label", domain=DomainType.NONE, unit=UnitType.UNIT_none)
+poi3 = PropertyofInterest(name="Trust",description="Model output trust",domain=DomainType.NONE,unit=UnitType.UNIT_none,datatype=DataType.FLOAT_64,min=0,max=1,satisfies=[spec6])
 #design time POIs
-poi4 = PropertyofInterest(name="accuracy", description="model accuracy", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64,min=0,max=1,satisfies=[spec7])
+poi4 = PropertyofInterest(name="Accuracy", description="model accuracy", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64,min=0,max=1,satisfies=[spec7])
 #influencing factors
-if1 = InfluenceFactor(name="Environment Color", description="Environment color", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64,min=0,max=1,satisfies=[spec3,spec4,spec5])
-if2 = InfluenceFactor(name="Dataset Sample Count", description="Number of samples in the used dataset", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.INTEGER_16, min=0,max=1,satisfies=[spec1, spec2])
+if1 = InfluenceFactor(name="EnvironmentColor", description="Environment color", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64,min=0,max=1,satisfies=[spec3,spec4,spec5])
+if2 = InfluenceFactor(name="DatasetSampleCount", description="Number of samples in the used dataset", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.INTEGER_16, min=0,max=1,satisfies=[spec1, spec2])
 VF.addProperty(poi1)
 VF.addProperty(poi2)
 VF.addProperty(poi3)
@@ -108,11 +108,11 @@ VF.addModelStructure(SM)
 
 #-----------------------------MONITORS------------------------------------------------
 #TODO: add integration with DSL tool to autmatically generate monitors based on specifications 
-monitor1 = Monitor(name="Design time environment monitor", description="monitor of the dataset environment", observes=[spec3, spec4, spec5], monitor_time=MonitorTime.DATA_VALIDATION)
-monitor2 = Monitor(name="Class sample count monitor", description="monitor the number of screws in the dataset during design time", observes=[spec1, spec2], monitor_time=MonitorTime.DATA_VALIDATION)
-monitor3 = Monitor(name="Accuracy monitor", description="monitor the accuracy and recall during the validation phase of design time", observes=[spec7], monitor_time=MonitorTime.MODEL_VALIDATION)
-monitor4 = Monitor(name="Confidence monitor", description="monitor the confidence of the model during runtime", observes=[spec6], monitor_time=MonitorTime.RUN_TIME)
-monitor5 = Monitor(name="Environment monitor", description="monitor the system environment during runtime", observes=[spec3, spec4, spec5], monitor_time=MonitorTime.RUN_TIME)
+monitor1 = Monitor(name="EnvironmentMonitorDesignTime", description="Design time environment monitor", observes=[spec3, spec4, spec5], monitor_time=MonitorTime.DATA_VALIDATION)
+monitor2 = Monitor(name="SampleCountMonitor", description="Class sample count monitor", observes=[spec1, spec2], monitor_time=MonitorTime.DATA_VALIDATION)
+monitor3 = Monitor(name="AccuracyMonitor", description="Accuracy monitor", observes=[spec7], monitor_time=MonitorTime.MODEL_VALIDATION)
+monitor4 = Monitor(name="TrustMonitor", description="Trustworthiness monitor", observes=[spec6], monitor_time=MonitorTime.RUN_TIME)
+monitor5 = Monitor(name="EnvironmentMonitorRuntime", description="Runtime environment monitor", observes=[spec3, spec4, spec5], monitor_time=MonitorTime.RUN_TIME)
 
 VF.addMonitor(monitor1)
 VF.addMonitor(monitor2)
@@ -122,4 +122,4 @@ VF.addMonitor(monitor5)
 #-------------------------------EXPORT VF_BLDC TO TEMPLATE PACKAGE-------------------------------------------
 packageName="VF_TORCH"
 VF.export(packageName=None)     #VF package is current working directory
-VF.neo4j_export()
+VF.export_graph_json()

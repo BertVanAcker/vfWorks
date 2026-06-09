@@ -7,7 +7,7 @@ name = "vfWorks"
 version = "0.0.1"
 description = "vfWorks - your gateway to valid model (re-)use."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 license = { text = "Apache License 2.0" }
 authors = [
     { name = "Jan Gladiné & Bert Van Acker", email = "Jan.Gladine@uantwerpen.be" },
@@ -22,8 +22,8 @@ classifiers = [
 dependencies = [
 	"torch>=2.11.0",
 	"torchvision>=0.26.0",
+	"onnx==1.16.1",
 	"click",
-	"numpy",
 	"PyYAML",
 	"redis",
 	"neo4j",
@@ -36,7 +36,10 @@ dependencies = [
 	"pandas",
 	"pycaret",
 	"ultralytics>=8.4.56",
-	"ml-dtypes>=0.5.4",
+	"numpy==1.26.4",
+	"scikit-learn==1.2.2",
+	"ml-dtypes<0.5",
+	"scipy==1.11.4",
 ]
 
 [project.scripts]
@@ -48,8 +51,6 @@ examples-bldc = [
     "serial>=0.0.97",
 ]
 examples-turtlebot-lidar = [
-    "scikit-learn>=1.4.2",
-    "scipy>=1.11.4",
     "tqdm>=4.67.3",
 ]
 examples-screw-detection = [

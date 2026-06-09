@@ -1,4 +1,3 @@
-from Font import putTTFText
 from ultralytics import YOLO
 import cv2
 import time

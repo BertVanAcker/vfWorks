@@ -11,11 +11,12 @@ from vfworks.utils.constants import *
 
 class Monitor(baseElement):
 
-    def __init__(self, name='tbd', description='tbd', status=StatusType.UNKNOWN, monitor_time=MonitorTime.RUN_TIME, observes=None, verbose=False, spec_status=None, last_observed_values=None):
+    def __init__(self, name='tbd', description='tbd', status=StatusType.UNKNOWN, monitor_time=MonitorTime.RUN_TIME, observes=None, verbose=False, spec_status=None, last_observed_values=None, validate_point_function=None):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._status = status
         self._type = monitor_time
+        self._validate_point_function = validate_point_function
 
         self.observes = observes
         self.spec_status = {}
@@ -46,6 +47,17 @@ class Monitor(baseElement):
     @type.setter
     def type(self,t):
         self._type = t
+
+    @property
+    def validate_point_function(self):
+        return self._validate_point_function
+
+    @validate_point_function.setter
+    def validate_point_function(self, function):
+        self._validate_point_function = function
+
+    def set_validate_point_function(self, function):
+        self.validate_point_function = function
 
     def create_neo4j_node(self):
         evaluation = ", ".join(f"{key}: {value}" for key, value in self.last_observed_values.items())
@@ -81,7 +93,10 @@ class Monitor(baseElement):
         is_valid = True
         for spec in self.observes:
             if spec.feature == feature:
-                is_valid = spec.value.validate_point(data)
+                if self._validate_point_function is not None:
+                    is_valid = self._validate_point_function(data, feature)
+                else:
+                    is_valid = spec.value.validate_point(data)
                 if is_valid:
                     self.spec_status[spec.feature] = StatusType.VALID
                     self.last_observed_values[spec.feature] = data

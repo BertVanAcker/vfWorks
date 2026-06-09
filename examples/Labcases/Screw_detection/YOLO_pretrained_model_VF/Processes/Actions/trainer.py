@@ -11,7 +11,6 @@ import shutil
 import sklearn.metrics
 import torch
 import tqdm
-from docs.source.conf import project
 
 from vfworks.utils.auxiliary import store_as_onnx, store_as_pickled
 from vfworks.utils.data.dataLoader import *

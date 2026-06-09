@@ -30,7 +30,7 @@ setup(
     author_email=project_email,
     url=project_url,
     license=project_license,
-    python_requires=">=3.12",
+    python_requires=">=3.11",
     packages=find_packages(include=["vfworks", "vfworks.*"]),
     include_package_data=True,
     install_requires=project_metadata["dependencies"],

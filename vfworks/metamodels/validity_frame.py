@@ -348,6 +348,18 @@ class ValidityFrame(baseElement):
         plt.show()
         
         return G
+    
+    def export_graph_json(self, file_name="validity_frame_graph.json"):
+        """
+        Export the graph to a JSON file.
+        """
+        G = self.graphify()  # Ensure the graph is up-to-date before exporting
+        # Convert the graph to a dictionary
+        graph_dict = nx.node_link_data(G)
+        
+        # Write the dictionary to a JSON file
+        with open(file_name, 'w') as f:
+            json.dump(graph_dict, f)
 
     # ------------------------------------------------------------------------------------------------------------------
     #                                           IMPORT/EXPORT FUNCTIONS

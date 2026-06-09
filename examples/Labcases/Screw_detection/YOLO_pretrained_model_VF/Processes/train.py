@@ -6,6 +6,10 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+from ultralytics import settings
+settings.update({'mlflow': False})
+
+import torch
 from Actions.trainer import *
 from vfworks.workflows.tasks import *
 from vfworks.metamodels.validity_frame import *
@@ -18,7 +22,6 @@ VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",conf
 # 1 . Select model structure used for training
 VF.setActiveModelStructure(name="Screw_detections_model_YOLO")
 print(VF.activeModelStructure.GUID)
-
 # 2 . Instantiate the training class
 trainer = trainingActions(name="custom_trainer_class",validityFrame = VF)
 
