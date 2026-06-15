@@ -2,28 +2,28 @@
     "_name": "operational",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "d8534eff-2b9e-446b-a364-523b4eef6078",
-    "_timestamp": "2026-04-17 11:38:12.584087",
+    "_GUID": "85df0f7e-ec9b-4a5d-8a43-6d19784f54de",
+    "_timestamp": "2026-06-08 16:56:24.706060",
     "_modelStructures": [
         {
             "_name": "Screw_detections_model_YOLO",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "ba0ecdef-9628-4499-af42-41dcd08d8f08",
-            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_GUID": "5afd048a-333e-4bc6-a974-3132427ac601",
+            "_timestamp": "2026-06-08 15:05:26.793130",
             "_inports": [
                 {
                     "_name": "image",
                     "_description": "input image",
                     "_verbose": false,
-                    "_GUID": "70c776ba-5fe2-403f-90fb-72ad8919705c",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "8712f3a8-44d7-4d16-ba92-25b8063c8161",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "4844a7f6-8132-4497-90b1-418caeb7f061"
+                    "_mapping": "f4f2bdd4-38a9-4827-bec6-0dd1d358d362"
                 }
             ],
             "_outports": [
@@ -31,90 +31,146 @@
                     "_name": "detections",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "26dbfa29-2a66-4f62-8d77-89c27ddc5a97",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "4bbc7d47-dc79-48be-99e5-858bf0dfb220",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "6364a180-4399-4163-ba23-d6d26bd7d025"
+                    "_mapping": "83aea159-7a21-41dc-8736-00d97e5136cb"
                 },
                 {
                     "_name": "certainties",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "2de3127a-7983-4647-8761-f9fce943f34a",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "d600fbda-7cfb-47cf-8aae-6bac06272834",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "35404300-bacd-4e01-b7a8-bda3095ba174"
+                    "_mapping": "9c933cc7-d4cd-4f27-8d32-96c8d903008e"
                 }
             ],
-            "_modelType": "ConvolutionalNeuralNetwork",
+            "_modelType": null,
             "_mapping": [],
             "_scalars": null,
             "_modelRef": null,
             "_redundancy": 1
         }
     ],
-    "_activeModelStructure": null,
+    "_activeModelStructure": {
+        "_name": "Screw_detections_model_YOLO",
+        "_description": "tbd",
+        "_verbose": false,
+        "_GUID": "5afd048a-333e-4bc6-a974-3132427ac601",
+        "_timestamp": "2026-06-08 15:05:26.793130",
+        "_inports": [
+            {
+                "_name": "image",
+                "_description": "input image",
+                "_verbose": false,
+                "_GUID": "8712f3a8-44d7-4d16-ba92-25b8063c8161",
+                "_timestamp": "2026-06-08 15:05:26.793130",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "f4f2bdd4-38a9-4827-bec6-0dd1d358d362"
+            }
+        ],
+        "_outports": [
+            {
+                "_name": "detections",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "4bbc7d47-dc79-48be-99e5-858bf0dfb220",
+                "_timestamp": "2026-06-08 15:05:26.793130",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "83aea159-7a21-41dc-8736-00d97e5136cb"
+            },
+            {
+                "_name": "certainties",
+                "_description": "tbd",
+                "_verbose": false,
+                "_GUID": "d600fbda-7cfb-47cf-8aae-6bac06272834",
+                "_timestamp": "2026-06-08 15:05:26.793130",
+                "_domain": "CONTROL",
+                "_unit": "-",
+                "_datatype": "float_64",
+                "_min": 0,
+                "_max": 0,
+                "_mapping": "9c933cc7-d4cd-4f27-8d32-96c8d903008e"
+            }
+        ],
+        "_modelType": null,
+        "_mapping": [],
+        "_scalars": null,
+        "_modelRef": null,
+        "_redundancy": 1
+    },
     "_modelReference": null,
     "_runtime_monitors": [
         {
-            "_name": "Confidence monitor",
-            "_description": "monitor the confidence of the model during runtime",
+            "_name": "TrustMonitor",
+            "_description": "Trustworthiness monitor",
             "_verbose": false,
-            "_GUID": "8eaaa9a1-957d-4e13-8740-3cb9db5b4d0c",
-            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_GUID": "a198179f-5c1e-45e6-a88f-28cf13b6e4bf",
+            "_timestamp": "2026-06-08 15:05:26.793130",
             "_status": "unknown",
             "_type": "RunTime",
+            "_validate_point_function": null,
             "observes": [
                 {
-                    "_name": "model confidence",
-                    "_description": "",
+                    "_name": "ModelTrustworthiness",
+                    "_description": "Model trustworthiness",
                     "_verbose": false,
-                    "_GUID": "db683ebb-4414-4a28-b8e0-8c3f0bfe07fb",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
-                    "_feature": "Confidence",
+                    "_GUID": "99170d6b-5759-4121-98c5-c8441f6050eb",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
+                    "_feature": "trust",
                     "_status": "unknown",
                     "_type": "property_mean",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "5da65e1c-dd15-49d7-a6bc-f2435aee06a0",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "dd4fb6ee-df16-477f-a9e3-59eab0fa0afd",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_average": 0.7,
-                        "_deviation": 10
+                        "_deviation": 0.1
                     }
                 }
             ],
             "spec_status": {
-                "Confidence": "unknown"
+                "trust": "unknown"
             },
             "last_observed_values": {
-                "Confidence": null
+                "trust": null
             }
         },
         {
-            "_name": "Environment monitor",
-            "_description": "monitor the system environment during runtime",
+            "_name": "EnvironmentMonitorRuntime",
+            "_description": "Runtime environment monitor",
             "_verbose": false,
-            "_GUID": "a5728051-a042-4fda-ba95-ebe8b2391e41",
-            "_timestamp": "2026-04-17 11:38:12.587086",
+            "_GUID": "031ae797-9974-4b6d-96e1-59b6408d75e7",
+            "_timestamp": "2026-06-08 15:05:26.793130",
             "_status": "unknown",
             "_type": "RunTime",
+            "_validate_point_function": null,
             "observes": [
                 {
-                    "_name": "lighting color red",
-                    "_description": "color of the surrounding lighting",
+                    "_name": "LightingColorRed",
+                    "_description": "Red component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "3b4f4b40-ea3b-4a5e-903c-187ebcd2a608",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "f7ae5c23-7555-41be-b645-4973c577ce6e",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "colorRed",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -122,19 +178,19 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "78e504f1-1fb3-405f-9984-8c0dbfcc82ec",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "ccde08ae-f42d-45d1-ac0b-321c5cc14aaa",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
                     }
                 },
                 {
-                    "_name": "lighting color green",
-                    "_description": "color of the surrounding lighting",
+                    "_name": "LightingColorGreen",
+                    "_description": "Green component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "f3e77bd3-7752-4d08-881b-2c25365ff5f4",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "91c3e628-eb71-47b3-925c-cf25eeec65be",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "colorGreen",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -142,19 +198,19 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "fe05d702-f5ac-43b3-9f41-b71b2510824a",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "b220ec22-366b-4546-b597-ccfb68db2c87",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 5
                     }
                 },
                 {
-                    "_name": "lighting color blue",
-                    "_description": "color of the surrounding lighting",
+                    "_name": "LightingColorBlue",
+                    "_description": "Blue component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "145b06e6-8316-4290-944d-b6d25759a3e2",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "9c3daf47-aa63-45e4-b0d1-ab9b9e54e02d",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "colorBlue",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -162,8 +218,8 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "25f32a9c-d59f-4d4c-bdb6-61c2f83d9749",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "f4b70084-80a7-456c-99a5-df161ab77c7e",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
@@ -184,20 +240,21 @@
     ],
     "_design_time_monitors": [
         {
-            "_name": "Design time environment monitor",
-            "_description": "monitor of the dataset environment",
+            "_name": "EnvironmentMonitorDesignTime",
+            "_description": "Design time environment monitor",
             "_verbose": false,
-            "_GUID": "fd48ddbc-d1f9-4896-90a2-2bd485ae2c98",
-            "_timestamp": "2026-04-17 11:38:12.587086",
-            "_status": "unknown",
+            "_GUID": "4d1fdd74-e568-4629-bb0a-6ecb7468ca59",
+            "_timestamp": "2026-06-08 15:05:26.793130",
+            "_status": "invalid",
             "_type": "DataValidationTime",
+            "_validate_point_function": null,
             "observes": [
                 {
-                    "_name": "lighting color red",
-                    "_description": "color of the surrounding lighting",
+                    "_name": "LightingColorRed",
+                    "_description": "Red component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "3b4f4b40-ea3b-4a5e-903c-187ebcd2a608",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "f7ae5c23-7555-41be-b645-4973c577ce6e",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "colorRed",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -205,19 +262,19 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "78e504f1-1fb3-405f-9984-8c0dbfcc82ec",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "ccde08ae-f42d-45d1-ac0b-321c5cc14aaa",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
                     }
                 },
                 {
-                    "_name": "lighting color green",
-                    "_description": "color of the surrounding lighting",
+                    "_name": "LightingColorGreen",
+                    "_description": "Green component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "f3e77bd3-7752-4d08-881b-2c25365ff5f4",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "91c3e628-eb71-47b3-925c-cf25eeec65be",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "colorGreen",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -225,19 +282,19 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "fe05d702-f5ac-43b3-9f41-b71b2510824a",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "b220ec22-366b-4546-b597-ccfb68db2c87",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 5
                     }
                 },
                 {
-                    "_name": "lighting color blue",
-                    "_description": "color of the surrounding lighting",
+                    "_name": "LightingColorBlue",
+                    "_description": "Blue component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "145b06e6-8316-4290-944d-b6d25759a3e2",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "9c3daf47-aa63-45e4-b0d1-ab9b9e54e02d",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "colorBlue",
                     "_status": "unknown",
                     "_type": "property_range",
@@ -245,8 +302,8 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "25f32a9c-d59f-4d4c-bdb6-61c2f83d9749",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "f4b70084-80a7-456c-99a5-df161ab77c7e",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
@@ -254,31 +311,42 @@
                 }
             ],
             "spec_status": {
-                "colorRed": "unknown",
-                "colorGreen": "unknown",
-                "colorBlue": "unknown"
+                "colorRed": "valid",
+                "colorGreen": "invalid",
+                "colorBlue": "valid"
             },
             "last_observed_values": {
-                "colorRed": null,
-                "colorGreen": null,
-                "colorBlue": null
+                "colorRed": [
+                    1
+                ],
+                "colorGreen": [
+                    1,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "colorBlue": [
+                    1
+                ]
             }
         },
         {
-            "_name": "Class sample count monitor",
-            "_description": "monitor the number of screws in the dataset during design time",
+            "_name": "SampleCountMonitor",
+            "_description": "Class sample count monitor",
             "_verbose": false,
-            "_GUID": "3109c784-97f3-472c-9583-b0bf7241dbbb",
-            "_timestamp": "2026-04-17 11:38:12.587086",
-            "_status": "unknown",
+            "_GUID": "42cac166-a2dd-4f70-b2b7-ff7c38fa0a4c",
+            "_timestamp": "2026-06-08 15:05:26.793130",
+            "_status": "valid",
             "_type": "DataValidationTime",
+            "_validate_point_function": null,
             "observes": [
                 {
-                    "_name": "screw_count",
-                    "_description": "number of screw instances in the dataset",
+                    "_name": "ScrewCount",
+                    "_description": "Screw sample count",
                     "_verbose": false,
-                    "_GUID": "f0ba5dd6-ffbe-4ea6-a914-394cf5d95691",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "0fad4a6c-670c-4e62-9431-9d840401bde0",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "screws_samples",
                     "_status": "unknown",
                     "_type": "property_min",
@@ -286,17 +354,17 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "cff08781-d042-4a87-a8f9-798cf2047353",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "2f45c597-e2fb-41fe-94c8-d38cec453f6c",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 100
                     }
                 },
                 {
-                    "_name": "no_screw_count",
-                    "_description": "number of screw instances in the dataset",
+                    "_name": "NoScrewCount",
+                    "_description": "No screw sample count",
                     "_verbose": false,
-                    "_GUID": "bae8220a-cb54-472f-971f-3ee7555be402",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "b54c1c51-9e80-4b92-9d2f-7c8d35aa229f",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "noscrews_samples",
                     "_status": "unknown",
                     "_type": "property_min",
@@ -304,36 +372,37 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "5f45fd1b-d5fd-4330-819c-3a2165929b16",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
+                        "_GUID": "f343ebc5-dfce-4588-a6e4-753a7948ff85",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
                         "_valueMin": 100
                     }
                 }
             ],
             "spec_status": {
-                "screws_samples": "unknown",
-                "noscrews_samples": "unknown"
+                "screws_samples": "valid",
+                "noscrews_samples": "valid"
             },
             "last_observed_values": {
-                "screws_samples": null,
-                "noscrews_samples": null
+                "screws_samples": 200,
+                "noscrews_samples": 1600
             }
         },
         {
-            "_name": "Accuracy monitor",
-            "_description": "monitor the accuracy and recall during the validation phase of design time",
+            "_name": "AccuracyMonitor",
+            "_description": "Accuracy monitor",
             "_verbose": false,
-            "_GUID": "a0f6e23f-9336-4cdf-887b-208c443c872b",
-            "_timestamp": "2026-04-17 11:38:12.587086",
-            "_status": "unknown",
+            "_GUID": "2abacdf4-8cc9-4ce8-be55-51725be7f395",
+            "_timestamp": "2026-06-08 15:05:26.793130",
+            "_status": "invalid",
             "_type": "ModelValidationTime",
+            "_validate_point_function": null,
             "observes": [
                 {
-                    "_name": "model accuracy",
-                    "_description": "",
+                    "_name": "ModelAccuracy",
+                    "_description": "Model accuracy",
                     "_verbose": false,
-                    "_GUID": "ca74902a-31e4-4587-8519-7652bc4f27ff",
-                    "_timestamp": "2026-04-17 11:38:12.587086",
+                    "_GUID": "1891e1b1-7941-46d1-b152-ced5b9869241",
+                    "_timestamp": "2026-06-08 15:05:26.793130",
                     "_feature": "mAP50-95",
                     "_status": "unknown",
                     "_type": "property_min",
@@ -341,17 +410,17 @@
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "cac169ef-7f68-41e0-810c-b22c1ee27ba1",
-                        "_timestamp": "2026-04-17 11:38:12.587086",
-                        "_valueMin": 0.4
+                        "_GUID": "8f3981e1-f160-4b8b-80fd-e38bacc87785",
+                        "_timestamp": "2026-06-08 16:56:24.708059",
+                        "_valueMin": 0.8
                     }
                 }
             ],
             "spec_status": {
-                "mAP50-95": "unknown"
+                "mAP50-95": "invalid"
             },
             "last_observed_values": {
-                "mAP50-95": null
+                "mAP50-95": 0.6856201041783054
             }
         }
     ]

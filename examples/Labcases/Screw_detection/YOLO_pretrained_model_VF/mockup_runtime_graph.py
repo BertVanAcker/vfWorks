@@ -2,7 +2,7 @@ from vfworks.metamodels.validity_frame import ValidityFrame
 from vfworks.utils.constants import StatusType
 
 
-def validate_point_override(value, feature):
+def validate_point_override(value):
     return True
     
 VF = ValidityFrame(name="VF_TORCH", description="Populate VF_TORCH package",config="config.yaml",loadExistingVF=True,VFPackage="")

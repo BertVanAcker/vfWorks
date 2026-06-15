@@ -6,9 +6,10 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+import torch
+
 import numpy as np
 import sklearn.metrics
-import torch
 import tqdm
 from click.core import batch
 

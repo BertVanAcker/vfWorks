@@ -65,7 +65,7 @@ spec2 = Specification(name="NoScrewCount",description="No screw sample count", f
 spec3 = Specification(name="LightingColorRed",description="Red component of the surrounding lighting", feature="colorRed",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=1)
 spec4 = Specification(name="LightingColorGreen",description="Green component of the surrounding lighting", feature="colorGreen",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=5)
 spec5 = Specification(name="LightingColorBlue",description="Blue component of the surrounding lighting", feature="colorBlue",type=PropertyType.PROPERTY_RANGE, valueMin=0, valueMax=255, granularity=1)
-spec6 = Specification(name="ModelTrustworthiness", description="Model trustworthiness", feature="trust", type=PropertyType.PROPERTY_MEAN, average=0.70, deviation=0.1)
+spec6 = Specification(name="ModelTrust", description="Model trustworthiness", feature="trust", type=PropertyType.PROPERTY_MEAN, average=0.70, deviation=0.1)
 spec7 = Specification(name="ModelAccuracy", description="Model accuracy", feature="mAP50-95", type=PropertyType.PROPERTY_MIN, valueMin=0.8)
 VF.addSpecification(spec1)
 VF.addSpecification(spec2)
