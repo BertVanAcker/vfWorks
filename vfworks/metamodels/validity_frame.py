@@ -6,6 +6,10 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+import os
+import json
+import logging
+from vfworks.package.PackageManager import PackageManager
 from vfworks.metamodels.knowledge_graph import KnowledgeGraph
 from vfworks.metamodels.model_structure import *
 from vfworks.metamodels.monitors import Monitor
@@ -15,7 +19,6 @@ from vfworks.metamodels.properties import *
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import StatusType
 from vfworks.logging.logger import *
-import yaml
 import networkx as nx
 import matplotlib.pyplot as plt
 from termcolor import colored
@@ -24,17 +27,23 @@ class ValidityFrame(baseElement):
     def __init__(self, name='tbd',description='tbd',config=None,loadExistingVF=False,VFPackage=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
-
         # VF_BLDC HIGH-LEVEL STRUCTURE
         self._metadata = MetaData(name="metadata", description="tbd")
         self._operational = Operational(name="operational", description="tbd")
         self._processes = Processes(name="processes", description="tbd")
         self._experiments = Experiments(name="experiments", description="tbd")
 
-        # LOGGER
-        self.config = self.load_config(config)
-        self.logger = self.initialize_logger()
-
+        # PACKAGE AND LOGGER
+        self._package_manager = PackageManager(verbose=verbose)
+        if config is None:
+            self.config = self._package_manager.init_config(VFPackage)
+        else:
+            self.config = self._package_manager.load_config(config)
+        if VFPackage is None or VFPackage == "":
+            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=False)
+        else:
+            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=True)
+        self.logger = self.initialize_logger(VFPackage)
         # LOAD VF from package or initialize as new
         if loadExistingVF:
             if VFPackage== "":
@@ -43,14 +52,14 @@ class ValidityFrame(baseElement):
                 self.logger.info(msg="Loading validity frame from package {" + VFPackage + "}")
 
             #load different elements
-            self._metadata.json2object(fileName=VFPackage+"Metadata/Metadata.json")
-            self._operational.json2object(fileName=VFPackage+"Operational/Operational.json", metadata=self._metadata)
+            self._metadata.json2object(fileName=VFPackage+"/Metadata/Metadata.json")
+            self._operational.json2object(fileName=VFPackage+"/Operational/Operational.json", metadata=self._metadata)
             #self._processes.json2object(fileName=VFPackage+"Metadata/Metadata.json")
-            self._experiments.json2object(fileName=VFPackage+"Experiments/Experiments.json")
+            self._experiments.json2object(fileName=VFPackage+"/Experiments/Experiments.json")
 
         else:
             self.logger.info(msg="New validityFrame initialized with GUID {"+self.GUID+"}")
-
+            self.export(packageName=VFPackage if VFPackage else ".")
 
     # -----------------------------------------
     #           METADATA
@@ -191,10 +200,9 @@ class ValidityFrame(baseElement):
     #                                           LOGGING FUNCTIONS
     # -----------------------------------------------------------------------------------------------------------------
     def load_config(self, config_file):
-        with open(config_file, 'r') as file:
-            return yaml.safe_load(file)
+        return self._package_manager.load_config(config_file)
 
-    def initialize_logger(self):
+    def initialize_logger(self, packageName):
         """Initialize the logger (same as before)."""
         log_config = self.config.get("logging", {})
         logger = logging.getLogger(self.__class__.__name__)
@@ -203,6 +211,8 @@ class ValidityFrame(baseElement):
 
         log_format = log_config.get("format", "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
         log_file = log_config.get("file", None)
+        if packageName:
+            log_file = os.path.join(packageName, log_file)
 
         formatter = logging.Formatter(log_format)
 
