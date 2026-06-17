@@ -1,5 +1,4 @@
 from vfworks.metamodels.validity_frame import ValidityFrame
-from vfworks.utils.model.modelLoader import ModelLoader
 
 class VFLoader:
     def __init__(self, package_path):
@@ -13,11 +12,20 @@ class VFLoader:
         return ValidityFrame(name="Loaded_VF", description="Loaded VF from package", VFPackage=self.package_path, loadExistingVF=True, verbose=True)
     
     def load_model(self, frame):
-        model_loader = ModelLoader(name="VF_model_loader", validityFrame=frame)
-        model_loader.loadModel()
+        model = frame.get_current_active_model()
+        return model
+    def load_monitors(self, frame):
+        monitors = frame.runtime_monitors
+        return monitors
     
 
-vfloader = VFLoader(package_path="")
+vfloader = VFLoader(package_path="VF_SCREWDETECTION")
 loaded_vf = vfloader.load()
-vfloader.load_model(loaded_vf)
+loaded_vf.graphify()
+loaded_vf.setActiveModelStructure(loaded_vf.modelStructures[0].GUID)
+model = vfloader.load_model(loaded_vf)
+monitors = vfloader.load_monitors(loaded_vf)
+for monitor in monitors:
+    monitor.validate_point({"colorRed": 20, "colorGreen": 255, "colorBlue": 255})
+loaded_vf.graphify()
 x=1

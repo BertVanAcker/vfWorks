@@ -19,6 +19,7 @@ from vfworks.metamodels.properties import *
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import StatusType
 from vfworks.logging.logger import *
+from vfworks.utils.model.modelLoader import *
 import networkx as nx
 import matplotlib.pyplot as plt
 from termcolor import colored
@@ -32,9 +33,10 @@ class ValidityFrame(baseElement):
         self._operational = Operational(name="operational", description="tbd")
         self._processes = Processes(name="processes", description="tbd")
         self._experiments = Experiments(name="experiments", description="tbd")
+        self._model_loader = ModelLoader(name="VF_model_loader", validityFrame=self)
 
         # PACKAGE AND LOGGER
-        self._package_manager = PackageManager(verbose=verbose)
+        self._package_manager = PackageManager(verbose=verbose, packageName=VFPackage if VFPackage else ".")
         if config is None:
             self.config = self._package_manager.init_config(VFPackage)
         else:
@@ -50,16 +52,20 @@ class ValidityFrame(baseElement):
                 self.logger.info(msg="Loading validity frame from current workdir")
             else:
                 self.logger.info(msg="Loading validity frame from package {" + VFPackage + "}")
-
+            prefix = "." if VFPackage == "" else VFPackage
             #load different elements
-            self._metadata.json2object(fileName=VFPackage+"/Metadata/Metadata.json")
-            self._operational.json2object(fileName=VFPackage+"/Operational/Operational.json", metadata=self._metadata)
+            self._metadata.json2object(fileName=prefix+"/Metadata/Metadata.json")
+            self._operational.json2object(fileName=prefix+"/Operational/Operational.json", metadata=self._metadata, packageName=VFPackage)
             #self._processes.json2object(fileName=VFPackage+"Metadata/Metadata.json")
-            self._experiments.json2object(fileName=VFPackage+"/Experiments/Experiments.json")
+            self._experiments.json2object(fileName=prefix+"/Experiments/Experiments.json")
 
         else:
             self.logger.info(msg="New validityFrame initialized with GUID {"+self.GUID+"}")
             self.export(packageName=VFPackage if VFPackage else ".")
+
+    @property
+    def package_manager(self):
+        return self._package_manager
 
     # -----------------------------------------
     #           METADATA
@@ -130,7 +136,12 @@ class ValidityFrame(baseElement):
     @property
     def modelStructures(self):
         return self._operational.modelStructures
-
+    
+    def get_current_active_model(self):
+        model_ref = self.modelReference
+        model = self._model_loader.loadModel(model_location=model_ref, type=self._operational.activeModelStructure._modelType)
+        return model
+    
     def getModelStructureByGUID(self,GUID):
         _structure = None
         for structure in self.modelStructures:
@@ -194,6 +205,7 @@ class ValidityFrame(baseElement):
         self._operational.design_time_monitors = value
 
     def addMonitor(self, monitor):
+        monitor.parent = self.package_manager.packageName
         self._operational.addMonitor(monitor)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -543,7 +555,7 @@ class Operational(baseElement):
         with open(fileName, 'w', encoding='utf-8') as f:
             f.write(data)
 
-    def json2object(self, fileName, metadata):
+    def json2object(self, fileName, metadata, packageName):
         """
            Function to generate object from a json file
         """
@@ -581,7 +593,7 @@ class Operational(baseElement):
                 #extract paramaters
                 #TODO: check if we need parameters? if yes, implement
 
-                _ms = ModelStructure(name=ms["_name"], inports=_inputs, outports=_outputs)
+                _ms = ModelStructure(name=ms["_name"], inports=_inputs, outports=_outputs, modelType=ms["_modelType"])
                 _ms.GUID = ms["_GUID"]
                 _ms.timestamp = ms["_timestamp"]
                 _ms.modelRef = ms["_modelRef"]
@@ -594,7 +606,7 @@ class Operational(baseElement):
                     for specification in metadata.specifications:
                         if specification.GUID == spec["_GUID"]:
                             specs.append(specification)
-                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_time=monitor["_type"], status=monitor["_status"], spec_status=monitor["spec_status"], last_observed_values=monitor["last_observed_values"])
+                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_time=monitor["_type"], status=monitor["_status"], spec_status=monitor["spec_status"], last_observed_values=monitor["last_observed_values"], packageName=packageName)
                 _monitor.GUID = monitor["_GUID"]
                 _monitor.timestamp = monitor["_timestamp"]
                 self.addMonitor(_monitor)

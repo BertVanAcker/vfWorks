@@ -89,6 +89,13 @@ class ModelStructure(baseElement):
         self._modelRef = ref
 
     @property
+    def modelType(self):
+        return self._modelType
+    @modelType.setter
+    def modelType(self, value):
+        self._modelType = value
+
+    @property
     def redundancy(self):
         return self._redundancy
 

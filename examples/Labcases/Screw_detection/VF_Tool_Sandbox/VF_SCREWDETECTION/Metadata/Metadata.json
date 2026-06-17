@@ -2,15 +2,15 @@
     "_name": "metadata",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "7f72d900-0a72-46db-a7cc-94240359864a",
-    "_timestamp": "2026-06-16 16:58:23.253789",
+    "_GUID": "94f20028-a479-4af2-b831-d263b2a52109",
+    "_timestamp": "2026-06-17 19:08:38.204440",
     "_specifications": [
         {
             "_name": "ScrewCount",
             "_description": "Screw sample count",
             "_verbose": false,
-            "_GUID": "4bfacf0f-1272-49cc-b2c9-17694a48979e",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "451075fa-d728-4be4-9b9e-a2c57948242e",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "screws_samples",
             "_status": "unknown",
             "_type": "property_min",
@@ -18,8 +18,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "6fa61433-47df-42fc-9d76-a194d7300021",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "45c16726-e5c1-4dca-b48b-1a1c27fa82dc",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_valueMin": 100
             }
         },
@@ -27,8 +27,8 @@
             "_name": "NoScrewCount",
             "_description": "No screw sample count",
             "_verbose": false,
-            "_GUID": "c5923fe2-9c43-477c-8f68-0c2c8dd55e32",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "4adddcda-fe93-44a5-b70d-e4a632c76c67",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "noscrews_samples",
             "_status": "unknown",
             "_type": "property_min",
@@ -36,8 +36,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "a7d6509c-005e-4063-947b-18a70159a13f",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "31860306-55d0-4adf-b22a-b6105ac3e6c5",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_valueMin": 100
             }
         },
@@ -45,8 +45,8 @@
             "_name": "LightingColorRed",
             "_description": "Red component of the surrounding lighting",
             "_verbose": false,
-            "_GUID": "f5a80715-93e1-4b17-b56d-3ad1bd13557d",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "dad5ea04-c7fd-4cb4-a544-5e226265badd",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "colorRed",
             "_status": "unknown",
             "_type": "property_range",
@@ -54,8 +54,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "dcfb2664-fc69-4d6b-95e5-0420b5225c0e",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "4a6dd640-1868-4471-b0ff-5725b60d0149",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_valueMin": 0,
                 "_valueMax": 255,
                 "_granularity": 1
@@ -65,8 +65,8 @@
             "_name": "LightingColorGreen",
             "_description": "Green component of the surrounding lighting",
             "_verbose": false,
-            "_GUID": "a1e130a8-eac2-47dd-9915-2fb38e468808",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "6e676498-d46c-412a-afbf-2641dfabc31e",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "colorGreen",
             "_status": "unknown",
             "_type": "property_range",
@@ -74,8 +74,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "21c9c69b-fbb0-476c-8d0b-09175fd373af",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "d6f03d96-af55-4ac1-9667-5fa1d0e9b418",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_valueMin": 0,
                 "_valueMax": 255,
                 "_granularity": 5
@@ -85,8 +85,8 @@
             "_name": "LightingColorBlue",
             "_description": "Blue component of the surrounding lighting",
             "_verbose": false,
-            "_GUID": "610ed1c9-c5fc-41ad-a2b6-93e1234284ac",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "2e10c13c-3fe1-457c-8f1b-346f49ded597",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "colorBlue",
             "_status": "unknown",
             "_type": "property_range",
@@ -94,8 +94,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "9605cbd7-e231-4e09-8af7-e90afc38add4",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "9d3b7408-fade-48ef-885e-2d2e0f85baac",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_valueMin": 0,
                 "_valueMax": 255,
                 "_granularity": 1
@@ -105,8 +105,8 @@
             "_name": "ModelTrust",
             "_description": "Model trustworthiness",
             "_verbose": false,
-            "_GUID": "2a8a39b7-5cba-4df3-b84a-414613f74fae",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "47b5acd4-92b8-422b-be12-ab33aa1676a8",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "trust",
             "_status": "unknown",
             "_type": "property_mean",
@@ -114,8 +114,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "1f7b9bbe-ddb2-475b-b03b-c159cab3f974",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "e307b768-4617-483d-b70b-efd3ee2b8d2c",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_average": 0.7,
                 "_deviation": 0.1
             }
@@ -124,8 +124,8 @@
             "_name": "ModelAccuracy",
             "_description": "Model accuracy",
             "_verbose": false,
-            "_GUID": "199797bb-5af9-4bf9-a642-c77f1297e998",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "b2a6e46e-0969-41cb-95cc-323c9fe15c86",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_feature": "mAP50-95",
             "_status": "unknown",
             "_type": "property_min",
@@ -133,8 +133,8 @@
                 "_name": "tbd",
                 "_description": "tbd",
                 "_verbose": false,
-                "_GUID": "88672e9f-9b85-4781-81b6-51a5bdab18c5",
-                "_timestamp": "2026-06-16 16:58:23.270497",
+                "_GUID": "75c7d91e-6161-4513-bbaf-c9242de3155a",
+                "_timestamp": "2026-06-17 19:08:38.224038",
                 "_valueMin": 0.8
             }
         }
@@ -144,8 +144,8 @@
             "_name": "Image",
             "_description": "Input image",
             "_verbose": false,
-            "_GUID": "7f48bd92-f9e1-43bc-beb2-85acd30ddb6c",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "f668f5b0-ad82-4b22-aecb-f6811e7ce3cf",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_domain": "None",
             "_unit": "-",
             "_datatype": "float_64",
@@ -157,8 +157,8 @@
             "_name": "Label",
             "_description": "Model output label",
             "_verbose": false,
-            "_GUID": "6a25b310-225e-442b-bf17-74de47dac5fb",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "b19d22b1-55d4-426d-b50d-e77d104314e4",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_domain": "None",
             "_unit": "-",
             "_datatype": "float_64",
@@ -170,63 +170,63 @@
             "_name": "Trust",
             "_description": "Model output trust",
             "_verbose": false,
-            "_GUID": "2f589ad6-57b7-434e-8cbb-9ea64a785ac7",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "6bbcf624-3057-4a28-aeec-10b16779a4dd",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_domain": "None",
             "_unit": "-",
             "_datatype": "float_64",
             "_min": 0,
             "_max": 1,
             "_satisfies": [
-                "2a8a39b7-5cba-4df3-b84a-414613f74fae"
+                "47b5acd4-92b8-422b-be12-ab33aa1676a8"
             ]
         },
         {
             "_name": "Accuracy",
             "_description": "model accuracy",
             "_verbose": false,
-            "_GUID": "8b5ceb22-7f63-4df5-9b42-8cee46d598a2",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "b03783d1-3223-4a81-b7ed-c5138fc5c27c",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_domain": "None",
             "_unit": "-",
             "_datatype": "float_64",
             "_min": 0,
             "_max": 1,
             "_satisfies": [
-                "199797bb-5af9-4bf9-a642-c77f1297e998"
+                "b2a6e46e-0969-41cb-95cc-323c9fe15c86"
             ]
         },
         {
             "_name": "EnvironmentColor",
             "_description": "Environment color",
             "_verbose": false,
-            "_GUID": "2d5bca2c-586e-457c-93d7-f6794082f7ce",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "0fce4c1b-d895-43ea-be81-e57822854dbe",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_domain": "None",
             "_unit": "-",
             "_datatype": "float_64",
             "_min": 0,
             "_max": 1,
             "_satisfies": [
-                "f5a80715-93e1-4b17-b56d-3ad1bd13557d",
-                "a1e130a8-eac2-47dd-9915-2fb38e468808",
-                "610ed1c9-c5fc-41ad-a2b6-93e1234284ac"
+                "dad5ea04-c7fd-4cb4-a544-5e226265badd",
+                "6e676498-d46c-412a-afbf-2641dfabc31e",
+                "2e10c13c-3fe1-457c-8f1b-346f49ded597"
             ]
         },
         {
             "_name": "DatasetSampleCount",
             "_description": "Number of samples in the used dataset",
             "_verbose": false,
-            "_GUID": "3056979b-3f7a-495d-b912-3e530fac8b50",
-            "_timestamp": "2026-06-16 16:58:23.270497",
+            "_GUID": "bc11cdd9-a52b-4318-ad50-d4aed5476a80",
+            "_timestamp": "2026-06-17 19:08:38.224038",
             "_domain": "None",
             "_unit": "-",
             "_datatype": "int_16",
             "_min": 0,
             "_max": 1,
             "_satisfies": [
-                "4bfacf0f-1272-49cc-b2c9-17694a48979e",
-                "c5923fe2-9c43-477c-8f68-0c2c8dd55e32"
+                "451075fa-d728-4be4-9b9e-a2c57948242e",
+                "4adddcda-fe93-44a5-b70d-e4a632c76c67"
             ]
         }
     ]

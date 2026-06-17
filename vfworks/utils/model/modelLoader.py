@@ -9,6 +9,8 @@
 from pycaret.anomaly import *
 from vfworks.utils.auxiliary import load_model_from_pickle
 from ultralytics import YOLO
+import importlib.util
+import inspect
 import os
 
 
@@ -78,16 +80,55 @@ class ModelLoader(object):
     def loadModel(self,model_location=None,type="pycaret"):
         if model_location is None:
             model_location = self._validityframe.activeModelStructure.modelRef
+        
+        # 1. Handle Built-in Model Types
         if type == "pycaret":
             self._model = load_model(model_location)
         elif type == "YOLO":
-            self._model = YOLO("yolo11n.pt")
+            self._model = YOLO(model_location)
         elif type == "torch":
             if self._validityframe.activeModelStructure.redundancy == 1:
                 self._models.append(load_model_from_pickle(file_name=model_location, modelType="torch"))
             else:
                 for model in os.listdir(model_location):
                     self._models.append(load_model_from_pickle(file_name=os.path.join(model_location,model), modelType="torch"))
+        # 2. Look for Custom Overrides/Plugins in the Sources Folder
         else:
-            self._validityframe.logger.info(msg="Unable to load the model")
+            # Determine the path to the Sources directory
+            # (Adjust this logic depending on how your package tracks its root directory)
+            packageName = self._validityframe.package_manager.packageName
+            package_root = os.getcwd()  # Or use a reference from self._validityframe
+            sources_dir = os.path.join(package_root, packageName, "Resources")
+            custom_loader_path = os.path.join(sources_dir, "loaders", f"{type}.py")
+            legacy_loader_path = os.path.join(sources_dir, f"{type}.py")
+
+            if not os.path.exists(custom_loader_path) and os.path.exists(legacy_loader_path):
+                custom_loader_path = legacy_loader_path
+            
+            if os.path.exists(custom_loader_path):
+                try:
+                    # Dynamically load the python file as a module
+                    spec = importlib.util.spec_from_file_location(type, custom_loader_path)
+                    custom_module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(custom_module)
+                    
+                    # Enforce a naming convention for the custom loading function
+                    if hasattr(custom_module, "load_model"):
+                        # Execute the custom loader and pass necessary context
+                        load_model_signature = inspect.signature(custom_module.load_model)
+                        if "validityframe" in load_model_signature.parameters:
+                            self._model = custom_module.load_model(model_location, validityframe=self._validityframe)
+                        else:
+                            self._model = custom_module.load_model(model_location)
+                        self._validityframe.logger.info(msg=f"Successfully loaded custom model type '{type}'")
+                        return self._model
+                    else:
+                        self._validityframe.logger.error(
+                            msg=f"Custom file '{type}.py' found, but it is missing the required 'load_model' function."
+                        )
+                except Exception as e:
+                    self._validityframe.logger.error(msg=f"Failed to execute custom loader '{type}': {str(e)}")
+            else:
+                self._validityframe.logger.info(msg=f"Unable to load the model. Type '{type}' is unrecognized.")
+                return None
 

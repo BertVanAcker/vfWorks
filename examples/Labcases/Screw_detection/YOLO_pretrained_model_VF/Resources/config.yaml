@@ -1,5 +1,5 @@
 validityframe:
-  name: .
+  name: LIDAR_anomaly_detection_VF
 logging:
   level: DEBUG
   format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

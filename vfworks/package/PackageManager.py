@@ -12,14 +12,14 @@ import yaml
 
 
 class PackageManager(object):
-    def __init__(self, name='PackageManager', description='Built-in package manager', verbose=False):
+    def __init__(self, name='PackageManager', description='Built-in package manager', verbose=False, packageName="vf_package"):
         """Initialize a validity frame package manager."""
 
         self._name = name
         self._description = description
         self._verbose = verbose
 
-        self._packageName = "vf_package"
+        self._packageName = packageName
         self.standalonePath = ""
         self._directory = Path.cwd()
 
@@ -32,6 +32,11 @@ class PackageManager(object):
     def description(self):
         """The description property (read-only)."""
         return self._description
+
+    @property
+    def packageName(self):
+        """The packageName property (read-only)."""
+        return self._packageName
 
     def create(self, name=None, force=False, standalone=False, path=None, config=None):
         """Create a validity frame package structure.
@@ -157,6 +162,12 @@ class PackageManager(object):
         ]:
             self._mkdir_custom(package_path / folder, file="readme.rst")
 
+        for folder in ["loaders", "monitors"]:
+            self._mkdir_custom(package_path/ "Resources" / folder, file="readme.rst")
+
+        self._addFile(file="testType.py", path=package_path / "Resources" / "loaders")
+        self._addFile(file="EnvironmentMonitorRuntime.py", path=package_path / "Resources" / "monitors")
+
         self._write_config(package_path, config or self.default_config(package_path))
         self._add_log_file(package_path, config)
 
@@ -194,6 +205,123 @@ class PackageManager(object):
             )
         elif "config.yaml" in file:
             content = yaml.safe_dump(self.default_config(target_dir.parent), sort_keys=False)
+        elif file == "testType.py":
+            content = (
+                '"""Template for Custom Model Loaders\n'
+                "\n"
+                "Filename should be renamed to match your specific model type (e.g., 'scikit_model.py')\n"
+                "and invoked via loadModel(type='scikit_model')\n"
+                '"""\n'
+                "\n"
+                "# Import your required third-party frameworks here\n"
+                "# import joblib\n"
+                "# import xgboost as xgb\n"
+                "# import tensorrt as trt\n"
+                "\n"
+                "def load_model(model_location, validityframe=None):\n"
+                '    """\n'
+                "    Dynamically executed by ModelLoader when this framework type is requested.\n"
+                "\n"
+                "    Parameters:\n"
+                "    -----------\n"
+                "    model_location : str\n"
+                "        The path to the model artifact (file or directory).\n"
+                "    validityframe : object, optional\n"
+                "        The active instance of the Validity Frame lifecycle manager.\n"
+                "        Allows access to logging via `validityframe.logger.info()` or\n"
+                "        global configurations via `validityframe.activeModelStructure`.\n"
+                "\n"
+                "    Returns:\n"
+                "    --------\n"
+                "    model : object\n"
+                "        The initialized model object ready for predictions.\n"
+                '    """\n'
+                "    # 1. (Optional) Log the initiation of the custom process\n"
+                "    if validityframe and hasattr(validityframe, 'logger'):\n"
+                '        validityframe.logger.info(msg=f"Starting custom model loading from: {model_location}")\n'
+                "\n"
+                "    # =========================================================================\n"
+                "    # FUNCTIONAL CODE TEMPLATE (Uncomment and customize for your framework)\n"
+                "    # =========================================================================\n"
+                "    # try:\n"
+                "    #     # Example A: Loading a standard Scikit-Learn/Joblib pickle\n"
+                "    #     loaded_model = joblib.load(model_location)\n"
+                "    #     return loaded_model\n"
+                "    #\n"
+                "    #     # Example B: Loading a Deep Learning model weight package\n"
+                "    #     # loaded_model = MyCustomNeuralNet()\n"
+                "    #     # loaded_model.load_weights(model_location)\n"
+                "    #     # return loaded_model\n"
+                "    # except Exception as e:\n"
+                "    #     if validityframe and hasattr(validityframe, 'logger'):\n"
+                '    #         validityframe.logger.error(msg=f"Custom loader failed: {str(e)}")\n'
+                "    #     raise e\n"
+                "    # =========================================================================\n"
+                "\n"
+                "    # Default fallback if code isn't implemented yet\n"
+                "    raise NotImplementedError(\n"
+                '        "The load_model function must be implemented and return a model object."\n'
+                "    )\n"
+            )
+        elif file == "EnvironmentMonitorRuntime.py":
+            content = (
+                '"""Template for Custom Monitor Validation\n'
+                "\n"
+                "Filename should be renamed to match your specific monitor name\n"
+                "(e.g., 'EnvironmentMonitorRuntime.py') and is invoked automatically\n"
+                "when Monitor.validate_point(...) runs for that monitor.\n"
+                '"""\n'
+                "\n"
+                "# Import your required third-party frameworks here\n"
+                "# import numpy as np\n"
+                "# import pandas as pd\n"
+                "\n"
+                "\n"
+                "def custom_validate_vector(data_vector, monitor=None):\n"
+                '    """\n'
+                "    Dynamically executed by Monitor when this monitor has a matching custom script.\n"
+                "\n"
+                "    Parameters:\n"
+                "    -----------\n"
+                "    data_vector : dict\n"
+                "        Mapping of feature names to observed values, such as\n"
+                "        {'colorRed': 255, 'colorGreen': 255, 'colorBlue': 255}.\n"
+                "    monitor : object, optional\n"
+                "        The active Monitor instance. Allows access to monitor.name,\n"
+                "        monitor.observes, monitor.spec_status, and monitor.last_observed_values.\n"
+                "\n"
+                "    Returns:\n"
+                "    --------\n"
+                "    evaluations : dict\n"
+                "        Mapping of feature names to boolean validity statuses. Features omitted\n"
+                "        from this dictionary fall back to their built-in specification checks.\n"
+                '    """\n'
+                "    # 1. Read observed values from the vector\n"
+                '    red = data_vector.get("colorRed", 0)\n'
+                '    green = data_vector.get("colorGreen", 0)\n'
+                '    blue = data_vector.get("colorBlue", 0)\n'
+                "\n"
+                "    # =========================================================================\n"
+                "    # FUNCTIONAL CODE TEMPLATE (Customize for your monitor logic)\n"
+                "    # =========================================================================\n"
+                "    # Example: evaluate a cross-feature RGB envelope. This can express rules\n"
+                "    # that individual per-feature specifications cannot capture by themselves.\n"
+                "    # is_valid_red = 200 <= red <= 255\n"
+                "    # is_valid_green = 200 <= green <= 255\n"
+                "    # is_valid_blue = 200 <= blue <= 255\n"
+                "    #\n"
+                "    # return {\n"
+                '    #     "colorRed": is_valid_red,\n'
+                '    #     "colorGreen": is_valid_green,\n'
+                '    #     "colorBlue": is_valid_blue,\n'
+                "    # }\n"
+                "    # =========================================================================\n"
+                "\n"
+                "    # Default fallback if code isn't implemented yet\n"
+                "    raise NotImplementedError(\n"
+                '        "The custom_validate_vector function must return a feature-to-bool mapping."\n'
+                "    )\n"
+            )
 
         target.write_text(content, encoding="utf-8")
 

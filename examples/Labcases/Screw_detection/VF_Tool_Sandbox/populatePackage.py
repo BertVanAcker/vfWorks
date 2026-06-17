@@ -102,7 +102,7 @@ OUT1.add_mapping_relation(type="poi",poi=poi2)
 OUT2= Outport(name="certainties", unit=UnitType.UNIT_none)
 OUT2.add_mapping_relation(type="poi",poi=poi3)
 
-SM = ModelStructure(name="Screw_detections_model_YOLO", inports=[IN1], outports=[OUT1,OUT2], modelType=ModelType.CONVOLUTIONAL_NEURAL_NETWORK)
+SM = ModelStructure(name="Screw_detection_model_YOLO", inports=[IN1], outports=[OUT1,OUT2], modelType="testType")
 VF.addModelStructure(SM)
 #-----------------------------PROCESSES-----------------------------------------------
 
