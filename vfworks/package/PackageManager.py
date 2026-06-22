@@ -12,16 +12,17 @@ import yaml
 
 
 class PackageManager(object):
-    def __init__(self, name='PackageManager', description='Built-in package manager', verbose=False, packageName="vf_package"):
+    def __init__(self, name='PackageManager', description='Built-in package manager', verbose=False, packageName=None, packageLocation=None):
         """Initialize a validity frame package manager."""
 
         self._name = name
         self._description = description
         self._verbose = verbose
 
-        self._packageName = packageName
+        self._packageName = packageName if packageName not in ("", ".") else None
         self.standalonePath = ""
-        self._directory = Path.cwd()
+        self._directory = Path.cwd() if packageLocation is None else Path(packageLocation)
+        self._package_root = self._resolve_package_root(self._packageName)
 
     @property
     def name(self):
@@ -38,7 +39,17 @@ class PackageManager(object):
         """The packageName property (read-only)."""
         return self._packageName
 
-    def create(self, name=None, force=False, standalone=False, path=None, config=None):
+    @property
+    def directory(self):
+        """The directory property (read-only)."""
+        return self._directory
+
+    @property
+    def package_root(self):
+        """The resolved root directory containing the VF package folders."""
+        return self._package_root
+
+    def create(self, name=None, force=False, standalone=False, config=None):
         """Create a validity frame package structure.
 
         Parameters
@@ -55,14 +66,14 @@ class PackageManager(object):
         config : dict
             Optional configuration to write to ``Resources/config.yaml``.
         """
-        if standalone:
-            root = Path(path) if path is not None else Path.cwd()
-            package_name = name or self._packageName
+        package_name = name if name not in ("", ".") else None
+        if standalone and package_name is not None:
+            root = self._directory
             self.standalonePath = str(root)
             package_path = root / package_name
         else:
-            package_path = Path(name) if name else Path.cwd()
-            if package_path == Path.cwd() and not force and not self._checkEmptyDir():
+            package_path = self._directory if package_name is None else self._directory / package_name
+            if package_path == self._directory and not force and not self._checkEmptyDir():
                 if self._verbose:
                     print("DEBUG: directory is not empty, no validity frame package created!")
 
@@ -77,11 +88,13 @@ class PackageManager(object):
         if self._verbose:
             print("DEBUG: validity frame package created...")
 
+        self._package_root = package_path
+        self._packageName = package_name
         return package_path
 
     def check(self, path: str | Path = None) -> bool:
         """Check whether a path looks like a validity frame package."""
-        package_path = Path(path) if path else Path.cwd()
+        package_path = Path(path) if path else self._package_root
         if self._verbose:
             print(f"DEBUG: checking validity frame package in {package_path}...")
 
@@ -101,7 +114,8 @@ class PackageManager(object):
 
     def init_config(self, packageName=None):
         """Load an existing package config or return a default validity frame config."""
-        package_path = self._normalize_package_path(packageName)
+        package_path = self._resolve_package_root(packageName if packageName is not None else self._packageName)
+        self._package_root = package_path
         existing_config = package_path / "Resources" / "config.yaml"
         if existing_config.exists():
             return self.load_config(existing_config)
@@ -135,17 +149,17 @@ class PackageManager(object):
         """Function to determine if the current directory is empty."""
         if self._verbose:
             print("DEBUG: Checking if directory is empty...")
-        return not any(self._directory.iterdir())
+        return not self._directory.exists() or not any(self._directory.iterdir())
 
     def _populatePackage(self, path=None, config=None):
         """Function to populate the empty validity frame package."""
         package_path = self._normalize_package_path(path)
-        self._packageName = package_path.name
+        self._package_root = package_path
 
         package_path.mkdir(parents=True, exist_ok=True)
         self._addFile(
             file="validity_frame.ini",
-            name=self._packageName,
+            name=self._packageName or package_path.name,
             description="Add project description",
             path=package_path,
         )
@@ -345,5 +359,13 @@ class PackageManager(object):
 
     def _normalize_package_path(self, path=None):
         if not path:
-            return Path(".")
+            return self._package_root
         return path if isinstance(path, Path) else Path(path)
+
+    def _resolve_package_root(self, packageName=None):
+        if packageName in (None, "", "."):
+            return self._directory
+        package_path = packageName if isinstance(packageName, Path) else Path(packageName)
+        if package_path.is_absolute():
+            return package_path
+        return self._directory / package_path

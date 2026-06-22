@@ -10,6 +10,7 @@ from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 import importlib.util
 import os
+from pathlib import Path
 
 class Monitor(baseElement):
 
@@ -40,10 +41,10 @@ class Monitor(baseElement):
         if last_observed_values is not None:
             self.last_observed_values = last_observed_values
 
-    def setup(self):
+    def setup(self, packageLocation=None):
         if self._custom_code_file is not None:
             """Setup the monitor, including loading any custom validation hooks."""
-            self._load_custom_validation_hook()
+            self._load_custom_validation_hook(packageLocation=packageLocation)
 
     @property
     def packageName(self):
@@ -168,15 +169,13 @@ class Monitor(baseElement):
 
         return global_is_valid
 
-    def _load_custom_validation_hook(self):
+    def _load_custom_validation_hook(self, packageLocation=None):
         """Private helper to locate and bind custom vector validation scripts."""
-        package_root = os.getcwd()
-        custom_script_path = os.path.join(
-            package_root, self.packageName, "Resources", "monitors", f"{self._custom_code_file}"
-        )
+        package_root = Path(os.getcwd()) if packageLocation is None else Path(packageLocation)
+        custom_script_path = package_root / "Resources" / "monitors" / f"{self._custom_code_file}"
 
         # Check if the user wrote a custom plugin matching this monitor type
-        if os.path.exists(custom_script_path):
+        if custom_script_path.exists():
             try:
                 # Load the file dynamically as a Python module
                 spec = importlib.util.spec_from_file_location(self.name, custom_script_path)

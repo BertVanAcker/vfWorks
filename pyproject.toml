@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vfWorks"
-version = "0.0.1.dev3"
+version = "0.0.1.dev5"
 description = "vfWorks - your gateway to valid model (re-)use."
 readme = "README.md"
 requires-python = ">=3.11"

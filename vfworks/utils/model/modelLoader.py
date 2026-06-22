@@ -12,6 +12,7 @@ from ultralytics import YOLO
 import importlib.util
 import inspect
 import os
+from pathlib import Path
 
 
 class ModelLoader(object):
@@ -80,6 +81,7 @@ class ModelLoader(object):
     def loadModel(self,model_location=None,type="pycaret"):
         if model_location is None:
             model_location = self._validityframe.activeModelStructure.modelRef
+        model_location = self._resolve_model_location(model_location)
         
         # 1. Handle Built-in Model Types
         if type == "pycaret":
@@ -94,18 +96,15 @@ class ModelLoader(object):
                     self._models.append(load_model_from_pickle(file_name=os.path.join(model_location,model), modelType="torch"))
         # 2. Look for Custom Overrides/Plugins in the Sources Folder
         else:
-            # Determine the path to the Sources directory
-            # (Adjust this logic depending on how your package tracks its root directory)
-            packageName = self._validityframe.package_manager.packageName
-            package_root = os.getcwd()  # Or use a reference from self._validityframe
-            sources_dir = os.path.join(package_root, packageName, "Resources")
-            custom_loader_path = os.path.join(sources_dir, "loaders", f"{type}.py")
-            legacy_loader_path = os.path.join(sources_dir, f"{type}.py")
+            package_root = self._validityframe.package_manager.package_root
+            resources_dir = package_root / "Resources"
+            custom_loader_path = resources_dir / "loaders" / f"{type}.py"
+            legacy_loader_path = resources_dir / f"{type}.py"
 
-            if not os.path.exists(custom_loader_path) and os.path.exists(legacy_loader_path):
+            if not custom_loader_path.exists() and legacy_loader_path.exists():
                 custom_loader_path = legacy_loader_path
             
-            if os.path.exists(custom_loader_path):
+            if custom_loader_path.exists():
                 try:
                     # Dynamically load the python file as a module
                     spec = importlib.util.spec_from_file_location(type, custom_loader_path)
@@ -131,4 +130,21 @@ class ModelLoader(object):
             else:
                 self._validityframe.logger.info(msg=f"Unable to load the model. Type '{type}' is unrecognized.")
                 return None
+
+        return self._model if self._model is not None else self._models
+
+    def _resolve_model_location(self, model_location):
+        model_path = model_location if isinstance(model_location, Path) else Path(model_location)
+        if model_path.is_absolute() or model_path.exists():
+            return str(model_path)
+
+        package_root = self._validityframe.package_manager.package_root
+        package_model_path = package_root / model_path
+        if str(model_path).startswith("Sources"):
+            return str(package_model_path)
+        if package_model_path.exists():
+            return str(package_model_path)
+
+        sources_model_path = package_root / "Sources" / model_path
+        return str(sources_model_path)
 

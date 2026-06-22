@@ -37,36 +37,34 @@ class ValidityFrame(baseElement):
         self._model_loader = ModelLoader(name="VF_model_loader", validityFrame=self)
 
         # PACKAGE AND LOGGER
-        self._package_manager = PackageManager(verbose=verbose, packageName=VFPackage if VFPackage else ".")
+        self._package_manager = PackageManager(verbose=verbose, packageName=VFPackage, packageLocation=location)
         if config is None:
-            self.config = self._package_manager.init_config(VFPackage)
+            self.config = self._package_manager.init_config()
         else:
-            self.config = self._package_manager.load_config(config)
-        if VFPackage is None or VFPackage == "":
-            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=False, path=location)
-        else:
-            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=True, path=location)
+            config_path = Path(config)
+            if not config_path.is_absolute() and not config_path.exists():
+                config_path = self.package_manager.package_root / config_path
+            self.config = self._package_manager.load_config(config_path)
+        has_explicit_package = VFPackage not in (None, "", ".")
+        self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=has_explicit_package)
 
-        logger_location = location+VFPackage if location else VFPackage
-        self.logger = self.initialize_logger(logger_location)
+        self.logger = self.initialize_logger(self.package_manager.package_root)
         # LOAD VF from package or initialize as new
         if loadExistingVF:
-            if VFPackage== "":
+            if not has_explicit_package:
                 self.logger.info(msg="Loading validity frame from current workdir")
             else:
                 self.logger.info(msg="Loading validity frame from package {" + VFPackage + "}")
-            prefix = "." if VFPackage == "" else VFPackage
-            if location is not None:
-                prefix = location + prefix
+            package_root = self.package_manager.package_root
             #load different elements
-            self._metadata.json2object(fileName=Path(prefix+"/Metadata/Metadata.json"))
-            self._operational.json2object(fileName=Path(prefix+"/Operational/Operational.json"), metadata=self._metadata, packageName=VFPackage)
+            self._metadata.json2object(fileName=package_root / "Metadata" / "Metadata.json")
+            self._operational.json2object(fileName=package_root / "Operational" / "Operational.json", metadata=self._metadata, packageName=self.package_manager.packageName, packageRoot=package_root)
             #self._processes.json2object(fileName=VFPackage+"Metadata/Metadata.json")
-            self._experiments.json2object(fileName=Path(prefix+"/Experiments/Experiments.json"))
+            self._experiments.json2object(fileName=package_root / "Experiments" / "Experiments.json")
 
         else:
             self.logger.info(msg="New validityFrame initialized with GUID {"+self.GUID+"}")
-            self.export(packageName=VFPackage if VFPackage else ".")
+            self.export()
 
     @property
     def package_manager(self):
@@ -143,8 +141,7 @@ class ValidityFrame(baseElement):
         return self._operational.modelStructures
     
     def get_current_active_model(self):
-        prefix = self.package_manager.packageName +"/Sources/"
-        model_ref = prefix + self.modelReference
+        model_ref = self.modelReference
         model = self._model_loader.loadModel(model_location=model_ref, type=self._operational.activeModelStructure._modelType)
         return model
     
@@ -212,7 +209,7 @@ class ValidityFrame(baseElement):
 
     def addMonitor(self, monitor):
         monitor.packageName = self.package_manager.packageName
-        monitor.setup()
+        monitor.setup(self.package_manager.package_root)
         self._operational.addMonitor(monitor)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -221,7 +218,7 @@ class ValidityFrame(baseElement):
     def load_config(self, config_file):
         return self._package_manager.load_config(config_file)
 
-    def initialize_logger(self, packageName):
+    def initialize_logger(self, package_root):
         """Initialize the logger (same as before)."""
         log_config = self.config.get("logging", {})
         logger = logging.getLogger(self.__class__.__name__)
@@ -230,8 +227,8 @@ class ValidityFrame(baseElement):
 
         log_format = log_config.get("format", "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
         log_file = log_config.get("file", None)
-        if packageName:
-            log_file = os.path.join(packageName, log_file)
+        if log_file:
+            log_file = Path(package_root) / log_file
 
         formatter = logging.Formatter(log_format)
 
@@ -239,7 +236,7 @@ class ValidityFrame(baseElement):
             try:
                 file_handler = logging.FileHandler(log_file)    #LOAD FROM PACKAGE LEVEL
             except:
-                file_handler = logging.FileHandler("../"+log_file)  #LOAD FROM FOLDER LEVEL (e.g. in processes)
+                file_handler = logging.FileHandler(Path("..") / log_file)  #LOAD FROM FOLDER LEVEL (e.g. in processes)
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
         else:
@@ -394,19 +391,11 @@ class ValidityFrame(baseElement):
     #                                           IMPORT/EXPORT FUNCTIONS
     # -----------------------------------------------------------------------------------------------------------------
     def export(self,packageName=None):
-        if packageName is None:
-            #export called in VF_BLDC package, no prefix needed
-            self._metadata.object2json("Metadata/Metadata.json")
-            self._processes.object2json("Processes/Processes.json")
-            self._experiments.object2json("Experiments/Experiments.json")
-            self._operational.object2json("Operational/Operational.json")
-            x=1
-        else:
-            self._metadata.object2json(Path(packageName + "/Metadata/Metadata.json"))
-            self._processes.object2json(Path(packageName + "/Processes/Processes.json"))
-            self._experiments.object2json(Path(packageName + "/Experiments/Experiments.json"))
-            self._operational.object2json(Path(packageName + "/Operational/Operational.json"))
-            x=1
+        package_root = self.package_manager.package_root if packageName is None else Path(packageName)
+        self._metadata.object2json(package_root / "Metadata" / "Metadata.json")
+        self._processes.object2json(package_root / "Processes" / "Processes.json")
+        self._experiments.object2json(package_root / "Experiments" / "Experiments.json")
+        self._operational.object2json(package_root / "Operational" / "Operational.json")
 
 
 class MetaData(baseElement):
@@ -564,7 +553,7 @@ class Operational(baseElement):
         with open(fileName, 'w', encoding='utf-8') as f:
             f.write(data)
 
-    def json2object(self, fileName, metadata, packageName):
+    def json2object(self, fileName, metadata, packageName=None, packageRoot=None):
         """
            Function to generate object from a json file
         """
@@ -619,7 +608,7 @@ class Operational(baseElement):
                 _monitor._require_custom_code_file = monitor["_require_custom_code_file"]
                 _monitor.GUID = monitor["_GUID"]
                 _monitor.timestamp = monitor["_timestamp"]
-                _monitor.setup()
+                _monitor.setup(packageRoot)
                 self.addMonitor(_monitor)
 
 class Processes(baseElement):
