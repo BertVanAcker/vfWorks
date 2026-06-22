@@ -9,6 +9,7 @@
 import os
 import json
 import logging
+from pathlib import Path
 from vfworks.package.PackageManager import PackageManager
 from vfworks.metamodels.knowledge_graph import KnowledgeGraph
 from vfworks.metamodels.model_structure import *
@@ -54,10 +55,10 @@ class ValidityFrame(baseElement):
                 self.logger.info(msg="Loading validity frame from package {" + VFPackage + "}")
             prefix = "." if VFPackage == "" else VFPackage
             #load different elements
-            self._metadata.json2object(fileName=prefix+"/Metadata/Metadata.json")
-            self._operational.json2object(fileName=prefix+"/Operational/Operational.json", metadata=self._metadata, packageName=VFPackage)
+            self._metadata.json2object(fileName=Path(prefix+"/Metadata/Metadata.json"))
+            self._operational.json2object(fileName=Path(prefix+"/Operational/Operational.json"), metadata=self._metadata, packageName=VFPackage)
             #self._processes.json2object(fileName=VFPackage+"Metadata/Metadata.json")
-            self._experiments.json2object(fileName=prefix+"/Experiments/Experiments.json")
+            self._experiments.json2object(fileName=Path(prefix+"/Experiments/Experiments.json"))
 
         else:
             self.logger.info(msg="New validityFrame initialized with GUID {"+self.GUID+"}")
@@ -397,10 +398,10 @@ class ValidityFrame(baseElement):
             self._operational.object2json("Operational/Operational.json")
             x=1
         else:
-            self._metadata.object2json(packageName + "/Metadata/Metadata.json")
-            self._processes.object2json(packageName+"/Processes/Processes.json")
-            self._experiments.object2json(packageName +"/Experiments/Experiments.json")
-            self._operational.object2json(packageName + "/Operational/Operational.json")
+            self._metadata.object2json(Path(packageName + "/Metadata/Metadata.json"))
+            self._processes.object2json(Path(packageName + "/Processes/Processes.json"))
+            self._experiments.object2json(Path(packageName + "/Experiments/Experiments.json"))
+            self._operational.object2json(Path(packageName + "/Operational/Operational.json"))
             x=1
 
 
