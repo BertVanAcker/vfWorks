@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 from termcolor import colored
 
 class ValidityFrame(baseElement):
-    def __init__(self, name='tbd',description='tbd',config=None,loadExistingVF=False,VFPackage=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',config=None,loadExistingVF=False,VFPackage=None, location=None,verbose=False):
         super().__init__(name=name, description=description, verbose=verbose)
 
         # VF_BLDC HIGH-LEVEL STRUCTURE
@@ -43,9 +43,9 @@ class ValidityFrame(baseElement):
         else:
             self.config = self._package_manager.load_config(config)
         if VFPackage is None or VFPackage == "":
-            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=False)
+            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=False, path=location)
         else:
-            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=True)
+            self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=True, path=location)
         self.logger = self.initialize_logger(VFPackage)
         # LOAD VF from package or initialize as new
         if loadExistingVF:
@@ -54,6 +54,8 @@ class ValidityFrame(baseElement):
             else:
                 self.logger.info(msg="Loading validity frame from package {" + VFPackage + "}")
             prefix = "." if VFPackage == "" else VFPackage
+            if location is not None:
+                prefix = location + prefix
             #load different elements
             self._metadata.json2object(fileName=Path(prefix+"/Metadata/Metadata.json"))
             self._operational.json2object(fileName=Path(prefix+"/Operational/Operational.json"), metadata=self._metadata, packageName=VFPackage)
