@@ -17,6 +17,7 @@ class Specification(baseElement):
         self._feature = feature
         self._status = StatusType.UNKNOWN
         self._type = type
+        self._evaluationType = type
 
         if type == PropertyType.PROPERTY_RANGE:
             self._value = ValueRange(valueMin=kwargs['valueMin'], valueMax=kwargs['valueMax'], granularity=kwargs['granularity'])
@@ -26,6 +27,8 @@ class Specification(baseElement):
             self._value = ValueMin(valueMin=kwargs['valueMin'])
         if type == PropertyType.PROPERTY_MAX:
             self._value = ValueMax(valueMax=kwargs['valueMax'])
+        if type == PropertyType.PROPERTY_CUSTOM:
+            self._value = ValueCustom(description=description)
 
     @property
     def feature(self):
@@ -54,6 +57,11 @@ class Specification(baseElement):
     @property
     def status(self):
         return self._status
+
+    @property
+    def evaluationType(self):
+        return self._evaluationType
+
 
     def create_neo4j_node(self):
         return {
@@ -143,6 +151,14 @@ class ValueMax(baseElement):
     
     def tostring(self):
         return f"<={self._valueMax}"
+
+class ValueCustom(baseElement):
+    def __init__(self, name='tbd',description='tbd', verbose=False):
+        super().__init__(name=name, description=description, verbose=verbose)
+        self.value = description
+
+    def tostring(self):
+        return self.value
 
 class Requirement(baseElement):
 

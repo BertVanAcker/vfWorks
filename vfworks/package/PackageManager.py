@@ -166,7 +166,7 @@ class PackageManager(object):
             self._mkdir_custom(package_path/ "Resources" / folder, file="readme.rst")
 
         self._addFile(file="testType.py", path=package_path / "Resources" / "loaders")
-        self._addFile(file="EnvironmentMonitorRuntime.py", path=package_path / "Resources" / "monitors")
+        self._addFile(file="custom_monitor_example.py", path=package_path / "Resources" / "monitors")
 
         self._write_config(package_path, config or self.default_config(package_path))
         self._add_log_file(package_path, config)
@@ -263,12 +263,12 @@ class PackageManager(object):
                 '        "The load_model function must be implemented and return a model object."\n'
                 "    )\n"
             )
-        elif file == "EnvironmentMonitorRuntime.py":
+        elif file == "custom_monitor_example.py":
             content = (
                 '"""Template for Custom Monitor Validation\n'
                 "\n"
-                "Filename should be renamed to match your specific monitor name\n"
-                "(e.g., 'EnvironmentMonitorRuntime.py') and is invoked automatically\n"
+                "Filename should be renamed to match your designated filename in the Validity Frame\n"
+                "(e.g., 'custom_monitor_example.py') and is invoked automatically\n"
                 "when Monitor.validate_point(...) runs for that monitor.\n"
                 '"""\n'
                 "\n"
@@ -277,15 +277,15 @@ class PackageManager(object):
                 "# import pandas as pd\n"
                 "\n"
                 "\n"
-                "def custom_validate_vector(data_vector, monitor=None):\n"
+                "def validate(monitor=None, **kwargs):\n"
                 '    """\n'
                 "    Dynamically executed by Monitor when this monitor has a matching custom script.\n"
                 "\n"
                 "    Parameters:\n"
                 "    -----------\n"
-                "    data_vector : dict\n"
-                "        Mapping of feature names to observed values, such as\n"
-                "        {'colorRed': 255, 'colorGreen': 255, 'colorBlue': 255}.\n"
+                "    **kwargs : dict\n"
+                "        Keyword context passed by Monitor.validate_point(...). Contains\n"
+                "        data_vector, monitor, and each feature name as a direct keyword.\n"
                 "    monitor : object, optional\n"
                 "        The active Monitor instance. Allows access to monitor.name,\n"
                 "        monitor.observes, monitor.spec_status, and monitor.last_observed_values.\n"
@@ -296,7 +296,9 @@ class PackageManager(object):
                 "        Mapping of feature names to boolean validity statuses. Features omitted\n"
                 "        from this dictionary fall back to their built-in specification checks.\n"
                 '    """\n'
-                "    # 1. Read observed values from the vector\n"
+                "    # 1. Pull out the context you need. The rest of this function is yours to define.\n"
+                '    data_vector = kwargs.get("data_vector", kwargs)\n'
+                '    monitor = kwargs.get("monitor", monitor)\n'
                 '    red = data_vector.get("colorRed", 0)\n'
                 '    green = data_vector.get("colorGreen", 0)\n'
                 '    blue = data_vector.get("colorBlue", 0)\n'
@@ -319,7 +321,7 @@ class PackageManager(object):
                 "\n"
                 "    # Default fallback if code isn't implemented yet\n"
                 "    raise NotImplementedError(\n"
-                '        "The custom_validate_vector function must return a feature-to-bool mapping."\n'
+                '        "The validate function must return a feature-to-bool mapping."\n'
                 "    )\n"
             )
 

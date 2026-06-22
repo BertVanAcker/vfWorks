@@ -22,7 +22,7 @@ classifiers = [
 dependencies = [
 	"torch>=2.11.0",
 	"torchvision>=0.26.0",
-	"onnx==1.16.1",
+	"onnx==1.16.2",
 	"click",
 	"PyYAML",
 	"redis",
@@ -34,12 +34,12 @@ dependencies = [
 	"Jinja2",
 	"skl2onnx",
 	"pandas",
-	"pycaret",
+	"pycaret==4.0.0a3",
 	"ultralytics>=8.4.56",
-	"numpy==1.26.4",
-	"scikit-learn==1.2.2",
+	"numpy==2.0.0",
+	"scikit-learn==1.7.2",
 	"ml-dtypes<0.5",
-	"scipy==1.11.4",
+	"scipy",
 ]
 
 [project.scripts]
@@ -56,6 +56,8 @@ examples-turtlebot-lidar = [
 examples-screw-detection = [
     "opencv-python>=4.11.0.86",
     "pyrealsense2>=2.58.1.10581",
+    "modelguard==0.61.0",
+    "screw-assembly-monitoring",
 ]
 
 [tool.uv.sources]
@@ -64,7 +66,10 @@ torch = [
 ]
 torchvision = [
   { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+
 ]
+modelguard = { path = "examples/Labcases/Screw_detection/VF_Tool_Sandbox/VF_SCREWDETECTION/Resources/loaders/dist/modelguard-0.61.0-py3-none-any.whl" }
+screw-assembly-monitoring = { path = "C:/Users/jan_g/PycharmProjects/screw_assembly_monitoring"}
 
 [tool.setuptools]
 include-package-data = true

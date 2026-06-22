@@ -9,18 +9,19 @@
 from vfworks.metamodels.common import *
 from vfworks.utils.constants import *
 import importlib.util
-import inspect
 import os
 
 class Monitor(baseElement):
 
-    def __init__(self, name='tbd', description='tbd', status=StatusType.UNKNOWN, monitor_time=MonitorTime.RUN_TIME, observes=None, verbose=False, spec_status=None, last_observed_values=None, packageName=None):
+    def __init__(self, name='tbd', description='tbd', status=StatusType.UNKNOWN, monitor_time=MonitorTime.RUN_TIME, observes=None, verbose=False, spec_status=None, last_observed_values=None, packageName=None, custom_code_file=None):
         super().__init__(name=name, description=description, verbose=verbose)
 
         self._status = status
         self._type = monitor_time
         self._validate_point_function = None
         self._packageName = packageName
+        self._require_custom_code_file = False
+        self._custom_code_file = custom_code_file
 
         self.observes = observes
         self.spec_status = {}
@@ -29,7 +30,10 @@ class Monitor(baseElement):
         if observes is not None:
             for observe in observes:
                 self.spec_status[observe.feature] = StatusType.UNKNOWN
-                self.last_observed_values[observe.feature] = None
+                self.last_observed_values[observe.feature] = 0.0
+
+                if observe.evaluationType == PropertyType.PROPERTY_CUSTOM:
+                    self._require_custom_code_file = True
 
         if spec_status is not None:
             self.spec_status = spec_status
@@ -37,8 +41,9 @@ class Monitor(baseElement):
             self.last_observed_values = last_observed_values
 
     def setup(self):
-        """Setup the monitor, including loading any custom validation hooks."""
-        self._load_custom_validation_hook()
+        if self._custom_code_file is not None:
+            """Setup the monitor, including loading any custom validation hooks."""
+            self._load_custom_validation_hook()
 
     @property
     def packageName(self):
@@ -122,12 +127,12 @@ class Monitor(baseElement):
         # {feature_name: is_valid_boolean}
         custom_evaluations = {}
         if self._validate_point_function is not None:
-            # Custom function processes the full dictionary vector at once
-            validate_point_signature = inspect.signature(self._validate_point_function)
-            if "monitor" in validate_point_signature.parameters:
-                custom_evaluations = self._validate_point_function(data_vector, monitor=self)
-            else:
-                custom_evaluations = self._validate_point_function(data_vector)
+            # Custom function receives the full context and owns monitor-specific logic.
+            custom_evaluations = self._validate_point_function(
+                data_vector=data_vector,
+                monitor=self,
+                **data_vector,
+            )
 
         # 3. Process specs based on the vector values
         global_is_valid = True
@@ -167,7 +172,7 @@ class Monitor(baseElement):
         """Private helper to locate and bind custom vector validation scripts."""
         package_root = os.getcwd()
         custom_script_path = os.path.join(
-            package_root, self.packageName, "Resources", "monitors", f"{self.name}.py"
+            package_root, self.packageName, "Resources", "monitors", f"{self._custom_code_file}"
         )
 
         # Check if the user wrote a custom plugin matching this monitor type
@@ -179,12 +184,12 @@ class Monitor(baseElement):
                 spec.loader.exec_module(custom_module)
 
                 # Look for our standardized function name contract
-                if hasattr(custom_module, "custom_validate_vector"):
-                    self._validate_point_function = custom_module.custom_validate_vector
+                if hasattr(custom_module, "validate"):
+                    self._validate_point_function = custom_module.validate
                     print(f"Successfully bound custom validation function for '{self.name}'")
                 else:
                     print(
-                        f"Found custom script '{self.name}.py', but it is missing 'custom_validate_vector'. "
+                        f"Found custom script '{self._custom_code_file}.py', but it is missing 'validate'. "
                         f"Falling back to default built-in validation rules.",
                         level="warning"
                     )
@@ -192,5 +197,5 @@ class Monitor(baseElement):
                 print(f"Failed to compile custom monitor plugin '{self.name}': {str(e)}")
         else:
             # No custom script found; perfectly fine, it will use default built-in value.validate_point rules
-            print(f"No custom override found for '{self.name}'. Running baseline configurations.")
+            print(f"No custom override found for '{self._custom_code_file}'. Running baseline configurations.")
 

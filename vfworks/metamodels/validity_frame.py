@@ -138,7 +138,8 @@ class ValidityFrame(baseElement):
         return self._operational.modelStructures
     
     def get_current_active_model(self):
-        model_ref = self.modelReference
+        prefix = self.package_manager.packageName +"/Sources/"
+        model_ref = prefix + self.modelReference
         model = self._model_loader.loadModel(model_location=model_ref, type=self._operational.activeModelStructure._modelType)
         return model
     
@@ -205,7 +206,8 @@ class ValidityFrame(baseElement):
         self._operational.design_time_monitors = value
 
     def addMonitor(self, monitor):
-        monitor.parent = self.package_manager.packageName
+        monitor.packageName = self.package_manager.packageName
+        monitor.setup()
         self._operational.addMonitor(monitor)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -472,6 +474,8 @@ class MetaData(baseElement):
                     s.value = ValueMin(valueMin=value["_valueMin"])
                 if spec["_type"] == PropertyType.PROPERTY_MAX:
                     s.value = ValueMax(valueMax=value["_valueMax"])
+                if spec["_type"] == PropertyType.PROPERTY_CUSTOM:
+                    s.value = ValueCustom(description=value["_description"])
                 s.GUID = spec['_GUID']
                 s.timestamp = spec['_timestamp']
                 self.addSpecification(s)
@@ -606,9 +610,11 @@ class Operational(baseElement):
                     for specification in metadata.specifications:
                         if specification.GUID == spec["_GUID"]:
                             specs.append(specification)
-                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_time=monitor["_type"], status=monitor["_status"], spec_status=monitor["spec_status"], last_observed_values=monitor["last_observed_values"], packageName=packageName)
+                _monitor = Monitor(name=monitor["_name"], description=monitor["_description"], observes=specs, monitor_time=monitor["_type"], status=monitor["_status"], spec_status=monitor["spec_status"], last_observed_values=monitor["last_observed_values"], packageName=packageName, custom_code_file=monitor["_custom_code_file"])
+                _monitor._require_custom_code_file = monitor["_require_custom_code_file"]
                 _monitor.GUID = monitor["_GUID"]
                 _monitor.timestamp = monitor["_timestamp"]
+                _monitor.setup()
                 self.addMonitor(_monitor)
 
 class Processes(baseElement):

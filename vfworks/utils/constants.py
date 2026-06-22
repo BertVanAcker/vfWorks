@@ -52,6 +52,7 @@ class PropertyType:
     PROPERTY_MEAN = "property_mean"
     PROPERTY_MIN= "property_min"
     PROPERTY_MAX = "property_max"
+    PROPERTY_CUSTOM = "property_custom"
 
 class StatusType:
     UNKNOWN = "unknown"
