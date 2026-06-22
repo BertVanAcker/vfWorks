@@ -46,7 +46,9 @@ class ValidityFrame(baseElement):
             self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=False, path=location)
         else:
             self._package_manager.create(name=VFPackage, force=False, config=self.config, standalone=True, path=location)
-        self.logger = self.initialize_logger(VFPackage)
+
+        logger_location = location+VFPackage if location else VFPackage
+        self.logger = self.initialize_logger(logger_location)
         # LOAD VF from package or initialize as new
         if loadExistingVF:
             if VFPackage== "":
