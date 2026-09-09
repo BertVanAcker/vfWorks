@@ -1,81 +1,154 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.12.10,<0.13"]
+build-backend = "uv_build"
 
 [project]
-name = "vfWorks"
-version = "0.0.1.dev5"
-description = "vfWorks - your gateway to valid model (re-)use."
+name = "vfworks"
+version = "0.0.2"
+description = "A framework for validating, managing, and reusing AI models."
 readme = "README.md"
-requires-python = ">=3.11"
-license = { text = "Apache License 2.0" }
+requires-python = ">=3.11,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+
 authors = [
-    { name = "Jan Gladiné & Bert Van Acker", email = "Jan.Gladine@uantwerpen.be" },
+    { name = "Jan Gladiné", email = "Jan.Gladine@uantwerpen.be" },
+    { name = "Bert Van Acker" },
+    { name = "Arkadiusz Michał Ryś", email = "Arkadiusz.Michal.Rys@gmail.com" },
 ]
-keywords = ["AI", "Safety", "Model-based"]
+
+keywords = [
+    "model validation",
+    "model reuse",
+    "model-based engineering",
+    "cyber-physical systems",
+    "machine learning",
+]
+
 classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
 ]
+
 dependencies = [
-	"torch>=2.11.0",
-	"torchvision>=0.26.0",
-	"onnx==1.16.2",
-	"click",
-	"PyYAML",
-	"redis",
-	"neo4j",
-	"textX",
-	"networkx",
-	"matplotlib",
-	"termcolor",
-	"Jinja2",
-	"skl2onnx",
-	"pandas",
-	"pycaret==4.0.0a3",
-	"ultralytics>=8.4.56",
-	"numpy==2.0.0",
-	"scikit-learn==1.7.2",
-	"ml-dtypes<0.5",
-	"scipy",
+    "click        >=8.1",
+    "jinja2       >=3.1",
+    "matplotlib   >=3.9",
+    "neo4j        >=5.20",
+    "networkx     >=3.3",
+    "numpy        >=2.0",
+#    "onnx         >=1.22",
+    "pandas       >=2.2",
+    "pyyaml       >=6.0",
+    "redis        >=5.0",
+#    "scikit-learn >=1.7",
+#    "scipy        >=1.13",
+    "termcolor    >=2.4",
+    "textx        >=4.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/BertVanAcker/vfWorks"
+Repository = "https://github.com/BertVanAcker/vfWorks"
+Issues = "https://github.com/BertVanAcker/vfWorks/issues"
 
 [project.scripts]
 vfworks = "vfworks.__main__:cli"
 
 [project.optional-dependencies]
+ml = [
+#    "ml-dtypes",
+    "pycaret",
+    "skl2onnx",
+    "torch",
+#    "torchvision",
+    "ultralytics",
+]
+
+api = [
+    "fastapi",
+    "starlette",
+    "uvicorn",
+]
+
 examples-bldc = [
-    "odrive>=0.6.11.post0",
-    "serial>=0.0.97",
+    "odrive",
+    "pyserial",
+    "scikit-learn",
+    "scipy",
 ]
+
 examples-turtlebot-lidar = [
-    "tqdm>=4.67.3",
+    "scikit-learn",
+    "scipy",
+    "tqdm",
 ]
+
 examples-screw-detection = [
-    "opencv-python>=4.11.0.86",
-    "pyrealsense2>=2.58.1.10581",
-    "modelguard==0.61.0",
-    "screw-assembly-monitoring",
+    "opencv-python",
+    "pyrealsense2",
+    "scikit-learn",
+]
+
+[dependency-groups]
+dev = [
+    "deptry",
+    "mypy",
+    "pre-commit",
+    "pytest-cov",
+    "ruff",
+    "pytest",
+    "invoke",
+    "vermin",
+    "restview",
+    {include-group = "test"},
+    {include-group = "doc"},
+]
+test = [
+    "httpx",
+]
+doc = [
+    "sphinx",
+    "sphinx-rtd-theme",
+    "sphinx-tabs",
+    "sphinx-toolbox",
+    "sphinxext-opengraph",
+    "sphinx-notfound-page",
+    "sphinxcontrib-drawio",
+    "sphinxcontrib-mermaid",
+    "readthedocs-sphinx-search",
+    "myst-parser",
+]
+
+screw-detection = [
+#    "modelguard==0.61.0", # This is some local package I do not have
+#    "screw-assembly-monitoring", # This is some local package I do not have
 ]
 
 [tool.uv.sources]
 torch = [
-  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+    { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
+
 torchvision = [
-  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
-
+    { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
 ]
-modelguard = { path = "examples/Labcases/Screw_detection/VF_Tool_Sandbox/VF_SCREWDETECTION/Resources/loaders/dist/modelguard-0.61.0-py3-none-any.whl" }
-screw-assembly-monitoring = { path = "C:/Users/jan_g/PycharmProjects/screw_assembly_monitoring"}
 
-[tool.setuptools]
-include-package-data = true
+#modelguard = { path = "examples/Labcases/Screw_detection/VF_Tool_Sandbox/VF_SCREWDETECTION/Resources/loaders/dist/modelguard-0.61.0-py3-none-any.whl" }  # I don't have this
 
-[tool.setuptools.packages.find]
-include = ["vfworks*"]
+#screw-assembly-monitoring = { path = "examples/Labcases/Screw_detection/screw_assembly_monitoring" } # I don't have this
+
+[tool.uv.build-backend]
+module-name = "vfworks"
 
 [[tool.uv.index]]
 name = "pytorch-cu130"
@@ -88,7 +161,29 @@ url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
 
-[dependency-groups]
-dev = [
-    "deptry>=0.25.1",
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+    "B",
+    "SIM",
 ]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.deptry.per_rule_ignores]
+DEP003 = ["vfworks"]

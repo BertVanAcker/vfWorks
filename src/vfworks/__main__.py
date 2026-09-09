@@ -8,16 +8,17 @@
 # **************************************************************************************
 
 import click
-from vfworks import __version__
+
+from vfworks.commands.examples import example_cmds
 
 
-@click.group()
-@click.pass_context
-def versionCmds():
+@click.group(help="vfWorks command line tool")
+def cli():
     pass
 
-@versionCmds.command()
-def version():
-    """Display the current version."""
-    version = __version__
-    click.echo("vfWorks v"+version)
+
+cli.add_command(example_cmds)
+
+
+if __name__ == '__main__':
+    cli()
