@@ -1,0 +1,32 @@
+name: BLDC training
+root: .
+working_directory: Processes
+
+validity_frame:
+  name: VF_BLDC
+  description: Populate VF_BLDC package
+  config: config.yaml
+  loadExistingVF: true
+  VFPackage: .
+
+active_model_structure: 94be08b4-9dc2-43dd-b15a-9dd15180e6eb
+
+actions:
+  file: Processes/Actions/trainer.py
+  class: trainingActions
+  arguments:
+    name: custom_trainer_class
+
+tasks:
+  - name: Collect data
+    method: t_collect_data
+  - name: Load model
+    method: t_load_model
+  - name: Model fitting
+    method: t_fit_model
+  - name: Evaluate model
+    method: t_evaluate_model
+  - name: Store model snapshot
+    method: t_store_model_snapshot
+  - name: Update validity frame package
+    method: t_store_vf

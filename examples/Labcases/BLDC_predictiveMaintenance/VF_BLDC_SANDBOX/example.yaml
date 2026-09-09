@@ -1,0 +1,29 @@
+name: BLDC sandbox training
+root: .
+working_directory: Processes
+validity_frame:
+  name: VF_BLDC_SANDBOX
+  config: config.yaml
+  loadExistingVF: true
+  VFPackage: .
+active_model_structure_name: anomalyDetector_2D
+actions:
+  file: Processes/Actions/trainer.py
+  class: trainingActions
+tasks:
+  - name: Collect data
+    method: t_collect_data
+  - name: Validate data
+    method: t_validate_data
+  - name: Process data
+    method: t_prepare_data
+  - name: Load model
+    method: t_load_model
+  - name: Model fitting
+    method: t_fit_model
+  - name: Evaluate model
+    method: t_evaluate_model
+  - name: Store model snapshot - pickled
+    method: t_store_model_snapshot_pickled
+  - name: Update validity frame package
+    method: t_store_vf

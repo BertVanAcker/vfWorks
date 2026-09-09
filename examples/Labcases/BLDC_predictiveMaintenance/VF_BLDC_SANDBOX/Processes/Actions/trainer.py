@@ -74,6 +74,7 @@ class trainingActions(object):
 
     def t_load_model(self):
         try:
+            self.models = []
             num_inputs = len(self._validityFrame.activeModelStructure.inports)
             for model_number in range(self._validityFrame.activeModelStructure.redundancy):
                 self.models.append(IsolationForest(contamination="auto", random_state=model_number, max_features=num_inputs))
@@ -90,11 +91,7 @@ class trainingActions(object):
             return False
 
     def t_evaluate_model(self):
-        try:
-            print("WARNING: Model evaluation action not implemented yet!")
-            return True
-        except:
-            return False
+        raise NotImplementedError("Automated BLDC evaluation is not implemented; manual evaluation is required")
 
     def t_store_model_snapshot(self):
         try:
