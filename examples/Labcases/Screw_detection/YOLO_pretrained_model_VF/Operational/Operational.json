@@ -2,28 +2,28 @@
     "_name": "operational",
     "_description": "tbd",
     "_verbose": false,
-    "_GUID": "187773e6-4013-4133-afb4-f0b1dd3c29b0",
-    "_timestamp": "2026-06-19 10:36:16.219219",
+    "_GUID": "dc71c078-924c-4df9-ba22-a52144dfd2ac",
+    "_timestamp": "2026-08-21 11:00:27.558502",
     "_modelStructures": [
         {
             "_name": "Screw_detections_model_YOLO",
             "_description": "tbd",
             "_verbose": false,
-            "_GUID": "acbc02d2-5df3-4a9d-b6f3-b45d376ef911",
-            "_timestamp": "2026-06-19 10:36:16.239624",
+            "_GUID": "ef985638-250a-4a29-9e42-a155b3ed50b2",
+            "_timestamp": "2026-08-21 11:00:27.565503",
             "_inports": [
                 {
                     "_name": "image",
                     "_description": "input image",
                     "_verbose": false,
-                    "_GUID": "a6f8d3fd-13ee-4e05-bd2b-f1501b23f4a8",
-                    "_timestamp": "2026-06-19 10:36:16.239624",
+                    "_GUID": "81aa8c76-d691-4e39-b835-98a3fe9d3543",
+                    "_timestamp": "2026-08-21 11:00:27.565503",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "c48dd526-f0f9-4858-9792-2700077df29e"
+                    "_mapping": "8d9069b1-b926-4027-894d-71074e3e0f59"
                 }
             ],
             "_outports": [
@@ -31,27 +31,27 @@
                     "_name": "detections",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "27ecf487-9f70-4c3d-992a-a2967a70d41b",
-                    "_timestamp": "2026-06-19 10:36:16.239624",
+                    "_GUID": "d8df3dec-f14a-4659-8c49-3e6f9d4dcfd6",
+                    "_timestamp": "2026-08-21 11:00:27.565503",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "8267cf66-6cd7-41dd-af97-26770f785ea6"
+                    "_mapping": "c6f61810-e5f3-4670-ae52-a1b5fad1d79a"
                 },
                 {
                     "_name": "certainties",
                     "_description": "tbd",
                     "_verbose": false,
-                    "_GUID": "c6aa52e2-0ef9-46eb-82a1-3ccbaa6753f6",
-                    "_timestamp": "2026-06-19 10:36:16.239624",
+                    "_GUID": "fe44598d-7129-49c1-8315-7faecc2e35b3",
+                    "_timestamp": "2026-08-21 11:00:27.565503",
                     "_domain": "CONTROL",
                     "_unit": "-",
                     "_datatype": "float_64",
                     "_min": 0,
                     "_max": 0,
-                    "_mapping": "ad9f45c0-47d9-4a83-98d9-b9fa07949889"
+                    "_mapping": "45a5ace0-d980-4637-ba13-ace9e45c2036"
                 }
             ],
             "_modelType": "ConvolutionalNeuralNetwork",
@@ -68,29 +68,31 @@
             "_name": "TrustMonitor",
             "_description": "Trustworthiness monitor",
             "_verbose": false,
-            "_GUID": "90e928ac-e665-4cb1-a09f-9a3a1a6eacff",
-            "_timestamp": "2026-06-19 10:36:16.239624",
+            "_GUID": "6d1c9666-175a-4895-acab-b89a6dcea769",
+            "_timestamp": "2026-08-21 11:00:27.565503",
             "_status": "unknown",
             "_type": "RunTime",
             "_validate_point_function": null,
             "_packageName": null,
+            "_require_custom_code_file": false,
             "_custom_code_file": null,
             "observes": [
                 {
                     "_name": "ModelTrust",
                     "_description": "Model trustworthiness",
                     "_verbose": false,
-                    "_GUID": "ee912f59-16f6-496e-aba8-075d952adc69",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "4e8ead8d-de14-4a32-9185-cb2db3106cc1",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "trust",
                     "_status": "unknown",
                     "_type": "property_mean",
+                    "_evaluationType": "property_mean",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "677e41df-be06-4ba7-bd1d-5f8ba66bdd1a",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "28e1073f-08f7-4848-8df5-ce486e42b4e1",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_average": 0.7,
                         "_deviation": 0.1
                     }
@@ -100,37 +102,38 @@
                 "trust": "unknown"
             },
             "last_observed_values": {
-                "trust": null
-            },
-            "parent": "YOLO_pretrained_model_VF"
+                "trust": 0.0
+            }
         },
         {
             "_name": "EnvironmentMonitorRuntime",
             "_description": "Runtime environment monitor",
             "_verbose": false,
-            "_GUID": "efb3f137-4677-4023-a7d7-888ad1b15401",
-            "_timestamp": "2026-06-19 10:36:16.239624",
+            "_GUID": "ec036b52-ba63-443c-b847-7b0944fde202",
+            "_timestamp": "2026-08-21 11:00:27.565503",
             "_status": "unknown",
             "_type": "RunTime",
             "_validate_point_function": null,
             "_packageName": null,
+            "_require_custom_code_file": false,
             "_custom_code_file": null,
             "observes": [
                 {
                     "_name": "LightingColorRed",
                     "_description": "Red component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "e08fc0e2-361e-4107-8088-86b0cdff4155",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "7943253d-da03-4af1-a8fc-d504955115b7",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "colorRed",
                     "_status": "unknown",
                     "_type": "property_range",
+                    "_evaluationType": "property_range",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "77ca1a0c-1804-4cae-9618-2f0c426d5ba5",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "b019bc6d-525d-4eb6-9c58-98d5df78e09b",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
@@ -140,17 +143,18 @@
                     "_name": "LightingColorGreen",
                     "_description": "Green component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "7db77b83-a5ed-45e0-8194-fa4b1bad3f22",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "7fd0c35e-772a-4709-85b7-0dd9ebe2af9e",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "colorGreen",
                     "_status": "unknown",
                     "_type": "property_range",
+                    "_evaluationType": "property_range",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "5abefebc-9a15-4653-a8eb-81f56051b65c",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "47b1968f-ad6f-4a1d-af1b-70d19f85cc2c",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 5
@@ -160,17 +164,18 @@
                     "_name": "LightingColorBlue",
                     "_description": "Blue component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "2d6c9999-9312-4afd-8416-aa7f1f161b1b",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "b361169c-b8aa-41d3-a7ef-6c8ed8ec511d",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "colorBlue",
                     "_status": "unknown",
                     "_type": "property_range",
+                    "_evaluationType": "property_range",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "b0161ffa-cf0a-4e5c-840b-591a64785877",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "fbe8da90-951e-4537-8e12-0b154b67a0de",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
@@ -183,11 +188,10 @@
                 "colorBlue": "unknown"
             },
             "last_observed_values": {
-                "colorRed": null,
-                "colorGreen": null,
-                "colorBlue": null
-            },
-            "parent": "YOLO_pretrained_model_VF"
+                "colorRed": 0.0,
+                "colorGreen": 0.0,
+                "colorBlue": 0.0
+            }
         }
     ],
     "_design_time_monitors": [
@@ -195,29 +199,31 @@
             "_name": "EnvironmentMonitorDesignTime",
             "_description": "Design time environment monitor",
             "_verbose": false,
-            "_GUID": "dfdcc255-17b4-4792-a4d1-0df2d0961d69",
-            "_timestamp": "2026-06-19 10:36:16.239624",
+            "_GUID": "c7d833a9-d095-48e1-a96a-9d8266738943",
+            "_timestamp": "2026-08-21 11:00:27.565503",
             "_status": "unknown",
             "_type": "DataValidationTime",
             "_validate_point_function": null,
             "_packageName": null,
+            "_require_custom_code_file": false,
             "_custom_code_file": null,
             "observes": [
                 {
                     "_name": "LightingColorRed",
                     "_description": "Red component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "e08fc0e2-361e-4107-8088-86b0cdff4155",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "7943253d-da03-4af1-a8fc-d504955115b7",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "colorRed",
                     "_status": "unknown",
                     "_type": "property_range",
+                    "_evaluationType": "property_range",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "77ca1a0c-1804-4cae-9618-2f0c426d5ba5",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "b019bc6d-525d-4eb6-9c58-98d5df78e09b",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
@@ -227,17 +233,18 @@
                     "_name": "LightingColorGreen",
                     "_description": "Green component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "7db77b83-a5ed-45e0-8194-fa4b1bad3f22",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "7fd0c35e-772a-4709-85b7-0dd9ebe2af9e",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "colorGreen",
                     "_status": "unknown",
                     "_type": "property_range",
+                    "_evaluationType": "property_range",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "5abefebc-9a15-4653-a8eb-81f56051b65c",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "47b1968f-ad6f-4a1d-af1b-70d19f85cc2c",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 5
@@ -247,17 +254,18 @@
                     "_name": "LightingColorBlue",
                     "_description": "Blue component of the surrounding lighting",
                     "_verbose": false,
-                    "_GUID": "2d6c9999-9312-4afd-8416-aa7f1f161b1b",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "b361169c-b8aa-41d3-a7ef-6c8ed8ec511d",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "colorBlue",
                     "_status": "unknown",
                     "_type": "property_range",
+                    "_evaluationType": "property_range",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "b0161ffa-cf0a-4e5c-840b-591a64785877",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "fbe8da90-951e-4537-8e12-0b154b67a0de",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0,
                         "_valueMax": 255,
                         "_granularity": 1
@@ -270,39 +278,40 @@
                 "colorBlue": "unknown"
             },
             "last_observed_values": {
-                "colorRed": null,
-                "colorGreen": null,
-                "colorBlue": null
-            },
-            "parent": "YOLO_pretrained_model_VF"
+                "colorRed": 0.0,
+                "colorGreen": 0.0,
+                "colorBlue": 0.0
+            }
         },
         {
             "_name": "SampleCountMonitor",
             "_description": "Class sample count monitor",
             "_verbose": false,
-            "_GUID": "4db10c5d-5627-42c9-9365-2370c1cdeafe",
-            "_timestamp": "2026-06-19 10:36:16.239624",
+            "_GUID": "b736ad26-fe9b-4618-8bf0-71c9ed9be4f7",
+            "_timestamp": "2026-08-21 11:00:27.565503",
             "_status": "unknown",
             "_type": "DataValidationTime",
             "_validate_point_function": null,
             "_packageName": null,
+            "_require_custom_code_file": false,
             "_custom_code_file": null,
             "observes": [
                 {
                     "_name": "ScrewCount",
                     "_description": "Screw sample count",
                     "_verbose": false,
-                    "_GUID": "1bc56b90-bdb1-4ae6-b3f3-ac4e9d883f10",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "294257e5-0a7d-4c65-91b4-1472b68b2547",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "screws_samples",
                     "_status": "unknown",
                     "_type": "property_min",
+                    "_evaluationType": "property_min",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "f244225a-9940-4eb9-8925-88a08d112b2c",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "a46aafa7-8d56-40fc-8868-0d44f5c354d5",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 100
                     }
                 },
@@ -310,17 +319,18 @@
                     "_name": "NoScrewCount",
                     "_description": "No screw sample count",
                     "_verbose": false,
-                    "_GUID": "fafb878a-59d8-4429-b3ce-ad2210985307",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "23cf2023-7572-4241-b15f-448d7eed25c2",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "noscrews_samples",
                     "_status": "unknown",
                     "_type": "property_min",
+                    "_evaluationType": "property_min",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "b5647392-1b1a-48ed-9ab3-1c3abd4caccd",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "57bed718-792c-49e0-a893-9284b2505975",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 100
                     }
                 }
@@ -330,38 +340,39 @@
                 "noscrews_samples": "unknown"
             },
             "last_observed_values": {
-                "screws_samples": null,
-                "noscrews_samples": null
-            },
-            "parent": "YOLO_pretrained_model_VF"
+                "screws_samples": 0.0,
+                "noscrews_samples": 0.0
+            }
         },
         {
             "_name": "AccuracyMonitor",
             "_description": "Accuracy monitor",
             "_verbose": false,
-            "_GUID": "562e0331-e17d-4e87-800e-fae24b231671",
-            "_timestamp": "2026-06-19 10:36:16.239624",
+            "_GUID": "c90e4b19-ffd3-467a-8223-bb7bcabb4318",
+            "_timestamp": "2026-08-21 11:00:27.565503",
             "_status": "unknown",
             "_type": "ModelValidationTime",
             "_validate_point_function": null,
             "_packageName": null,
+            "_require_custom_code_file": false,
             "_custom_code_file": null,
             "observes": [
                 {
                     "_name": "ModelAccuracy",
                     "_description": "Model accuracy",
                     "_verbose": false,
-                    "_GUID": "f105cb3d-4cfe-4aa7-ad45-c34ecd3c867e",
-                    "_timestamp": "2026-06-19 10:36:16.237614",
+                    "_GUID": "5b0280dd-0700-4369-a22e-96ab673a343a",
+                    "_timestamp": "2026-08-21 11:00:27.564505",
                     "_feature": "mAP50-95",
                     "_status": "unknown",
                     "_type": "property_min",
+                    "_evaluationType": "property_min",
                     "_value": {
                         "_name": "tbd",
                         "_description": "tbd",
                         "_verbose": false,
-                        "_GUID": "c64abf95-9f5e-47c7-b63b-eee9582b1239",
-                        "_timestamp": "2026-06-19 10:36:16.237614",
+                        "_GUID": "5471d1bb-d803-45c0-9100-1ff94c738c27",
+                        "_timestamp": "2026-08-21 11:00:27.564505",
                         "_valueMin": 0.8
                     }
                 }
@@ -370,9 +381,8 @@
                 "mAP50-95": "unknown"
             },
             "last_observed_values": {
-                "mAP50-95": null
-            },
-            "parent": "YOLO_pretrained_model_VF"
+                "mAP50-95": 0.0
+            }
         }
     ]
 }

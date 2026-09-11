@@ -65,7 +65,7 @@ spec2 = Specification(name="NoScrewCount",description="No screw sample count", f
 spec3 = Specification(name="LightingColorRed",description="200 < Lighting < 255", feature="colorRed",type=PropertyType.PROPERTY_CUSTOM)
 spec4 = Specification(name="LightingColorGreen",description="200 < Lighting < 255", feature="colorGreen",type=PropertyType.PROPERTY_CUSTOM)
 spec5 = Specification(name="LightingColorBlue",description="200 < Lighting < 255", feature="colorBlue",type=PropertyType.PROPERTY_CUSTOM)
-spec6 = Specification(name="ModelTrust", description="Model trustworthiness", feature="trust", type=PropertyType.PROPERTY_CUSTOM)
+spec6 = Specification(name="ModelTrust", description="Model trustworthiness", feature="label", type=PropertyType.PROPERTY_CUSTOM)
 spec7 = Specification(name="ModelAccuracy", description="Model accuracy", feature="mAP50-95", type=PropertyType.PROPERTY_MIN, valueMin=0.8)
 VF.addSpecification(spec1)
 VF.addSpecification(spec2)
@@ -90,7 +90,6 @@ VF.addProperty(poi3)
 VF.addProperty(poi4)
 VF.addProperty(if1)
 VF.addProperty(if2)
-
 #-----------------POI LINKING TO EXPERIMENT MEASUREMENTS--------------------------------
 VF.assign_poi2measurement(poi=poi1, measurementName="images")
 VF.assign_poi2measurement(poi=poi2,measurementName="labels")

@@ -25,7 +25,7 @@ loaded_vf.graphify()
 loaded_vf.setActiveModelStructure(loaded_vf.modelStructures[0].GUID)
 model = vfloader.load_model(loaded_vf)
 monitors = vfloader.load_monitors(loaded_vf)
-for monitor in monitors:
-    monitor.validate_point({"colorRed": 20, "colorGreen": 255, "colorBlue": 255})
+monitors[1].validate_point({"colorRed": 20, "colorGreen": 255, "colorBlue": 255})
+monitors[0].validate_point({"trust": "True"})
 loaded_vf.graphify()
 x=1
