@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 from termcolor import colored
 
 class ValidityFrame(baseElement):
-    def __init__(self, name='tbd',description='tbd',config=None,loadExistingVF=False,VFPackage=None, location=None,verbose=False):
+    def __init__(self, name='tbd',description='tbd',config=None,loadExistingVF=False,VFPackage=None, location=None,verbose=False,unzipDirectory=None):
         super().__init__(name=name, description=description, verbose=verbose)
 
         # VF_BLDC HIGH-LEVEL STRUCTURE
@@ -38,7 +38,12 @@ class ValidityFrame(baseElement):
         self._model_loader = ModelLoader(name="VF_model_loader", validityFrame=self)
 
         # PACKAGE AND LOGGER
-        self._package_manager = PackageManager(verbose=verbose, packageName=VFPackage, packageLocation=location)
+        # VFPackage can be a package directory or a zipped package (.vf), which is unzipped to a working copy
+        self._log_handler = None
+        self._package_manager = PackageManager(verbose=verbose, packageName=VFPackage, packageLocation=location, unzipDirectory=unzipDirectory)
+        archive = self._package_manager.archive
+        if loadExistingVF and archive is not None and not archive.is_file():
+            raise FileNotFoundError(f"Zipped validity frame package {archive} does not exist!")
         if config is None:
             self.config = self._package_manager.init_config()
         else:
@@ -240,6 +245,7 @@ class ValidityFrame(baseElement):
                 file_handler = logging.FileHandler(Path("..") / log_file)  #LOAD FROM FOLDER LEVEL (e.g. in processes)
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
+            self._log_handler = file_handler
         else:
             console_handler = logging.StreamHandler()
             console_handler.setFormatter(formatter)
@@ -523,6 +529,30 @@ class ValidityFrame(baseElement):
         self._processes.object2json(package_root / "Processes" / "Processes.json")
         self._experiments.object2json(package_root / "Experiments" / "Experiments.json")
         self._operational.object2json(package_root / "Operational" / "Operational.json")
+        # keep the zipped package (.vf) in sync with its unzipped working copy
+        if packageName is None and self.package_manager.archive is not None:
+            self.package_manager.zip()
+
+    def zip(self, archive=None):
+        """
+        Export the validity frame and zip its package into a .vf archive.
+        Defaults to the archive the validity frame was loaded from.
+        """
+        self.export()
+        if archive is None and self.package_manager.archive is not None:
+            return self.package_manager.archive
+        return self.package_manager.zip(archive=archive)
+
+    def close(self):
+        """
+        Release the log file and the unzipped working copy of a zipped package (.vf).
+        Changes made after the last export()/zip() are not written to the archive.
+        """
+        if self._log_handler is not None:
+            self.logger.removeHandler(self._log_handler)
+            self._log_handler.close()
+            self._log_handler = None
+        self.package_manager.close()
 
 
 class MetaData(baseElement):
