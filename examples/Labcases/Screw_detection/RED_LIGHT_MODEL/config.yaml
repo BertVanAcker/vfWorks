@@ -1,0 +1,14 @@
+
+validityframe:
+  name: "LIDAR_anomaly_detection_VF"
+
+logging:
+  level: "DEBUG"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "Resources/VF_BLDC.log"
+
+dp_config:
+  storage_type: "global"
+  redis_host: "localhost"
+  redis_port: 6379
+  redis_db: 0

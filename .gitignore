@@ -252,3 +252,6 @@ http-client.private.env.json
 # Generated example dataset metadata
 **/dataset_metadata.yaml
 **/dataset-metadata.yaml
+
+# Large example cases
+examples/Labcases/Forklift

@@ -179,7 +179,7 @@ class PackageManager(object):
         for folder in ["loaders", "monitors"]:
             self._mkdir_custom(package_path/ "Resources" / folder, file="readme.rst")
 
-        self._addFile(file="testType.py", path=package_path / "Resources" / "loaders")
+        self._addFile(file="MonitoredModel_loader.py", path=package_path / "Resources" / "loaders")
         self._addFile(file="custom_monitor_example.py", path=package_path / "Resources" / "monitors")
 
         self._write_config(package_path, config or self.default_config(package_path))
@@ -219,7 +219,7 @@ class PackageManager(object):
             )
         elif "config.yaml" in file:
             content = yaml.safe_dump(self.default_config(target_dir.parent), sort_keys=False)
-        elif file == "testType.py":
+        elif file == "MonitoredModel_loader.py":
             content = (
                 '"""Template for Custom Model Loaders\n'
                 "\n"

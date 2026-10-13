@@ -1,0 +1,6 @@
+dataset_size: 100
+names:
+  0: screw
+  1: noscrew
+noscrews_samples: 1600
+screws_samples: 200

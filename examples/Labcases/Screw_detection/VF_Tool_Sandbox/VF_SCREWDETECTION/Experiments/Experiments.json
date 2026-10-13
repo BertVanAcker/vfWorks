@@ -1,0 +1,116 @@
+{
+    "_name": "experiments",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "3d0cf73d-f65c-423d-8adc-dd7df4712f7f",
+    "_timestamp": "2026-06-19 17:26:50.243642",
+    "_experiments": [
+        {
+            "_name": "EXP1",
+            "_description": "Blue light experiment",
+            "_verbose": false,
+            "_GUID": "c85b7530-4208-433c-b717-bba07c4a4bae",
+            "_timestamp": "2026-06-19 17:26:50.260022",
+            "_label": "nominal",
+            "_conditions": [
+                {
+                    "_name": "brightness",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "019deee0-a812-4fb3-bd50-6ff2773ac371",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 114
+                },
+                {
+                    "_name": "colorBlue",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "c59db4f0-853d-4aaf-814e-8f2e1b315de7",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 255
+                },
+                {
+                    "_name": "colorGreen",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "a4fb0b7f-36ef-4e22-b7d7-08609821abc9",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 0
+                },
+                {
+                    "_name": "colorRed",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "2ebf7e31-3e17-4bee-9a1e-6c2fe4d87610",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 0
+                },
+                {
+                    "_name": "imageCount",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "9c373785-3e2e-424b-a717-ec16fa6d3a2b",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 100
+                },
+                {
+                    "_name": "dataset_size",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "bf7655e7-4511-4529-bbcb-a857ea00b377",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 100
+                },
+                {
+                    "_name": "names",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "0b836151-7df5-4a08-8b74-1f386254cb55",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": {
+                        "0": "screw",
+                        "1": "noscrew"
+                    }
+                },
+                {
+                    "_name": "noscrews_samples",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "0ecb4335-aedf-480a-bb23-b9079fa37d30",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 1600
+                },
+                {
+                    "_name": "screws_samples",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "d02654e3-6d9c-4726-adba-2fe85d22473e",
+                    "_timestamp": "2026-06-19 17:26:50.260022",
+                    "_value": 200
+                }
+            ],
+            "_measurements": [
+                {
+                    "_name": "images",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "fc1f3e3a-592a-469b-93f0-0d48cf517dc1",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_dataPoints": [],
+                    "_reference": "dataset_metadata.yaml",
+                    "_poi": "1ff6ef3f-0ae8-4e9a-a906-bac3bc432e13"
+                },
+                {
+                    "_name": "labels",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "4446ed65-da0d-43ce-a942-2e341342f0bc",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_dataPoints": [],
+                    "_reference": "dataset_metadata.yaml",
+                    "_poi": "a43f8e83-d9aa-46c0-bc30-91f5de3c94da"
+                }
+            ]
+        }
+    ]
+}

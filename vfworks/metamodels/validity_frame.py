@@ -9,6 +9,7 @@
 import os
 import json
 import logging
+import re
 from pathlib import Path
 from vfworks.package.PackageManager import PackageManager
 from vfworks.metamodels.knowledge_graph import KnowledgeGraph
@@ -18,7 +19,7 @@ from vfworks.metamodels.specification import *
 from vfworks.metamodels.experiment import *
 from vfworks.metamodels.properties import *
 from vfworks.metamodels.common import *
-from vfworks.utils.constants import StatusType
+from vfworks.utils.constants import StatusType, MonitorTime
 from vfworks.logging.logger import *
 from vfworks.utils.model.modelLoader import *
 import networkx as nx
@@ -386,6 +387,132 @@ class ValidityFrame(baseElement):
         # Write the dictionary to a JSON file
         with open(file_name, 'w') as f:
             json.dump(graph_dict, f)
+
+    def architecture_graph(self):
+        """
+        Build an architecture graph payload from the metadata and operational state.
+        """
+
+        def humanize(name):
+            return re.sub(r'(?<!^)(?=[A-Z])', ' ', str(name)).strip()
+
+        def normalize(value):
+            return getattr(value, 'value', value)
+
+        model_structure = self.activeModelStructure
+        if model_structure is None and self.modelStructures:
+            model_structure = self.modelStructures[0]
+
+        if model_structure is None:
+            component = {
+                "id": self.GUID,
+                "name": self.name,
+                "inputs": [],
+                "outputs": [],
+                "ai_architecture": {
+                    "pattern": "unknown",
+                    "models": [],
+                    "flow": []
+                }
+            }
+        else:
+            inputs = []
+            for inport in model_structure.inports:
+                input_entry = {
+                    "id": f"input_{inport.name}",
+                    "name": inport.name,
+                    "datatype": normalize(inport.datatype),
+                    "dimensions": None,
+                    "shape": [],
+                    "unit": None if normalize(inport.unit) in (None, "-", "UNIT_none") else normalize(inport.unit),
+                    "description": inport.description
+                }
+                if "image" in inport.name.lower() or "image" in inport.description.lower():
+                    input_entry["format"] = "image"
+                inputs.append(input_entry)
+
+            outputs = []
+            has_confidence_output = False
+            for outport in model_structure.outports:
+                output_entry = {
+                    "id": f"output_{outport.name}",
+                    "name": outport.name,
+                    "datatype": normalize(outport.datatype),
+                    "dimensions": None,
+                    "shape": [],
+                    "unit": None if normalize(outport.unit) in (None, "-", "UNIT_none") else normalize(outport.unit),
+                    "description": outport.description
+                }
+                if outport.min != 0 or outport.max != 0:
+                    output_entry["value_range"] = {"min": outport.min, "max": outport.max}
+                if outport.name.lower() == "confidence":
+                    has_confidence_output = True
+                outputs.append(output_entry)
+
+            model_entry = {
+                "id": f"model_{model_structure.name}",
+                "name": humanize(model_structure.name),
+                "type": normalize(model_structure.modelType),
+                "reference": model_structure.modelRef
+            }
+
+            flow = []
+            for input_entry in inputs:
+                flow.append({"from": input_entry["id"], "to": model_entry["id"]})
+            for output_entry in outputs:
+                flow.append({"from": model_entry["id"], "to": output_entry["id"]})
+
+            component = {
+                "id": model_structure.name,
+                "name": humanize(model_structure.name),
+                "inputs": inputs,
+                "outputs": outputs,
+                "ai_architecture": {
+                    "pattern": "single_model_with_confidence_output" if has_confidence_output else "single_model",
+                    "models": [model_entry],
+                    "flow": flow
+                }
+            }
+
+        monitors = []
+        default_target = model_structure.inports[0].name if model_structure and model_structure.inports else "model"
+        for monitor in self.runtime_monitors:
+            if monitor.type == MonitorTime.DATA_VALIDATION:
+                target = "dataset"
+            elif monitor.type == MonitorTime.MODEL_VALIDATION:
+                target = "model"
+            elif monitor.type == MonitorTime.RUN_TIME:
+                observed_features = [spec.feature for spec in (monitor.observes or [])]
+                if any("odd" in feature.lower() for feature in observed_features) or "odd" in monitor.name.lower() or "odd" in monitor.description.lower():
+                    target = "environment"
+                else:
+                    target = default_target
+            else:
+                target = default_target
+
+            monitors.append({
+                "name": monitor.name,
+                "target": target,
+                "description": monitor.description,
+                "observes": [spec.feature for spec in (monitor.observes or [])]
+            })
+
+        return {
+            "component": component,
+            "monitors": monitors
+        }
+
+    def export_architecture_json(self, file_name="architecture.json"):
+        """
+        Export the architecture graph payload to a JSON file.
+        """
+        architecture = self.architecture_graph()
+        output_path = Path(file_name)
+        if not output_path.is_absolute():
+            output_path = self.package_manager.package_root / output_path
+
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(architecture, f, indent=2)
 
     # ------------------------------------------------------------------------------------------------------------------
     #                                           IMPORT/EXPORT FUNCTIONS

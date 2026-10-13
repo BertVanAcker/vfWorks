@@ -46,6 +46,11 @@ class Monitor(baseElement):
             """Setup the monitor, including loading any custom validation hooks."""
             self._load_custom_validation_hook(packageLocation=packageLocation)
 
+    def set_valid(self):
+        for observe in self.observes:
+            self.spec_status[observe.feature] = StatusType.VALID
+        self._status = StatusType.VALID
+
     @property
     def packageName(self):
         return self._packageName

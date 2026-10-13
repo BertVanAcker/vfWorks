@@ -1,0 +1,518 @@
+{
+    "_name": "operational",
+    "_description": "tbd",
+    "_verbose": false,
+    "_GUID": "af032916-0a11-48b9-948d-91e22a2ca259",
+    "_timestamp": "2026-06-19 17:26:50.243642",
+    "_modelStructures": [
+        {
+            "_name": "Screw_detection_model_YOLO",
+            "_description": "tbd",
+            "_verbose": false,
+            "_GUID": "d772280c-71ac-4ae1-975b-314fd740ecd9",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_inports": [
+                {
+                    "_name": "image",
+                    "_description": "input image",
+                    "_verbose": false,
+                    "_GUID": "c89e9b20-6059-45a7-ae1d-6b84a3a6d435",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": "1ff6ef3f-0ae8-4e9a-a906-bac3bc432e13"
+                }
+            ],
+            "_outports": [
+                {
+                    "_name": "detections",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "d221d32c-6169-4a47-b639-83faeeb84edd",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": "a43f8e83-d9aa-46c0-bc30-91f5de3c94da"
+                },
+                {
+                    "_name": "certainties",
+                    "_description": "tbd",
+                    "_verbose": false,
+                    "_GUID": "bfa6766c-794c-4a32-a4ff-53b40fc0632d",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_domain": "CONTROL",
+                    "_unit": "-",
+                    "_datatype": "float_64",
+                    "_min": 0,
+                    "_max": 0,
+                    "_mapping": "3d215f73-686d-47f1-94af-40ff7be92b57"
+                }
+            ],
+            "_modelType": "monitoredModel",
+            "_mapping": [],
+            "_scalars": null,
+            "_modelRef": "best.pt",
+            "_redundancy": 1
+        }
+    ],
+    "_activeModelStructure": null,
+    "_modelReference": null,
+    "_runtime_monitors": [
+        {
+            "_name": "TrustMonitor",
+            "_description": "Trustworthiness monitor",
+            "_verbose": false,
+            "_GUID": "f1225a9a-77e6-4175-9de3-eedbb3ad488f",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "RunTime",
+            "_validate_point_function": null,
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": true,
+            "_custom_code_file": "trust_evaluation.py",
+            "observes": [
+                {
+                    "_name": "ModelTrust",
+                    "_description": "Model trustworthiness",
+                    "_verbose": false,
+                    "_GUID": "188adf27-18e4-4549-a8a0-dbca77b46539",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "trust",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "Model trustworthiness",
+                        "_verbose": false,
+                        "_GUID": "e3f86df9-52ed-4612-918e-730d06662346",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "Model trustworthiness"
+                    }
+                }
+            ],
+            "spec_status": {
+                "trust": "unknown"
+            },
+            "last_observed_values": {
+                "trust": 0.0
+            }
+        },
+        {
+            "_name": "EnvironmentMonitorRuntime",
+            "_description": "Runtime environment monitor",
+            "_verbose": false,
+            "_GUID": "313e4453-ebab-43ce-872c-fa17079b4383",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "RunTime",
+            "_validate_point_function": {},
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": true,
+            "_custom_code_file": "custom_monitor_example.py",
+            "observes": [
+                {
+                    "_name": "LightingColorRed",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "710e967f-c3a8-42ba-86a3-c2d829a17d7e",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorRed",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "e44c44fe-76a0-4a7c-bbb0-7a85b3a69ff3",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                },
+                {
+                    "_name": "LightingColorGreen",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "809c1f43-dfe6-4260-ac52-b9d17ac846c6",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorGreen",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "c3c12903-fd3a-49f0-a214-c54272daf55f",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                },
+                {
+                    "_name": "LightingColorBlue",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "82f06aa0-b6bf-46f0-9e52-16b9ef0c0a85",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorBlue",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "6f89d7b7-151f-4376-9f75-773364e771be",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                }
+            ],
+            "spec_status": {
+                "colorRed": "unknown",
+                "colorGreen": "unknown",
+                "colorBlue": "unknown"
+            },
+            "last_observed_values": {
+                "colorRed": 0.0,
+                "colorGreen": 0.0,
+                "colorBlue": 0.0
+            }
+        }
+    ],
+    "_design_time_monitors": [
+        {
+            "_name": "EnvironmentMonitorDesignTime",
+            "_description": "Design time environment monitor",
+            "_verbose": false,
+            "_GUID": "c3475f79-2817-439a-afac-cb4f8c710b73",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "DataValidationTime",
+            "_validate_point_function": null,
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": true,
+            "_custom_code_file": null,
+            "observes": [
+                {
+                    "_name": "LightingColorRed",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "710e967f-c3a8-42ba-86a3-c2d829a17d7e",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorRed",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "e44c44fe-76a0-4a7c-bbb0-7a85b3a69ff3",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                },
+                {
+                    "_name": "LightingColorGreen",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "809c1f43-dfe6-4260-ac52-b9d17ac846c6",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorGreen",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "c3c12903-fd3a-49f0-a214-c54272daf55f",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                },
+                {
+                    "_name": "LightingColorBlue",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "82f06aa0-b6bf-46f0-9e52-16b9ef0c0a85",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorBlue",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "6f89d7b7-151f-4376-9f75-773364e771be",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                }
+            ],
+            "spec_status": {
+                "colorRed": "unknown",
+                "colorGreen": "unknown",
+                "colorBlue": "unknown"
+            },
+            "last_observed_values": {
+                "colorRed": 0.0,
+                "colorGreen": 0.0,
+                "colorBlue": 0.0
+            }
+        },
+        {
+            "_name": "SampleCountMonitor",
+            "_description": "Class sample count monitor",
+            "_verbose": false,
+            "_GUID": "134f27fd-868a-4cbc-857c-3e493921e89f",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "DataValidationTime",
+            "_validate_point_function": null,
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": false,
+            "_custom_code_file": null,
+            "observes": [
+                {
+                    "_name": "ScrewCount",
+                    "_description": "Screw sample count",
+                    "_verbose": false,
+                    "_GUID": "1ba859a2-f064-4778-876a-e36018830fb9",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "screws_samples",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_evaluationType": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "39229c2a-a737-43f9-8308-42bcfa4731da",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "_valueMin": 100
+                    }
+                },
+                {
+                    "_name": "NoScrewCount",
+                    "_description": "No screw sample count",
+                    "_verbose": false,
+                    "_GUID": "fe799dbd-300f-411f-acfd-d68763a64460",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "noscrews_samples",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_evaluationType": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "6567d0ef-44fa-4489-b606-773921f03429",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "_valueMin": 100
+                    }
+                }
+            ],
+            "spec_status": {
+                "screws_samples": "unknown",
+                "noscrews_samples": "unknown"
+            },
+            "last_observed_values": {
+                "screws_samples": 0.0,
+                "noscrews_samples": 0.0
+            }
+        },
+        {
+            "_name": "EnvironmentMonitorDesignTime",
+            "_description": "Design time environment monitor",
+            "_verbose": false,
+            "_GUID": "c3475f79-2817-439a-afac-cb4f8c710b73",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "DataValidationTime",
+            "_validate_point_function": null,
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": true,
+            "_custom_code_file": null,
+            "observes": [
+                {
+                    "_name": "LightingColorRed",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "710e967f-c3a8-42ba-86a3-c2d829a17d7e",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorRed",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "e44c44fe-76a0-4a7c-bbb0-7a85b3a69ff3",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                },
+                {
+                    "_name": "LightingColorGreen",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "809c1f43-dfe6-4260-ac52-b9d17ac846c6",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorGreen",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "c3c12903-fd3a-49f0-a214-c54272daf55f",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                },
+                {
+                    "_name": "LightingColorBlue",
+                    "_description": "200 < Lighting < 255",
+                    "_verbose": false,
+                    "_GUID": "82f06aa0-b6bf-46f0-9e52-16b9ef0c0a85",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "colorBlue",
+                    "_status": "unknown",
+                    "_type": "property_custom",
+                    "_evaluationType": "property_custom",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "200 < Lighting < 255",
+                        "_verbose": false,
+                        "_GUID": "6f89d7b7-151f-4376-9f75-773364e771be",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "value": "200 < Lighting < 255"
+                    }
+                }
+            ],
+            "spec_status": {
+                "colorRed": "unknown",
+                "colorGreen": "unknown",
+                "colorBlue": "unknown"
+            },
+            "last_observed_values": {
+                "colorRed": 0.0,
+                "colorGreen": 0.0,
+                "colorBlue": 0.0
+            }
+        },
+        {
+            "_name": "SampleCountMonitor",
+            "_description": "Class sample count monitor",
+            "_verbose": false,
+            "_GUID": "134f27fd-868a-4cbc-857c-3e493921e89f",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "DataValidationTime",
+            "_validate_point_function": null,
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": false,
+            "_custom_code_file": null,
+            "observes": [
+                {
+                    "_name": "ScrewCount",
+                    "_description": "Screw sample count",
+                    "_verbose": false,
+                    "_GUID": "1ba859a2-f064-4778-876a-e36018830fb9",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "screws_samples",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_evaluationType": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "39229c2a-a737-43f9-8308-42bcfa4731da",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "_valueMin": 100
+                    }
+                },
+                {
+                    "_name": "NoScrewCount",
+                    "_description": "No screw sample count",
+                    "_verbose": false,
+                    "_GUID": "fe799dbd-300f-411f-acfd-d68763a64460",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "noscrews_samples",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_evaluationType": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "6567d0ef-44fa-4489-b606-773921f03429",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "_valueMin": 100
+                    }
+                }
+            ],
+            "spec_status": {
+                "screws_samples": "unknown",
+                "noscrews_samples": "unknown"
+            },
+            "last_observed_values": {
+                "screws_samples": 0.0,
+                "noscrews_samples": 0.0
+            }
+        },
+        {
+            "_name": "AccuracyMonitor",
+            "_description": "Accuracy monitor",
+            "_verbose": false,
+            "_GUID": "e0b1b6b6-1849-4b50-8a77-d3b5c7a56760",
+            "_timestamp": "2026-06-19 17:26:50.261025",
+            "_status": "unknown",
+            "_type": "ModelValidationTime",
+            "_validate_point_function": null,
+            "_packageName": "VF_SCREWDETECTION",
+            "_require_custom_code_file": false,
+            "_custom_code_file": null,
+            "observes": [
+                {
+                    "_name": "ModelAccuracy",
+                    "_description": "Model accuracy",
+                    "_verbose": false,
+                    "_GUID": "caa9eb82-11cd-4d09-a41e-7774d8f24925",
+                    "_timestamp": "2026-06-19 17:26:50.261025",
+                    "_feature": "mAP50-95",
+                    "_status": "unknown",
+                    "_type": "property_min",
+                    "_evaluationType": "property_min",
+                    "_value": {
+                        "_name": "tbd",
+                        "_description": "tbd",
+                        "_verbose": false,
+                        "_GUID": "9d759250-39bf-4b18-a448-fe852f849322",
+                        "_timestamp": "2026-06-19 17:26:50.261025",
+                        "_valueMin": 0.8
+                    }
+                }
+            ],
+            "spec_status": {
+                "mAP50-95": "unknown"
+            },
+            "last_observed_values": {
+                "mAP50-95": 0.0
+            }
+        }
+    ]
+}

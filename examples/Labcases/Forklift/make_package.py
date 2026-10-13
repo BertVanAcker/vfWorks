@@ -119,8 +119,16 @@ spec_confidence_calibration = Specification(name="ConfidenceCalibration", descri
 # Keep the actual semantic intent in the specification description and use a
 # custom property.
 spec_image_quality_monitoring = Specification(name="ImageQualityMonitoring", description=("REQ_18: Runtime image quality shall be monitored, including " "brightness, blur, overexposure, saturation and camera health"), feature="image_quality", type=PropertyType.PROPERTY_CUSTOM)
+
+spec_brightness = Specification(name="ImageBrightness",description="REQ_18.1: Runtime image brightness shall remain within the specified acceptable range.",feature="image_brightness",type=PropertyType.PROPERTY_CUSTOM)
+
+spec_blur = Specification(name="ImageBlur",description="REQ_18.2: Runtime image sharpness shall remain above the specified minimum threshold to ensure that images are sufficiently clear.",feature="image_blur",type=PropertyType.PROPERTY_CUSTOM)
+
+spec_saturation = Specification(name="ImageSaturation",description="REQ_18.3: Runtime image saturation shall remain within the specified acceptable range.",feature="image_saturation",type=PropertyType.PROPERTY_CUSTOM)
+
 # REQ_19
-spec_distribution_shift_monitoring = Specification(name="DistributionShiftMonitoring", description=("REQ_19: Runtime distribution shift shall be monitored using " "embedding/distribution-shift analysis"), feature="distribution_shift", type=PropertyType.PROPERTY_CUSTOM)
+spec_distribution_shift_monitoring = Specification(name="DistributionShift", description=("REQ_19: Runtime distribution shift shall be monitored using embedding/distribution-shift analysis"), feature="distribution_shift", type=PropertyType.PROPERTY_CUSTOM)
+spec_runtime_ODD = Specification(name="RuntimeODDMonitoring", description="", feature="ODD", type=PropertyType.PROPERTY_CUSTOM)
 # Add all specifications to the VF
 for spec in [
     spec_model_accuracy,
@@ -141,7 +149,11 @@ for spec in [
     spec_partial_occlusion_recall,
     spec_confidence_calibration,
     spec_image_quality_monitoring,
-    spec_distribution_shift_monitoring
+    spec_distribution_shift_monitoring,
+    spec_brightness,
+    spec_blur,
+    spec_saturation,
+    spec_runtime_ODD
 ]:
     VF.addSpecification(spec)
 # =============================================================================
@@ -178,8 +190,14 @@ poi_annotation_error = PropertyofInterest(name="AnnotationErrorRate", descriptio
 poi_bounding_box_iou = PropertyofInterest(name="BoundingBoxIoU", description="Bounding box intersection-over-union", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64, min=0, max=1, satisfies=[spec_bounding_box_quality])
 poi_cohen_kappa = PropertyofInterest(name="CohenKappa", description="Inter-annotator agreement measured using Cohen's Kappa", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64, min=-1, max=1, satisfies=[spec_inter_annotator_agreement])
 poi_false_positive_rate = PropertyofInterest(name="FalsePositiveRate", description="False-positive rate used by the current REQ_17 DSL representation", domain=DomainType.NONE, unit=UnitType.UNIT_none, datatype=DataType.FLOAT_64, min=0, max=1, satisfies=[spec_confidence_calibration])
+
+poi_brightness = PropertyofInterest(name="ImageBrightness", description="Runtime distribution shift score", domain=DomainType.NONE, unit=UnitType.UNIT_none, satisfies=[spec_brightness])
+poi_saturation = PropertyofInterest(name="ImageSaturation", description="Runtime distribution shift score", domain=DomainType.NONE, unit=UnitType.UNIT_none, satisfies=[spec_saturation])
+poi_blur = PropertyofInterest(name="ImageBlur", description="Runtime distribution shift score", domain=DomainType.NONE, unit=UnitType.UNIT_none, satisfies=[spec_blur])
+
+
 # Runtime monitoring-related POIs
-poi_image_quality = PropertyofInterest(name="ImageQuality", description="Runtime image quality information including brightness, blur, overexposure and saturation", domain=DomainType.NONE, unit=UnitType.UNIT_none, satisfies=[spec_image_quality_monitoring])
+#poi_image_quality = PropertyofInterest(name="ImageQuality", description="Runtime image quality information including brightness, blur, overexposure and saturation", domain=DomainType.NONE, unit=UnitType.UNIT_none, satisfies=[spec_brightness, spec_blur, spec_saturation])
 poi_distribution_shift = PropertyofInterest(name="DistributionShift", description="Runtime distribution shift score", domain=DomainType.NONE, unit=UnitType.UNIT_none, satisfies=[spec_distribution_shift_monitoring])
 # Add POIs to VF
 for poi in [
@@ -196,7 +214,10 @@ for poi in [
     poi_bounding_box_iou,
     poi_cohen_kappa,
     poi_false_positive_rate,
-    poi_image_quality,
+    poi_brightness,
+    poi_saturation,
+    poi_blur,
+    #poi_image_quality,
     poi_distribution_shift
 ]:
     VF.addProperty(poi)
@@ -320,9 +341,12 @@ monitor_confidence_calibration = Monitor(name="ConfidenceCalibrationMonitor", de
 # the current DSL's "monitor accuracy" syntax does not capture the actual
 # metrics named in the safety requirement.
 # -----------------------------------------------------------------------------
-monitor_image_quality = Monitor(name="ImageQualityRuntimeMonitor", description="Continuously monitors runtime image brightness, blur, overexposure, saturation and camera health", observes=[spec_image_quality_monitoring], monitor_time=MonitorTime.RUN_TIME, custom_code_file="image_quality_monitor.py")
+monitor_image_brightness = Monitor(name="ImageBrightnessMonitor", description="Continuously monitors runtime image brightness", observes=[spec_brightness], monitor_time=MonitorTime.RUN_TIME, custom_code_file="image_quality_monitor.py")
+monitor_image_saturation = Monitor(name="ImageSaturationMonitor", description="Continuously monitors runtime image saturation", observes=[spec_saturation], monitor_time=MonitorTime.RUN_TIME, custom_code_file="image_quality_monitor.py")
+monitor_image_blur = Monitor(name="ImageBlurMonitor", description="Continuously monitors runtime image blur", observes=[spec_blur], monitor_time=MonitorTime.RUN_TIME, custom_code_file="image_quality_monitor.py")
+
 monitor_distribution_shift = Monitor(name="DistributionShiftRuntimeMonitor", description="Continuously monitors runtime distribution shift using image embeddings and a distribution-shift/OOD metric", observes=[spec_distribution_shift_monitoring], monitor_time=MonitorTime.RUN_TIME, custom_code_file="distribution_shift_monitor.py")
-monitor_runtime_confidence = Monitor(name="RuntimeConfidenceMonitor", description="Monitors runtime model confidence", observes=[spec_confidence_calibration], monitor_time=MonitorTime.RUN_TIME, custom_code_file="confidence_monitor.py")
+monitor_runtime_ODD = Monitor(name="RuntimeODDMonitor", description="Monitors ODD during runtime", observes=[spec_runtime_ODD], monitor_time=MonitorTime.RUN_TIME, custom_code_file="confidence_monitor.py")
 # Add monitors
 for monitor in [
     monitor_dataset_completeness,
@@ -343,9 +367,11 @@ for monitor in [
     monitor_partial_occlusion_recall,
     monitor_confidence_calibration,
 
-    monitor_image_quality,
+    monitor_image_brightness,
+    monitor_image_saturation,
+    monitor_image_blur,
     monitor_distribution_shift,
-    monitor_runtime_confidence
+    monitor_runtime_ODD
 ]:
     VF.addMonitor(monitor)
 
@@ -356,7 +382,10 @@ for monitor in [
 
 packageName = "VF_FORKLIFT"
 
+#for monitor in VF.design_time_monitors:
+#    monitor.set_valid()
 VF.export(packageName=packageName)
 VF.export_graph_json()
+VF.export_architecture_json()
 
 print("Successfully generated " + packageName)
