@@ -6,14 +6,27 @@
 # * vfWorks can not be copied and/or distributed without the express
 # * permission of Bert Van Acker
 # **************************************************************************************
+import os
+import shutil
+import tempfile
+import weakref
+import zipfile
 from pathlib import Path
 
 import yaml
 
 
 class PackageManager(object):
-    def __init__(self, name='PackageManager', description='Built-in package manager', verbose=False, packageName=None, packageLocation=None):
-        """Initialize a validity frame package manager."""
+    VF_EXTENSION = ".vf"
+
+    def __init__(self, name='PackageManager', description='Built-in package manager', verbose=False, packageName=None, packageLocation=None, unzipDirectory=None):
+        """Initialize a validity frame package manager.
+
+        When ``packageName`` points to a zipped validity frame package
+        (``.vf`` extension), the archive is extracted to ``unzipDirectory``
+        (a temporary directory when omitted) and that working copy is used as
+        the package root. Use :meth:`zip` to write changes back to the archive.
+        """
 
         self._name = name
         self._description = description
@@ -23,6 +36,11 @@ class PackageManager(object):
         self.standalonePath = ""
         self._directory = Path.cwd() if packageLocation is None else Path(packageLocation)
         self._package_root = self._resolve_package_root(self._packageName)
+
+        self._archive = None
+        self._unzip_cleanup = None
+        if self.is_archive(self._package_root):
+            self.open_archive(self._package_root, unzipDirectory=unzipDirectory)
 
     @property
     def name(self):
@@ -49,6 +67,11 @@ class PackageManager(object):
         """The resolved root directory containing the VF package folders."""
         return self._package_root
 
+    @property
+    def archive(self):
+        """The zipped package (.vf) backing this package, or None for a plain directory."""
+        return self._archive
+
     def create(self, name=None, force=False, standalone=False, config=None):
         """Create a validity frame package structure.
 
@@ -67,7 +90,11 @@ class PackageManager(object):
             Optional configuration to write to ``Resources/config.yaml``.
         """
         package_name = name if name not in ("", ".") else None
-        if standalone and package_name is not None:
+        if self._archive is not None and (package_name is None or self._resolve_archive_path(package_name) == self._archive):
+            # archive-backed package: populate the unzipped working copy
+            package_name = self._packageName
+            package_path = self._package_root
+        elif standalone and package_name is not None:
             root = self._directory
             self.standalonePath = str(root)
             package_path = root / package_name
@@ -114,7 +141,7 @@ class PackageManager(object):
 
     def init_config(self, packageName=None):
         """Load an existing package config or return a default validity frame config."""
-        package_path = self._resolve_package_root(packageName if packageName is not None else self._packageName)
+        package_path = self._package_root if packageName is None else self._resolve_package_root(packageName)
         self._package_root = package_path
         existing_config = package_path / "Resources" / "config.yaml"
         if existing_config.exists():
@@ -144,6 +171,146 @@ class PackageManager(object):
         """Load a YAML config file."""
         with open(config_file, 'r') as file:
             return yaml.safe_load(file)
+
+    # ------------------------------------------------------------------------------------------------------------------
+    #                                           ZIPPED PACKAGE (.vf) FUNCTIONS
+    # -----------------------------------------------------------------------------------------------------------------
+    @classmethod
+    def is_archive(cls, path):
+        """Check whether a path refers to a zipped validity frame package (.vf)."""
+        if path in (None, ""):
+            return False
+        path = Path(path)
+        return path.suffix.lower() == cls.VF_EXTENSION and not path.is_dir()
+
+    def zip(self, archive=None, path=None):
+        """Zip a validity frame package into a ``.vf`` archive.
+
+        Parameters
+        ----------
+        archive : string or Path
+            Target archive. Defaults to the archive the package was loaded
+            from, or ``<package name>.vf`` next to the package directory.
+        path : string or Path
+            Package directory to zip. Defaults to the current package root.
+
+        Returns
+        -------
+        Path
+            Location of the written archive.
+        """
+        package_path = self._normalize_package_path(path).resolve()
+        if not package_path.is_dir():
+            raise FileNotFoundError(f"ERROR: validity frame package {package_path} does not exist!")
+
+        if archive is not None:
+            archive = self._resolve_archive_path(archive)
+        elif self._archive is not None and path is None:
+            archive = self._archive
+        else:
+            archive = package_path.with_name(package_path.name + self.VF_EXTENSION)
+
+        if self._verbose:
+            print(f"DEBUG: zipping validity frame package {package_path} to {archive}...")
+
+        archive.parent.mkdir(parents=True, exist_ok=True)
+        # write to a temporary file first, so a failure never corrupts an existing archive
+        handle, tmp_name = tempfile.mkstemp(suffix=self.VF_EXTENSION + ".tmp", dir=archive.parent)
+        os.close(handle)
+        tmp_archive = Path(tmp_name).resolve()
+        try:
+            with zipfile.ZipFile(tmp_archive, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                for item in sorted(package_path.rglob("*")):
+                    relative = item.relative_to(package_path)
+                    if "__pycache__" in relative.parts or item in (archive, tmp_archive):
+                        continue
+                    zf.write(item, relative.as_posix())
+            os.replace(tmp_archive, archive)
+        finally:
+            tmp_archive.unlink(missing_ok=True)
+
+        return archive
+
+    def unzip(self, archive, destination=None):
+        """Unzip a ``.vf`` archive into a validity frame package directory.
+
+        Parameters
+        ----------
+        archive : string or Path
+            Zipped validity frame package.
+        destination : string or Path
+            Directory to extract to. Defaults to a directory named after the
+            archive, next to the archive.
+
+        Returns
+        -------
+        Path
+            Location of the unzipped package.
+        """
+        archive = self._resolve_archive_path(archive)
+        if not archive.is_file():
+            raise FileNotFoundError(f"ERROR: zipped validity frame package {archive} does not exist!")
+        if not zipfile.is_zipfile(archive):
+            raise ValueError(f"ERROR: {archive} is not a zipped validity frame package!")
+
+        if destination is None:
+            destination = archive.with_suffix("")
+        else:
+            destination = Path(destination)
+            if not destination.is_absolute():
+                destination = self._directory / destination
+
+        if self._verbose:
+            print(f"DEBUG: unzipping validity frame package {archive} to {destination}...")
+
+        destination.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(archive, "r") as zf:
+            zf.extractall(destination)  # member names are sanitized by zipfile
+
+        return destination
+
+    def open_archive(self, archive, unzipDirectory=None):
+        """Use a ``.vf`` archive as package, working on an unzipped copy.
+
+        An existing archive is extracted to ``unzipDirectory`` (a temporary
+        directory when omitted). When the archive does not exist yet, an empty
+        working copy is prepared and the archive is written on :meth:`zip`.
+        """
+        self.close()
+        archive = self._resolve_archive_path(archive)
+
+        if unzipDirectory is None:
+            tmp_root = tempfile.mkdtemp(prefix="vfworks_")
+            self._unzip_cleanup = weakref.finalize(self, shutil.rmtree, tmp_root, ignore_errors=True)
+            working_copy = Path(tmp_root) / archive.stem
+        else:
+            working_copy = Path(unzipDirectory)
+
+        if archive.is_file():
+            working_copy = self.unzip(archive, destination=working_copy)
+        else:
+            working_copy.mkdir(parents=True, exist_ok=True)
+
+        self._archive = archive
+        self._packageName = archive.stem
+        self._package_root = working_copy
+        return working_copy
+
+    def close(self):
+        """Release the temporary working copy of an archive-backed package.
+
+        Changes that were not written with :meth:`zip` are discarded. A working
+        copy in a user-provided ``unzipDirectory`` is left untouched.
+        """
+        if self._unzip_cleanup is not None:
+            self._unzip_cleanup()
+            self._unzip_cleanup = None
+
+    def _resolve_archive_path(self, archive):
+        archive = Path(archive)
+        if not archive.is_absolute():
+            archive = self._directory / archive
+        return archive.resolve()
 
     def _checkEmptyDir(self):
         """Function to determine if the current directory is empty."""
